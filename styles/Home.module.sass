@@ -1,3 +1,5 @@
+@import "mixins"
+
 .container
   min-height: 100vh
   padding: 0 0.5rem
@@ -82,7 +84,9 @@
     font-size: 1.25rem
     line-height: 1.5
   &:hover
+    border-color: #0070f3
   &:focus
+    color: #0070f3
   &:active
     color: #0070f3
     border-color: #0070f3
@@ -91,7 +95,7 @@
   height: 1em
   margin-left: 0.5rem
 
-@media (max-width: 600px)
-  .grid
+.grid
+  @include desktop
     width: 100%
     flex-direction: column
