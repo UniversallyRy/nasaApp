@@ -14,26 +14,26 @@ interface Data {
 
 const url = 'https://api.nasa.gov/planetary/apod?api_key=' + `${apiKey}`
 
-const APOD: NextPage<{ data: Data }> = (props) => {
+const APOD: NextPage<{ data: Data }> = ({ data }) => {
   
-    if (!props.data) return <div>Loading...</div>
+    if (!data) return <div>Loading...</div>
 
   return (
     <>
       <Head>
-        <title>{props.data.title}</title>
+        <title>{data.title}</title>
       </Head>
       <article className='margin: 2'>
-        <h1>{props.data.title}</h1>
-        <p>{props.data.date}</p>
-        <p>{props.data.explanation}</p>
+        <h1>{data.title}</h1>
+        <p>{data.date}</p>
+        <p>{data.explanation}</p>
         <div>
             <Image
                 priority
-                src={props.data.hdurl}
+                src={data.hdurl}
                 height={600}
                 width={800}
-                alt={props.data.title}
+                alt={data.title}
             />
         </div>
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
@@ -47,7 +47,7 @@ const APOD: NextPage<{ data: Data }> = (props) => {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(url);
   const data = await res.json();
 
