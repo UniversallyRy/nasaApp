@@ -12,9 +12,9 @@ interface Data {
   hdurl: string;
 }
 
-const url = 'https://api.nasa.gov/planetary/apod?api_key=' + `${apiKey}`
+const url = 'https://epic.gsfc.nasa.gov/?date=2021-06-03'
 
-const APOD: NextPage<{ data: Data }> = (props) => {
+const Epic: NextPage<{ data: Data }> = (props) => {
   
     if (!props.data) return <div>Loading...</div>
 
@@ -26,7 +26,7 @@ const APOD: NextPage<{ data: Data }> = (props) => {
       <article className='margin: 2'>
         <h1>{props.data.title}</h1>
         <p>{props.data.date}</p>
-        <p>{props.data.explanation}</p>
+        <p>{props.data.caption}</p>
         <div>
             <Image
                 priority
@@ -58,4 +58,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default APOD;
+export default Epic;

@@ -19,17 +19,20 @@ export default function Home() {
         </h1>
         <div className={styles.grid}>
           <Link href={`/apodpage`}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
+            <a className={styles.card}>
               <h2>APOD &rarr;</h2>
               <p>View the Astronomy Picture of the Day.</p>
             </a>
           </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Earth &rarr;</h2>
-            <p>Landsat imagery is provided to the public as a joint project between NASA and USGS.</p>
-          </a>
+          <Link href={`/`}>
+            <a className={styles.card}>
+              <h2>Earth &rarr;</h2>
+              <p>Landsat imagery is provided to the public as a joint project between NASA and USGS.</p>
+            </a>
+          </Link>
 
+          <Link href={`/epic`}>
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className={styles.card}
@@ -37,6 +40,7 @@ export default function Home() {
             <h2>EPIC &rarr;</h2>
             <p>Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.</p>
           </a>
+          </Link>
 
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
