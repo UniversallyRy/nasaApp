@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/'
 
-const EpicItem = ({item}:any, index:number) => {
-    
+const EpicItem = ({item, index}:any) => {
+
     return (
         <>
             <Link href={`/epic/${item.id = index}`}>
