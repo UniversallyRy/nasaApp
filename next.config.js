@@ -11,7 +11,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
   images: {
-    domains: ["apod.nasa.gov"],
+    domains: ["apod.nasa.gov", "epic.gsfc.nasa.gov"],
   },
 };
 
