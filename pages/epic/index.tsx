@@ -1,10 +1,9 @@
 import useSwr from 'swr'
-import EpicList from '../../components/EpicList'
-import Image from "next/image";
-import Link from "next/link";
-import { apiKey } from '../../key'
 import Head from "next/head";
+import Link from "next/link";
 import { GetStaticProps, NextPage } from 'next';
+import { apiKey } from '../../key'
+import EpicList from '../../components/EpicList'
 
 interface Data {
   title: string;
