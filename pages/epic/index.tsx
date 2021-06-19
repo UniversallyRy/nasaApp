@@ -1,7 +1,6 @@
-import useSwr from 'swr'
+import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import Link from "next/link";
-import { GetStaticProps, NextPage } from 'next';
 import { apiKey } from '../../key'
 import EpicList from '../../components/EpicList'
 
@@ -9,6 +8,7 @@ interface Data {
   title: string;
   date: number;
   explanation: string;
+  identifier: string;
   hdurl: string;
   map: ((item: object) => void);
 }

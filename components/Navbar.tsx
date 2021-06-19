@@ -1,9 +1,9 @@
-import navStyles from '../styles/Nav.module.sass'
 import Link from 'next/link'
+import navStyles from '../styles/Nav.module.sass'
 
 function Navbar() {
     return (
-        <nav className={navStyles.nav}>
+        <nav className={ navStyles.nav }>
            <ul>
                 <li>
                     <Link href='/'>Home</Link>

@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import { apiKey } from '../../key';
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { apiKey } from '../../key';
 
 const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/'
 const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03/?api_key=' + apiKey
@@ -18,14 +18,14 @@ export default function EpicId({ epic }:any) {
             </Head>
             <Image
                 priority
-                src={imageLink + epic.image + `.png`}
-                height={600}
-                width={600}
-                alt={epic.title}
+                src={ imageLink + epic.image + `.png` }
+                height={ 600 }
+                width={ 600 }
+                alt={ epic.title }
             />
-            <p>Image ID: {epic.identifier}</p>
-            <p>Taken on: {epic.date}</p>
-            <p>At index: {id} </p>
+            <p>Image ID: { epic.identifier }</p>
+            <p>Taken on: { epic.date }</p>
+            <p>At index: { id }  </p>
             <Link href="/epic">
               <a>← Back to EPICS</a>
             </Link>
@@ -39,7 +39,7 @@ export const getStaticProps = async (context:any) => {
 
     return {
       props: {
-        epic: epic[`${context.params.id}`],
+        epic: epic[`${ context.params.id }`],
       },
     };
 };
