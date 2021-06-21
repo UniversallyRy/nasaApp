@@ -14,11 +14,10 @@ interface Data {
 }
 
 const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03?api_key=' + apiKey
-const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/'
 
 const Epics: NextPage<{ data: Data }> = ({data}) => {
   
-    if (!data) return <div>Loading...</div>
+  if (!data) return <div>Loading...</div>
 
   return (
     <>

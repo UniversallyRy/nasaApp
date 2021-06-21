@@ -15,7 +15,7 @@ const url = 'https://api.nasa.gov/planetary/apod?api_key=' + `${apiKey}`
 
 const APOD: NextPage<{ data: Data }> = ({ data }) => {
   
-    if (!data) return <div>Loading...</div>
+  if (!data) return <div>Loading...</div>
 
   return (
     <>
@@ -28,16 +28,16 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
         <p>{ data.date }</p>
         <p>{ data.explanation }</p>
         <div>
-            <Image
-                src={ data.hdurl }
-                quality={ 100 }
-                height={ 800 }
-                width={ 800 }
-                layout='responsive'
-                blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                placeholder="blur"
-                alt={ data.title }
-            />
+          <Image
+            src={ data.hdurl }
+            quality={ 100 }
+            height={ 800 }
+            width={ 800 }
+            layout='responsive'
+            blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            placeholder="blur"
+            alt={ data.title }
+          />
         </div>
         <div>
           <Link href="/">

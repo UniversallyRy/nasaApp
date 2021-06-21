@@ -11,25 +11,25 @@ export default function EpicId({ epic }:any) {
     const router = useRouter();
     const { id } = router.query;
     return (
-        <div>
-            <Head>
-              <title>Earth Polychromatic Image</title>
-              <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={epic.title} />
-            </Head>
-            <Image
-                priority
-                src={ imageLink + epic.image + `.png` }
-                height={ 600 }
-                width={ 600 }
-                alt={ epic.title }
-            />
-            <p>Image ID: { epic.identifier }</p>
-            <p>Taken on: { epic.date }</p>
-            <p>At index: { id }  </p>
-            <Link href="/epic">
-              <a>← Back to EPICS</a>
-            </Link>
-        </div>
+        <>
+          <Head>
+            <title>Earth Polychromatic Image</title>
+            <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={epic.title} />
+          </Head>
+          <Image
+            priority
+            src={ imageLink + epic.image + `.png` }
+            height={ 600 }
+            width={ 600 }
+            alt={ epic.title }
+          />
+          <p>Image ID: { epic.identifier }</p>
+          <p>Taken on: { epic.date }</p>
+          <p>At index: { id }  </p>
+          <Link href="/epic">
+            <a>← Back to EPICS</a>
+          </Link>
+        </>
     )
 }
 
