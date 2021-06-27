@@ -1,7 +1,8 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import Link from "next/link";
-import Image from 'next/image'
-import styles from '../styles/Layout.module.sass'
+import Image from 'next/image';
+import styles from '../styles/Layout.module.sass';
+import { motion } from 'framer-motion';
 
 export default function Home() {
 
@@ -14,9 +15,27 @@ export default function Home() {
       </Head>
 
       <main className={ styles.main }>
-        <h1 className={ styles.title }>
-          Look through space info from <a href="https://api.nasa.gov/">NASA&apos;s APIs</a>
-        </h1>
+        <motion.div 
+          initial="hidden" 
+          animate="visible" 
+          variants={{
+            hidden: {
+              scale: .8,
+              opacity: 0
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: .4
+              }
+            },
+          }}
+        >
+          <h1 className={ styles.title }>
+            Look through space info from <a href="https://api.nasa.gov/">NASA&apos;s APIs</a>
+          </h1>
+        </motion.div>
         <div className={ styles.grid }>
           <Link href={`/apodpage`}>
             <a className={ styles.card }>
