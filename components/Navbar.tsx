@@ -41,7 +41,7 @@ const sidebar = {
     },  
     {
         title: 'APOD',
-        href: '/apodpage'
+        href: '/apods'
     },
     {
         title: 'Landsat Imagery',

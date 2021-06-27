@@ -37,7 +37,7 @@ export default function Home() {
           </h1>
         </motion.div>
         <div className={ styles.grid }>
-          <Link passHref href={`/apodpage`}>
+          <Link passHref href={`/apods`}>
             <motion.a 
               className={ styles.card }
               whileHover={{
