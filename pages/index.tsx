@@ -37,55 +37,113 @@ export default function Home() {
           </h1>
         </motion.div>
         <div className={ styles.grid }>
-          <Link href={`/apodpage`}>
-            <a className={ styles.card }>
+          <Link passHref href={`/apodpage`}>
+            <motion.a 
+              className={ styles.card }
+              whileHover={{
+                position: 'relative',
+                zIndex: 1,
+                scale: [1, 1.2, 1],
+                rotate: [0, 10, -10, 0],
+                transition: {
+                  duration: .2
+                }
+              }}
+            >
               <h2>APOD &rarr;</h2>
               <p>View the Astronomy Picture of the Day.</p>
-            </a>
+            </motion.a>
           </Link>
 
-          <Link href={ `/` }>
-            <a className={ styles.card }>
+          <Link passHref href={ `/` }>
+            <motion.a 
+              className={ styles.card }
+              whileHover={{
+                position: 'relative',
+                zIndex: 1,
+                scale: [1, 1.2, 1],
+                rotate: [0, 10, -10, 0],
+                transition: {
+                  duration: .2
+                }
+              }}
+            >
               <h2>Earth &rarr;</h2>
               <p>Landsat imagery is provided to the public as a joint project between NASA and USGS.</p>
-            </a>
+            </motion.a>
           </Link>
 
-          <Link href={ `/epic` }>
-          <a
+          <Link passHref href={ `/epic` }>
+          <motion.a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className={ styles.card }
+            whileHover={{
+              position: 'relative',
+              zIndex: 1,
+              scale: [1, 1.2, 1],
+              rotate: [0, 10, -10, 0],
+              transition: {
+                duration: .2
+              }
+            }}
           >
             <h2>EPIC &rarr;</h2>
             <p>Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.</p>
-          </a>
+          </motion.a>
           </Link>
 
-          <a
+          <motion.a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={ styles.card }
+            whileHover={{
+              position: 'relative',
+              zIndex: 1,
+              scale: [1, 1.2, 1],
+              rotate: [0, 10, -10, 0],
+              transition: {
+                duration: .2
+              }
+            }}
           >
             <h2>InSight: Mars Weather &rarr;</h2>
             <p>
             NASA’s InSight Mars lander takes continuous weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator.
             </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className={ styles.card }
+            whileHover={{
+              position: 'relative',
+              zIndex: 1,
+              scale: [1, 1.2, 1],
+              rotate: [0, 10, -10, 0],
+              transition: {
+                duration: .2
+              }
+            }}
           >
             <h2>Mars Rover Photos &rarr;</h2>
             <p>Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars. </p>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="https://github.com/vercel/next.js/tree/master/examples"
             className={ styles.card }
+            whileHover={{
+              position: 'relative',
+              zIndex: 1,
+              scale: [1, 1.2, 1],
+              rotate: [0, 10, -10, 0],
+              transition: {
+                duration: .2
+              }
+            }}
           >
             <h2>NASA Image and Video Library &rarr;</h2>
             <p>Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.</p>
-          </a>
+          </motion.a>
         </div>
       </main>
 
