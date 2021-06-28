@@ -6,7 +6,7 @@ import { motion, useCycle } from 'framer-motion';
 import { MenuToggle } from './MenuToggle';
 
 const sidebar = {
-    open: (height = 1000) => ({
+    open: (height = 1440) => ({
       clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
       transition: {
         type: "spring",

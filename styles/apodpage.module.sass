@@ -1,135 +1,78 @@
-*,
-*::before,
-*::after
-    box-sizing: border-box
 
-html,
-body
-    height: 100%
+@import "mixins"
 
-body
-    font-family: "Oxygen", "Trebuchet MS", Tahoma, sans-serif
-    color: #0a0e2a
-    background-color: lavender
-    margin: 0
-    overflow-x: hidden
+.container
+    display: flex
+    flex-direction: column
+    align-items: center
 
-a
-    color: indianred
+.textimage
+    display: flex
+    flex-direction: row
+    padding: 10px
 
-.heading
-    margin-top: 0
+.title
+    margin: auto
 
-.page
-    margin: 0 auto
-    padding: 48px 24px
-    max-width: 960px
+.datepicker
+    margin: 20px 0px 20px 0px
 
-.blog-list
-    display: grid
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
-    grid-gap: 36px
-
-.post-preview
-    background: snow
-    border-radius: 8px
-    overflow: hidden
-
-
-    &__img
-        max-width: 100%
+.image-container
+    position: relative
+    height: 600px
+    width: 360px
+    cursor: zoom-in
+    margin: 20px 0
+    img
+        display: block
+        height: 100%
         width: 100%
-        height: 320px
         object-fit: cover
-
-
-    &__text
-        padding: 16px
-
-.link-wrapper
-    margin-bottom: 32px
-
-
-    & a
-        font-weight: bold
-
-.post
-    background: snow
-    padding: 24px
-    border-radius: 8px
-
-
-    &__img
-        max-width: 100%
+        object-position: center
+    .imgBg
+        z-index: -1
+        position: absolute
+        top: 0
+        left: 0
+        height: 100%
         width: 100%
-        height: 480px
+        background-color: rgb(240, 240, 240)
+
+    &.open
+        cursor: zoom-out
+
+    & .shade
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        pointer-events: none
+        opacity: 0
+        background: rgba(0, 0, 0, 0.9)
+
+    &.open .shade
+        pointer-events: auto
+        opacity: 1
+
+    & img
         object-fit: cover
-        margin-bottom: 32px
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        width: 100%
+        height: 100%
 
-    // @import "mixins"
-
-// *,
-// *::before,
-// *::after
-//     box-sizing: border-box
-
-// html,
-// body
-//     height: 100%
-
-// body
-//     font-family: "Oxygen", "Trebuchet MS", Tahoma, sans-serif
-//     color: #0a0e2a
-//     background-color: lavender
-//     margin: 0
-//     overflow-x: hidden
-
-// a
-//     color: indianred
-
-// .container, .image, .text
-//     @include desktop
-//         width: 100%
-//         flex-direction: column
-
-// .page
-//     margin: 0 auto
-//     padding: 48px 24px
-//     max-width: 960px
-
-// .blog-list
-//     display: grid
-//     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
-//     grid-gap: 36px
-
-// .post-preview
-//     background: snow
-//     border-radius: 8px
-//     overflow: hidden
-
-//     &__img
-//         max-width: 100%
-//         width: 100%
-//         height: 320px
-//         object-fit: cover
-
-//     &__text
-//         padding: 16px
-
-// .link-wrapper
-//     margin-bottom: 32px
-
-//     & a
-//         font-weight: bold
-
-// .post
-//     background: snow
-//     padding: 24px
-//     border-radius: 8px
-
-//     &__img
-//         max-width: 100%
-//         width: 100%
-//         height: 480px
-//         object-fit: cover
-//         margin-bottom: 32px
+    &.open img
+        position: fixed
+        width: auto
+        height: auto
+        max-width: 100%
+        margin: auto
+.text
+    margin-left: 50px
+    max-width: 340px
+    line-height: 1.6
+    letter-spacing: 0.4px
+    font-size: 14px
