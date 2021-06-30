@@ -42,7 +42,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     const [isOpen, setOpen] = useState(false);
     const imgAnimation = useAnimation()
 
-    const handleMouseMove = e => {
+    const handleMouseMove = (e:any) => {
       const { clientX, clientY } = e
       const moveX = clientX - window.innerWidth / 2
       const moveY = clientY - window.innerHeight / 2
@@ -55,6 +55,9 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
 
     function hideImage() {
       return isOpen && setOpen(false);
+    }
+    if (typeof window === 'undefined') {
+      global.window = {}
     }
   
     useDomEvent(useRef(window as any), "scroll", () => hideImage());
