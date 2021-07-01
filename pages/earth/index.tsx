@@ -1,12 +1,12 @@
 
 import NextLink from 'next/link'
-import { Image, chakra, Link, Text, useColorModeValue, Heading, Box } from "@chakra-ui/react"
+import { Image, Link, Text, useColorModeValue, Box } from "@chakra-ui/react"
 import { GetStaticProps, NextPage } from 'next';
 import { apiKey } from '../../key'
 
 const url =  `https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2018-01-01&&dim=0.10&api_key=` + `${apiKey}`
 
-
+// Take off default and add searchable options
 interface Data {
     date: string
     id: string
