@@ -1,14 +1,15 @@
 import Head from "next/head";
+import { Box, Text } from '@chakra-ui/react';
 
 const about = () => {
     return (
-        <>
+        <Box w="full" minH="100vh" align="center">
             <Head>
                 <title>About</title>
                 <meta property="og:about" content="About" key={1} />
             </Head>
-            <h1>About</h1>    
-        </>
+            <Text>About</Text>    
+        </Box>
     )
 }
 

@@ -1,18 +1,25 @@
 
-import Link from 'next/link'
-import Image from 'next/image'
+import NextLink from 'next/link'
+import { Image, chakra, Link, Text, TextProps, useColorModeValue, Heading, Box } from "@chakra-ui/react"
 
 const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/'
 
 const EpicItem = ({ item, index }:any) => {
 
     return (
-        <>
-            <Link href={ `/epic/${ item.id = index }`}>
-              <a>Date Taken: { item.date }</a>
-            </Link>
-            <h1>{ item.caption }</h1>
+        <Box
+            mx={3}
+            py={2}
+            rounded="lg"
+            shadow="lg"
+            bg={useColorModeValue("white", "gray.800")}
+            maxW="xl"
+            align='center'
+        >
+            <Heading>{ item.caption }</Heading>
             <Image
+                rounded="lg"
+                shadow="sm"
                 priority
                 src={ imageLink + item.image + `.png` }
                 height={ 600 }
@@ -21,10 +28,24 @@ const EpicItem = ({ item, index }:any) => {
                 placeholder="blur"
                 alt={ item.title }
             />
-            <p>Lat: { item.centroid_coordinates.lat }</p>
-            <p>Long: { item.centroid_coordinates.lon }</p>
-            <p>- - - - - - - - - -</p>
-        </>  
+            <Text m={2}>Lat: { item.centroid_coordinates.lat }</Text>
+            <Text m={2}>Long: { item.centroid_coordinates.lon }</Text>
+            <Text m={2}>Date Taken: { item.date }</Text>
+            <NextLink passHref href={ `/epic/${ item.id = index }`}>
+                <Link
+                mt={3}
+                bg="black"
+                color="gray.100"
+                px={5}
+                py={3}
+                fontWeight="semibold"
+                rounded="lg"
+                _hover={{ bg: "gray.900" }}
+                >
+                View Solo
+                </Link>
+          </NextLink>
+        </Box>  
     )
 }
 

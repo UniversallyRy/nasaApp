@@ -1,6 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Flex, chakra, VStack, Box, Link } from "@chakra-ui/react"
 import { apiKey } from '../../key'
 import EpicList from '../../components/EpicList'
 
@@ -20,26 +21,31 @@ const Epics: NextPage<{ data: Data }> = ({data}) => {
   if (!data) return <div>Loading...</div>
 
   return (
-    <>
+    <Flex>
       <Head>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
       </Head>
-      <article>
-      <div>
-        <Link href="/">
-          <a>← Back to home</a>
-        </Link>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        </div>
+      <VStack>
+        <Box m={20}>
+          <NextLink passHref href="/">
+            <Link
+              mt={3}
+              bg="gray.900"
+              color="gray.100"
+              px={5}
+              py={3}
+              fontWeight="semibold"
+              rounded="lg"
+              _hover={{ bg: "gray.400" }}
+            >
+              Back to Home
+            </Link>
+          </NextLink>
+        </Box>
         <EpicList data={data}/>
-        {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
-      </article>
-    </>
+      </VStack>
+    </Flex>
   );
 }
 

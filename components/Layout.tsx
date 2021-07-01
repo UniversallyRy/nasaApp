@@ -1,17 +1,15 @@
-import styles from '../styles/Layout.module.sass'
-import Nav from '../components/Navbar'
-import Header from '../components/Header'
+import Nav from './Nav'
+import { chakra, Flex } from "@chakra-ui/react"
 
 const Layout = ({ children }:any) => {
     return (
         <>
             <Nav/>
-            <div className={ styles.container }>
-                <main className={ styles.main }>
-                    <Header/>
+            <Flex align="center" justify="center">
+                <chakra.main>
                     { children }
-                </main>
-            </div>
+                </chakra.main>
+            </Flex>
         </>
     )
 }

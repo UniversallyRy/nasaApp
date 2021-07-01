@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
+import NextLink from "next/link";
 import { apiKey } from '../../key';
-import { motion, useCycle } from 'framer-motion';
+import { Image, chakra, Box, BoxProps, Grid, Text, Link, Heading } from "@chakra-ui/react"
+import { motion } from 'framer-motion';
 
 
 const listUrl = 'https://api.nasa.gov/planetary/apod?count=10&api_key=' + `${apiKey}`
-import resData from './index'
+const MotionBox = motion<BoxProps>(Box)
+// import resData from './index'
 
 export default function ApocId({ apod }:any) {
     const router = useRouter();
@@ -21,36 +22,40 @@ export default function ApocId({ apod }:any) {
       exit: { y: -100, opacity: 0, transition }
     };
     return (
-        <>
+        <Box w="full" minH="100%" align="center">
           <Head>
             <title>Earth Polychromatic Image</title>
             <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={apod.title} />
           </Head>
-          <motion.div
-          className="page"
-          initial="exit"
-          animate="enter"
-          exit="exit"
-          variants={postVariants}
+          <MotionBox
+            initial="exit"
+            animate="enter"
+            exit="exit"
+            variants={postVariants}
           >
-            <div className="link-wrapper">
-              <Link href="/apods">Back to Home page</Link>
-            </div>
-            <div className="post">
+            <NextLink passHref href="/apods">
+              <Link>Back to Home page</Link>
+            </NextLink>
+            <Grid
+              flexWrap="wrap" 
+              justifyContent="center" 
+              maxW="1000px"
+              mt="10" 
+              gap={5}
+            > 
               <Image
-                className="post__img"
                 priority
                 src={ apod.url }
                 height={ 600 }  
                 width={ 600 }
                 alt={ apod.title }
               />
-              <h1>{ apod.title }</h1>
-              <p>Taken on: { apod.date }</p>
-              <p>{ apod.explanation }</p>
-            </div>
-          </motion.div>
-        </>
+              <Heading as='h1'>{ apod.title }</Heading>
+              <Text>Taken on: { apod.date }</Text>
+              <Text>{ apod.explanation }</Text>
+            </Grid>
+          </MotionBox>
+        </Box>
     )
 }
 
@@ -65,15 +70,15 @@ export const getStaticProps = async (context:any) => {
     };
 };
 
-export const getStaticPaths = async () => {
-    const res = await fetch(listUrl);
-    const apod = await res.json();
+// export const getStaticPaths = async () => {
+//     const res = await fetch(listUrl);
+//     const apod = await res.json();
   
-    const paths = resData.map((item:any, index:number) => ({
-      params: { id: index.toString() },
-    }));
-    return {
-      paths,
-      fallback: false,
-    };
-  };
+//     const paths = resData.map((item:any, index:number) => ({
+//       params: { id: index.toString() },
+//     }));
+//     return {
+//       paths,
+//       fallback: false,
+//     };
+//   };
