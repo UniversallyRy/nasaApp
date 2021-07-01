@@ -49,7 +49,7 @@ const Home = () => {
           paragraph='View the Astronomy Picture of the Day.'
         />
         <GridCard 
-          href='/'
+          href='/earth'
           title='Earth &rarr;' 
           paragraph='Landsat imagery is provided to the public as a joint project between NASA and USGS.'
         />

@@ -14,9 +14,10 @@ import {
   Button,
   Spacer
 } from "@chakra-ui/react";
-import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
+import { BsFillCameraVideoFill, BsFillImageFill } from "react-icons/bs";
+import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa'
+import { GiEarthAmerica } from 'react-icons/gi'
 
 
 export default function Header() {
@@ -73,16 +74,25 @@ export default function Header() {
                   <Button
                     w="full"
                     variant="ghost"
-                    leftIcon={<AiOutlineInbox />}
+                    leftIcon={<BsFillImageFill />}
                   >
                     APOD
+                  </Button>
+                </NextLink>
+                <NextLink href="/earth">
+                  <Button
+                    w="full"
+                    variant="ghost"
+                    leftIcon={<FaSatelliteDish />}
+                  >
+                    Earth
                   </Button>
                 </NextLink>
                 <NextLink href="/epic">
                   <Button
                     w="full"
                     variant="ghost"
-                    leftIcon={<BsFillCameraVideoFill />}
+                    leftIcon={<GiEarthAmerica />}
                   >
                     Epics
                   </Button>
@@ -90,26 +100,38 @@ export default function Header() {
               </VStack>
             </Box>
 
-            <HStack spacing={3} display={{ base: "none", md: "inline-flex" }}>
+            <HStack spacing={4} display={{ base: "none", md: "inline-flex" }}>
               <NextLink href="/">
-                <Button variant="ghost" leftIcon={<AiFillHome />} size="sm">
+                <Button minW={40} variant="ghost" leftIcon={<AiFillHome />} size="sm">
                   Home
                 </Button>
               </NextLink>
               <NextLink href="/apods">
                 <Button
-                  variant="ghost"
-                  leftIcon={<AiOutlineInbox />}
+                  minW={40} 
                   size="sm"
+                  variant="ghost"
+                  leftIcon={<BsFillImageFill />}
                 >
                   APOD
                 </Button>
               </NextLink>
+              <NextLink href="/earth">
+                <Button
+                  minW={40} 
+                  size="sm"
+                  variant="ghost"
+                  leftIcon={<FaSatelliteDish />}
+                >
+                  Earth
+                </Button>
+              </NextLink>
               <NextLink href="/epic">
                 <Button
-                  variant="ghost"
-                  leftIcon={<BsFillCameraVideoFill />}
+                  minW={40} 
                   size="sm"
+                  variant="ghost"
+                  leftIcon={<GiEarthAmerica />}
                 >
                   Epics
                 </Button>
