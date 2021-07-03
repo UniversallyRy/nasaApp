@@ -8,23 +8,25 @@ interface Data {
 }
 
 const WeatherList: NextPage<{ data: Data }> = ({ data }:any) => {
-  return (
-    <Grid
-    flexWrap="wrap" 
-    justifyContent="center" 
-    maxW="1000px"
-    mb={10} 
-    gap={10}
-    >
-      {data.validity_checks.map((item:any, index:any) => (
-        <WeatherItem 
-          key={ index } 
-          item={ item } 
-          index={ index }
-        />
-      ))}
-    </Grid>
-  )
-}
+    const dataPRE = data.validity_checks.sols_checked
+
+    return (
+        <Grid
+            flexWrap="wrap" 
+            justifyContent="center" 
+            maxW="1000px"
+            mb={10} 
+            gap={10}
+        >
+        {dataPRE.map((item:any, index:any) => (
+            <WeatherItem 
+            key={ index } 
+            itemName={ item }
+            item={ data.validity_checks[item] } 
+            />
+        ))}
+        </Grid>
+    )
+};
 
 export default WeatherList;

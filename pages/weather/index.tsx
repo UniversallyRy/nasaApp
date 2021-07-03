@@ -2,12 +2,9 @@ import NextLink from "next/link";
 import Head from "next/head";
 import { apiKey } from '../../key';
 import { GetStaticProps, NextPage } from 'next';
-import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react";
-import { useState, useRef, useEffect } from "react";
-import { motion, useDomEvent, useAnimation } from "framer-motion";
-import DatePicker from "react-datepicker";
+import { Box, chakra, VStack, Stack, Link, Heading, HeadingProps } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from '../../styles/apodpage.module.sass';
 import WeatherList from "../../components/WeatherList";
 
 interface Data {
@@ -16,10 +13,8 @@ interface Data {
   explanation: string;
   date: number;
 }
-let url = `https://api.nasa.gov/insight_weather/?feedtype=json&ver=1.0&api_key=` + `${apiKey}`;
+let url = `https://api.nasa.gov/insight_weather/?feedtype=json&api_key=` + `${apiKey}`;
 const MotionHeading = motion<HeadingProps>(Heading);
-const MotionImage = motion<ImageProps>(Image);
-const MotionDiv = motion<BoxProps>(Box);
 const variants = {
   open: {
     y: 0,

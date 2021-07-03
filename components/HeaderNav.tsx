@@ -146,6 +146,16 @@ const HeaderNav = () =>{
                 Epics
               </Button>
             </NextLink>
+            <NextLink href="/weather">
+              <Button
+                minW={40} 
+                size="sm"
+                variant="ghost"
+                leftIcon={<GiEarthAmerica />}
+              >
+                Weather
+              </Button>
+            </NextLink>
           </HStack> 
         </HStack>
         <Spacer />

@@ -1,9 +1,8 @@
 
-import NextLink from 'next/link';
-import { Box, Heading, Link, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 
 
-const EpicItem = ({ item, index }:any) => {
+const EpicItem = ({ item, itemName }:any) => {
     return (
         <Box
             mx={3}
@@ -14,8 +13,20 @@ const EpicItem = ({ item, index }:any) => {
             maxW="xl"
             align='center'
         >
-            <Heading>Item</Heading>
-            <Text m={2}>PRE: { item.PRE[0].sol_hours_with_data }</Text>
+            <Heading>Sol: {itemName}</Heading>
+            <Text m={2}>PRE: { item.PRE.sol_hours_with_data }</Text>
+            {item.HWS !=undefined
+            ?<Text m={2}>HWS: { item.HWS.sol_hours_with_data }</Text>
+            : undefined
+            }
+            {item.AT !=undefined
+            ?<Text m={2}>AT: { item.AT.sol_hours_with_data }</Text>
+            : undefined
+            }
+            {item.WD !=undefined
+            ?<Text m={2}>HWS: { item.WD.sol_hours_with_data }</Text>
+            : undefined
+            }
             {/* <NextLink passHref href={ `/epic/${ item.id = index }`}>
                 <Link
                     m={3}
