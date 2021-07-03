@@ -1,4 +1,4 @@
-import EpicItem from './EpicItem'
+import EpicItem from './EpicItem';
 import { NextPage } from 'next';
 import { Grid } from '@chakra-ui/react';
 
@@ -8,7 +8,6 @@ interface Data {
 }
 
 const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
-
   return (
     <Grid
     flexWrap="wrap" 
@@ -18,14 +17,14 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
     gap={10}
     >
       {data.map((item:any, index:any) => (
-            <EpicItem 
-              key={ item.identifier } 
-              item={ item } 
-              index={ index }
-            />
-        ))}
+        <EpicItem 
+          key={ item.identifier } 
+          item={ item } 
+          index={ index }
+        />
+      ))}
     </Grid>
   )
 }
 
-export default EpicList
+export default EpicList;

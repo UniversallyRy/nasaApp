@@ -1,13 +1,13 @@
 import NextLink from "next/link";
 import Head from "next/head";
-import { apiKey } from '../../key'
+import { apiKey } from '../../key';
 import { GetStaticProps, NextPage } from 'next';
-import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react"
+import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from '../../styles/apodpage.module.sass'
+import styles from '../../styles/apodpage.module.sass';
 
 interface Data {
   url: string;
@@ -16,11 +16,9 @@ interface Data {
   date: number;
 }
 
-const MotionHeading = motion<HeadingProps>(Heading)
-const MotionImage = motion<ImageProps>(Image)
-const MotionDiv = motion<BoxProps>(Box)
-
-
+const MotionHeading = motion<HeadingProps>(Heading);
+const MotionImage = motion<ImageProps>(Image);
+const MotionDiv = motion<BoxProps>(Box);
 const variants = {
   open: {
     y: 0,
@@ -50,57 +48,61 @@ const fetchedData = (date = new Date()):string => {
 }
 
 const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
-    const [newData, setData]  = useState(data);
-    const [startDate, setStartDate] = useState(new Date());
-    const [isOpen, setOpen] = useState(false);
-    const imgAnimation = useAnimation();
+  const [newData, setData]  = useState(data);
+  const [startDate, setStartDate] = useState(new Date());
+  const [isOpen, setOpen] = useState(false);
+  const imgAnimation = useAnimation();
 
-    const handleMouseMove = (e:any) => {
-      const { clientX, clientY } = e
-      const moveX = clientX - window.innerWidth / 2
-      const moveY = clientY - window.innerHeight / 2
-      const offsetFactor = 15
-      imgAnimation.start({
-        x: moveX / offsetFactor,
-        y: moveY / offsetFactor
-      })
-    }
-
-    useEffect(() => {
-      let splitDate = data.date.split('-');
-      let [year, month, day] = splitDate;
-      let newDate = new Date()
-      day = day.replace(/^0+/, '')
-      if(day != newDate.getDate() || 
-         month != newDate.getMonth() || 
-         year != newDate.getFullYear()){
-        return setStartDate(newDate)
-      }
-    }, [data.date])
-
-    function hideImage() {
-      return isOpen && setOpen(false);
-    }
-    if (typeof window === 'undefined') {
-      global.window = {}
-    }
-  
-    useDomEvent(useRef(window as any), "scroll", () => hideImage());
-    useDomEvent(
-      useRef(window as any),
-      "keydown",
-      (e: any) => e.keyCode === 27 && hideImage()
-    );
+  const handleMouseMove = (e:any) => {
+    const { clientX, clientY } = e;
+    const moveX = clientX - window.innerWidth / 2;
+    const moveY = clientY - window.innerHeight / 2;
+    const offsetFactor = 15;
     
-    if (!data) return <div>Loading...</div>
-    const handleDateChange = async (date:Date) => {
-        if (new Date() < date) return 
-        const url = fetchedData(date)
-        const res = await fetch(url);
-        const data = await res.json();
-        setStartDate(date)
-        setData(data);
-    }
+    imgAnimation.start({
+      x: moveX / offsetFactor,
+      y: moveY / offsetFactor
+    });
+
+  }
+
+  useEffect(() => {
+    let splitDate = data.date.split('-');
+    let [year, month, day] = splitDate;
+    let newDate = new Date();
+    day = day.replace(/^0+/, '');
+    if(day != newDate.getDate() || 
+      month != newDate.getMonth() || 
+      year != newDate.getFullYear()) 
+      {
+        return setStartDate(newDate);
+      }
+    }, [data.date]);
+
+  const hideImage = () => {
+    return isOpen && setOpen(false);
+  };
+
+  if(typeof window === 'undefined') {
+      global.window = {}
+  };
+  
+  useDomEvent(useRef(window as any), "scroll", () => hideImage());
+  useDomEvent(
+    useRef(window as any),
+    "keydown",
+    (e: any) => e.keyCode === 27 && hideImage()
+  );
+  
+  if (!data) return <div>Loading...</div>;
+  const handleDateChange = async (date:Date) => {
+    if (new Date() < date) return ;
+    const url = fetchedData(date);
+    const res = await fetch(url);
+    const data = await res.json();
+    setStartDate(date);
+    setData(data);
+  }
 
   return (
     <VStack w="full" minH="100vh">
@@ -188,7 +190,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       notFound: true,
     }
-  } 
+  };
 
   return {
     props: {

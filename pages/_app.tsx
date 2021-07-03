@@ -1,8 +1,8 @@
-import { ChakraProvider, Box, BoxProps } from "@chakra-ui/react"
+import { ChakraProvider, Box, BoxProps } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
-import Layout from '../components/Layout'
-import type { AppProps } from 'next/app'
-import '../styles/globals.sass'
+import Layout from '../components/Layout';
+import type { AppProps } from 'next/app';
+import '../styles/globals.sass';
 
 const MotionBox = motion<BoxProps>(Box)
 
@@ -27,5 +27,6 @@ const NasaApp = ({ Component, pageProps, router }: AppProps) => {
       </MotionBox>
     </ChakraProvider>
   )
-}
-export default NasaApp
+};
+
+export default NasaApp;

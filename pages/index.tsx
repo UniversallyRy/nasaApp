@@ -89,6 +89,6 @@ const Home = () => {
       </chakra.footer>
     </VStack>
   )
-}
+};
 
 export default Home;

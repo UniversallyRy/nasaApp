@@ -1,5 +1,5 @@
-import Nav from './Nav'
-import { chakra, Flex } from "@chakra-ui/react"
+import Nav from './Nav';
+import { chakra, Flex } from "@chakra-ui/react";
 
 const Layout = ({ children }:any) => {
     return (
@@ -14,4 +14,4 @@ const Layout = ({ children }:any) => {
     )
 }
 
-export default Layout
+export default Layout;

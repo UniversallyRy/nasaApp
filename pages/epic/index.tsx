@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
-import { Flex, chakra, VStack, Box, Link } from "@chakra-ui/react"
-import { apiKey } from '../../key'
-import EpicList from '../../components/EpicList'
+import { Flex, VStack, Box, Link } from "@chakra-ui/react";
+import { apiKey } from '../../key';
+import EpicList from '../../components/EpicList';
 
 interface Data {
   title: string;
@@ -14,11 +14,11 @@ interface Data {
   map: ((item: object) => void);
 }
 
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03?api_key=' + apiKey
+const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03?api_key=' + apiKey;
 
 const Epics: NextPage<{ data: Data }> = ({data}) => {
   
-  if (!data) return <div>Loading...</div>
+  if (!data) return <div>Loading...</div>;
 
   return (
     <Flex>

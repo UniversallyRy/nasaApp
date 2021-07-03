@@ -11,6 +11,6 @@ const about = () => {
             <Text>About</Text>    
         </Box>
     )
-}
+};
 
-export default about
+export default about;

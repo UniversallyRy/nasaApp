@@ -1,7 +1,6 @@
-import ApocItem from './ApodItem'
+import ApocItem from './ApodItem';
 import { NextPage } from 'next';
 import { motion } from "framer-motion";
-
 
 interface Data {
   identifier: string;
@@ -26,15 +25,15 @@ const ApodList: NextPage<{ data: Data }> = ({ resData }:any) => {
         variants={blogVariants}
       >
         {resData.map((item:any, index:any) => (
-              <ApocItem 
-                key={ index } 
-                item={ item } 
-                index={ index }
-              />
-          ))}
+          <ApocItem 
+            key={ index } 
+            item={ item } 
+            index={ index }
+          />
+        ))}
       </motion.div>
     </div>
   )
-}
+};
 
 export default ApodList;

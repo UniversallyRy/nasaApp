@@ -1,11 +1,10 @@
 
-import NextLink from 'next/link'
-import { Image, chakra, Link, Text, TextProps, useColorModeValue, Heading, Box } from "@chakra-ui/react"
+import NextLink from 'next/link';
+import { Box, Heading, Image, Link, Text, useColorModeValue } from "@chakra-ui/react";
 
-const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/'
+const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/';
 
 const EpicItem = ({ item, index }:any) => {
-
     return (
         <Box
             mx={3}
@@ -33,20 +32,20 @@ const EpicItem = ({ item, index }:any) => {
             <Text m={2}>Date Taken: { item.date }</Text>
             <NextLink passHref href={ `/epic/${ item.id = index }`}>
                 <Link
-                mt={3}
-                bg="black"
-                color="gray.100"
-                px={5}
-                py={3}
-                fontWeight="semibold"
-                rounded="lg"
-                _hover={{ bg: "gray.900" }}
+                    m={3}
+                    bg="black"
+                    color="gray.100"
+                    px={5}
+                    py={3}
+                    fontWeight="semibold"
+                    rounded="lg"
+                    _hover={{ bg: "gray.900" }}
                 >
-                View Solo
+                    View Solo
                 </Link>
           </NextLink>
         </Box>  
     )
-}
+};
 
-export default EpicItem
+export default EpicItem;
