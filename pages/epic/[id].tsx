@@ -9,7 +9,7 @@ const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03/?api_key=' 
 export default function EpicId({ epic }:any) {
   return (
     <Box w="full" minH="100vh" align="center">
-      <Head>
+      <Head key='epic/id key'>
         <title>Earth Polychromatic Image</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={epic.title} />
       </Head>

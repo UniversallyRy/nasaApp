@@ -106,7 +106,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
 
   return (
     <VStack w="full" minH="100vh">
-      <Head>
+      <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
       </Head>

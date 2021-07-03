@@ -1,4 +1,5 @@
 
+import Head from "next/head";
 import NextLink from 'next/link';
 import { Image, Link, Text, useColorModeValue, Box } from "@chakra-ui/react";
 import { GetStaticProps, NextPage } from 'next';
@@ -29,6 +30,10 @@ const Earth: NextPage<{ data: Data }> = ({ data }:any) => {
       maxW="xl"
       align='center'
     >
+      <Head key='pages/earth key'>
+        <title>Satellite Images</title>
+        <meta property="og:earth" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
+      </Head>
       <Image
         rounded="lg"
         shadow="sm"

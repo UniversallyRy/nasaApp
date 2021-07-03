@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <VStack w="full" minH="100vh" align="center">
-      <Head>
+      <Head key='pages/index key'>
         <title>Look Up NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>

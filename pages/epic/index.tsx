@@ -22,7 +22,7 @@ const Epics: NextPage<{ data: Data }> = ({data}) => {
 
   return (
     <Flex>
-      <Head>
+      <Head key='pages/epic key'>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
       </Head>

@@ -20,13 +20,14 @@ import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
 
 
-export default function Header() {
+const HeaderNav = () =>{
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
 
   return (
     <chakra.header
+      key="headernav-key"
       bg={bg}
       w="full"
       px={{ base: 2, sm: 4 }}
@@ -158,4 +159,6 @@ export default function Header() {
       </Flex>
     </chakra.header>
   );
-}
+};
+
+export default HeaderNav;
