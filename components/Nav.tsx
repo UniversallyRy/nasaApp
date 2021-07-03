@@ -140,15 +140,15 @@ export default function Header() {
         </HStack>
         <Spacer />
         <IconButton
-                mx={2}
-                p={1}
-                icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}
-                isRound={true}
-                aria-label="Color Toggle"
-                size="sm"
-                alignSelf="flex-end"
-                onClick={toggleColorMode}
-            />
+          mx={2}
+          p={1}
+          icon={colorMode === 'light' ? <FaSun /> : <FaMoon />}
+          isRound={true}
+          aria-label="Color Toggle"
+          size="sm"
+          alignSelf="flex-end"
+          onClick={toggleColorMode}
+        />
         <HStack
           spacing={3}
           display={mobileNav.isOpen ? "none" : "flex"}
