@@ -1,10 +1,10 @@
-import Nav from './Nav';
+import Header from './Header';
 import { chakra, Flex } from "@chakra-ui/react";
 
 const Layout = ({ children }:any) => {
     return (
         <>
-            <Nav/>
+            <Header/>
             <Flex align="center" justify="center">
                 <chakra.main>
                     { children }
