@@ -98,13 +98,13 @@ const HeaderNav = () =>{
                   Epics
                 </Button>
               </NextLink>
-              <NextLink href="/weather">
+              <NextLink href="/rover">
                 <Button
                   w="full"
                   variant="ghost"
                   leftIcon={<GiEarthAmerica />}
                 >
-                  Weather
+                  Rover Photos
                 </Button>
               </NextLink>
             </VStack>
@@ -146,14 +146,14 @@ const HeaderNav = () =>{
                 Epics
               </Button>
             </NextLink>
-            <NextLink href="/weather">
+            <NextLink href="/rover">
               <Button
                 minW={40} 
                 size="sm"
                 variant="ghost"
                 leftIcon={<GiEarthAmerica />}
               >
-                Weather
+                Rover Photos
               </Button>
             </NextLink>
           </HStack> 

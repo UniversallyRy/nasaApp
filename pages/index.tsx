@@ -59,12 +59,7 @@ const Home = () => {
           paragraph='Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.'
         />
         <GridCard 
-          href='/weather'
-          title='InSight: Mars Weather &rarr;' 
-          paragraph=' NASA’s InSight Mars lander takes continuous weather measurements (temperature, wind, pressure) on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars’ equator.'
-        />
-        <GridCard 
-          href='/'
+          href='/rover'
           title='Mars Rover Photos &rarr;' 
           paragraph='Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars.'
         />

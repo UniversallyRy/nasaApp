@@ -1,4 +1,4 @@
-import WeatherItem from './WeatherItem';
+import WeatherItem from './RoverItem';
 import { NextPage } from 'next';
 import { Grid } from '@chakra-ui/react';
 
@@ -6,9 +6,7 @@ interface Data {
   map: ((item: object) => void);
 }
 
-const WeatherList: NextPage<{ data: Data }> = ({ data }:any) => {
-    const dataPRE = data.validity_checks.sols_checked
-
+const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
     return (
         <Grid
             flexWrap="wrap" 
@@ -17,15 +15,14 @@ const WeatherList: NextPage<{ data: Data }> = ({ data }:any) => {
             mb={10} 
             gap={10}
         >
-        {dataPRE.map((item:any, index:any) => (
+        {data.photos.map((item:any, index:any) => (
             <WeatherItem 
             key={ index } 
-            itemName={ item }
-            item={ data.validity_checks[item] } 
+            item={ item } 
             />
         ))}
         </Grid>
     )
 };
 
-export default WeatherList;
+export default RoverList;
