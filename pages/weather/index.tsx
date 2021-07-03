@@ -13,7 +13,7 @@ interface Data {
   explanation: string;
   date: number;
 }
-let url = `https://api.nasa.gov/insight_weather/?feedtype=json&api_key=` + `${apiKey}`;
+const url = `https://api.nasa.gov/insight_weather/?feedtype=json&api_key=` + `${apiKey}`;
 const MotionHeading = motion<HeadingProps>(Heading);
 const variants = {
   open: {
@@ -33,8 +33,6 @@ const variants = {
 };
 
 const Weather: NextPage<{ data: Data }> = ({ data }:any) => {
-    console.log(data)
-
   return (
     <VStack w="full" minH="100vh">
       <Head key="pages/apod key">

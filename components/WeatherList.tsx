@@ -3,7 +3,6 @@ import { NextPage } from 'next';
 import { Grid } from '@chakra-ui/react';
 
 interface Data {
-  identifier: string;
   map: ((item: object) => void);
 }
 
