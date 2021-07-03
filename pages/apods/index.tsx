@@ -3,7 +3,7 @@ import Head from "next/head";
 import { apiKey } from '../../key'
 import { GetStaticProps, NextPage } from 'next';
 import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react"
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -38,14 +38,22 @@ const variants = {
   }
 };
 
-const url = 'https://api.nasa.gov/planetary/apod?date=2021-06-01&api_key=' + `${apiKey}`
+const fetchedData = (date = new Date()):string => {
+  let day, month, year, newDay, newMonth;
+  let thisDate = date;
+  [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
+  newDay = day.toString().padStart(2, '0');
+  newMonth = month.toString().padStart(2, '0');
+  let newDate = [year, newMonth, newDay].join('-');
+  let url = `https://api.nasa.gov/planetary/apod?date=${newDate}&api_key=` + `${apiKey}`;
+  return url;
+}
 
 const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     const [newData, setData]  = useState(data);
     const [startDate, setStartDate] = useState(new Date());
-  
     const [isOpen, setOpen] = useState(false);
-    const imgAnimation = useAnimation()
+    const imgAnimation = useAnimation();
 
     const handleMouseMove = (e:any) => {
       const { clientX, clientY } = e
@@ -57,6 +65,18 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
         y: moveY / offsetFactor
       })
     }
+
+    useEffect(() => {
+      let splitDate = data.date.split('-');
+      let [year, month, day] = splitDate;
+      let newDate = new Date()
+      day = day.replace(/^0+/, '')
+      if(day != newDate.getDate() || 
+         month != newDate.getMonth() || 
+         year != newDate.getFullYear()){
+        return setStartDate(newDate)
+      }
+    }, [data.date])
 
     function hideImage() {
       return isOpen && setOpen(false);
@@ -75,15 +95,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     if (!data) return <div>Loading...</div>
     const handleDateChange = async (date:Date) => {
         if (new Date() < date) return 
-        setStartDate(date)
-        let day, month, year, newDay, newMonth;
-        [year, month, day] = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
-        newDay = day.toString().padStart(2, '0');
-        newMonth = month.toString().padStart(2, '0');
-        let newDate = [year, newMonth, newDay].join('-');
-        let changedUrl = `https://api.nasa.gov/planetary/apod?date=${newDate}&api_key=` + `${apiKey}`;
-        const res = await fetch(changedUrl);
+        const url = fetchedData(date)
+        const res = await fetch(url);
         const data = await res.json();
+        setStartDate(date)
         setData(data);
     }
 
@@ -120,10 +135,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
           />
           <MotionImage
             animate={imgAnimation}
-            src={newData.url}
+            src={newData.hdurl}
             onMouseMove={e => handleMouseMove(e)}
             onClick={() => setOpen(!isOpen)}
-            alt="Picture of the Day"
+            alt={'Picture for the date of ' + `${newData.date}`}
           />
           <Box
             zIndex={-1}
@@ -147,19 +162,26 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
           { newData.explanation }
         </Text>
       </Stack>
-      <Text
-        fontSize={{ base: "12px", md: "18px", lg: "26px", xl: "30px"}}
-        pt={10}
-        align={'center'}>
-        Posted on 
-          <time> {newData.date} </time>
-      </Text>
+      <Stack alignItems='center' >
+        <Text
+          fontSize={{ base: "12px", md: "18px", lg: "26px", xl: "30px"}}
+          align={'center'}>
+          Posted on 
+            <time> {newData.date} </time>
+        </Text>
+        {!newData.copyright == undefined 
+        ?<Text fontSize={{ base: "6px", md: "8px", lg: "12px", xl: "14px"}}>
+            Copyright: {newData.copyright}
+        </Text>
+        : null
+        }
+      </Stack>
     </VStack>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(url);
+  const res = await fetch(fetchedData());
   const data = await res.json();
 
   if (!data) {
