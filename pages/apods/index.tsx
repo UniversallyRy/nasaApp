@@ -145,6 +145,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
           <Box
             zIndex={-1}
             top={0}
+            left={0}
             height={'100%'}
             width={'100%'}
             bg='gray.500'
