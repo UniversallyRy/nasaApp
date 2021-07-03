@@ -52,6 +52,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
   const imgAnimation = useAnimation();
+  const windowContext: any = window;
 
   const handleMouseMove = (e:any) => {
     const { clientX, clientY } = e;
@@ -82,9 +83,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   const hideImage = () => {
     return isOpen && setOpen(false);
   };
+  
 
   if(typeof window === 'undefined') {
-      global.window = {}
+    windowContext.window = {}
   };
   
   useDomEvent(useRef(window as any), "scroll", () => hideImage());
@@ -110,7 +112,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
       </Head>
-      <Box style={{margin: 10, color: 'black'}}>
+      <Box zIndex={10} className={styles.datepicker}>
         <DatePicker  withPortal selected={startDate}onChange={handleDateChange} />
       </Box>
       <NextLink href="/">
@@ -119,7 +121,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
         </Link>
       </NextLink>
       <MotionHeading
-        mx={2}
+        pl={12}
         variants={variants}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.3 }}
