@@ -8,7 +8,7 @@ const about = () => {
                 <title>About</title>
                 <meta property="og:about" content="About" key={1} />
             </Head>
-            <Text>About</Text>    
+            <Text>App made to view information provided by <a href="https://api.nasa.gov/">NASA&apos;s APIs</a></Text>    
         </Box>
     )
 };
