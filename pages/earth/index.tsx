@@ -38,11 +38,11 @@ const Earth: NextPage<{ data: Data }> = () => {
         <meta property="og:earth" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
       <Stack m={3} spacing="20px" direction={["column", "column", "row"]}>
-        <VStack m={3}>
+        <VStack m={4}>
           <Text>Examples:</Text>
           <Text>Great Pyramid of Giza- Lat: 29.9792, Lon: 31.13</Text>
           <Text>Vegas Strip- Lat: 36.11, Lon: 115.20</Text>
-          <Text>Beijing Lat: 39.9, Lon: 116.4</Text>
+          <Text>Beijing- Lat: 39.9, Lon: 116.4</Text>
         </VStack>
         <FormContext.Provider value={{ newData, setData }}>
           <FormikForm />

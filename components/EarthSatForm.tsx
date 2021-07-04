@@ -58,7 +58,7 @@ const FormikForm = () => {
             >
                 {() => (
                 <Form>
-                    <HStack m={5} spacing="10px">
+                    <HStack m={4} spacing="10px">
                         <Field name="latitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
                             <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
