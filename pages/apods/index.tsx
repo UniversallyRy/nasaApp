@@ -16,6 +16,12 @@ interface Data {
   date: number;
 }
 
+interface customWindow extends Window {
+  customProperty?: any;
+}
+
+declare const window: customWindow;
+
 const MotionHeading = motion<HeadingProps>(Heading);
 const MotionImage = motion<ImageProps>(Image);
 const MotionDiv = motion<BoxProps>(Box);
@@ -52,7 +58,6 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
   const imgAnimation = useAnimation();
-  const windowContext: any = window;
 
   const handleMouseMove = (e:any) => {
     const { clientX, clientY } = e;
@@ -82,11 +87,6 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
 
   const hideImage = () => {
     return isOpen && setOpen(false);
-  };
-  
-
-  if(typeof window === 'undefined') {
-    windowContext.window = {}
   };
   
   useDomEvent(useRef(window as any), "scroll", () => hideImage());

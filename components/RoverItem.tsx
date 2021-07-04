@@ -3,7 +3,6 @@ import { Box, Heading, Text, useColorModeValue, Image } from "@chakra-ui/react";
 
 
 const RoverItem = ({ item }:any) => {
-    console.log(item)
     return (
         <Box
             mx={3}

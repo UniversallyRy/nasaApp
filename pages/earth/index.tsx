@@ -2,9 +2,9 @@
 import Head from "next/head";
 import NextLink from 'next/link';
 import { useState, createContext } from 'react'
-import { Image, Link, Text, useColorModeValue, Box, VStack } from "@chakra-ui/react";
-import { GetStaticProps, NextPage } from 'next';
-import FormikForm from "../../components/EarthSatForm";
+import { Image, Link, Text, useColorModeValue, Box, VStack, Stack } from "@chakra-ui/react";
+import { NextPage } from 'next';
+import FormikForm, {AlertBox} from "../../components/EarthSatForm";
 
 // Take off default and add searchable options
 interface Data {
@@ -18,13 +18,11 @@ interface Data {
   url: string;
 }
 
-const ContextContainer = createContext({});
+export const FormContext = createContext({});
 
 const Earth: NextPage<{ data: Data }> = () => {
-  const [newData, setData] = useState({})
-  const loadData = () => {
+  const [newData, setData]:any = useState({})
 
-  }
   return (
     <Box
       minH="100vh"
@@ -39,23 +37,36 @@ const Earth: NextPage<{ data: Data }> = () => {
         <title>Satellite Images</title>
         <meta property="og:earth" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
-      <ContextContainer.Provider value={{ newData, setData }}>
-        <FormikForm ContextContainer={ContextContainer} setData={setData}/>
-      </ContextContainer.Provider>
-      <VStack>
-        {/* <Image
-          rounded="lg"
-          shadow="sm"
-          src={ data.url }
-          height={ 600 }
-          width={ 600 }
-          blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-          placeholder="blur"
-          alt={ 'item.title' }
-        />
-        <Text m={2}>Date Taken: {data.date} </Text>
-        <Text m={2}>Satellite: {data.resource.dataset } </Text>
-        <Text m={2}>Planet: {data.resource.planet} </Text> */}
+      <Stack m={3} spacing="20px" direction={["column", "column", "row"]}>
+        <VStack m={3}>
+          <Text>Examples:</Text>
+          <Text>Great Pyramid of Giza- Lat: 29.9792, Lon: 31.13</Text>
+          <Text>Vegas Strip- Lat: 36.11, Lon: 115.20</Text>
+          <Text>Beijing Lat: 39.9, Lon: 116.4</Text>
+        </VStack>
+        <FormContext.Provider value={{ newData, setData }}>
+          <FormikForm />
+        </FormContext.Provider>
+      </Stack>
+        {newData.hasOwnProperty('msg')
+          ?<AlertBox/>
+          : null
+        }
+        {newData.hasOwnProperty('url')
+        ?<VStack>
+          <Image
+            rounded="lg"
+            shadow="sm"
+            src={ newData.url }
+            height={ 600 }
+            width={ 600 }
+            blurdataurl="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+            placeholder="blur"
+            alt={ newData.resource.dataset }
+          />
+          <Text m={2}>Date Taken: {newData.date} </Text>
+          <Text m={2}>Satellite: {newData.resource.dataset } </Text>
+         
         <NextLink passHref href={ `/earth`}>
           <Link
             mt={3}
@@ -71,6 +82,8 @@ const Earth: NextPage<{ data: Data }> = () => {
           </Link>
         </NextLink>
       </VStack>
+       :null
+      }
     </Box>  
   )
 }

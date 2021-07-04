@@ -32,7 +32,7 @@ const Home = () => {
         }}
       >
         <Heading m={10}>
-          Look through space information with <Text as="a" href="https://api.nasa.gov/">NASA&apos;s APIs</Text>
+          Look through space information with <a href="https://api.nasa.gov/">NASA&apos;s APIs</a>
         </Heading>
       </MotionText>
 

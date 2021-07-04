@@ -1,18 +1,38 @@
-import { Box, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Alert, AlertIcon, AlertTitle, Text, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik"
 import { apiKey } from '../key';
-import { useEffect, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import { FormContext } from './../pages/earth';
 
 
 const url = (lon:number, lat:number) => {
-return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&dim=0.10&api_key=` + `${apiKey}`;
+return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + `${apiKey}`;
 }
 
-const FormikForm = (ContextContainer:any) => {
+export const AlertBox = () => {
+    return(
+        <Alert
+            status="error"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            height="200px"
+            >
+            <AlertIcon boxSize="40px" mr={0} />
+            <AlertTitle mt={4} mb={1} fontSize="lg">
+                No Data Found
+            </AlertTitle>
+        </Alert>
+    )
+}
+
+const FormikForm = () => {
+    const { newData, setData }:any = useContext(FormContext);
+    const [isSubmitting, setSubmit] = useState(false)
     
-    const { newData, setData } = useContext(ContextContainer);
-    
-    function validateNumbers(value:string) {
+    const validateNumbers = (value:string) => {
       let error
       if (!value) {
         error = "No Long/Lat sent"
@@ -20,50 +40,48 @@ const FormikForm = (ContextContainer:any) => {
       return error
     };
 
-    useEffect(() => {
-        setData(newData)
-      }, [setData, newData]);
-    
-  
     return (
-        <Box maxW="25%">
+        <HStack alignSelf="center" width="400px">
             <Formik
-                initialValues={{ latitude: 1, longitude: 1 }}
-                onSubmit={ async (values, actions) => {
+                initialValues={{ latitude: 29.9792, longitude: 31.13 }}
+                onSubmit={ async (values) => {
+                    setSubmit(true)
                     let lon = values.longitude
                     let lat = values.latitude
                     setTimeout(() => {
-                        actions.setSubmitting(false)
-                    }, 1000)
+                        setSubmit(false)
+                    }, 3000)
                     const res = await fetch(url(lon, lat));
                     const data = await res.json();
                     setData(data)
                 }}
             >
-                {(props) => (
+                {() => (
                 <Form>
-                    <Field name="latitude" validate={validateNumbers}>
-                    {({ field, form }:any) => (
-                        <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
-                            <FormLabel htmlFor="latitude">Input Latitude</FormLabel>
-                            <Input {...field} type="number" id="latitude" placeholder="Latitude" />
-                            <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
-                        </FormControl>
-                    )}
-                    </Field>
-                    <Field name="longitude" validate={validateNumbers}>
-                    {({ field, form }:any) => (
-                        <FormControl isInvalid={form.errors.longitude && form.touched.longitude}>
-                            <FormLabel htmlFor="longitude">Input Longitude</FormLabel>
-                            <Input {...field} type="number" id="longitude" placeholder="Longitude" />
-                            <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
-                        </FormControl>
-                    )}
-                    </Field>
+                    <HStack m={5} spacing="10px">
+                        <Field name="latitude" validate={validateNumbers}>
+                        {({ field, form }:any) => (
+                            <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
+                                <FormLabel textAlign="center" htmlFor="latitude">Latitude</FormLabel>
+                                <Input {...field} type="number" id="latitude" placeholder="Latitude" />
+                                <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
+                            </FormControl>
+                        )}
+                        </Field>
+                        <Field name="longitude" validate={validateNumbers}>
+                        {({ field, form }:any) => (
+                            <FormControl isInvalid={form.errors.longitude && form.touched.longitude}>
+                                <FormLabel textAlign="center" htmlFor="longitude">Longitude</FormLabel>
+                                <Input {...field} type="number" id="longitude" placeholder="Longitude" />
+                                <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
+                            </FormControl>
+                        )}
+                        </Field>
+                    </HStack>
                     <Button
-                        mt={4}
+                        mb={10}
                         colorScheme="teal"
-                        isLoading={props.isSubmitting}
+                        isLoading={isSubmitting}
                         type="submit"
                     >
                         Submit
@@ -71,7 +89,7 @@ const FormikForm = (ContextContainer:any) => {
                 </Form>
                 )}
             </Formik>
-        </Box>
+        </HStack>
     )
   };
 

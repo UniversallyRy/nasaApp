@@ -27,7 +27,6 @@ const HeaderNav = () =>{
 
   return (
     <chakra.header
-      zIndex={1}
       key="headernav-key"
       bg={bg}
       w="full"
