@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from 'next/router'
 import NextLink from "next/link";
 import {
   chakra,
@@ -18,11 +19,13 @@ import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
-
+import HeaderButton from './HeaderButton'
 
 const HeaderNav = () =>{
+  const router = useRouter()
+  const isActive = router.pathname === '/'
   const { colorMode, toggleColorMode } = useColorMode();
-  const bg = useColorModeValue("white", "gray.800");
+  const bg = useColorModeValue("gray.300", "gray.900");
   const mobileNav = useDisclosure();
 
   return (
@@ -48,6 +51,7 @@ const HeaderNav = () =>{
             />
             <VStack
               pos="absolute"
+              zIndex="dropdown"
               top={0}
               left={0}
               right={0}
@@ -55,7 +59,6 @@ const HeaderNav = () =>{
               flexDirection="column"
               p={2}
               pb={4}
-              m={2}
               bg={bg}
               spacing={3}
               rounded="sm"
@@ -67,7 +70,11 @@ const HeaderNav = () =>{
                 onClick={mobileNav.onClose}
               />
               <NextLink href="/">
-                <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
+                <Button 
+                  w="full" 
+                  variant="ghost" 
+                  leftIcon={<AiFillHome />}
+                >
                   Home
                 </Button>
               </NextLink>
@@ -111,51 +118,31 @@ const HeaderNav = () =>{
           </Box>
 
           <HStack spacing={4} display={{ base: "none", md: "inline-flex" }}>
-            <NextLink href="/">
-              <Button minW={40} variant="ghost" leftIcon={<AiFillHome />} size="sm">
-                Home
-              </Button>
-            </NextLink>
-            <NextLink href="/apods">
-              <Button
-                minW={40} 
-                size="sm"
-                variant="ghost"
-                leftIcon={<BsFillImageFill />}
-              >
-                APOD
-              </Button>
-            </NextLink>
-            <NextLink href="/earth">
-              <Button
-                minW={40} 
-                size="sm"
-                variant="ghost"
-                leftIcon={<FaSatelliteDish />}
-              >
-                Earth
-              </Button>
-            </NextLink>
-            <NextLink href="/epic">
-              <Button
-                minW={40} 
-                size="sm"
-                variant="ghost"
-                leftIcon={<GiEarthAmerica />}
-              >
-                Epics
-              </Button>
-            </NextLink>
-            <NextLink href="/rover">
-              <Button
-                minW={40} 
-                size="sm"
-                variant="ghost"
-                leftIcon={<GiEarthAmerica />}
-              >
-                Rover Photos
-              </Button>
-            </NextLink>
+            <HeaderButton 
+              href="/"
+              title="Home" 
+              buttonIcon={<AiFillHome />}
+            />
+            <HeaderButton
+              href="/apods"
+              title="APOD" 
+              buttonIcon={<BsFillImageFill />}
+            />
+            <HeaderButton 
+              href="/earth"
+              title="Earth" 
+              buttonIcon={<FaSatelliteDish />}
+            />
+            <HeaderButton 
+              href="/epic"
+              title="Epics" 
+              buttonIcon={<GiEarthAmerica />}
+            />
+            <HeaderButton 
+              href="/rover"
+              title="Rover Photos" 
+              buttonIcon={<GiEarthAmerica />}
+            />
           </HStack> 
         </HStack>
         <Spacer />

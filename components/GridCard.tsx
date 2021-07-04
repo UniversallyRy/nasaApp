@@ -13,9 +13,10 @@ type CardProps = {
 const MotionBox = motion<BoxProps>(Box)
 
 const HomeCard = ({title, paragraph, href}:CardProps) => {
+  const bg = useColorModeValue("blue.500", "purple.900");
+
   return (
     <MotionBox
-      w="100%" 
       whileHover={{
         position: 'relative',
         zIndex: 1,
@@ -28,10 +29,10 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
       mx={3}
       px={8}
       py={2}
-      rounded="lg"
+      rounded="sm"
       shadow="lg"
-      bg={useColorModeValue("white", "gray.800")}
-      maxW="3xl"
+      bg={bg}
+      maxW="xl"
       flexBasis={['auto', '45%']}
     >
       <Box>
@@ -52,15 +53,6 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
           {paragraph}
         </chakra.p>
       </Box>
-
-      <Flex justifyContent="space-between" alignItems="center" mt={4}>
-        <Link
-          color={useColorModeValue("brand.600", "brand.400")}
-          _hover={{ textDecor: "underline" }}
-        >
-          Read more
-        </Link>
-      </Flex>
     </MotionBox>
   );
 };

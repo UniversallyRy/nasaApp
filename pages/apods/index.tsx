@@ -89,6 +89,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     return isOpen && setOpen(false);
   };
   
+  if (typeof window === 'undefined') {
+    global.window = {}
+  }
+  
   useDomEvent(useRef(window as any), "scroll", () => hideImage());
   useDomEvent(
     useRef(window as any),

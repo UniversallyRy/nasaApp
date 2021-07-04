@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertTitle, Text, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Alert, AlertIcon, AlertTitle, useColorModeValue, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik"
 import { apiKey } from '../key';
 import { useState, useContext, useEffect } from 'react'
@@ -10,16 +10,17 @@ return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0
 }
 
 export const AlertBox = () => {
+    
     return(
         <Alert
-            status="error"
-            variant="subtle"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            textAlign="center"
-            height="200px"
-            >
+        status="error"
+        variant="subtle"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="200px"
+        >
             <AlertIcon boxSize="40px" mr={0} />
             <AlertTitle mt={4} mb={1} fontSize="lg">
                 No Data Found
@@ -31,6 +32,7 @@ export const AlertBox = () => {
 const FormikForm = () => {
     const { newData, setData }:any = useContext(FormContext);
     const [isSubmitting, setSubmit] = useState(false)
+    const bg = useColorModeValue("blue.500", "purple.900");
     
     const validateNumbers = (value:string) => {
       let error
@@ -80,7 +82,7 @@ const FormikForm = () => {
                     </HStack>
                     <Button
                         mb={10}
-                        colorScheme="teal"
+                        bg={bg}
                         isLoading={isSubmitting}
                         type="submit"
                     >

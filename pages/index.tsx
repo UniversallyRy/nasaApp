@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
-import { Image, chakra, VStack, Text, TextProps, Grid, Heading } from "@chakra-ui/react"
+import { Image, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
 
 const MotionText = motion<TextProps>(Text)
 
 const Home = () => {
+  const bg = useColorModeValue("purple.300", "purple.900");
 
   return (
     <VStack w="full" minH="100vh" align="center">
@@ -43,7 +44,7 @@ const Home = () => {
         mt="10" 
         gap={5}
       >
-        <GridCard 
+        <GridCard
           href='/apods'
           title='APOD &rarr;' 
           paragraph='View the Astronomy Picture of the Day.'

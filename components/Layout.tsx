@@ -1,11 +1,13 @@
 import HeaderNav from './HeaderNav';
-import { chakra, Flex } from "@chakra-ui/react";
+import { chakra, Flex, useColorModeValue } from "@chakra-ui/react";
 
 const Layout = ({ children }:any) => {
+    const bg = useColorModeValue("teal.200", "green.900");
+
     return (
         <>
             <HeaderNav/>
-            <Flex align="center" justify="center">
+            <Flex  bg={bg} align="center" justify="center">
                 <chakra.main>
                     { children }
                 </chakra.main>

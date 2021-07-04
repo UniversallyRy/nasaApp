@@ -29,7 +29,6 @@ const Earth: NextPage<{ data: Data }> = () => {
       minW="100vw"
       rounded="lg"
       shadow="lg"
-      bg={useColorModeValue("white", "gray.800")}
       maxW="xl"
       align='center'
     >
