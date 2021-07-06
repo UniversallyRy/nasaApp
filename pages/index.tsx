@@ -4,7 +4,7 @@ import GridCard from '../components/GridCard';
 import { Image, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
 
 const MotionText = motion<TextProps>(Text)
-
+// todos: further styling for pages. better routing.
 const Home = () => {
   const bg = useColorModeValue("purple.300", "purple.900");
 
