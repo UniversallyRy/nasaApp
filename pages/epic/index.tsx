@@ -15,7 +15,7 @@ interface Data {
 }
 
 const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03?api_key=' + apiKey;
-
+// todos: add datepicker and default to closest date
 const Epics: NextPage<{ data: Data }> = ({data}) => {
   
   if (!data) return <div>Loading...</div>;
