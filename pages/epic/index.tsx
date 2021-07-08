@@ -27,7 +27,7 @@ const Epics: NextPage<{ data: Data }> = ({data}) => {
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
       </Head>
       <VStack>
-        <Box m={20}>
+        <Box m={10}>
           <NextLink passHref href="/">
             <Link
               mt={3}
