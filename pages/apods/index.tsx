@@ -5,8 +5,7 @@ import { GetStaticProps, NextPage } from 'next';
 import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import ChangeDate from "../../components/ChangeDate";
 import styles from '../../styles/apodpage.module.sass';
 
 interface Data {
@@ -101,6 +100,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   );
   
   if (!data) return <div>Loading...</div>;
+  
   const handleDateChange = async (date:Date) => {
     if (new Date() < date) return ;
     const url = fetchedData(date);
@@ -116,9 +116,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
       </Head>
-      <Box zIndex={10} className={styles.datepicker}>
-        <DatePicker  withPortal selected={startDate}onChange={handleDateChange} />
-      </Box>
+      <ChangeDate 
+        selected={startDate} 
+        onChange={handleDateChange} 
+      />
       <NextLink href="/">
         <Link>
           <chakra.a>← Back to home</chakra.a>
