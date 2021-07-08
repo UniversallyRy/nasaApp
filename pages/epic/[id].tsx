@@ -2,11 +2,14 @@ import Head from "next/head";
 import NextLink from "next/link";
 import { Image, Box, Text, Link, Stack } from "@chakra-ui/react";
 import { apiKey } from '../../key';
+import {getStaticProps as IndexProps} from './index'
 
-const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/';
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03/?api_key=' + apiKey;
+let url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03/?api_key=' + apiKey;
 
 export default function EpicId({ epic }:any) {
+  const dateFormatter = epic.date.slice(0, 10).split('-').join('/')
+  const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
+
   return (
     <Box w="full" minH="100vh" align="center">
       <Head key='epic/id key'>
@@ -18,7 +21,6 @@ export default function EpicId({ epic }:any) {
           rounded="lg"
           shadow="lg"
           mt={5}
-          priority
           src={ imageLink + epic.image + `.png` }
           height={ 800 }
           width={ 800 }
@@ -47,11 +49,11 @@ export default function EpicId({ epic }:any) {
 
 export const getStaticProps = async (context:any) => {
   const res = await fetch(url);
-  const epic = await res.json();
+  const data = await res.json();
 
   return {
     props: {
-      epic: epic[`${ context.params.id }`],
+      epic: data[`${ context.params.id }`],
     },
   };
 };

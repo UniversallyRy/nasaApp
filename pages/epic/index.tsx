@@ -7,12 +7,14 @@ import { apiKey } from '../../key';
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 
+let passedUrl;
+
 interface EpicsProps {
   title: string;
   date: number;
 }
 
-const fetchedData = (date = new Date()):string => {
+const fetchedUrl = (date = new Date()):string => {
   let day, month, year, newDay, newMonth;
   let thisDate = date;
   [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
@@ -32,7 +34,7 @@ const Epics: FC<EpicsProps> = ({ data }:any) => {
 
   const handleDateChange = async (date:Date) => {
     if (new Date() < date) return ;
-    const url = fetchedData(date);
+    const url = fetchedUrl(date);
     const res = await fetch(url);
     const data = await res.json();
     setStartDate(date);

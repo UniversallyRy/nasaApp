@@ -6,7 +6,7 @@ import { Box, VStack, Image, Link, Text, useColorModeValue } from "@chakra-ui/re
 const EpicItem = ({ item, index }:any) => {   
     const dateFormatter = item.date.slice(0, 10).split('-').join('/')
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
-
+    
     return (
         <Box
             mx={1}
