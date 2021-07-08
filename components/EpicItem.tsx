@@ -2,9 +2,11 @@
 import NextLink from 'next/link';
 import { Box, VStack, Image, Link, Text, useColorModeValue } from "@chakra-ui/react";
 
-const imageLink =  'https://epic.gsfc.nasa.gov/archive/enhanced/2021/06/03/png/';
 
-const EpicItem = ({ item, index }:any) => {
+const EpicItem = ({ item, index }:any) => {   
+    const dateFormatter = item.date.slice(0, 10).split('-').join('/')
+    const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
+
     return (
         <Box
             mx={1}
@@ -20,7 +22,6 @@ const EpicItem = ({ item, index }:any) => {
                 src={ imageLink + item.image + `.png` }
                 height={ 600 }
                 width={ 600 }
-                blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 placeholder="blur"
                 alt={ item.title }
                 />

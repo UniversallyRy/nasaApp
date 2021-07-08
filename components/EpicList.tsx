@@ -3,7 +3,11 @@ import { NextPage } from 'next';
 import { Grid } from '@chakra-ui/react';
 
 interface Data {
+  title: string;
+  date: number;
+  explanation: string;
   identifier: string;
+  hdurl: string;
   map: ((item: object) => void);
 }
 

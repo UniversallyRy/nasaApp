@@ -1,31 +1,56 @@
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticProps } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
-import { Flex, VStack, Box, Link } from "@chakra-ui/react";
+import { useState, FC } from "react";
+import { VStack, Box, Link } from "@chakra-ui/react";
 import { apiKey } from '../../key';
 import EpicList from '../../components/EpicList';
+import ChangeDate from "../../components/ChangeDate";
 
-interface Data {
+interface EpicsProps {
   title: string;
   date: number;
-  explanation: string;
-  identifier: string;
-  hdurl: string;
-  map: ((item: object) => void);
 }
 
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-06-03?api_key=' + apiKey;
+const fetchedData = (date = new Date()):string => {
+  let day, month, year, newDay, newMonth;
+  let thisDate = date;
+  [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
+  newDay = day.toString().padStart(2, '0');
+  newMonth = month.toString().padStart(2, '0');
+  let newDate = [year, newMonth, newDay].join('-');
+  const url = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + apiKey;
+
+  return url;
+}
+
+const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + apiKey;
 // todos: add datepicker and default to closest date
-const Epics: NextPage<{ data: Data }> = ({data}) => {
-  
-  if (!data) return <div>Loading...</div>;
+const Epics: FC<EpicsProps> = ({ data }:any) => {
+  const [copiedData, setData]  = useState(data);
+  const [startDate, setStartDate] = useState(new Date());
+
+  const handleDateChange = async (date:Date) => {
+    if (new Date() < date) return ;
+    const url = fetchedData(date);
+    const res = await fetch(url);
+    const data = await res.json();
+    setStartDate(date);
+    setData(data);
+  }
+
+  if (data.length < 1) return <div>Loading...</div>;
 
   return (
-    <Flex>
+    <VStack>
       <Head key='pages/epic key'>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
       </Head>
+      <ChangeDate 
+        selected={startDate} 
+        onChange={handleDateChange} 
+      />
       <VStack>
         <Box m={10}>
           <NextLink passHref href="/">
@@ -43,9 +68,9 @@ const Epics: NextPage<{ data: Data }> = ({data}) => {
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={data}/>
+        <EpicList data={copiedData}/>
       </VStack>
-    </Flex>
+    </VStack>
   );
 }
 
