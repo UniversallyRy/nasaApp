@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
 import { Image, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
 //todos: Alien head ART CSS
+import Alien from '../components/alien';
+
 const MotionText = motion<TextProps>(Text)
 
 const Home = () => {
@@ -14,7 +16,7 @@ const Home = () => {
         <title>Look Up NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>
-
+      <Alien/>
       <MotionText
         initial="hidden" 
         animate="visible" 
