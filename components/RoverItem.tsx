@@ -20,7 +20,6 @@ const RoverItem = ({ item }:any) => {
             <Image
                 rounded="lg"
                 shadow="sm"
-                priority
                 src={ item.img_src }
                 height={ 600 }
                 width={ 600 }
