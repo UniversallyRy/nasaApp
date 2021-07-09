@@ -6,8 +6,8 @@ import { Box, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue 
 const Alien = () => {
     return (
         <Box 
-            pos="relative"
             bg="#252525"
+            m={10}
             w="300px"
             h=" 300px"
             transform= "rotate(45deg)"
@@ -44,7 +44,7 @@ const Alien = () => {
                 bg: "radial-gradient(circle, #a2f793, #58f03e)",
                 boxShadow:"0 0 5px 5px rgba(0, 0, 0, 0.5), 0 0 20px 20px rgba(88, 240, 62, 0.4)"
             }}
-        ></Box>
+        />
     )
 }
 

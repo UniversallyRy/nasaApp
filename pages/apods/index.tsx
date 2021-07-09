@@ -6,7 +6,6 @@ import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, He
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
-import styles from '../../styles/apodpage.module.sass';
 
 interface Data {
   url: string;
@@ -88,10 +87,11 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     return isOpen && setOpen(false);
   };
   
+  let windowContext: any = window;
   if (typeof window === 'undefined') {
-    global.window = {}
+    windowContext = {}
   }
-  
+ 
   useDomEvent(useRef(window as any), "scroll", () => hideImage());
   useDomEvent(
     useRef(window as any),
@@ -111,7 +111,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   }
 
   return (
-    <VStack w="full" minH="100vh">
+    <VStack alignItems="center" w="full" minH="100vh">
       <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
@@ -135,14 +135,29 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
       </MotionHeading>
       <Stack spacing="28px" direction={["column", "column", "row"]}>
         <Box
-          className={`${styles["image-container"]} ${isOpen ? styles.open : ""}`}
+          h="600px"
+          w="360px"
+          cursor={isOpen ? "zoom-out" : "zoom-in"}
+          m="20px 0"
         >
           <MotionDiv
+            pos="fixed"
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            pointerEvents={isOpen ? "auto" :"none"}
+            opacity={isOpen ? 1 : 0}
+            bg="rgba(0, 0, 0, 0.9)"
             animate={{ opacity: isOpen ? 1 : 0 }}
-            className={styles.shade}
             onClick={() => setOpen(false)}
           />
           <MotionImage
+            h={isOpen ? "auto" : "100%"}
+            w={isOpen ? "auto" : "100%"}
+            pos={isOpen ? "fixed" : "relative"}
+            objectFit="cover"
+            objectPosition="center"
             animate={imgAnimation}
             src={newData.hdurl}
             onMouseMove={e => handleMouseMove(e)}
@@ -150,13 +165,13 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
             alt={'Picture for the date of ' + `${newData.date}`}
           />
           <Box
+            pos='absolute'
             zIndex={-1}
             top={0}
             left={0}
             height={'100%'}
             width={'100%'}
             bg='gray.500'
-            position='absolute'
           />
         </Box>
         <Text

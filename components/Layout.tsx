@@ -7,7 +7,7 @@ const Layout = ({ children }:any) => {
     return (
         <>
             <HeaderNav/>
-            <Flex  bg={bg} align="center" justify="center">
+            <Flex bg={bg}>
                 <chakra.main>
                     { children }
                 </chakra.main>
