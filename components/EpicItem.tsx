@@ -1,7 +1,5 @@
 
-import NextLink from 'next/link';
-import { useState } from "react";
-import { Box, VStack, Image, Link, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, VStack, Image, Text, useColorModeValue } from "@chakra-ui/react";
 
 
 const EpicItem = ({ item, index, slidesCount }:any) => {   

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
 import { Image, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
-
+//todos: Alien head ART CSS
 const MotionText = motion<TextProps>(Text)
 
 const Home = () => {

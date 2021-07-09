@@ -2,18 +2,16 @@
 import { Box, Text, useColorModeValue, Image } from "@chakra-ui/react";
 
 
-const RoverItem = ({ item }:any) => {
+const RoverItem = ({ item, index, slidesCount }:any) => {
     return (
         <Box
-            mx={3}
-            py={2}
+            boxSize="full"
+            flex="none"
             rounded="lg"
             shadow="lg"
             bg={useColorModeValue("white", "gray.800")}
-            maxW="xl"
-            align='center'
         >
-            <Text m={2}>Date Taken: { item.earth_date }</Text>
+            <Text ml={2} mt={7}>Date Taken: { item.earth_date }</Text>
             <Text m={2}>Sol: { item.sol }</Text>
             <Text m={2}>Camera: { item.camera.name }</Text>
 
@@ -21,11 +19,20 @@ const RoverItem = ({ item }:any) => {
                 rounded="lg"
                 shadow="sm"
                 src={ item.img_src }
-                height={ 600 }
-                width={ 600 }
+                boxSize="full"
+                backgroundSize="cover"
                 placeholder="blur"
                 alt={ item.id }
             />
+            <Text
+                color="white"
+                fontSize="xs"
+                p="8px 12px"
+                pos="absolute"
+                top="0"
+            >
+                {index + 1} / {slidesCount}
+            </Text>
             
             {/* <NextLink passHref href={ `/epic/${ item.id = index }`}>
                 <Link
