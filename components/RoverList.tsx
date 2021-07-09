@@ -78,21 +78,19 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
             <Flex w="full" pos="relative" overflow="hidden">
                 <Flex h="full" w="full" {...carouselStyle}>
-                    {data.photos.reduce((mappedArray:any, item:any, index:any) => {
-                            if(item.camera.name === roverCamera) {
-                                let i = 0;
-                                mappedArray.push(
-                                    <WeatherItem 
-                                        slidesCount={ slidesCount }
-                                        index={ i }
-                                        key={ index } 
-                                        item={ item } 
-                                    />
-                                )
-                                i++;
-                            }
-                            return mappedArray
-                        }, [])}
+                    {data.photos.reduce((photosArray:object[], item:any, index:number) => {
+                        if(item.camera.name === roverCamera) {
+                            photosArray.push(
+                                <WeatherItem 
+                                slidesCount={ slidesCount }
+                                index={ photosArray.length }
+                                key={ index } 
+                                item={ item } 
+                                />
+                            )
+                        }
+                        return photosArray
+                    }, [])}
                 </Flex>
                 <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
                 &#10094;
@@ -102,6 +100,7 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
                 </Text>
                 <HStack justify="center" pos="absolute" bottom="8px" w="full">
                     {Array.from({ length: slidesCount }).map((_, slide) => (
+                        
                         <Box
                         key={`dots-${slide}`}
                         cursor="pointer"
@@ -113,7 +112,7 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
                         transition="background-color 0.6s ease"
                         _hover={{ bg: "gray.800" }}
                         onClick={() => setSlide(slide)}
-                        ></Box>
+                        />
                 ))}
                 </HStack>
             </Flex>
