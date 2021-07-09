@@ -7,8 +7,6 @@ import { apiKey } from '../../key';
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 
-let passedUrl;
-
 interface EpicsProps {
   title: string;
   date: number;

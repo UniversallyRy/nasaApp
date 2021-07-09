@@ -1,6 +1,7 @@
 import EpicItem from './EpicItem';
 import { NextPage } from 'next';
-import { Grid } from '@chakra-ui/react';
+import { Flex, Box, HStack, Text, useColorModeValue } from '@chakra-ui/react';
+import { useState } from "react";
 
 interface Data {
   title: string;
@@ -12,22 +13,83 @@ interface Data {
 }
 
 const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
+  const slidesCount = data.length;
+  const arrowStyles = {
+    cursor: "pointer",
+    top: "50%",
+    w: "auto",
+    mt: "-22px",
+    p: "16px",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "18px",
+    transition: "0.6s ease",
+    borderRadius: "0 3px 3px 0",
+    _hover: {
+      opacity: 0.8,
+      bg: "black",
+    },
+  };
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+
+  const prevSlide = () => {
+    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
+  };
+  const nextSlide = () => {
+    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
+  };
+  const setSlide = (slide:any) => {
+    setCurrentSlide(slide);
+  };
+  const carouselStyle = {
+    transition: "all .5s",
+    ml: `-${currentSlide * 100}%`,
+  };
   return (
-    <Grid
-    flexWrap="wrap" 
-    justifyContent="center" 
-    maxW="1000px"
-    mb={10} 
-    gap={10}
+    <Flex
+      w="full"
+      bg={useColorModeValue("gray.200", "gray.600")}
+      p={1}
+      alignItems="center"
+      justifyContent="center"
     >
-      {data.map((item:any, index:any) => (
-        <EpicItem 
-          key={ item.identifier } 
-          item={ item } 
-          index={ index }
-        />
-      ))}
-    </Grid>
+      <Flex w="full" pos="relative" overflow="hidden">
+        <Flex h="full" w="full" {...carouselStyle}>
+          {data.map((item:any, index:any) => (
+            <EpicItem 
+              slidesCount={slidesCount}
+              key={ item.identifier } 
+              item={ item } 
+              index={ index }
+            />
+          ))}
+        </Flex>
+        <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
+          &#10094;
+        </Text>
+        <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
+          &#10095;
+        </Text>
+        <HStack justify="center" pos="absolute" bottom="8px" w="full">
+          {Array.from({ length: slidesCount }).map((_, slide) => (
+            <Box
+              key={`dots-${slide}`}
+              cursor="pointer"
+              boxSize={["7px", "15px"]}
+              m="0 2px"
+              bg={currentSlide === slide ? "gray.800" : "gray.500"}
+              rounded="50%"
+              display="inline-block"
+              transition="background-color 0.6s ease"
+              _hover={{ bg: "gray.800" }}
+              onClick={() => setSlide(slide)}
+            ></Box>
+          ))}
+        </HStack>
+      </Flex>
+    </Flex>
   )
 }
 

@@ -1,49 +1,53 @@
 
 import NextLink from 'next/link';
+import { useState } from "react";
 import { Box, VStack, Image, Link, Text, useColorModeValue } from "@chakra-ui/react";
 
 
-const EpicItem = ({ item, index }:any) => {   
+const EpicItem = ({ item, index, slidesCount }:any) => {   
     const dateFormatter = item.date.slice(0, 10).split('-').join('/')
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
-    
+
     return (
-        <Box
-            mx={1}
+        <Box    
+            boxSize="full"
+            flex="none"
             rounded="lg"
             shadow="lg"
             bg={useColorModeValue("white", "gray.800")}
-            maxW="xl"
-            align='center'
         >
+            <Text
+                color="white"
+                fontSize="xs"
+                p="8px 12px"
+                pos="absolute"
+                top="0"
+            >
+                {index + 1} / {slidesCount}
+            </Text>
             <Image
                 rounded="lg"
                 shadow="sm"
+                boxSize="full"
+                backgroundSize="cover"
                 src={ imageLink + item.image + `.png` }
-                height={ 600 }
-                width={ 600 }
                 placeholder="blur"
                 alt={ item.title }
                 />
-            <VStack m={1}>
-                <Text m={5} size='sm'>{ item.caption }</Text>
-                <Text m={1}>Lat: { item.centroid_coordinates.lat }</Text>
-                <Text m={1}>Long: { item.centroid_coordinates.lon }</Text>
-                <Text m={1}>Date Taken: { item.date }</Text>
-                <NextLink passHref href={ `/epic/${ item.id = index }`}>
-                    <Link
-                        mt={5}
-                        bg="black"
-                        color="gray.100"
-                        px={5}
-                        py={3}
-                        fontWeight="semibold"
-                        rounded="lg"
-                        _hover={{ bg: "gray.900" }}
-                    >
-                        View Solo
-                    </Link>
-                </NextLink>
+            <VStack 
+                pos="absolute"
+                top="0"
+                bottom="24px"
+                textAlign="center"
+                w="full"
+                mt="4"
+                color="green.900"
+                userSelect="none"
+            >
+                <Text m={2} size='lg'>{ item.caption }</Text>
+                <Text>Lat: { item.centroid_coordinates.lat }</Text>
+                <Text>Long: { item.centroid_coordinates.lon }</Text>
+                <Text>Date Taken: { item.date }</Text>
             </VStack>
         </Box>  
     )
