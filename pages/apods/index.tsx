@@ -14,15 +14,10 @@ interface Data {
   date: number;
 }
 
-interface customWindow extends Window {
-  customProperty?: any;
-}
-
-declare const window: customWindow;
-
 const MotionHeading = motion<HeadingProps>(Heading);
 const MotionImage = motion<ImageProps>(Image);
 const MotionDiv = motion<BoxProps>(Box);
+
 const variants = {
   open: {
     y: 0,
@@ -87,17 +82,12 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     return isOpen && setOpen(false);
   };
   
-  let windowContext: any = window;
-  if (typeof window === 'undefined') {
-    windowContext = {}
-  }
+  // if (typeof window === 'undefined') {
+  //   global.window = {}
+  // }
  
   useDomEvent(useRef(window as any), "scroll", () => hideImage());
-  useDomEvent(
-    useRef(window as any),
-    "keydown",
-    (e: any) => e.keyCode === 27 && hideImage()
-  );
+  useDomEvent(useRef(window as any), "keydown",(e: any) => e.keyCode === 27 && hideImage());
   
   if (!data) return <div>Loading...</div>;
   
@@ -111,7 +101,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   }
 
   return (
-    <VStack alignItems="center" w="full" minH="100vh">
+    <VStack  m={5}>
       <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
@@ -128,12 +118,12 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
       <MotionHeading
         pl={12}
         variants={variants}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 1.3 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 1.2 }}
       >
         { newData.title }
       </MotionHeading>
-      <Stack spacing="28px" direction={["column", "column", "row"]}>
+      <Stack align="center" spacing="28px" direction={["column", "column", "row"]}>
         <Box
           h="600px"
           w="360px"
@@ -153,8 +143,16 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
             onClick={() => setOpen(false)}
           />
           <MotionImage
+            top={0}
+            left={0}
+            right={0}
+            bottom={0}
+            zIndex={isOpen ? 10 : 1}
             h={isOpen ? "auto" : "100%"}
             w={isOpen ? "auto" : "100%"}
+            m={isOpen ? "auto" : "1"}
+            maxH={isOpen ? "100%" : "auto"}
+            maxW={isOpen ? "100%" : "auto"}
             pos={isOpen ? "fixed" : "relative"}
             objectFit="cover"
             objectPosition="center"
@@ -164,18 +162,8 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
             onClick={() => setOpen(!isOpen)}
             alt={'Picture for the date of ' + `${newData.date}`}
           />
-          <Box
-            pos='absolute'
-            zIndex={-1}
-            top={0}
-            left={0}
-            height={'100%'}
-            width={'100%'}
-            bg='gray.500'
-          />
         </Box>
         <Text
-          alignSelf='center' 
           fontSize={{ base: "11px", md: "12px", lg: "13px", xl: "13px"}}
           lineHeight={1.6}
           letterSpacing={0.4}
@@ -187,10 +175,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
           { newData.explanation }
         </Text>
       </Stack>
-      <Stack alignItems='center' >
+      <Stack>
         <Text
           fontSize={{ base: "12px", md: "18px", lg: "26px", xl: "30px"}}
-          align={'center'}>
+        >
           Posted on 
             <time> {newData.date} </time>
         </Text>

@@ -1,23 +1,20 @@
 import Head from 'next/head';
+import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
-import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
-//todos: Alien head ART CSS
 import Alien from '../components/alien';
 
 const MotionText = motion<TextProps>(Text)
 
 const Home = () => {
-  const bg = useColorModeValue("purple.300", "purple.900");
-
   return (
-    <Stack w="full" minH="100vh" spacing="40px" direction={["column", "column", "column", "column", "row", "row"]}>
+    <Stack align="center" w="full" minH="100vh" spacing="40px" direction={["column", "column", "column", "column", "row", "row"]}>
       <Head key='pages/index key'>
-        <title>Look Up NASA Info</title>
+        <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>
       <Alien/>
-        <VStack align="center">
+        <VStack>
           <MotionText
             initial="hidden" 
             animate="visible" 

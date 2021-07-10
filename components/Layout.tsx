@@ -1,5 +1,5 @@
 import HeaderNav from './HeaderNav';
-import { chakra, Flex, useColorModeValue } from "@chakra-ui/react";
+import { chakra, Stack, useColorModeValue } from "@chakra-ui/react";
 
 const Layout = ({ children }:any) => {
     const bg = useColorModeValue("teal.200", "green.900");
@@ -7,11 +7,11 @@ const Layout = ({ children }:any) => {
     return (
         <>
             <HeaderNav/>
-            <Flex bg={bg}>
+            <Stack bg={bg}>
                 <chakra.main>
                     { children }
                 </chakra.main>
-            </Flex>
+            </Stack>
         </>
     )
 }

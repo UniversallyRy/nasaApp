@@ -20,8 +20,7 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
       whileHover={{
         position: 'relative',
         zIndex: 1,
-        scale: [1, 1.1, 1],
-        rotate: [0, 1, -1, 0],
+        scale: [1, 1.15, 1],
         transition: {
         duration: .2
         }

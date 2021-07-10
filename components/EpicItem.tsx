@@ -31,7 +31,7 @@ const EpicItem = ({ item, index, slidesCount }:any) => {
                 src={ imageLink + item.image + `.png` }
                 placeholder="blur"
                 alt={ item.title }
-                />
+            />
             <VStack 
                 pos="absolute"
                 top="0"
