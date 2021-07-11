@@ -13,7 +13,7 @@ interface Data {
   hdurl: string;
   map: ((item: object) => void);
 }
-//todos: expansion on components/pages?, rover camera choices, 
+//todos: expansion on components/pages?, rover camera choices, style fixes 
 const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2021-7-2&api_key=' + apiKey;
 
 const Rover: NextPage<{ data: Data }> = ({data}) => {
