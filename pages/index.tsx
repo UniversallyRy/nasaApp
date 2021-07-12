@@ -5,7 +5,7 @@ import GridCard from '../components/GridCard';
 import Alien from '../components/alien';
 
 const MotionText = motion<TextProps>(Text)
-
+//todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
   return (
     <Stack align="center" w="full" minH="100vh" spacing="40px" direction={["column", "column", "column", "column", "row", "row"]}>
