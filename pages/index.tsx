@@ -13,7 +13,9 @@ const Home = () => {
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>
-      <Alien/>
+      <Alien
+        size='300px'
+      />
         <VStack>
           <MotionText
             initial="hidden" 

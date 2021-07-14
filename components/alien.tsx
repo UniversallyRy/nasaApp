@@ -1,27 +1,33 @@
 import React from 'react';
-import styles from '../../styles/alien.module.sass';
-import { Box, chakra, VStack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
+import { Box, useColorModeValue } from "@chakra-ui/react"
 
 
-const Alien = () => {
+const Alien = ({size}:any) => {
+    const bg = useColorModeValue("gray.200", "gray.700");
+    const fitToSize = () => {
+        let sizeNum = size.match(/\d/g);
+        sizeNum = sizeNum.join((""))
+        let adjustedSize = (sizeNum / 3.75) 
+        return adjustedSize + 'px'
+    }
     return (
         <Box 
-            bg="#252525"
+            bg={bg}
             m={10}
-            w="300px"
-            h=" 300px"
+            w={size}
+            h={size}
             transform= "rotate(45deg)"
-            borderTopLeftRadius="200px"
-            borderBottomLeftRadius="200px"
-            borderBottomRightRadius="50px"
-            borderTopRightRadius="200px"
+            borderTopLeftRadius="150px"
+            borderTopRightRadius="150px"
+            borderBottomLeftRadius="150px"
+            borderBottomRightRadius="20px"
             boxShadow= "0 0 15px 15px rgba(0, 0, 0, 0.5)"
             _before={{ 
                 content: '""',
                 pos: "absolute",
-                w: "80px",
-                h: "80px",
-                bg: "#0b0b0b",
+                w: fitToSize,
+                h: fitToSize,
+                bg: "gray.900",
                 borderTopLeftRadius: "200px",
                 borderBottomRightRadius: "200px",
                 top: "200px",
@@ -31,9 +37,9 @@ const Alien = () => {
             _after={{ 
                 content: '""',
                 pos: "absolute",
-                w: "80px",
-                h: "80px",
-                bg: "#0b0b0b",
+                w: fitToSize,
+                h: fitToSize,
+                bg: "gray.900",
                 borderTopLeftRadius: "200px",
                 borderBottomRightRadius: "200px",
                 top: "100px",

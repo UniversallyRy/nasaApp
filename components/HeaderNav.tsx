@@ -23,7 +23,7 @@ import HeaderButton from './HeaderButton'
 
 const HeaderNav = () =>{
   const router = useRouter()
-  const isActive = router.pathname === '/'
+  // const isActive = router.pathname === '/'
   const { colorMode, toggleColorMode } = useColorMode();
   const bg = useColorModeValue("gray.300", "gray.900");
   const mobileNav = useDisclosure();
