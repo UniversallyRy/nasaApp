@@ -15,11 +15,11 @@ const EpicItem = ({ item, index, slidesCount }:any) => {
             bg={useColorModeValue("white", "gray.800")}
         >
             <Text
-                color="white"
-                fontSize="xs"
-                p="8px 12px"
                 pos="absolute"
                 top="0"
+                fontSize="xs"
+                color="white"
+                p="3"
             >
                 {index + 1} / {slidesCount}
             </Text>
@@ -27,7 +27,7 @@ const EpicItem = ({ item, index, slidesCount }:any) => {
                 rounded="lg"
                 shadow="sm"
                 boxSize="full"
-                backgroundSize="cover"
+                backgroundSize="auto"
                 src={ imageLink + item.image + `.png` }
                 placeholder="blur"
                 alt={ item.title }
@@ -35,17 +35,16 @@ const EpicItem = ({ item, index, slidesCount }:any) => {
             <VStack 
                 pos="absolute"
                 top="0"
-                bottom="24px"
                 textAlign="center"
                 w="full"
                 mt="4"
                 color="green.900"
                 userSelect="none"
             >
-                <Text m={2} size='lg'>{ item.caption }</Text>
-                <Text>Lat: { item.centroid_coordinates.lat }</Text>
-                <Text>Long: { item.centroid_coordinates.lon }</Text>
-                <Text>Date Taken: { item.date }</Text>
+                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ item.caption }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Lat: { item.centroid_coordinates.lat }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { item.centroid_coordinates.lon }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { item.date }</Text>
             </VStack>
         </Box>  
     )

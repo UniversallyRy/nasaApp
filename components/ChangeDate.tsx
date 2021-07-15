@@ -12,6 +12,6 @@ const ChangeDate = ({ selected, onChange }:any) => {
         <DatePicker withPortal selected={selected} onChange={onChange} />
     </Box>
   )
-}
+};
 
-export default ChangeDate
+export default ChangeDate;

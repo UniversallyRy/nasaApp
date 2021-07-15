@@ -6,6 +6,7 @@ const RoverItem = ({ item, index, slidesCount }:any) => {
     return (
         <Box
             boxSize="full"
+            fontSize="xl"
             flex="none"
             rounded="lg"
             shadow="lg"
@@ -27,7 +28,7 @@ const RoverItem = ({ item, index, slidesCount }:any) => {
             <Text
                 color="white"
                 fontSize="xs"
-                p="8px 12px"
+                p="2"
                 pos="absolute"
                 top="0"
             >

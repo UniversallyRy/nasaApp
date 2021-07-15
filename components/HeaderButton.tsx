@@ -10,17 +10,18 @@ const HeaderButton = ({title, buttonIcon, href}:any) => {
       bg={bg}
       size="md"
       fontWeight="semibold"
-      rounded="md"
-      shadow="sm"
-      variant="ghost" 
+      rounded="sm"
+      shadow="md"
+      variant="outlined" 
       leftIcon={buttonIcon}
       _focus={{
         outline: "none",
-        boxShadow: "0 0 1px 1px rgba(46, 49, 49, 1), 0 1px 1px rgba(0, 0, 0, .15)"
+        boxShadow: "0 0 1px 1px rgba(46, 49, 49, 1), 0 1px 1px rgba(0, 0, 0, .35)"
       }}
       _hover={{
-        shadow:"lg",
-        fontWeight:"extrabold"
+        shadow:"xl",
+        fontSize:"lg",
+        boxShadow: "0 0 1px 1px rgba(46, 49, 49, 1), 0 1px 1px rgba(0, 0, 0, .35)"
       }}
       onClick={() => router.push(href)}
     >

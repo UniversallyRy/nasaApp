@@ -37,9 +37,9 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
       <Box>
         <NextLink passHref href={href}>
           <Link
-            fontSize="3xl"
+            fontSize={["xl", "2xl"]}
             color={useColorModeValue("gray.700", "white")}
-            fontWeight="700"
+            fontWeight="bold"
             _hover={{
               color: useColorModeValue("gray.600", "gray.200"),
               textDecor: "underline",
@@ -48,7 +48,7 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
             {title}
           </Link>
         </NextLink>
-        <chakra.p mt={2} color={useColorModeValue("gray.600", "gray.300")}>
+        <chakra.p fontSize={["xs", "sm", "md"]} mt={2} color={useColorModeValue("gray.600", "gray.300")}>
           {paragraph}
         </chakra.p>
       </Box>

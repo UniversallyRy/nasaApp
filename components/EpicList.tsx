@@ -49,7 +49,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
   };
   return (
     <Flex
-      w="full"
+      w={["full", "full", "container.md", "container.lg", "container.xl"]}
       bg={useColorModeValue("gray.200", "gray.600")}
       p={1}
       alignItems="center"
@@ -72,13 +72,13 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
         <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
           &#10095;
         </Text>
-        <HStack justify="center" pos="absolute" bottom="8px" w="full">
+        <HStack justify="center" pos="absolute" bottom="5" w="full">
           {Array.from({ length: slidesCount }).map((_, slide) => (
             <Box
               key={`dots-${slide}`}
               cursor="pointer"
               boxSize={["7px", "15px"]}
-              m="0 2px"
+              mx="1"
               bg={currentSlide === slide ? "gray.800" : "gray.500"}
               rounded="50%"
               display="inline-block"

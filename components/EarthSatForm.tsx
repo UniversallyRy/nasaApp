@@ -1,7 +1,7 @@
-import { Alert, AlertIcon, AlertTitle, useColorModeValue, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Alert, AlertIcon, AlertTitle, useColorModeValue, Stack, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik"
 import { apiKey } from '../key';
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { FormContext } from './../pages/earth';
 
 
@@ -13,15 +13,15 @@ export const AlertBox = () => {
     
     return(
         <Alert
-        status="error"
-        variant="subtle"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        textAlign="center"
-        height="200px"
+            status="error"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            height="2xs"
         >
-            <AlertIcon boxSize="40px" mr={0} />
+            <AlertIcon boxSize="lg" />
             <AlertTitle mt={4} mb={1} fontSize="lg">
                 No Data Found
             </AlertTitle>
@@ -43,7 +43,7 @@ const FormikForm = () => {
     };
 
     return (
-        <HStack alignSelf="center" width="400px">
+        <Stack alignContent="center" w="lg">
             <Formik
                 initialValues={{ latitude: 29.9792, longitude: 31.13 }}
                 onSubmit={ async (values) => {
@@ -60,12 +60,12 @@ const FormikForm = () => {
             >
                 {() => (
                 <Form>
-                    <HStack m={4} spacing="10px">
+                    <HStack m={4} spacing={2.5}>
                         <Field name="latitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
                             <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
-                                <FormLabel textAlign="center" htmlFor="latitude">Latitude</FormLabel>
-                                <Input {...field} type="number" id="latitude" placeholder="Latitude" />
+                                <FormLabel fontSize="xl" textAlign="center" htmlFor="latitude">Latitude</FormLabel>
+                                <Input {...field} fontSize="lg" type="number" id="latitude" placeholder="Latitude" />
                                 <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
                             </FormControl>
                         )}
@@ -73,14 +73,16 @@ const FormikForm = () => {
                         <Field name="longitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
                             <FormControl isInvalid={form.errors.longitude && form.touched.longitude}>
-                                <FormLabel textAlign="center" htmlFor="longitude">Longitude</FormLabel>
-                                <Input {...field} type="number" id="longitude" placeholder="Longitude" />
+                                <FormLabel fontSize="xl" textAlign="center" htmlFor="longitude">Longitude</FormLabel>
+                                <Input {...field} fontSize="lg" type="number" id="longitude" placeholder="Longitude" />
                                 <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
                             </FormControl>
                         )}
                         </Field>
                     </HStack>
                     <Button
+                        size="lg"
+                        fontSize="xl"
                         mb={10}
                         bg={bg}
                         isLoading={isSubmitting}
@@ -91,7 +93,7 @@ const FormikForm = () => {
                 </Form>
                 )}
             </Formik>
-        </HStack>
+        </Stack>
     )
   };
 

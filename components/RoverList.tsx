@@ -26,16 +26,16 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
         cursor: "pointer",
         top: "50%",
         w: "auto",
-        mt: "-22px",
-        p: "16px",
+        mt: "-22",
+        p: "16",
         color: "white",
         fontWeight: "bold",
-        fontSize: "18px",
-        transition: "0.6s ease",
+        fontSize: "2xl",
+        transition: "0.5s ease",
         borderRadius: "0 3px 3px 0",
         _hover: {
-        opacity: 0.8,
-        bg: "black",
+        opacity: 0.6,
+        bg: "gray",
         },
     };
 
@@ -98,14 +98,13 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
                 <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
                 &#10095;
                 </Text>
-                <HStack justify="center" pos="absolute" bottom="8px" w="full">
+                <HStack justify="center" pos="absolute" bottom="3" w="full">
                     {Array.from({ length: slidesCount }).map((_, slide) => (
                         
                         <Box
                         key={`dots-${slide}`}
                         cursor="pointer"
-                        boxSize={["7px", "15px"]}
-                        m="0 2px"
+                        boxSize={["7px", "10px", "15px"]}
                         bg={currentSlide === slide ? "gray.800" : "gray.500"}
                         rounded="50%"
                         display="inline-block"

@@ -43,8 +43,7 @@ const HeaderNav = () =>{
             <IconButton
               display={{ base: "flex", md: "none" }}
               aria-label="Open menu"
-              fontSize="20px"
-              color={useColorModeValue("gray.800", "inherit")}
+              fontSize="3xl"
               variant="ghost"
               icon={<AiOutlineMenu />}
               onClick={mobileNav.onOpen}
@@ -57,21 +56,21 @@ const HeaderNav = () =>{
               right={0}
               display={mobileNav.isOpen ? "flex" : "none"}
               flexDirection="column"
-              p={2}
-              pb={4}
+              pt={5}
               bg={bg}
               spacing={3}
               rounded="sm"
               shadow="sm"
             >
               <CloseButton
+                mb={5}
                 aria-label="Close menu"
-                justifySelf="self-start"
                 onClick={mobileNav.onClose}
               />
               <NextLink href="/">
                 <Button 
-                  w="full" 
+                  w="full"
+                  size="lg"
                   variant="ghost" 
                   leftIcon={<AiFillHome />}
                 >
@@ -81,6 +80,7 @@ const HeaderNav = () =>{
               <NextLink href="/apods">
                 <Button
                   w="full"
+                  size="lg"
                   variant="ghost"
                   leftIcon={<BsFillImageFill />}
                 >
@@ -90,6 +90,7 @@ const HeaderNav = () =>{
               <NextLink href="/earth">
                 <Button
                   w="full"
+                  size="lg"
                   variant="ghost"
                   leftIcon={<FaSatelliteDish />}
                 >
@@ -99,6 +100,7 @@ const HeaderNav = () =>{
               <NextLink href="/epic">
                 <Button
                   w="full"
+                  size="lg"
                   variant="ghost"
                   leftIcon={<GiEarthAmerica />}
                 >
@@ -108,6 +110,7 @@ const HeaderNav = () =>{
               <NextLink href="/rover">
                 <Button
                   w="full"
+                  size="lg"
                   variant="ghost"
                   leftIcon={<GiEarthAmerica />}
                 >
@@ -153,7 +156,6 @@ const HeaderNav = () =>{
           isRound={true}
           aria-label="Color Toggle"
           size="sm"
-          alignSelf="flex-end"
           onClick={toggleColorMode}
         />
         <HStack
