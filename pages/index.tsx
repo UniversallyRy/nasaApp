@@ -8,7 +8,7 @@ const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
   return (
-    <Stack align="center" w="full" minH="100vh" spacing="40px" direction={["column", "column", "column", "column", "row", "row"]}>
+    <Stack align="center" w="full" minH="100vh" spacing="10" direction={["column", "column", "column", "column", "row", "row"]}>
       <Head key='pages/index key'>
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
@@ -41,7 +41,7 @@ const Home = () => {
         <Grid 
           flexWrap="wrap" 
           justifyContent="center" 
-          maxW="1000px"
+          maxW="full"
           mt="10" 
           gap={5}
         >
