@@ -145,7 +145,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
             left={0}
             right={0}
             bottom={0}
-            zIndex={isOpen ? 10 : 1}
+            zIndex={isOpen ? "docked" : "auto"}
             h={isOpen ? "auto" : "full"}
             w={isOpen ? "auto" : "full"}
             m={isOpen ? "auto" : "1"}

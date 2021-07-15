@@ -6,7 +6,7 @@ const ChangeDate = ({ selected, onChange }:any) => {
   return (
     <Box 
         m={5}
-        zIndex={10} 
+        zIndex="docked" 
         color='black'
     >
         <DatePicker withPortal selected={selected} onChange={onChange} />

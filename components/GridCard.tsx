@@ -19,7 +19,7 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
     <MotionBox
       whileHover={{
         position: 'relative',
-        zIndex: 1,
+        zIndex: "auto",
         scale: [1, 1.15, 1],
         transition: {
         duration: .2

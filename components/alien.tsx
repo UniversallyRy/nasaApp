@@ -14,8 +14,8 @@ const Alien = ({size}:any) => {
         <Box 
             bg={bg}
             m={10}
-            w="2xs"
-            h="2xs"
+            w={size}
+            h={size}
             transform= "rotate(45deg)"
             borderTopLeftRadius="150px"
             borderTopRightRadius="150px"
@@ -25,8 +25,8 @@ const Alien = ({size}:any) => {
             _before={{ 
                 content: '""',
                 pos: "absolute",
-                w: "3xs",
-                h: "3xs",
+                w: fitToSize,
+                h: fitToSize,
                 bg: "gray.900",
                 borderTopLeftRadius: "200px",
                 borderBottomRightRadius: "200px",
