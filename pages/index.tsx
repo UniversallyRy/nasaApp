@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading } from "@chakra-ui/react"
+import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
 import Alien from '../components/alien';
@@ -7,6 +7,7 @@ import Alien from '../components/alien';
 const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
+  const bg = useColorModeValue("gray.200", "gray.600");
   return (
     <Stack align="center" w="full" minH="100vh" spacing="10" direction={["column", "column", "column", "column", "row", "row"]}>
       <Head key='pages/index key'>
@@ -14,7 +15,9 @@ const Home = () => {
         <meta name="description" content="Look up information NASA provides" />
       </Head>
       <Alien
-        size='300px'
+        //suggested min size of 100 to avoid bugs 
+        size='300'
+        bg={bg}
       />
         <VStack>
           <MotionText
