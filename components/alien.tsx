@@ -1,49 +1,58 @@
 import React from 'react';
-import { Box, useColorModeValue } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 
 
-const Alien = ({size}:any) => {
-    const bg = useColorModeValue("gray.200", "gray.700");
-    const fitToSize = () => {
-        let sizeNum = size.match(/\d/g);
-        sizeNum = sizeNum.join((""))
-        let adjustedSize = (sizeNum / 3.75) 
+const Alien = ({size='300', bg}:any) => {
+    const alienSize = size.match(/\d/g).join("");
+    const sizeOneAndHalf = () => {
+        let adjustedSize = (alienSize / 1.5) 
+        return adjustedSize + 'px'
+    }
+    const sizeHalved = () => {
+        let adjustedSize = (alienSize / 2) 
+        return adjustedSize + 'px'
+    }
+    const sizeThird = () => {
+        let adjustedSize = (alienSize / 3) 
+        return adjustedSize + 'px'
+    }
+    const eyeToBoxSize = () => {
+        let adjustedSize = (alienSize / 3.75) 
         return adjustedSize + 'px'
     }
     return (
         <Box 
+            boxSize={alienSize}
             bg={bg}
-            m={10}
-            w={size}
-            h={size}
+            m={5}
             transform= "rotate(45deg)"
-            borderTopLeftRadius="150px"
-            borderTopRightRadius="150px"
-            borderBottomLeftRadius="150px"
-            borderBottomRightRadius="20px"
+            borderTopLeftRadius={sizeHalved()}
+            borderTopRightRadius={sizeHalved()}
+            borderBottomLeftRadius={sizeHalved()}
+            borderBottomRightRadius="15"
             boxShadow= "0 0 15px 15px rgba(0, 0, 0, 0.5)"
             _before={{ 
                 content: '""',
                 pos: "absolute",
-                w: fitToSize,
-                h: fitToSize,
+                w: eyeToBoxSize,
+                h: eyeToBoxSize,
                 bg: "gray.900",
-                borderTopLeftRadius: "200px",
-                borderBottomRightRadius: "200px",
-                top: "200px",
-                left: "100px",
+                borderTopLeftRadius: sizeOneAndHalf,
+                borderBottomRightRadius: sizeOneAndHalf,
+                top: sizeOneAndHalf,
+                left: sizeThird,
                 transform: "rotate(45deg)",
             }}
             _after={{ 
                 content: '""',
                 pos: "absolute",
-                w: fitToSize,
-                h: fitToSize,
+                w: eyeToBoxSize,
+                h: eyeToBoxSize,
                 bg: "gray.900",
-                borderTopLeftRadius: "200px",
-                borderBottomRightRadius: "200px",
-                top: "100px",
-                left: "200px",
+                borderTopLeftRadius: sizeOneAndHalf,
+                borderBottomRightRadius: sizeOneAndHalf,
+                top: sizeThird,
+                left: sizeOneAndHalf,
                 transform: "rotate(-45deg)",
             }}
             _hover={{
