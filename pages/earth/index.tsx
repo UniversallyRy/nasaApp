@@ -54,11 +54,10 @@ const Earth: NextPage<{ data: Data }> = () => {
         {newData.hasOwnProperty('url')
         ?<VStack>
           <Image
+            boxSize="container.md"
             rounded="lg"
-            shadow="sm"
+            shadow="xl"
             src={ newData.url }
-            height={ 600 }
-            width={ 600 }
             placeholder="blur"
             alt={ newData.resource.dataset }
           />

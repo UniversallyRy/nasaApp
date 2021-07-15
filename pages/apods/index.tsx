@@ -101,7 +101,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   }
 
   return (
-    <VStack  m={5}>
+    <VStack h="100vh" w="100vw" p={3}>
       <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
@@ -123,12 +123,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
       >
         { newData.title }
       </MotionHeading>
-      <Stack align="center" spacing="28px" direction={["column", "column", "row"]}>
+      <Stack align="center" spacing={10} direction={["column", "column", "row"]}>
         <Box
-          h="600px"
-          w="360px"
+          w={["xs", "sm", "lg", "xl"]}
           cursor={isOpen ? "zoom-out" : "zoom-in"}
-          m="20px 0"
         >
           <MotionDiv
             pos="fixed"
@@ -148,11 +146,11 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
             right={0}
             bottom={0}
             zIndex={isOpen ? 10 : 1}
-            h={isOpen ? "auto" : "100%"}
-            w={isOpen ? "auto" : "100%"}
+            h={isOpen ? "auto" : "full"}
+            w={isOpen ? "auto" : "full"}
             m={isOpen ? "auto" : "1"}
-            maxH={isOpen ? "100%" : "auto"}
-            maxW={isOpen ? "100%" : "auto"}
+            maxH={isOpen ? "full" : "auto"}
+            maxW={isOpen ? "full" : "auto"}
             pos={isOpen ? "fixed" : "relative"}
             objectFit="cover"
             objectPosition="center"
@@ -165,9 +163,9 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
         </Box>
         <Text
           fontSize={{ base: "11px", md: "12px", lg: "13px", xl: "13px"}}
-          lineHeight={1.6}
-          letterSpacing={0.4}
-          maxW={340}
+          lineHeight={["short","tall"]}
+          letterSpacing="wider"
+          maxW="xs"
           wordBreak='break-word'
           overflowWrap='anywhere'
           hyphens='auto'
