@@ -2,9 +2,10 @@
 import Head from "next/head";
 import NextLink from 'next/link';
 import { useState, createContext } from 'react'
-import { Image, Link, Text, Box, VStack, Stack } from "@chakra-ui/react";
+import { Img, Link, Text, Box, VStack, Stack } from "@chakra-ui/react";
 import { NextPage } from 'next';
 import FormikForm, { AlertBox } from "../../components/EarthSatForm";
+import { useMemo } from "react";
 
 // Take off default and add searchable options
 interface Data {
@@ -53,18 +54,20 @@ const Earth: NextPage<{ data: Data }> = () => {
         }
         {newImage.hasOwnProperty('url')
         ?<VStack>
-          <Image
+          <Img
+            aria-label="Satellite Image"
             boxSize="container.md"
             rounded="lg"
             shadow="xl"
             src={ newImage.url }
             placeholder="blur"
             alt={ newImage.resource.dataset }
+            fit
           />
           <Text m={2}>Date Taken: {newImage.date} </Text>
           <Text m={2}>Satellite: {newImage.resource.dataset } </Text>
          
-        <NextLink passHref href={ `/earth`}>
+        {/* <NextLink passHref href={ `/earth`}>
           <Link
             mt={3}
             bg="black"
@@ -77,7 +80,7 @@ const Earth: NextPage<{ data: Data }> = () => {
           >
             View Solo
           </Link>
-        </NextLink>
+        </NextLink> */}
       </VStack>
        :null
       }

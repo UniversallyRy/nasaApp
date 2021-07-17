@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { NextPage } from 'next';
 import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 import EpicItem from './EpicItem';
@@ -54,6 +54,21 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
     setCurrentSlide(slide);
   };
 
+  const memoedList = useMemo(() => {
+    if(list instanceof Array){
+      return list.map((item:any, index:any) => (
+              <EpicItem 
+                slidesCount={slidesCount}
+                key={ item.identifier } 
+                item={ item } 
+                index={ index }
+              />
+      ))
+    }else {
+      return <Text>No Images</Text>
+    }
+  }, [list, slidesCount])
+
   return (
     <Flex
       w={["full", "full", "container.md", "container.lg", "container.xl"]}
@@ -65,17 +80,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
       {list.length > 0
       ?<Flex w="full" pos="relative" overflow="hidden">
         <Flex h="full" w="full" {...carouselStyle}>
-          {list instanceof Array 
-            ?list.map((item:any, index:any) => (
-              <EpicItem 
-                slidesCount={slidesCount}
-                key={ item.identifier } 
-                item={ item } 
-                index={ index }
-              />
-            ))
-            : <Text>No Images</Text>
-          }
+          {memoedList}
         </Flex>
         <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
           &#10094;

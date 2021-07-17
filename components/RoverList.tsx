@@ -1,5 +1,5 @@
-import WeatherItem from './RoverItem';
-import {useState } from 'react';
+import RoverItem from './RoverItem';
+import { useState, useMemo } from 'react';
 import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 
 type ListProps = {
@@ -7,7 +7,6 @@ type ListProps = {
 
 };
 const RoverList  = ({ data }: ListProps) => {
-
     const [roverCamera, setCamera] = useState("FHAZ")
 
     const arrowStyles = {
@@ -70,6 +69,25 @@ const RoverList  = ({ data }: ListProps) => {
         setCamera(value);
     };
 
+    const memoedPhotos = useMemo(() => {
+        let photosArray:any = []
+        if(data instanceof Array){ 
+            data.map(( item:any, index:number) => {
+                if(item.camera.name == roverCamera) {
+                    photosArray.push(
+                        <RoverItem 
+                        slidesCount={ slidesCount }
+                        index={ photosArray.length }
+                        key={ index } 
+                        item={ item } 
+                        />
+                    )
+                }
+            })
+        }
+        return photosArray
+    }, [data, slidesCount, roverCamera])
+
     return (
         <VStack
             justifyContent="center" 
@@ -88,22 +106,7 @@ const RoverList  = ({ data }: ListProps) => {
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
             <Flex w="full" pos="relative" overflow="hidden">
                 <Flex h="full" w="full" {...carouselStyle}>
-                    {data instanceof Array 
-                        ? data.reduce((photosArray:object[], item:any, index:number) => {
-                            if(item.camera.name === roverCamera) {
-                                photosArray.push(
-                                    <WeatherItem 
-                                    slidesCount={ slidesCount }
-                                    index={ photosArray.length }
-                                    key={ index } 
-                                    item={ item } 
-                                    />
-                                )
-                            }
-                            return photosArray
-                        }, [])
-                        : null
-                    }
+                    {memoedPhotos}
                 </Flex>
                 <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
                 &#10094;
