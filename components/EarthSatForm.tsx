@@ -1,36 +1,21 @@
 import { Alert, AlertIcon, AlertTitle, useColorModeValue, Stack, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
-import { Formik, Form, Field } from "formik"
+import { Formik, Form, Field, FormikProps } from "formik"
 import { apiKey } from '../key';
 import { useState, useContext } from 'react'
 import { FormContext } from './../pages/earth';
 
+interface FormValues  {
+    latitude: number
+    longitude: number
+}
 
-const url = (lon:number, lat:number) => {
+
+export const url = (lon:number, lat:number) => {
 return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + `${apiKey}`;
 }
-
-export const AlertBox = () => {
-    
-    return(
-        <Alert
-            status="error"
-            variant="subtle"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            textAlign="center"
-            height="2xs"
-        >
-            <AlertIcon boxSize="lg" />
-            <AlertTitle mt={4} mb={1} fontSize="lg">
-                No Data Found
-            </AlertTitle>
-        </Alert>
-    )
-}
-
 const FormikForm = () => {
-    const { newData, setData }:any = useContext(FormContext);
+    const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
+    const { newImage, setImage }:any = useContext(FormContext);
     const [isSubmitting, setSubmit] = useState(false)
     const bg = useColorModeValue("blue.500", "purple.900");
     
@@ -45,7 +30,7 @@ const FormikForm = () => {
     return (
         <Stack alignContent="center" w="lg">
             <Formik
-                initialValues={{ latitude: 29.9792, longitude: 31.13 }}
+                initialValues={initialValues}
                 onSubmit={ async (values) => {
                     setSubmit(true)
                     let lon = values.longitude
@@ -55,7 +40,7 @@ const FormikForm = () => {
                     }, 3000)
                     const res = await fetch(url(lon, lat));
                     const data = await res.json();
-                    setData(data)
+                    setImage(data)
                 }}
             >
                 {() => (
@@ -97,4 +82,24 @@ const FormikForm = () => {
     )
   };
 
-  export default FormikForm;
+export const AlertBox = () => {
+    return(
+        <Alert
+            status="error"
+            variant="subtle"
+            flexDirection="column"
+            height="2xs"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+        >
+            <AlertIcon boxSize="lg" />
+            <AlertTitle mb={1} mt={4} fontSize="lg">
+                No Data Found
+            </AlertTitle>
+        </Alert>
+    )
+}
+
+
+export default FormikForm;

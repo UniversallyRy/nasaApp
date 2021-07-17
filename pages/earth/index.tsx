@@ -21,7 +21,7 @@ interface Data {
 export const FormContext = createContext({});
 
 const Earth: NextPage<{ data: Data }> = () => {
-  const [newData, setData]:any = useState({})
+  const [newImage, setImage]:any = useState({})
 
   return (
     <Box
@@ -43,26 +43,26 @@ const Earth: NextPage<{ data: Data }> = () => {
           <Text fontSize="md">Vegas Strip- Lat: 36.11, Lon: 115.20</Text>
           <Text fontSize="md">Beijing- Lat: 39.9, Lon: 116.4</Text>
         </VStack>
-        <FormContext.Provider value={{ newData, setData }}>
+        <FormContext.Provider value={{ newImage, setImage }}>
           <FormikForm />
         </FormContext.Provider>
       </Stack>
-        {newData.hasOwnProperty('msg')
+        {newImage.hasOwnProperty('msg')
           ?<AlertBox/>
           : null
         }
-        {newData.hasOwnProperty('url')
+        {newImage.hasOwnProperty('url')
         ?<VStack>
           <Image
             boxSize="container.md"
             rounded="lg"
             shadow="xl"
-            src={ newData.url }
+            src={ newImage.url }
             placeholder="blur"
-            alt={ newData.resource.dataset }
+            alt={ newImage.resource.dataset }
           />
-          <Text m={2}>Date Taken: {newData.date} </Text>
-          <Text m={2}>Satellite: {newData.resource.dataset } </Text>
+          <Text m={2}>Date Taken: {newImage.date} </Text>
+          <Text m={2}>Satellite: {newImage.resource.dataset } </Text>
          
         <NextLink passHref href={ `/earth`}>
           <Link
