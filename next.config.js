@@ -1,4 +1,6 @@
 const path = require("path");
+const withPlugins = require("next-compose-plugins");
+const optimizedImages = require("next-optimized-images");
 // @ts-check
 
 /**
@@ -35,4 +37,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPlugins([[optimizedImages, {}], nextConfig]);
