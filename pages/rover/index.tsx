@@ -21,16 +21,15 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <Flex>
+    <Box minH="100vh">
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
         <meta property="og:rover" content="Mars Rover Photos" key={2021} />
       </Head>
       <VStack>
-        <Box m={20}>
+        <Box m={10}>
           <NextLink passHref href="/">
             <Link
-              mt={3}
               bg="gray.900"
               color="gray.100"
               px={5}
@@ -45,7 +44,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
         </Box>
         <RoverList data={data.photos}/>
       </VStack>
-    </Flex>
+    </Box>
   );
 }
 

@@ -1,6 +1,6 @@
 import RoverItem from './RoverItem';
 import { useState, useMemo } from 'react';
-import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, Stack } from '@chakra-ui/react';
 
 type ListProps = {
   data: object[] | undefined
@@ -89,11 +89,9 @@ const RoverList  = ({ data }: ListProps) => {
     }, [data, slidesCount, roverCamera])
 
     return (
-        <VStack
-            justifyContent="center" 
-            w="full"
+        <Stack
+            flexDirection="column" 
             bg={useColorModeValue("gray.200", "gray.600")}
-            alignItems="center"
         >
             <Select value={roverCamera} onChange={handleChange} placeholder="Select Camera">
                 <option value="FHAZ">Front Hazard Avoidance Camera</option>
@@ -104,7 +102,7 @@ const RoverList  = ({ data }: ListProps) => {
                 <option value="NAVCAM">Navigation Camera</option>
             </Select>
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
-            <Flex w="full" pos="relative" overflow="hidden">
+            <Flex w="98vw" pos="relative" overflow="hidden">
                 <Flex h="full" w="full" {...carouselStyle}>
                     {memoedPhotos}
                 </Flex>
@@ -115,7 +113,8 @@ const RoverList  = ({ data }: ListProps) => {
                 &#10095;
                 </Text>
                 <HStack justify="center" pos="absolute" bottom="3" w="full">
-                    {Array.from({ length: slidesCount }).map((_, slide) => (
+                    {Array.from({ length: slidesCount }).map((_, slide) => {
+                        if(slidesCount <= 10) {
                         <Box
                             key={`dots-${slide}`}
                             cursor="pointer"
@@ -127,10 +126,13 @@ const RoverList  = ({ data }: ListProps) => {
                             _hover={{ bg: "gray.800" }}
                             onClick={() => setSlide(slide)}
                         />
-                ))}
+                        }else{
+                            return null
+                        }
+                    })}
                 </HStack>
             </Flex>
-        </VStack>
+        </Stack>
     )
 };
 

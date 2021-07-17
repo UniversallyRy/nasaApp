@@ -1,5 +1,5 @@
-
-import { Box, Text, useColorModeValue, Image } from "@chakra-ui/react";
+import { Box, Text, useColorModeValue } from "@chakra-ui/react";
+import { ChakraNextImage } from "./Image";
 
 type ItemProps = {
     item: {
@@ -15,7 +15,6 @@ type ItemProps = {
     slidesCount: number
 }
 
-
 const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
     return (
         <Box
@@ -30,13 +29,10 @@ const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
             <Text m={2}>Sol: { item.sol }</Text>
             <Text m={2}>Camera: { item.camera.name }</Text>
 
-            <Image
+            <ChakraNextImage
                 rounded="lg"
                 shadow="sm"
                 src={ item.img_src }
-                boxSize="full"
-                backgroundSize="cover"
-                placeholder="blur"
                 alt={ item.id }
             />
             <Text
