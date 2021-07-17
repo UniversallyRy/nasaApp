@@ -1,5 +1,5 @@
 import { useRouter, NextRouter } from 'next/router'
-import { useColorModeValue, Button } from "@chakra-ui/react";
+import {  Button } from "@chakra-ui/react";
 import { IconType }  from 'react-icons';
 
 
@@ -11,18 +11,16 @@ type ButtonProps = {
 
 const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
 
-  const backGround = useColorModeValue("blue.500", "purple.900");
-
   const router: NextRouter = useRouter()
+
+  const label = `${title} navigation button`
   
   return (
     <Button
-      bg={backGround}
+      aria-label={label}
       size="md"
       fontWeight="semibold"
       rounded="sm"
-      shadow="md"
-      variant="outlined" 
       leftIcon={buttonIcon}
       _focus={{
         outline: "none",
@@ -30,8 +28,7 @@ const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
       }}
       _hover={{
         shadow:"xl",
-        fontSize:"lg",
-        boxShadow: "0 0 1px 1px rgba(46, 49, 49, 1), 0 1px 1px rgba(0, 0, 0, .35)"
+        boxShadow: "0 0 .4px .3px rgba(46, 49, 49, 1), 0 .3px .3px rgba(0, 0, 0, .35)"
       }}
       onClick={() => router.push(href)}
     >

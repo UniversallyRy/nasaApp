@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
+import { Image, chakra, VStack, Stack, Text, TextProps, SimpleGrid, Heading, useColorModeValue } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
-import GridCard from '../components/GridCard';
+import HeroCard from '../components/HeroCard';
 import AlienHead from '../components/AlienHead';
 
 const MotionText = motion<TextProps>(Text)
@@ -19,7 +19,7 @@ const Home = () => {
         headSize='300'
         headColor={backGround}
       />
-        <VStack>
+        <VStack justify='center'>
           <MotionText
             initial="hidden" 
             animate="visible" 
@@ -41,43 +41,40 @@ const Home = () => {
               View Satellites, Rovers and other Astronomy
             </Heading>
           </MotionText>
-        <Grid 
-          flexWrap="wrap" 
-          justifyContent="center" 
-          maxW="full"
-          mt="10" 
-          gap={5}
+        <SimpleGrid 
+          gap={3}
+          columns={[1, 1, 2,]}
         >
-          <GridCard
+          <HeroCard
             href='/apods'
             title='APOD &rarr;' 
             paragraph='View the Astronomy Picture of the Day.'
+            imgSrc='/apod.png'
           />
-          <GridCard 
+          <HeroCard 
             href='/earth'
             title='Earth &rarr;' 
             paragraph='Landsat imagery is provided to the public as a joint project between NASA and USGS.'
+            imgSrc='/satellite.png'
             />
-          <GridCard 
+          <HeroCard 
             href='/epic'
             title='EPIC &rarr;' 
             paragraph='Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.'
+            imgSrc='/planet.png'
             />
-          <GridCard 
+          <HeroCard 
             href='/rover'
             title='Mars Rover Photos &rarr;' 
             paragraph='Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars.'
+            imgSrc='/mars-rover.png'
           />
-          <GridCard 
-            href='/'
-            title='NASA Image and Video Library &rarr;' 
-            paragraph='Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.'
-            />
-        </Grid>
+        </SimpleGrid>
 
-        <chakra.footer >
+        </VStack>
+        <VStack mt={5}>
           <chakra.a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://verscel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
             >
@@ -86,8 +83,8 @@ const Home = () => {
               <Image src="/vercel.svg" alt="Vercel Logo" htmlWidth={ 72 } htmlHeight={ 16 } />
             </chakra.span>
           </chakra.a>
-        </chakra.footer>
-      </VStack>
+          <chakra.div>Hero icons made by <chakra.a href="https://www.freepik.com" title="Freepik">Freepik</chakra.a> from <chakra.a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</chakra.a></chakra.div>
+        </VStack>
     </Stack>
   )
 };

@@ -14,9 +14,8 @@ interface Data {
 
 const EpicList: NextPage<{ data: Data }> = ({ data }) => {
 
-  const list = data;
-
-  const slidesCount = list.length;
+  console.log(data)
+  const slidesCount = data.length;
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const arrowStyles = {
@@ -55,8 +54,8 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
   };
 
   const memoedList = useMemo(() => {
-    if(list instanceof Array){
-      return list.map((item:any, index:any) => (
+    if(data instanceof Array){
+      return data.map((item:any, index:any) => (
               <EpicItem 
                 slidesCount={slidesCount}
                 key={ item.identifier } 
@@ -67,7 +66,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
     }else {
       return <Text>No Images</Text>
     }
-  }, [list, slidesCount])
+  }, [data, slidesCount])
 
   return (
     <Flex
@@ -77,10 +76,20 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
       alignItems="center"
       justifyContent="center"
     >
-      {list.length > 0
-      ?<Flex w="full" pos="relative" overflow="hidden">
+      {slidesCount > 0
+      ?<Flex w="xl" pos="relative" overflow="hidden">
         <Flex h="full" w="full" {...carouselStyle}>
-          {memoedList}
+        {data instanceof Array
+            ?data.map((item:any, index:any) => (
+              <EpicItem 
+                slidesCount={slidesCount}
+                key={ item.identifier } 
+                item={ item } 
+                index={ index }
+              />
+            ))
+          :<Text>No Images</Text>
+        }
         </Flex>
         <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
           &#10094;

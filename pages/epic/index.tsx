@@ -30,7 +30,6 @@ const fetchedUrl = (date = new Date()): string => {
 
 // todos: add datepicker and default to closest date
 const Epics = ({ data }: EpicsProps) => {
-  
   const [fetchedData, setData]  = useState(data);
   
   const [startDate, setStartDate] = useState(new Date());

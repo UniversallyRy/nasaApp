@@ -1,17 +1,19 @@
 import React from "react";
 import NextLink from "next/link";
-import { chakra, Box, BoxProps, useColorModeValue, Link } from "@chakra-ui/react";
+import Image from 'next/image'
+import { chakra, Box, BoxProps, Stack, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
 
 type CardProps = {
   title: string;
   paragraph: string;
   href: string;
+  imgSrc: string
 };
 
 const MotionBox = motion<BoxProps>(Box);
 
-const HomeCard = ({title, paragraph, href}: CardProps) => {
+const HeroCard = ({title, paragraph, href, imgSrc}: CardProps) => {
   
   const backGround = useColorModeValue("blue.500", "purple.900");
 
@@ -26,15 +28,19 @@ const HomeCard = ({title, paragraph, href}: CardProps) => {
         }
       }}
       mx={3}
-      px={8}
-      py={2}
+      px={5}
       rounded="sm"
-      shadow="lg"
+      shadow="xl"
       bg={backGround}
-      maxW="xl"
-      flexBasis={['auto', '45%']}
+      boxSize={["sm", "sm","sm", "md"]}
     >
-      <Box>
+      <Stack spacing={2} align="center"p={3}>
+        <Image
+          width='200'
+          height='200'
+          src={imgSrc}
+          alt="Icon made by Freepik from www.flaticon.com"
+        />
         <NextLink passHref href={href}>
           <Link
             fontSize={["xl", "2xl"]}
@@ -48,12 +54,12 @@ const HomeCard = ({title, paragraph, href}: CardProps) => {
             {title}
           </Link>
         </NextLink>
-        <chakra.p fontSize={["xs", "sm", "md"]} mt={2} color={useColorModeValue("gray.600", "gray.300")}>
+        <chakra.p fontSize={["xs", "sm", "md"]} m={5} color={useColorModeValue("gray.600", "gray.300")}>
           {paragraph}
         </chakra.p>
-      </Box>
+      </Stack>
     </MotionBox>
   );
 };
   
-export default HomeCard;
+export default HeroCard;

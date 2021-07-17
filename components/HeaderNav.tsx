@@ -12,7 +12,8 @@ import {
   CloseButton,
   VStack,
   Button,
-  Spacer
+  Spacer,
+  ButtonGroup
 } from "@chakra-ui/react";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { BsFillImageFill } from "react-icons/bs";
@@ -120,7 +121,7 @@ const HeaderNav = () => {
             </VStack>
           </Box>
 
-          <HStack spacing={4} display={{ base: "none", md: "inline-flex" }}>
+          <ButtonGroup variant="ghost" spacing={3} display={{ base: "none", md: "inline-flex" }}>
             <HeaderButton 
               href="/"
               title="Home" 
@@ -146,7 +147,7 @@ const HeaderNav = () => {
               title="Rover Photos" 
               buttonIcon={<GiEarthAmerica />}
             />
-          </HStack> 
+          </ButtonGroup> 
         </HStack>
         <Spacer />
         <IconButton
