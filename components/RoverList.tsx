@@ -76,10 +76,10 @@ const RoverList  = ({ data }: ListProps) => {
                 if(item.camera.name == roverCamera) {
                     photosArray.push(
                         <RoverItem 
-                        slidesCount={ slidesCount }
-                        index={ photosArray.length }
-                        key={ index } 
-                        item={ item } 
+                            slidesCount={ slidesCount }
+                            index={ photosArray.length }
+                            key={ index } 
+                            item={ item } 
                         />
                     )
                 }
