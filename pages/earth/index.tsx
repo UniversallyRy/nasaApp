@@ -21,7 +21,7 @@ interface Data {
 export const FormContext = createContext({});
 
 const Earth: NextPage<{ data: Data }> = () => {
-  const [newImage, setImage]:any = useState({})
+  const [newImage, setImage] = useState(Object)
 
   return (
     <Box
