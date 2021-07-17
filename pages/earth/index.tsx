@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import { ChakraNextImage }  from "../../components/Image";
 import { useState, createContext } from 'react'
@@ -22,7 +21,7 @@ export const FormContext = createContext({});
 
 const Earth: NextPage<{ data: Data }> = () => {
   const [newImage, setImage] = useState(Object)
-
+console.log(newImage)
   return (
     <Box
       minH="100vh"
@@ -58,7 +57,7 @@ const Earth: NextPage<{ data: Data }> = () => {
             boxSize="container.md"
             rounded="lg"
             shadow="xl"
-            src={ newImage.url }
+            src={ newImage.hdurl }
             alt={ newImage.resource.dataset }
           />
           <Text m={2}>Date Taken: {newImage.date} </Text>
