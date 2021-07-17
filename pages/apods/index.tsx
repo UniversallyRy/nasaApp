@@ -2,7 +2,7 @@ import NextLink from "next/link";
 import Head from "next/head";
 import { apiKey } from '../../key';
 import { GetStaticProps, NextPage } from 'next';
-import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps } from "@chakra-ui/react";
+import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps, useColorModeValue } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
@@ -58,6 +58,8 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   const [newData, setData]  = useState(data);
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
+  const backGround = useColorModeValue("rgba(232, 236, 241, 0.8)", "rgba(0, 0, 0, 0.95)");
+
   
   const imgAnimation = useAnimation();
 
@@ -142,7 +144,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
             bottom="0"
             pointerEvents={isOpen ? "auto" :"none"}
             opacity={isOpen ? 1 : 0}
-            bg="rgba(0, 0, 0, 0.9)"
+            bg={backGround}
             animate={{ opacity: isOpen ? 1 : 0 }}
             onClick={() => setOpen(false)}
           />
@@ -157,7 +159,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
             m={isOpen ? "auto" : "1"}
             maxH={isOpen ? "full" : "auto"}
             maxW={isOpen ? "full" : "auto"}
-            pos={isOpen ? "fixed" : "relative"}
+            pos={isOpen ? "absolute" : "relative"}
             objectFit="cover"
             objectPosition="center"
             animate={imgAnimation}
