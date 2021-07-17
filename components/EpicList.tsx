@@ -1,7 +1,7 @@
-import EpicItem from './EpicItem';
+import React, { useState } from "react";
 import { NextPage } from 'next';
 import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
-import React, { useState } from "react";
+import EpicItem from './EpicItem';
 
 interface Data {
   title: string;
