@@ -1,19 +1,19 @@
 import React from "react";
 import NextLink from "next/link";
-import { chakra, Box, BoxProps, Flex, useColorModeValue, Link } from "@chakra-ui/react";
+import { chakra, Box, BoxProps, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
-
 
 type CardProps = {
   title: string;
   paragraph: string;
   href: string;
-}
+};
 
-const MotionBox = motion<BoxProps>(Box)
+const MotionBox = motion<BoxProps>(Box);
 
-const HomeCard = ({title, paragraph, href}:CardProps) => {
-  const bg = useColorModeValue("blue.500", "purple.900");
+const HomeCard = ({title, paragraph, href}: CardProps) => {
+  
+  const backGround = useColorModeValue("blue.500", "purple.900");
 
   return (
     <MotionBox
@@ -30,7 +30,7 @@ const HomeCard = ({title, paragraph, href}:CardProps) => {
       py={2}
       rounded="sm"
       shadow="lg"
-      bg={bg}
+      bg={backGround}
       maxW="xl"
       flexBasis={['auto', '45%']}
     >
