@@ -17,8 +17,8 @@ type Props = {
     slidesCount: number
 };
 
-const EpicItem = ({ item, index, slidesCount }: Props) => {   
-    const dateFormatter = item.date.slice(0, 10).split('-').join('/')
+const EpicItem = ({ ...props }: Props) => {   
+    const dateFormatter = props.item.date.slice(0, 10).split('-').join('/')
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
 
     return (
@@ -36,16 +36,16 @@ const EpicItem = ({ item, index, slidesCount }: Props) => {
                 color="white"
                 p="3"
             >
-                {index + 1} / {slidesCount}
+                {props.index + 1} / {props.slidesCount}
             </Text>
             <ChakraNextImage
                 rounded="lg"
                 shadow="sm"
                 boxSize="full"
                 backgroundSize="auto"
-                src={ imageLink + item.image + `.png` }
+                src={ imageLink + props.item.image + `.png` }
                 placeholder="blur"
-                alt={ item.title }
+                alt={ props.item.title }
             />
             <VStack 
                 pos="absolute"
@@ -56,10 +56,10 @@ const EpicItem = ({ item, index, slidesCount }: Props) => {
                 color="green.900"
                 userSelect="none"
             >
-                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ item.caption }</Text>
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Lat: { item.centroid_coordinates.lat }</Text>
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { item.centroid_coordinates.lon }</Text>
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { item.date }</Text>
+                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ props.item.caption }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Lat: { props.item.centroid_coordinates.lat }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { props.item.centroid_coordinates.lon }</Text>
+                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { props.item.date }</Text>
             </VStack>
         </Box>  
     )

@@ -4,8 +4,8 @@ import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, Stack } fr
 
 type ListProps = {
   data: object[] | undefined
-
 };
+
 const RoverList  = ({ data }: ListProps) => {
     const [roverCamera, setCamera] = useState("FHAZ")
 

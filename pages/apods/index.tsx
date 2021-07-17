@@ -10,8 +10,8 @@ export interface Global extends NodeJS.Global {
   document: Document;
   window: Window;
 }
-
 declare var global: Global;
+
 interface Data {
   url: string;
   title: string;

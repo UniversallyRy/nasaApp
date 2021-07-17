@@ -9,11 +9,11 @@ type ButtonProps = {
   href: string
 };
 
-const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
+const HeaderButton = ({ ...props }: ButtonProps) => {
 
   const router: NextRouter = useRouter()
 
-  const label = `${title} navigation button`
+  const label = `${props.title} navigation button`
   
   return (
     <Button
@@ -21,7 +21,7 @@ const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
       size="md"
       fontWeight="semibold"
       rounded="sm"
-      leftIcon={buttonIcon}
+      leftIcon={props.buttonIcon}
       _focus={{
         outline: "none",
         boxShadow: "0 0 1px 1px rgba(46, 49, 49, 1), 0 1px 1px rgba(0, 0, 0, .35)"
@@ -30,9 +30,9 @@ const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
         shadow:"xl",
         boxShadow: "0 0 .4px .3px rgba(46, 49, 49, 1), 0 .3px .3px rgba(0, 0, 0, .35)"
       }}
-      onClick={() => router.push(href)}
+      onClick={() => router.push(props.href)}
     >
-      {title}
+      {props.title}
     </Button>
   );
 };

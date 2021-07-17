@@ -2,14 +2,14 @@ import React from 'react';
 import { Stack } from "@chakra-ui/react";
 
 type AlienProps = {
-    headSize?: string
-    headColor?: string | undefined
+    boxSize: string
+    bg?: string | undefined
 };
 
 
-const AlienHead = ({headSize='300', headColor='white'}: AlienProps) => {
+const AlienHead = ({ ...props }: AlienProps) => {
 
-    const size:number = parseInt( (headSize.match(/\d/g) || []).join("") );
+    const size:number = parseInt( (props.boxSize.match(/\d/g) || []).join("") );
 
     const headRadius = (): string => {
         let adjustedSize = (size / 2) 
@@ -33,14 +33,13 @@ const AlienHead = ({headSize='300', headColor='white'}: AlienProps) => {
 
     return (
         <Stack
+            {...props}
             aria-label='Animated Alien Head'
             borderTopLeftRadius={headRadius()}
             borderTopRightRadius={headRadius()}
             borderBottomLeftRadius={headRadius()}
             borderBottomRightRadius="15"
             boxShadow= "0 0 15px 15px rgba(0, 0, 0, 0.5)"
-            boxSize={headSize}
-            bg={headColor}
             m={5}
             transform= "rotate(45deg)"
             _before={{ 

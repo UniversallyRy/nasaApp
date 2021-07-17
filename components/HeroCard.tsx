@@ -13,7 +13,7 @@ type CardProps = {
 
 const MotionBox = motion<BoxProps>(Box);
 
-const HeroCard = ({title, paragraph, href, imgSrc}: CardProps) => {
+const HeroCard = ({ ...props }: CardProps) => {
   
   const backGround = useColorModeValue("blue.500", "purple.900");
 
@@ -38,10 +38,10 @@ const HeroCard = ({title, paragraph, href, imgSrc}: CardProps) => {
         <Image
           width='200'
           height='200'
-          src={imgSrc}
+          src={props.imgSrc}
           alt="Icon made by Freepik from www.flaticon.com"
         />
-        <NextLink passHref href={href}>
+        <NextLink passHref href={props.href}>
           <Link
             fontSize={["xl", "2xl"]}
             color={useColorModeValue("gray.700", "white")}
@@ -51,11 +51,11 @@ const HeroCard = ({title, paragraph, href, imgSrc}: CardProps) => {
               textDecor: "underline",
             }}
           >
-            {title}
+            {props.title}
           </Link>
         </NextLink>
         <chakra.p fontSize={["xs", "sm", "md"]} m={5} color={useColorModeValue("gray.600", "gray.300")}>
-          {paragraph}
+          {props.paragraph}
         </chakra.p>
       </Stack>
     </MotionBox>

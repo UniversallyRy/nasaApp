@@ -14,7 +14,6 @@ interface Data {
 
 const EpicList: NextPage<{ data: Data }> = ({ data }) => {
 
-  console.log(data)
   const slidesCount = data.length;
   const [currentSlide, setCurrentSlide] = useState(0);
 

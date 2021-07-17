@@ -1,22 +1,27 @@
-import DatePicker from "react-datepicker";
+import React from "react";
+import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Flex } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 
-type DateProps = {
-  selected?: Date
-  onChange: (date: Date) => Promise<void>
-};
-
-const ChangeDate = ({ selected, onChange }: DateProps) => {
+interface Props {
+  onChange: (date: Date) => Promise<void>;
+  selected: Date | undefined;
+  
+}
+  
+const DatePicker = ({ ...props }: Props) => {
+  const isLight = useColorMode().colorMode === "light"; //you can check what theme you are using right now however you want
   return (
-    <Flex 
-      m={5}
-      zIndex="docked" 
-      color='black'
-    >
-      <DatePicker withPortal selected={selected} onChange={onChange} />
-    </Flex>
-  )
+    // if you don't want to use chakra's colors or you just wwant to use the original ones,
+    // set className to "light-theme-original" ↓↓↓↓
+    <Box m={1} color="black" className={isLight ? "light-theme" : "dark-theme"}>
+      <ReactDatePicker
+        withPortal
+        {...props}
+      />
+    </Box>
+  );
 };
 
-export default ChangeDate;
+export default DatePicker;
+

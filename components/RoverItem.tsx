@@ -15,7 +15,7 @@ type ItemProps = {
     slidesCount: number
 }
 
-const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
+const RoverItem = ({ ...props }: ItemProps) => {
     return (
         <Box
             boxSize="full"
@@ -25,15 +25,15 @@ const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
             shadow="lg"
             bg={useColorModeValue("white", "gray.800")}
         >
-            <Text ml={2} mt={7}>Date Taken: { item.earth_date }</Text>
-            <Text m={2}>Sol: { item.sol }</Text>
-            <Text m={2}>Camera: { item.camera.name }</Text>
+            <Text ml={2} mt={7}>Date Taken: { props.item.earth_date }</Text>
+            <Text m={2}>Sol: { props.item.sol }</Text>
+            <Text m={2}>Camera: { props.item.camera.name }</Text>
 
             <ChakraNextImage
                 rounded="lg"
                 shadow="sm"
-                src={ item.img_src }
-                alt={ item.id }
+                src={ props.item.img_src }
+                alt={ props.item.id }
             />
             <Text
                 color="white"
@@ -42,23 +42,8 @@ const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
                 pos="absolute"
                 top="0"
             >
-                {index + 1} / {slidesCount}
+                {props.index + 1} / {props.slidesCount}
             </Text>
-            
-            {/* <NextLink passHref href={ `/epic/${ item.id = index }`}>
-                <Link
-                    m={3}
-                    bg="black"
-                    color="gray.100"
-                    px={5}
-                    py={3}
-                    fontWeight="semibold"
-                    rounded="lg"
-                    _hover={{ bg: "gray.900" }}
-                >
-                    View Solo
-                </Link>
-          </NextLink> */}
         </Box>  
     )
 };
