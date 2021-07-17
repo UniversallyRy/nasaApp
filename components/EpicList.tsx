@@ -6,14 +6,20 @@ import { useState } from "react";
 interface Data {
   title: string;
   date: number;
+  length: number;
   explanation: string;
   identifier: string;
   hdurl: string;
-  map: ((item: object) => void);
-}
+};
 
-const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
-  const slidesCount = data.length;
+const EpicList: NextPage<{ data: Data }> = ({ data }) => {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const list = data;
+
+  const slidesCount = list.length;
+
   const arrowStyles = {
     cursor: "pointer",
     top: "50%",
@@ -31,22 +37,23 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
     },
   };
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-
-  const prevSlide = () => {
-    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
-  };
-  const nextSlide = () => {
-    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
-  };
-  const setSlide = (slide:any) => {
-    setCurrentSlide(slide);
-  };
   const carouselStyle = {
     transition: "all .5s",
     ml: `-${currentSlide * 100}%`,
   };
+
+  const prevSlide = () => {
+    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
+  };
+
+  const setSlide = (slide:any) => {
+    setCurrentSlide(slide);
+  };
+
   return (
     <Flex
       w={["full", "full", "container.md", "container.lg", "container.xl"]}
@@ -57,14 +64,17 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
     >
       <Flex w="full" pos="relative" overflow="hidden">
         <Flex h="full" w="full" {...carouselStyle}>
-          {data.map((item:any, index:any) => (
-            <EpicItem 
-              slidesCount={slidesCount}
-              key={ item.identifier } 
-              item={ item } 
-              index={ index }
-            />
-          ))}
+          {list instanceof Array 
+            ?list.map((item:any, index:any) => (
+              <EpicItem 
+                slidesCount={slidesCount}
+                key={ item.identifier } 
+                item={ item } 
+                index={ index }
+              />
+            ))
+            : null
+          }
         </Flex>
         <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
           &#10094;
@@ -91,6 +101,6 @@ const EpicList: NextPage<{ data: Data }> = ({ data }:any) => {
       </Flex>
     </Flex>
   )
-}
+};
 
 export default EpicList;
