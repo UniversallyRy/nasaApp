@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouter } from 'next/router'
 import NextLink from "next/link";
 import {
   chakra,
@@ -21,21 +20,22 @@ import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
 import HeaderButton from './HeaderButton'
 
-const HeaderNav = () =>{
-  const router = useRouter()
+
+
+const HeaderNav = () => {
   // const isActive = router.pathname === '/'
   const { colorMode, toggleColorMode } = useColorMode();
-  const bg = useColorModeValue("gray.300", "gray.900");
+  const backGround = useColorModeValue("gray.300", "gray.900");
   const mobileNav = useDisclosure();
 
   return (
     <chakra.header
-      key="headernav-key"
-      bg={bg}
       w="full"
+      bg={backGround}
       px={{ base: 2, sm: 4 }}
       py={4}
       shadow="md"
+      key="headernav-key"
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <HStack display="flex" spacing={3} alignItems="center">
@@ -57,7 +57,7 @@ const HeaderNav = () =>{
               display={mobileNav.isOpen ? "flex" : "none"}
               flexDirection="column"
               pt={5}
-              bg={bg}
+              bg={backGround}
               spacing={3}
               rounded="sm"
               shadow="sm"
