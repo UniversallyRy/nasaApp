@@ -3,7 +3,6 @@ import Head from "next/head";
 import NextLink from "next/link";
 import { useState } from "react";
 import { VStack, Box, Link } from "@chakra-ui/react";
-import { apiKey } from '../../key';
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 
@@ -15,7 +14,7 @@ interface EpicsProps {
   }
 };
 
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + apiKey;
+const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + process.env.API_KEY;
 
 const fetchedUrl = (date = new Date()): string => {
   let day, month, year, newDay, newMonth;
@@ -24,7 +23,7 @@ const fetchedUrl = (date = new Date()): string => {
   newDay = day.toString().padStart(2, '0');
   newMonth = month.toString().padStart(2, '0');
   let newDate = [year, newMonth, newDay].join('-');
-  const fetched = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + apiKey;
+  const fetched = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + process.env.API_KEY;
 
   return fetched;
 };

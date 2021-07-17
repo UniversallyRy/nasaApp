@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
 import { VStack, Box, Link } from "@chakra-ui/react";
-import { apiKey } from '../../key';
 import RoverList from '../../components/RoverList';
 
 interface Data {
@@ -15,7 +14,7 @@ interface Data {
   map: ((item: object) => void);
 }
 //todos: expansion on components/pages?, rover camera choices, style fixes 
-const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2021-7-2&api_key=' + apiKey;
+const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2021-7-2&api_key=' + process.env.API_KEY;
 
 const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
