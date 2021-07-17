@@ -7,11 +7,19 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
 
+export interface Global extends NodeJS.Global {
+  document: Document;
+  window: Window;
+}
+
+declare var global: Global;
 interface Data {
   url: string;
   title: string;
   explanation: string;
-  date: number;
+  date: string;
+  copyright: string
+  hdurl: string
 }
 
 const MotionHeading = motion<HeadingProps>(Heading);
@@ -35,7 +43,7 @@ const variants = {
   }
 };
 
-const fetchedData = (date = new Date()):string => {
+const fetchedData = (date = new Date()): string => {
   let day, month, year, newDay, newMonth;
   let thisDate = date;
   [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
@@ -46,13 +54,14 @@ const fetchedData = (date = new Date()):string => {
   return url;
 }
 
-const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
+const APOD: NextPage<{ data: Data }> = ({ data }) => {
   const [newData, setData]  = useState(data);
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
   const imgAnimation = useAnimation();
 
-  const handleMouseMove = (e:any) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
+    e.preventDefault();
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
@@ -70,9 +79,9 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
     let [year, month, day] = splitDate;
     let newDate = new Date();
     day = day.replace(/^0+/, '');
-    if(day != newDate.getDate() || 
-      month != newDate.getMonth() || 
-      year != newDate.getFullYear()) 
+    if(parseInt(day) != newDate.getDate() || 
+      parseInt(month) != newDate.getMonth() || 
+      parseInt(year) != newDate.getFullYear()) 
       {
         return setStartDate(newDate);
       }
@@ -81,10 +90,6 @@ const APOD: NextPage<{ data: Data }> = ({ data }:any) => {
   const hideImage = () => {
     return isOpen && setOpen(false);
   };
-  
-  if (typeof window === 'undefined') {
-    global.window = {}
-  }
  
   useDomEvent(useRef(window as any), "scroll", () => hideImage());
   useDomEvent(useRef(window as any), "keydown",(e: any) => e.keyCode === 27 && hideImage());
