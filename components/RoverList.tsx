@@ -1,26 +1,15 @@
 import WeatherItem from './RoverItem';
 import { NextPage } from 'next';
-import {useState} from 'react';
-import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
-
+import {useState, MouseEventHandler} from 'react';
+import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack, SelectProps} from '@chakra-ui/react';
 
 interface Data {
-  map: ((item: object) => void);
-}
+  photos: object[];
+};
 
-const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
+const RoverList: NextPage<{ data: Data }> = ({ data }) => {
+
     const [roverCamera, setCamera] = useState("FHAZ")
-    
-    const getCount = () => {
-        let count = 0;
-        data.photos.map((item:any, index:any) => {
-            if(item.camera.name === roverCamera) {
-                count++
-            }
-        })
-        return count;
-    }
-    const slidesCount = getCount();
 
     const arrowStyles = {
         cursor: "pointer",
@@ -38,26 +27,48 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
         bg: "gray",
         },
     };
+    
+    const getCount = () => {
 
+        let count = 0;
+
+        if(data.photos instanceof Array) { 
+            data.photos.map((item:any, index:any) => {
+                if(item.camera.name === roverCamera) {
+                    count++
+                }
+            })
+        }
+
+        return count;
+    }
+
+    const slidesCount = getCount();
+    
     const [currentSlide, setCurrentSlide] = useState(0);
-
-
-    const prevSlide = () => {
-        setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
-    };
-    const nextSlide = () => {
-        setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
-    };
-    const setSlide = (slide:any) => {
-        setCurrentSlide(slide);
-    };
+    
     const carouselStyle = {
         transition: "all .5s",
         ml: `-${currentSlide * 100}%`,
     };
-    
-    const handleChange = (event: any) => {
-        setCamera(event.target.value);
+
+    const prevSlide = () => {
+        setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
+    };
+
+    const nextSlide = () => {
+        setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
+    };
+
+    const setSlide = (slide:number) => {
+        setCurrentSlide(slide);
+    };
+
+    const handleChange = (event: React.FormEvent<HTMLElement>) => {
+        event.preventDefault();
+        const element = event.currentTarget as HTMLInputElement
+        const value = element.value
+        setCamera(value);
     };
 
     return (
@@ -100,17 +111,16 @@ const RoverList: NextPage<{ data: Data }> = ({ data }:any) => {
                 </Text>
                 <HStack justify="center" pos="absolute" bottom="3" w="full">
                     {Array.from({ length: slidesCount }).map((_, slide) => (
-                        
                         <Box
-                        key={`dots-${slide}`}
-                        cursor="pointer"
-                        boxSize={["7px", "10px", "15px"]}
-                        bg={currentSlide === slide ? "gray.800" : "gray.500"}
-                        rounded="50%"
-                        display="inline-block"
-                        transition="background-color 0.6s ease"
-                        _hover={{ bg: "gray.800" }}
-                        onClick={() => setSlide(slide)}
+                            key={`dots-${slide}`}
+                            cursor="pointer"
+                            boxSize={["7px", "10px", "15px"]}
+                            bg={currentSlide === slide ? "gray.800" : "gray.500"}
+                            rounded="50%"
+                            display="inline-block"
+                            transition="background-color 0.6s ease"
+                            _hover={{ bg: "gray.800" }}
+                            onClick={() => setSlide(slide)}
                         />
                 ))}
                 </HStack>

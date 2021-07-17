@@ -1,8 +1,22 @@
 
 import { Box, Text, useColorModeValue, Image } from "@chakra-ui/react";
 
+type ItemProps = {
+    item: {
+        earth_date: string
+        sol: string
+        camera: {
+            name: string
+        }
+        img_src: string
+        id: string
+    }
+    index: number
+    slidesCount: number
+}
 
-const RoverItem = ({ item, index, slidesCount }:any) => {
+
+const RoverItem = ({ item, index, slidesCount }: ItemProps) => {
     return (
         <Box
             boxSize="full"
