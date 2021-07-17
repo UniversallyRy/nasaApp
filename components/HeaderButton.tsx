@@ -1,13 +1,23 @@
-import { useRouter } from 'next/router'
+import { useRouter, NextRouter } from 'next/router'
 import { useColorModeValue, Button } from "@chakra-ui/react";
+import { IconType }  from 'react-icons';
 
-const HeaderButton = ({title, buttonIcon, href}:any) => {
-  const bg = useColorModeValue("blue.500", "purple.900");
-  const router = useRouter()
+
+type ButtonProps = {
+  title: string
+  buttonIcon: React.ReactElement<IconType>
+  href: string
+};
+
+const HeaderButton = ({title, buttonIcon, href}: ButtonProps) => {
+
+  const backGround = useColorModeValue("blue.500", "purple.900");
+
+  const router: NextRouter = useRouter()
   
   return (
     <Button
-      bg={bg}
+      bg={backGround}
       size="md"
       fontWeight="semibold"
       rounded="sm"
