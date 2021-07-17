@@ -15,15 +15,15 @@ export default {
   },
 } as ComponentMeta<typeof ChangeDate>;
 
-const Template: ComponentStory<typeof Box> = (args) => <ChangeDate {...args} />;
+// const Template: ComponentStory<typeof Box> = (args) => <ChangeDate {...args} />;
 
-const handleChange = () => {
-    return new Date()
-}
-export const Default = Template.bind({});
-Default.args = {
-    selected: new Date('1995-12-17T03:24:00'),
-    onChange: handleChange
-};
+// const handleChange = () => {
+//     return new Date()
+// }
+// export const Default = Template.bind({});
+// Default.args = {
+//     selected: new Date('1995-12-17T03:24:00'),
+//     onChange: handleChange
+// };
 
 

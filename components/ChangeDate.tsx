@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Flex } from "@chakra-ui/react";
 
 type DateProps = {
-  selected: Date
+  selected?: Date
   onChange: (date: Date) => Promise<void>
 };
 
