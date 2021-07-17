@@ -1,6 +1,5 @@
 import NextLink from "next/link";
 import Head from "next/head";
-import { apiKey } from '../../key';
 import { GetStaticProps, NextPage } from 'next';
 import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps, useColorModeValue } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
@@ -50,7 +49,7 @@ const fetchedData = (date = new Date()): string => {
   newDay = day.toString().padStart(2, '0');
   newMonth = month.toString().padStart(2, '0');
   let newDate = [year, newMonth, newDay].join('-');
-  let url = `https://api.nasa.gov/planetary/apod?date=${newDate}&api_key=` + `${apiKey}`;
+  let url = `https://api.nasa.gov/planetary/apod?date=${newDate}&api_key=` + process.env.API_KEY;
   return url;
 }
 

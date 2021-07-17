@@ -1,6 +1,5 @@
 import { Alert, AlertIcon, AlertTitle, useColorModeValue, Stack, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
-import { Formik, Form, Field, FormikProps } from "formik"
-import { apiKey } from '../key';
+import { Formik, Form, Field } from "formik"
 import { useState, useContext } from 'react'
 import { FormContext } from './../pages/earth';
 
@@ -11,7 +10,7 @@ interface FormValues  {
 
 
 export const url = (lon:number, lat:number) => {
-return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + `${apiKey}`;
+return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + process.env.API_KEY;
 }
 
 const FormikForm = () => {
