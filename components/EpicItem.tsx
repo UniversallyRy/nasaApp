@@ -1,8 +1,21 @@
-
 import { Box, VStack, Image, Text, useColorModeValue } from "@chakra-ui/react";
 
+type Props = {
+    item: {
+        title: string 
+        image: string 
+        date: string
+        caption: string
+        centroid_coordinates: {
+            lat: string
+            lon: string
+        }
+    }
+    index: number
+    slidesCount: number
+};
 
-const EpicItem = ({ item, index, slidesCount }:any) => {   
+const EpicItem = ({ item, index, slidesCount }: Props) => {   
     const dateFormatter = item.date.slice(0, 10).split('-').join('/')
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
 
