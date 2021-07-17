@@ -17,7 +17,7 @@ const Home = () => {
       <AlienHead
         //suggested min size of 100 to avoid bugs 
         headSize='300'
-        color={backGround}
+        headColor={backGround}
       />
         <VStack>
           <MotionText

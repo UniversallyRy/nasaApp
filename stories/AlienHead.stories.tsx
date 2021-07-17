@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Box } from "@chakra-ui/react"
+import { Stack } from "@chakra-ui/react"
 import AlienHead  from '../components/AlienHead';
 
 export default {
@@ -14,7 +14,7 @@ export default {
 
 } as ComponentMeta<typeof AlienHead>;
 
-const Template: ComponentStory<typeof Box> = (args) => <AlienHead {...args} />;
+const Template: ComponentStory<typeof Stack>= (args) => <AlienHead {...args} />;
 
 export const DefaultSize = Template.bind({});
 DefaultSize.args = {
