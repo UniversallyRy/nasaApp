@@ -1,20 +1,20 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from "@chakra-ui/react"
-import Alien  from '../components/alien';
+import AlienHead  from '../components/AlienHead';
 
 export default {
   title: 'components/alien',
-  component: Alien,
+  component: AlienHead,
   parameters: {
     actions: {
       handles: ['mouseover'],
     },
   },
 
-} as ComponentMeta<typeof Alien>;
+} as ComponentMeta<typeof AlienHead>;
 
-const Template: ComponentStory<typeof Box> = (args) => <Alien {...args} />;
+const Template: ComponentStory<typeof Box> = (args) => <AlienHead {...args} />;
 
 export const DefaultSize = Template.bind({});
 DefaultSize.args = {

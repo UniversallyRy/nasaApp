@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Image, chakra, VStack, Stack, Text, TextProps, Grid, Heading, useColorModeValue } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import GridCard from '../components/GridCard';
-import Alien from '../components/alien';
+import AlienHead from '../components/AlienHead';
 
 const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
@@ -14,10 +14,10 @@ const Home = () => {
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>
-      <Alien
+      <AlienHead
         //suggested min size of 100 to avoid bugs 
-        size='300'
-        bg={bg}
+        headSize='300'
+        color={bg}
       />
         <VStack>
           <MotionText
