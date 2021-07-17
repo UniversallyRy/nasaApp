@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
-import { Flex, VStack, Box, Link } from "@chakra-ui/react";
+import { VStack, Box, Link } from "@chakra-ui/react";
 import { apiKey } from '../../key';
 import RoverList from '../../components/RoverList';
 

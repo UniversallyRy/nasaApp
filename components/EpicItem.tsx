@@ -1,4 +1,6 @@
-import { Box, VStack, Image, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, VStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { ChakraNextImage }  from "./Image";
+
 
 type Props = {
     item: {
@@ -36,7 +38,7 @@ const EpicItem = ({ item, index, slidesCount }: Props) => {
             >
                 {index + 1} / {slidesCount}
             </Text>
-            <Image
+            <ChakraNextImage
                 rounded="lg"
                 shadow="sm"
                 boxSize="full"
