@@ -1,13 +1,17 @@
 import HeaderNav from './HeaderNav';
 import { chakra, Stack, useColorModeValue } from "@chakra-ui/react";
 
-const Layout = ({ children }:any) => {
-    const bg = useColorModeValue("teal.200", "green.900");
+type Props = {
+    children: JSX.Element
+}
+
+const Layout = ({ children }: Props) => {
+    const backGround = useColorModeValue("teal.200", "green.900");
 
     return (
         <>
             <HeaderNav/>
-            <Stack bg={bg}>
+            <Stack bg={backGround}>
                 <chakra.main>
                     { children }
                 </chakra.main>
