@@ -71,8 +71,7 @@ const Home = () => {
           />
         </SimpleGrid>
 
-        </VStack>
-        <VStack mt={5}>
+        <VStack my={5}>
           <chakra.a
             href="https://verscel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
@@ -84,6 +83,7 @@ const Home = () => {
             </chakra.span>
           </chakra.a>
           <chakra.div>Hero icons made by <chakra.a href="https://www.freepik.com" title="Freepik">Freepik</chakra.a> from <chakra.a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</chakra.a></chakra.div>
+        </VStack>
         </VStack>
     </Stack>
   )
