@@ -7,7 +7,7 @@ import AlienHead from '../components/AlienHead';
 const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
-  const bg = useColorModeValue("gray.200", "gray.600");
+  const backGround = useColorModeValue("gray.200", "gray.600");
   return (
     <Stack align="center" w="full" minH="100vh" spacing="10" direction={["column", "column", "column", "column", "row", "row"]}>
       <Head key='pages/index key'>
@@ -17,7 +17,7 @@ const Home = () => {
       <AlienHead
         //suggested min size of 100 to avoid bugs 
         headSize='300'
-        color={bg}
+        color={backGround}
       />
         <VStack>
           <MotionText

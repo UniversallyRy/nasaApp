@@ -7,9 +7,9 @@ interface Data {
   title: string;
   date: number;
   length: number;
-  explanation: string;
-  identifier: string;
-  hdurl: string;
+  explanation?: string;
+  identifier?: string;
+  hdurl?: string;
 };
 
 const EpicList: NextPage<{ data: Data }> = ({ data }) => {

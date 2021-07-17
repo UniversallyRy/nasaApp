@@ -1,33 +1,39 @@
 import { GetStaticProps } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
-import { useState, FC } from "react";
+import { useState } from "react";
 import { VStack, Box, Link } from "@chakra-ui/react";
 import { apiKey } from '../../key';
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 
 interface EpicsProps {
-  title: string;
-  date: number;
-}
+  data: {
+    title: string
+    date: number
+    length: number
+  }
+};
 
-const fetchedUrl = (date = new Date()):string => {
+const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + apiKey;
+
+const fetchedUrl = (date = new Date()): string => {
   let day, month, year, newDay, newMonth;
   let thisDate = date;
   [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
   newDay = day.toString().padStart(2, '0');
   newMonth = month.toString().padStart(2, '0');
   let newDate = [year, newMonth, newDay].join('-');
-  const url = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + apiKey;
+  const fetched = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + apiKey;
 
-  return url;
-}
+  return fetched;
+};
 
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + apiKey;
 // todos: add datepicker and default to closest date
-const Epics: FC<EpicsProps> = ({ data }:any) => {
-  const [copiedData, setData]  = useState(data);
+const Epics = ({ data }: EpicsProps) => {
+  
+  const [fetchedData, setData]  = useState(data);
+  
   const [startDate, setStartDate] = useState(new Date());
 
   const handleDateChange = async (date:Date) => {
@@ -68,11 +74,11 @@ const Epics: FC<EpicsProps> = ({ data }:any) => {
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={copiedData}/>
+        <EpicList data={fetchedData}/>
       </VStack>
     </VStack>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch(url);

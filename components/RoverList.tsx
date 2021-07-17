@@ -1,13 +1,12 @@
 import WeatherItem from './RoverItem';
-import { NextPage } from 'next';
-import {useState, MouseEventHandler} from 'react';
-import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack, SelectProps} from '@chakra-ui/react';
+import {useState } from 'react';
+import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 
-interface Data {
-  photos: object[];
+type ListProps = {
+  data: object[] | undefined
+
 };
-
-const RoverList: NextPage<{ data: Data }> = ({ data }) => {
+const RoverList  = ({ data }: ListProps) => {
 
     const [roverCamera, setCamera] = useState("FHAZ")
 
@@ -32,8 +31,8 @@ const RoverList: NextPage<{ data: Data }> = ({ data }) => {
 
         let count = 0;
 
-        if(data.photos instanceof Array) { 
-            data.photos.map((item:any, index:any) => {
+        if(data instanceof Array) { 
+            data.map((item:any, index:any) => {
                 if(item.camera.name === roverCamera) {
                     count++
                 }
@@ -89,19 +88,22 @@ const RoverList: NextPage<{ data: Data }> = ({ data }) => {
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
             <Flex w="full" pos="relative" overflow="hidden">
                 <Flex h="full" w="full" {...carouselStyle}>
-                    {data.photos.reduce((photosArray:object[], item:any, index:number) => {
-                        if(item.camera.name === roverCamera) {
-                            photosArray.push(
-                                <WeatherItem 
-                                slidesCount={ slidesCount }
-                                index={ photosArray.length }
-                                key={ index } 
-                                item={ item } 
-                                />
-                            )
-                        }
-                        return photosArray
-                    }, [])}
+                    {data instanceof Array 
+                        ? data.reduce((photosArray:object[], item:any, index:number) => {
+                            if(item.camera.name === roverCamera) {
+                                photosArray.push(
+                                    <WeatherItem 
+                                    slidesCount={ slidesCount }
+                                    index={ photosArray.length }
+                                    key={ index } 
+                                    item={ item } 
+                                    />
+                                )
+                            }
+                            return photosArray
+                        }, [])
+                        : null
+                    }
                 </Flex>
                 <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
                 &#10094;

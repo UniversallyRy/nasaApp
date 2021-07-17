@@ -6,6 +6,7 @@ import { apiKey } from '../../key';
 import RoverList from '../../components/RoverList';
 
 interface Data {
+  photos?: object[]
   title: string;
   date: number;
   explanation: string;
@@ -16,7 +17,7 @@ interface Data {
 //todos: expansion on components/pages?, rover camera choices, style fixes 
 const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2021-7-2&api_key=' + apiKey;
 
-const Rover: NextPage<{ data: Data }> = ({data}) => {
+const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
 
   return (
@@ -42,13 +43,13 @@ const Rover: NextPage<{ data: Data }> = ({data}) => {
             </Link>
           </NextLink>
         </Box>
-        <RoverList data={data}/>
+        <RoverList data={data.photos}/>
       </VStack>
     </Flex>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(url);
   const data = await res.json();
 
