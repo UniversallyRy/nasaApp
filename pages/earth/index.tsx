@@ -7,11 +7,11 @@ import FormikForm, { AlertBox } from "../../components/EarthSatForm";
 
 // Take off default and add searchable options
 interface Data {
-  date: string;
-  id: string;
+  date: string
+  id: string
   resource: {
-    dataset: string;
-    planet: string;
+    dataset: string
+    planet: string
   }
   ['service version']: string;
   url: string;
