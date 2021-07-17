@@ -58,6 +58,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   const [newData, setData]  = useState(data);
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
+  
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -91,8 +92,8 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
     return isOpen && setOpen(false);
   };
  
-  useDomEvent(useRef(window as any), "scroll", () => hideImage());
-  useDomEvent(useRef(window as any), "keydown",(e: any) => e.keyCode === 27 && hideImage());
+  useDomEvent(useRef(global.window as any), "scroll", () => hideImage());
+  useDomEvent(useRef(global.window as any), "keydown",(e: any) => e.keyCode === 27 && hideImage());
   
   if (!data) return <div>Loading...</div>;
   
@@ -106,7 +107,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   }
 
   return (
-    <VStack h="100vh" w="100vw" p={3}>
+    <VStack minH="100vh" w="100vw">
       <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
