@@ -48,7 +48,7 @@ const Epics = ({ data }: EpicsProps) => {
   if (data.length < 1) return <div>Loading...</div>;
 
   return (
-    <VStack>
+    <VStack minH="100vh">
       <Head key='pages/epic key'>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />

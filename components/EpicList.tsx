@@ -1,7 +1,7 @@
 import EpicItem from './EpicItem';
 import { NextPage } from 'next';
-import { Flex, Box, HStack, Text, useColorModeValue } from '@chakra-ui/react';
-import { useState } from "react";
+import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
+import React, { useState } from "react";
 
 interface Data {
   title: string;
@@ -10,15 +10,14 @@ interface Data {
   explanation?: string;
   identifier?: string;
   hdurl?: string;
-};
+}
 
 const EpicList: NextPage<{ data: Data }> = ({ data }) => {
-
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const list = data;
 
   const slidesCount = list.length;
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const arrowStyles = {
     cursor: "pointer",
@@ -42,6 +41,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
     ml: `-${currentSlide * 100}%`,
   };
 
+
   const prevSlide = () => {
     setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
   };
@@ -62,7 +62,8 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Flex w="full" pos="relative" overflow="hidden">
+      {list.length > 0
+      ?<Flex w="full" pos="relative" overflow="hidden">
         <Flex h="full" w="full" {...carouselStyle}>
           {list instanceof Array 
             ?list.map((item:any, index:any) => (
@@ -73,7 +74,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
                 index={ index }
               />
             ))
-            : null
+            : <Text>No Images</Text>
           }
         </Flex>
         <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
@@ -99,8 +100,26 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
           ))}
         </HStack>
       </Flex>
+      :<Alert
+        status="error"
+        variant="subtle"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        height="200px"
+      >
+        <AlertIcon boxSize="40px" mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize="lg">
+          No Images Found
+        </AlertTitle>
+        <AlertDescription maxWidth="sm">
+          No images taken on this date, try another!
+        </AlertDescription>
+      </Alert> 
+    }
     </Flex>
   )
-};
+}
 
 export default EpicList;
