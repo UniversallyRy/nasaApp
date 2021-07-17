@@ -1,16 +1,21 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
-const ChangeDate = ({ selected, onChange }:any) => {
+type DateProps = {
+  selected: Date
+  onChange: (date: Date) => Promise<void>
+};
+
+const ChangeDate = ({ selected, onChange }: DateProps) => {
   return (
-    <Box 
-        m={5}
-        zIndex="docked" 
-        color='black'
+    <Flex 
+      m={5}
+      zIndex="docked" 
+      color='black'
     >
-        <DatePicker withPortal selected={selected} onChange={onChange} />
-    </Box>
+      <DatePicker withPortal selected={selected} onChange={onChange} />
+    </Flex>
   )
 };
 
