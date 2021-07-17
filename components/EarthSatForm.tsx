@@ -13,11 +13,12 @@ interface FormValues  {
 export const url = (lon:number, lat:number) => {
 return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + `${apiKey}`;
 }
+
 const FormikForm = () => {
     const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
     const { newImage, setImage }:any = useContext(FormContext);
     const [isSubmitting, setSubmit] = useState(false)
-    const bg = useColorModeValue("blue.500", "purple.900");
+    const backGround = useColorModeValue("blue.500", "purple.900");
     
     const validateNumbers = (value:string) => {
       let error
@@ -69,7 +70,7 @@ const FormikForm = () => {
                         size="lg"
                         fontSize="xl"
                         mb={10}
-                        bg={bg}
+                        bg={backGround}
                         isLoading={isSubmitting}
                         type="submit"
                     >
