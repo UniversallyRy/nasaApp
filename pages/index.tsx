@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Flex, Text, TextProps, SimpleGrid, Heading } from "@chakra-ui/react"
+import { Image, chakra, VStack, Box, Text, TextProps, SimpleGrid, Heading } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import HeroCard from '../components/HeroCard';
 
@@ -7,7 +7,7 @@ const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
   return (
-    <Flex align="center" w="100wh" minH="100vh" spacing="10" direction={{ base: "column", md: "row" }}>
+    <Box w="100wh" minH="100vh" direction={{ base: "column", md: "row" }}>
       <Head key='pages/index key'>
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
@@ -30,7 +30,7 @@ const Home = () => {
               },
             }}
           >
-            <Heading userSelect="none" m={10}>
+            <Heading userSelect="none" my={5}>
               View Satellites, Rovers and other Astronomy
             </Heading>
           </MotionText>s
@@ -46,7 +46,7 @@ const Home = () => {
           />
           <HeroCard 
             href='/earth'
-            title='Earth &rarr;' 
+            title='Landsat &rarr;' 
             paragraph='Landsat imagery is provided to the public as a joint project between NASA and USGS.'
             imgSrc='/satellite.png'
             />
@@ -78,7 +78,7 @@ const Home = () => {
           <chakra.div>Hero icons made by <chakra.a href="https://www.freepik.com" title="Freepik">Freepik</chakra.a> from <chakra.a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</chakra.a></chakra.div>
         </VStack>
         </VStack>
-    </Flex>
+    </Box>
   )
 };
 
