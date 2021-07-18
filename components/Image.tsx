@@ -8,7 +8,7 @@ type Props = {
 
 export const ChakraNextImage = ({ src, alt, ...rest }: Props) => {
   return (
-    <Box alignSelf="center" {...rest}>
+    <Box h="100vh" w="100vw" alignSelf="center" position="relative" {...rest}>
       <Image
         objectFit="cover" 
         layout="fill"
