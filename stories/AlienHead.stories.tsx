@@ -14,7 +14,7 @@ export default {
 
 } as ComponentMeta<typeof AlienHead>;
 
-const Template: ComponentStory<typeof Stack>= (args) => <AlienHead {...args} />;
+const Template: ComponentStory<typeof Stack>= ({args}) => <AlienHead {...args} />;
 
 export const DefaultSize = Template.bind({});
 DefaultSize.args = {

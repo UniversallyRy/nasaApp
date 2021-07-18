@@ -36,6 +36,7 @@ const AlienHead = ({ ...props }: AlienProps) => {
 
     return (
         <Button
+            as="div"
             {...props}
             aria-label='Animated Alien Head'
             borderTopLeftRadius={headRadius()}
