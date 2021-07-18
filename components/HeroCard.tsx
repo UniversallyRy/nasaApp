@@ -27,12 +27,11 @@ const HeroCard = ({ ...props }: CardProps) => {
         duration: .2
         }
       }}
-      mx={3}
-      px={5}
+      mx={1}
       rounded="sm"
       shadow="xl"
       bg={backGround}
-      boxSize={["sm", "sm", "sm", 'md']}
+      boxSize={{ base: "md", md: "sm", lg: "md" }}
     >
       <Stack spacing={2} align="center"p={3}>
         <Image
@@ -54,7 +53,7 @@ const HeroCard = ({ ...props }: CardProps) => {
             {props.title}
           </Link>
         </NextLink>
-        <chakra.p fontSize={["xs", "sm", "md"]} m={5} color={useColorModeValue("gray.600", "gray.300")}>
+        <chakra.p fontSize={{base: 'md', md: "lg"}} m={5} color={useColorModeValue("gray.600", "gray.300")}>
           {props.paragraph}
         </chakra.p>
       </Stack>

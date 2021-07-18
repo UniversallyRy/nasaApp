@@ -1,25 +1,18 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Stack, Text, TextProps, SimpleGrid, Heading, useColorModeValue } from "@chakra-ui/react"
+import { Image, chakra, VStack, Flex, Text, TextProps, SimpleGrid, Heading } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import HeroCard from '../components/HeroCard';
-import AlienHead from '../components/AlienHead';
 
 const MotionText = motion<TextProps>(Text)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
-  const backGround = useColorModeValue("gray.200", "gray.600");
   return (
-    <Stack align="center" w="full" minH="100vh" spacing="10" direction={["column", "column", "column", "column", "row", "row"]}>
+    <Flex align="center" w="100wh" minH="100vh" spacing="10" direction={{ base: "column", md: "row" }}>
       <Head key='pages/index key'>
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />
       </Head>
-      <AlienHead
-        //suggested min size of 100 to avoid bugs 
-        boxSize='300'
-        bg={backGround}
-      />
-        <VStack justify='center'>
+        <VStack>
           <MotionText
             initial="hidden" 
             animate="visible" 
@@ -40,7 +33,7 @@ const Home = () => {
             <Heading userSelect="none" m={10}>
               View Satellites, Rovers and other Astronomy
             </Heading>
-          </MotionText>
+          </MotionText>s
         <SimpleGrid 
           gap={3}
           columns={[1, 1, 2,]}
@@ -85,7 +78,7 @@ const Home = () => {
           <chakra.div>Hero icons made by <chakra.a href="https://www.freepik.com" title="Freepik">Freepik</chakra.a> from <chakra.a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</chakra.a></chakra.div>
         </VStack>
         </VStack>
-    </Stack>
+    </Flex>
   )
 };
 

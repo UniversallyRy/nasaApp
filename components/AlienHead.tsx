@@ -1,15 +1,16 @@
 import React from 'react';
-import { Stack, useColorModeValue } from "@chakra-ui/react";
+import { Button, Stack, useColorModeValue } from "@chakra-ui/react";
 
 type AlienProps = {
     boxSize: string
     bg?: string | undefined
+    onClick: () => void
 };
 
 
 const AlienHead = ({ ...props }: AlienProps) => {
-    const shadowToggle = useColorModeValue("0 0 15px 15px rgba(255, 255, 255, 0.4)", "0 0 15px 15px rgba(0, 0, 0, 0.5)");
-    const glowToggle = useColorModeValue("0 0 10px 10px rgba(255, 255, 255, 0.3), 0 0 10px 10px rgba(88, 240, 62, 0.5)", "0 0 5px 5px rgba(0, 0, 0, 0.5), 0 0 20px 20px rgba(88, 240, 62, 0.4)");
+    const shadowToggle = useColorModeValue("0 0 5px 5px rgba(255, 255, 255, 0.4)", "0 0 5px 5px rgba(0, 0, 0, 0.5)");
+    const glowToggle = useColorModeValue("0 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 5px 5px rgba(88, 240, 62, 0.5)", "0 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 5px 5px rgba(88, 240, 62, 0.4)");
 
     const size:number = parseInt( (props.boxSize.match(/\d/g) || []).join("") );
 
@@ -34,7 +35,7 @@ const AlienHead = ({ ...props }: AlienProps) => {
     }
 
     return (
-        <Stack
+        <Button
             {...props}
             aria-label='Animated Alien Head'
             borderTopLeftRadius={headRadius()}
@@ -42,7 +43,7 @@ const AlienHead = ({ ...props }: AlienProps) => {
             borderBottomLeftRadius={headRadius()}
             borderBottomRightRadius="15"
             boxShadow={shadowToggle}
-            m={10}
+            m={3}
             transform= "rotate(45deg)"
             _before={{ 
                 content: '""',

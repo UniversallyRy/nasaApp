@@ -20,6 +20,7 @@ import { BsFillImageFill } from "react-icons/bs";
 import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
 import HeaderButton from './HeaderButton'
+import AlienHead from "./AlienHead";
 
 
 
@@ -41,14 +42,6 @@ const HeaderNav = () => {
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
         <HStack display="flex" spacing={3} alignItems="center">
           <Box display={{ base: "inline-flex", md: "none" }}>
-            <IconButton
-              display={{ base: "flex", md: "none" }}
-              aria-label="Open menu"
-              fontSize="3xl"
-              variant="ghost"
-              icon={<AiOutlineMenu />}
-              onClick={mobileNav.onOpen}
-            />
             <VStack
               pos="absolute"
               zIndex="dropdown"
@@ -120,8 +113,13 @@ const HeaderNav = () => {
               </NextLink>
             </VStack>
           </Box>
-
-          <ButtonGroup variant="ghost" spacing={3} display={{ base: "none", md: "inline-flex" }}>
+          <AlienHead
+            boxSize="65"
+            bg={backGround}
+            aria-label="Open menu"
+            onClick={mobileNav.onOpen}
+          />
+          <ButtonGroup ml={15} variant="ghost" spacing={3} display={{ base: "none", md: "inline-flex" }}>
             <HeaderButton 
               href="/"
               title="Home" 

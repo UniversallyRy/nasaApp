@@ -108,7 +108,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   }
 
   return (
-    <VStack minH="100vh" w="100vw">
+    <VStack minH="100vh" minW="fill">
       <Head key="pages/apod key">
         <title>{ newData.title }</title>
         <meta property="og:pic" content="Astronomy Picture of the Day" key={newData.title} />
@@ -130,7 +130,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       >
         { newData.title }
       </MotionHeading>
-      <Stack align="center" spacing={10} direction={["column", "column", "row"]}>
+      <Stack align="center" spacing={10} direction={{base:"column", md:"row"}}>
         <Box
           w={["xs", "sm", "lg", "xl"]}
           cursor={isOpen ? "zoom-out" : "zoom-in"}
@@ -169,7 +169,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
           />
         </Box>
         <Text
-          fontSize={{ base: "11px", md: "12px", lg: "13px", xl: "13px"}}
+          fontSize={{ base: "11px", sm: "12px", lg: "13px"}}
           lineHeight={["short","tall"]}
           letterSpacing="wider"
           maxW="xs"
@@ -182,13 +182,13 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       </Stack>
       <Stack>
         <Text
-          fontSize={{ base: "12px", md: "18px", lg: "26px", xl: "30px"}}
+          fontSize={{ base: "14px", sm: "20px", lg: "28px"}}
         >
           Posted on 
             <time> {newData.date} </time>
         </Text>
         {!newData.copyright == undefined 
-        ?<Text fontSize={{ base: "6px", md: "8px", lg: "12px", xl: "14px"}}>
+        ?<Text fontSize={{ base: "6px", lg: "12px"}}>
             Copyright: {newData.copyright}
         </Text>
         : null
