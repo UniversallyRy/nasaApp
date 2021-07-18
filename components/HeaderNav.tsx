@@ -78,7 +78,7 @@ const HeaderNav = () => {
                   variant="ghost"
                   leftIcon={<BsFillImageFill />}
                 >
-                  APOD
+                  APoD
                 </Button>
               </NextLink>
               <NextLink href="/earth">
@@ -98,7 +98,7 @@ const HeaderNav = () => {
                   variant="ghost"
                   leftIcon={<GiEarthAmerica />}
                 >
-                  Epics
+                  EPIC
                 </Button>
               </NextLink>
               <NextLink href="/rover">
@@ -127,17 +127,17 @@ const HeaderNav = () => {
             />
             <HeaderButton
               href="/apods"
-              title="APOD" 
+              title="APoD" 
               buttonIcon={<BsFillImageFill />}
             />
             <HeaderButton 
               href="/earth"
-              title="Earth" 
+              title="Landsat" 
               buttonIcon={<FaSatelliteDish />}
             />
             <HeaderButton 
               href="/epic"
-              title="Epics" 
+              title="EPIC" 
               buttonIcon={<GiEarthAmerica />}
             />
             <HeaderButton 
