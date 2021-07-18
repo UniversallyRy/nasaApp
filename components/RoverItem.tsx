@@ -17,7 +17,7 @@ type ItemProps = {
 
 const RoverItem = ({ ...props }: ItemProps) => {
     return (
-        <Box
+        <Box 
             boxSize="full"
             fontSize="xl"
             flex="none"

@@ -8,12 +8,13 @@ type Props = {
 
 export const ChakraNextImage = ({ src, alt, ...rest }: Props) => {
   return (
-    <Box position="relative" {...rest}>
+    <Box w={{base:"full", md: "full"}} h={{base:"full", sm:"90vh", md: "90vh"}} position="relative" {...rest}>
       <Image
-        objectFit="cover" 
+        objectFit="contain" 
         layout="fill"
         src={src} 
-        alt={alt} />
+        alt={alt} 
+      />
     </Box>
   );
 };

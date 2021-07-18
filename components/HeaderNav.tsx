@@ -71,7 +71,7 @@ const HeaderNav = () => {
                   Home
                 </Button>
               </NextLink>
-              <NextLink href="/apods">
+              <NextLink href="/apod">
                 <Button
                   w="full"
                   size="lg"
@@ -126,7 +126,7 @@ const HeaderNav = () => {
               buttonIcon={<AiFillHome />}
             />
             <HeaderButton
-              href="/apods"
+              href="/apod"
               title="APoD" 
               buttonIcon={<BsFillImageFill />}
             />

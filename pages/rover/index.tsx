@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
-import { VStack, Box, Link } from "@chakra-ui/react";
+import { Stack, Box, Link } from "@chakra-ui/react";
 import RoverList from '../../components/RoverList';
 
 interface Data {
@@ -20,13 +20,13 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <Box minH="100vh">
+    <Box>
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
         <meta property="og:rover" content="Mars Rover Photos" key={2021} />
       </Head>
-      <VStack>
-        <Box m={10}>
+      <Stack align="center">
+        <Box my={3}>
           <NextLink passHref href="/">
             <Link
               bg="gray.900"
@@ -42,7 +42,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
           </NextLink>
         </Box>
         <RoverList data={data.photos}/>
-      </VStack>
+      </Stack>
     </Box>
   );
 }

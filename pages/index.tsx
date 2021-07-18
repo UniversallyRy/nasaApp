@@ -33,7 +33,7 @@ const Home = () => {
             <Heading userSelect="none" my={5}>
               View Satellites, Rovers and other Astronomy
             </Heading>
-          </MotionText>s
+          </MotionText>
         <SimpleGrid 
           gap={3}
           columns={[1, 1, 2,]}
@@ -59,7 +59,7 @@ const Home = () => {
           <HeroCard 
             href='/rover'
             title='Mars Rover Photos &rarr;' 
-            paragraph='Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars.'
+            paragraph='Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars. Current functionality only for Curiosity camera.'
             imgSrc='/mars-rover.png'
           />
         </SimpleGrid>

@@ -1,7 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import Image from 'next/image'
-import { chakra, Box, BoxProps, Stack, useColorModeValue, Link } from "@chakra-ui/react";
+import { chakra, GridItem, GridItemProps, BoxProps, Stack, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
 
 type CardProps = {
@@ -11,7 +11,7 @@ type CardProps = {
   imgSrc: string
 };
 
-const MotionBox = motion<BoxProps>(Box);
+const MotionBox = motion<GridItemProps>(GridItem);
 
 const HeroCard = ({ ...props }: CardProps) => {
   

@@ -90,7 +90,6 @@ const RoverList  = ({ data }: ListProps) => {
 
     return (
         <Stack
-            flexDirection="column" 
             bg={useColorModeValue("gray.200", "gray.600")}
         >
             <Select value={roverCamera} onChange={handleChange} placeholder="Select Camera">
@@ -103,7 +102,7 @@ const RoverList  = ({ data }: ListProps) => {
             </Select>
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
             <Flex w="98vw" pos="relative" overflow="hidden">
-                <Flex h="full" w="full" {...carouselStyle}>
+                <Flex w="98vw" {...carouselStyle}>
                     {memoedPhotos}
                 </Flex>
                 <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
