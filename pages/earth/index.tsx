@@ -23,19 +23,16 @@ const Earth: NextPage<{ data: Data }> = () => {
   const [newImage, setImage] = useState(Object)
 console.log(newImage)
   return (
-    <Box
+    <Stack
       minH="100vh"
-      minW="100vw"
-      rounded="lg"
-      shadow="lg"
-      maxW="xl"
+      minW="full"
       align='center'
     >
       <Head key='pages/earth key'>
         <title>Satellite Images</title>
         <meta property="og:earth" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
-      <Stack m={3} spacing={2.5} direction={["column", "column", "row"]}>
+      <Stack m={3} spacing={10} direction={{base:"column", md:"row"}}>
         <VStack m={4}>
           <Text fontSize="xl">Examples:</Text>
           <Text fontSize="md">Great Pyramid of Giza- Lat: 29.9792, Lon: 31.13</Text>
@@ -57,7 +54,7 @@ console.log(newImage)
             boxSize="container.md"
             rounded="lg"
             shadow="xl"
-            src={ newImage.hdurl }
+            src={ newImage.url }
             alt={ newImage.resource.dataset }
           />
           <Text m={2}>Date Taken: {newImage.date} </Text>
@@ -80,7 +77,7 @@ console.log(newImage)
       </VStack>
        :null
       }
-    </Box>  
+    </Stack>  
   )
 }
 // export const getStaticProps: GetStaticProps = async (context) => {

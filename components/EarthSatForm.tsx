@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertTitle, useColorModeValue, Stack, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik"
 import { useState, useContext } from 'react'
 import { FormContext } from './../pages/earth';
@@ -28,7 +28,7 @@ const FormikForm = () => {
     };
 
     return (
-        <Stack alignContent="center" w="lg">
+        <Box align="center" w={{base: "sm", sm:"md", md:"lg"}}>
             <Formik
                 initialValues={initialValues}
                 onSubmit={ async (values) => {
@@ -45,7 +45,7 @@ const FormikForm = () => {
             >
                 {() => (
                 <Form>
-                    <HStack m={4} spacing={2.5}>
+                    <HStack spacing={2.5}>
                         <Field name="latitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
                             <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
@@ -68,7 +68,7 @@ const FormikForm = () => {
                     <Button
                         size="lg"
                         fontSize="xl"
-                        mb={10}
+                        m={3}
                         bg={backGround}
                         isLoading={isSubmitting}
                         type="submit"
@@ -78,7 +78,7 @@ const FormikForm = () => {
                 </Form>
                 )}
             </Formik>
-        </Stack>
+        </Box>
     )
   };
 
