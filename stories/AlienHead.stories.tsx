@@ -1,24 +1,23 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Stack } from "@chakra-ui/react"
-import AlienHead  from '../components/AlienHead';
+import { Button } from "@chakra-ui/react"
+import AlienButton  from '../components/AlienHead';
 
 export default {
   title: 'components/alien',
-  component: AlienHead,
+  component: AlienButton,
   parameters: {
     actions: {
       handles: ['mouseover'],
     },
   },
+} as ComponentMeta<typeof AlienButton>;
 
-} as ComponentMeta<typeof AlienHead>;
-
-const Template: ComponentStory<typeof Stack>= ({args}) => <AlienHead {...args} />;
+const Template: ComponentStory<typeof Button>= ({args}) => <AlienButton {...args} />;
 
 export const DefaultSize = Template.bind({});
 DefaultSize.args = {
-    size:"300px",
+    size:"65px",
     p: "10"
 };
 
@@ -30,11 +29,11 @@ ThemeLight.args = {
 export const ThemeDark = Template.bind({});
 ThemeDark.args = {
     size:"300px",
-    bg: "gray.600"
+    bg: "gray.800"
 };
 
-export const AsNavIcon = Template.bind({});
-AsNavIcon.args = {
+export const Enlarged = Template.bind({});
+Enlarged.args = {
     size:"100px",
     bg: "gray.300"
 };
