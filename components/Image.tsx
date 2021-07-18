@@ -10,6 +10,7 @@ export const ChakraNextImage = ({ src, alt, ...rest }: Props) => {
   return (
     <Box position="relative" {...rest}>
       <Image
+        objectFit="cover" 
         layout="fill"
         src={src} 
         alt={alt} />
