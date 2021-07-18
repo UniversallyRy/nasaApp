@@ -27,7 +27,7 @@ import AlienHead from "./AlienHead";
 const HeaderNav = () => {
   // const isActive = router.pathname === '/'
   const { colorMode, toggleColorMode } = useColorMode();
-  const backGround = useColorModeValue("gray.300", "gray.800");
+  const backGround = useColorModeValue("gray.300", "gray.900");
   const mobileNav = useDisclosure();
 
   return (

@@ -54,7 +54,7 @@ const AlienHead = ({ ...props }: AlienProps) => {
                 left: eyePosition,
                 borderTopLeftRadius: eyeRadius,
                 borderBottomRightRadius: eyeRadius,
-                bg: "gray.900",
+                bg: "black",
                 transform: "rotate(45deg)",
             }}
             _after={{ 
@@ -66,7 +66,7 @@ const AlienHead = ({ ...props }: AlienProps) => {
                 left: eyeRadius,
                 borderTopLeftRadius: eyeRadius,
                 borderBottomRightRadius: eyeRadius,
-                bg: "gray.900",
+                bg: "black",
                 transform: "rotate(-45deg)",
             }}
             _hover={{
