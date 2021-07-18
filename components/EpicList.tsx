@@ -68,15 +68,15 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
   }, [data, slidesCount])
 
   return (
-    <Flex
-      w={["full", "full", "container.md", "container.lg", "container.xl"]}
+    <Box
+      w={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
       bg={useColorModeValue("gray.200", "gray.600")}
       p={1}
       alignItems="center"
       justifyContent="center"
     >
       {slidesCount > 0
-      ?<Flex w="xl" pos="relative" overflow="hidden">
+      ?<Flex w="full" pos="relative" overflow="hidden">
         <Flex h="full" w="full" {...carouselStyle}>
         {data instanceof Array
             ?data.map((item:any, index:any) => (
@@ -131,7 +131,7 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
         </AlertDescription>
       </Alert> 
     }
-    </Flex>
+    </Box>
   )
 }
 

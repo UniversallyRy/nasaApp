@@ -1,4 +1,4 @@
-import { Box, VStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, VStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChakraNextImage }  from "./Image";
 
 
@@ -22,8 +22,8 @@ const EpicItem = ({ ...props }: Props) => {
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
 
     return (
-        <Box    
-            boxSize="full"
+        <Flex    
+            w="full"
             flex="none"
             rounded="lg"
             shadow="lg"
@@ -39,9 +39,9 @@ const EpicItem = ({ ...props }: Props) => {
                 {props.index + 1} / {props.slidesCount}
             </Text>
             <ChakraNextImage
+                boxSize={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
                 rounded="lg"
                 shadow="sm"
-                boxSize="full"
                 backgroundSize="auto"
                 src={ imageLink + props.item.image + `.png` }
                 placeholder="blur"
@@ -61,7 +61,7 @@ const EpicItem = ({ ...props }: Props) => {
                 <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { props.item.centroid_coordinates.lon }</Text>
                 <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { props.item.date }</Text>
             </VStack>
-        </Box>  
+        </Flex>  
     )
 };
 
