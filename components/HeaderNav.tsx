@@ -88,7 +88,7 @@ const HeaderNav = () => {
                   variant="ghost"
                   leftIcon={<FaSatelliteDish />}
                 >
-                  Earth
+                  Landsat
                 </Button>
               </NextLink>
               <NextLink href="/epic">
