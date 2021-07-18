@@ -40,7 +40,7 @@ const Home = () => {
         >
           <HeroCard
             href='/apods'
-            title='APo```D &rarr;' 
+            title='APoD &rarr;' 
             paragraph='View the Astronomy Picture of the Day.'
             imgSrc='/apod.png'
           />
