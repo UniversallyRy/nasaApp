@@ -19,7 +19,7 @@ import { AiFillHome } from "react-icons/ai";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
-import HeaderButton from './HeaderButton'
+import HeaderButton from './HeaderButton';
 import AlienHead from "./AlienHead";
 
 

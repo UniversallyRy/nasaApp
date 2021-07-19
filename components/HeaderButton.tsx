@@ -1,7 +1,6 @@
-import { useRouter, NextRouter } from 'next/router'
+import { useRouter, NextRouter } from 'next/router';
 import {  Button } from "@chakra-ui/react";
 import { IconType }  from 'react-icons';
-
 
 type ButtonProps = {
   title: string
@@ -11,9 +10,9 @@ type ButtonProps = {
 
 const HeaderButton = ({ ...props }: ButtonProps) => {
 
-  const router: NextRouter = useRouter()
+  const router: NextRouter = useRouter();
 
-  const label = `${props.title} navigation button`
+  const label = `${props.title} navigation button`;
   
   return (
     <Button

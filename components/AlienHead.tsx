@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Stack, useColorModeValue } from "@chakra-ui/react";
+import { Button, useColorModeValue } from "@chakra-ui/react";
 
 type AlienProps = {
     boxSize: string

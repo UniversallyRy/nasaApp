@@ -1,7 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
-import Image from 'next/image'
-import { chakra, GridItem, GridItemProps, BoxProps, Stack, useColorModeValue, Link } from "@chakra-ui/react";
+import Image from 'next/image';
+import { chakra, GridItem, GridItemProps, Stack, useColorModeValue, Link } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
 
 type CardProps = {
@@ -58,7 +58,7 @@ const HeroCard = ({ ...props }: CardProps) => {
         </chakra.p>
       </Stack>
     </MotionBox>
-  );
+  )
 };
   
 export default HeroCard;

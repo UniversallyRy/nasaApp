@@ -1,6 +1,6 @@
 import RoverItem from './RoverItem';
 import { useState, useMemo } from 'react';
-import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue, Stack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 
 type ListProps = {
   data: object[] | undefined

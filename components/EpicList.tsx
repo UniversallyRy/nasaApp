@@ -2,8 +2,6 @@ import React, { useState, useMemo } from "react";
 import { NextPage } from 'next';
 import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 import EpicItem from './EpicItem';
-import { fetcher } from "../utils/fetcher";
-import useSWR from "swr";
 
 interface Data {
   title: string;
@@ -12,7 +10,7 @@ interface Data {
   explanation?: string;
   identifier?: string;
   hdurl?: string;
-}
+};
 
 const EpicList: NextPage<{ data: Data }> = ({data}) => {
   const slidesCount = data.length
@@ -66,7 +64,7 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
     }else {
       return <Text>No Images</Text>
     }
-  }, [data, slidesCount])
+  }, [data, slidesCount]);
 
   return (
     <Box
@@ -124,6 +122,6 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
     }
     </Box>
   )
-}
+};
 
 export default EpicList;

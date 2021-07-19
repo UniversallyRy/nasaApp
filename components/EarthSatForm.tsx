@@ -1,18 +1,18 @@
-import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
-import { Formik, Form, Field } from "formik"
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
+import { Formik, Form, Field } from "formik";
+import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FormContext } from '../pages/landsat';
-import { fetchedData } from '../utils/endpoints'
+import { fetchedData } from '../utils/endpoints';
 
 interface FormValues  {
     latitude: number
     longitude: number
-}
+};
 
 const FormikForm = () => {
     const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
     const { coordinates, submitCoords }:any = useContext(FormContext);
-    const [isSubmitting, setSubmit] = useState(false)
+    const [isSubmitting, setSubmit] = useState(false);
     const backGround = useColorModeValue("blue.500", "purple.900");
     
     const validateNumbers = (value:string) => {
@@ -94,7 +94,6 @@ export const AlertBox = () => {
             </AlertTitle>
         </Alert>
     )
-}
-
+};
 
 export default FormikForm;

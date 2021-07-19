@@ -1,7 +1,6 @@
 import { Flex, VStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChakraNextImage }  from "./Image";
 
-
 type Props = {
     item: {
         title: string 

@@ -13,7 +13,7 @@ type ItemProps = {
     }
     index: number
     slidesCount: number
-}
+};
 
 const RoverItem = ({ ...props }: ItemProps) => {
     return (

@@ -3,7 +3,7 @@ import { Box, chakra, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {
     children: JSX.Element
-}
+};
 
 const Layout = ({ children }: Props) => {
     const backGround = useColorModeValue("teal.200", "green.900");
@@ -18,6 +18,6 @@ const Layout = ({ children }: Props) => {
             </Box>
         </>
     )
-}
+};
 
 export default Layout;

@@ -1,13 +1,12 @@
 import React from "react";
+import { Box, useColorMode } from "@chakra-ui/react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Box, useColorMode } from "@chakra-ui/react";
 
 interface Props {
   onChange: (date: Date) => Promise<void> | void;
   selected: Date | undefined;
-  
-}
+};
   
 const DatePicker = ({ ...props }: Props) => {
   const isLight = useColorMode().colorMode === "light"; //you can check what theme you are using right now however you want
