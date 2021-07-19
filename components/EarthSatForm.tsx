@@ -1,21 +1,17 @@
 import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { Formik, Form, Field } from "formik"
-import { useState, useContext } from 'react'
-import { FormContext } from './../pages/earth';
+import React, { useState, useContext } from 'react'
+import { FormContext } from '../pages/landsat';
+import { fetchedData } from '../utils/endpoints'
 
 interface FormValues  {
     latitude: number
     longitude: number
 }
 
-
-export const url = (lon:number, lat:number) => {
-return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=2021-06-01&api_key=` + process.env.API_KEY;
-}
-
 const FormikForm = () => {
     const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
-    const { newImage, setImage }:any = useContext(FormContext);
+    const { coordinates, submitCoords }:any = useContext(FormContext);
     const [isSubmitting, setSubmit] = useState(false)
     const backGround = useColorModeValue("blue.500", "purple.900");
     
@@ -38,9 +34,8 @@ const FormikForm = () => {
                     setTimeout(() => {
                         setSubmit(false)
                     }, 3000)
-                    const res = await fetch(url(lon, lat));
-                    const data = await res.json();
-                    setImage(data)
+                    const data = await fetchedData('earthsat', undefined, lon, lat);
+                    submitCoords(data)
                 }}
             >
                 {() => (

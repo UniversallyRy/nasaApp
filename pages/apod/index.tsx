@@ -5,6 +5,7 @@ import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, He
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
+import { fetchedData } from "../../utils/endpoints";
 
 export interface Global extends NodeJS.Global {
   document: Document;
@@ -41,17 +42,6 @@ const variants = {
     }
   }
 };
-
-const fetchedData = (date = new Date()): string => {
-  let day, month, year, newDay, newMonth;
-  let thisDate = date;
-  [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
-  newDay = day.toString().padStart(2, '0');
-  newMonth = month.toString().padStart(2, '0');
-  let newDate = [year, newMonth, newDay].join('-');
-  let url = `https://api.nasa.gov/planetary/apod?date=${newDate}&api_key=` + process.env.API_KEY;
-  return url;
-}
 
 const APOD: NextPage<{ data: Data }> = ({ data }) => {
   const [newData, setData]  = useState(data);
@@ -100,9 +90,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   
   const handleDateChange = async (date:Date) => {
     if (new Date() < date) return ;
-    const url = fetchedData(date);
-    const res = await fetch(url);
-    const data = await res.json();
+    const data = await fetchedData("apod", date);
     setStartDate(date);
     setData(data);
   }
@@ -199,8 +187,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(fetchedData());
-  const data = await res.json();
+  const data = await fetchedData('apod');
 
   if (!data) {
     return {

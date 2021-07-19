@@ -56,10 +56,10 @@ const EpicItem = ({ ...props }: Props) => {
                 color="green.900"
                 userSelect="none"
             >
-                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ props.item.caption }</Text>
                 <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Lat: { props.item.centroid_coordinates.lat }</Text>
                 <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { props.item.centroid_coordinates.lon }</Text>
                 <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { props.item.date }</Text>
+                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ props.item.caption }</Text>
             </VStack>
         </Flex>  
     )

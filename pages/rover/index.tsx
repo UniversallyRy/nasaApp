@@ -3,6 +3,7 @@ import Head from "next/head";
 import NextLink from "next/link";
 import { Stack, Box, Link } from "@chakra-ui/react";
 import RoverList from '../../components/RoverList';
+import { fetchedData } from '../../utils/endpoints';
 
 interface Data {
   photos?: object[]
@@ -13,12 +14,10 @@ interface Data {
   hdurl: string;
   map: ((item: object) => void);
 }
-//todos: expansion on components/pages?, rover camera choices, style fixes 
-const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2021-7-2&api_key=' + process.env.API_KEY;
 
+//todos: expansion on components/pages?, rover camera choices, style fixes 
 const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
-
   return (
     <Box>
       <Head key='pages/rover key'>
@@ -48,9 +47,8 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(url);
-  const data = await res.json();
-
+  // last date with decent sized return json + avoiding empty dates
+  const data = await fetchedData('rover', new Date(2021, 6, 17));
   return {
     props: {
       data,

@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Box, useColorMode } from "@chakra-ui/react";
 
 interface Props {
-  onChange: (date: Date) => Promise<void>;
+  onChange: (date: Date) => Promise<void> | void;
   selected: Date | undefined;
   
 }

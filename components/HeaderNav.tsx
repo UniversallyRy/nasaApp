@@ -15,7 +15,7 @@ import {
   Spacer,
   ButtonGroup
 } from "@chakra-ui/react";
-import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
+import { AiFillHome } from "react-icons/ai";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaMoon, FaSun, FaSatelliteDish } from 'react-icons/fa';
 import { GiEarthAmerica } from 'react-icons/gi';
@@ -81,7 +81,7 @@ const HeaderNav = () => {
                   APoD
                 </Button>
               </NextLink>
-              <NextLink href="/earth">
+              <NextLink href="/landsat">
                 <Button
                   w="full"
                   size="lg"
@@ -131,7 +131,7 @@ const HeaderNav = () => {
               buttonIcon={<BsFillImageFill />}
             />
             <HeaderButton 
-              href="/earth"
+              href="/landsat"
               title="Landsat" 
               buttonIcon={<FaSatelliteDish />}
             />

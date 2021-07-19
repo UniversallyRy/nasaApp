@@ -89,8 +89,12 @@ const RoverList  = ({ data }: ListProps) => {
     }, [data, slidesCount, roverCamera])
 
     return (
-        <Stack
+        <Box
+            w={{base: "sm", sm:"xl", md: "2xl", lg:"3xl"}}
             bg={useColorModeValue("gray.200", "gray.600")}
+            p={1}
+            alignItems="center"
+            justifyContent="center"
         >
             <Select value={roverCamera} onChange={handleChange} placeholder="Select Camera">
                 <option value="FHAZ">Front Hazard Avoidance Camera</option>
@@ -101,8 +105,8 @@ const RoverList  = ({ data }: ListProps) => {
                 <option value="NAVCAM">Navigation Camera</option>
             </Select>
             <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
-            <Flex w="98vw" pos="relative" overflow="hidden">
-                <Flex w="98vw" {...carouselStyle}>
+            <Flex w="full" pos="relative" overflow="hidden">
+                <Flex w="full" h="full" {...carouselStyle}>
                     {memoedPhotos}
                 </Flex>
                 <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
@@ -131,7 +135,7 @@ const RoverList  = ({ data }: ListProps) => {
                     })}
                 </HStack>
             </Flex>
-        </Stack>
+        </Box>
     )
 };
 

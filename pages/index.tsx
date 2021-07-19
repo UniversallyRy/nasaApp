@@ -45,7 +45,7 @@ const Home = () => {
             imgSrc='/apod.png'
           />
           <HeroCard 
-            href='/earth'
+            href='/landsat'
             title='Landsat &rarr;' 
             paragraph='Landsat imagery is provided to the public as a joint project between NASA and USGS.'
             imgSrc='/satellite.png'

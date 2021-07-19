@@ -1,10 +1,13 @@
-import { GetStaticProps } from 'next';
+import { NextPage, GetStaticProps, GetStaticPropsContext } from 'next';
+import useSWR from 'swr'
 import Head from "next/head";
 import NextLink from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
+import { fetcher } from '../../utils/fetcher';
+import { fetchedData } from '../../utils/endpoints';
 
 interface EpicsProps {
   data: {
@@ -14,36 +17,31 @@ interface EpicsProps {
   }
 };
 
-const url = 'https://epic.gsfc.nasa.gov/api/enhanced/date/2021-07-05?api_key=' + process.env.API_KEY;
-
-const fetchedUrl = (date = new Date()): string => {
-  let day, month, year, newDay, newMonth;
-  let thisDate = date;
-  [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
-  newDay = day.toString().padStart(2, '0');
-  newMonth = month.toString().padStart(2, '0');
-  let newDate = [year, newMonth, newDay].join('-');
-  const fetched = `https://epic.gsfc.nasa.gov/api/enhanced/date/${newDate}?api_key=` + process.env.API_KEY;
-
-  return fetched;
-};
-
 // todos: add datepicker and default to closest date
-const Epics = ({ data }: EpicsProps) => {
-  const [fetchedData, setData]  = useState(data);
-  
-  const [startDate, setStartDate] = useState(new Date());
+const Epics: NextPage<EpicsProps> = (props) => {
+  const { data } = useSWR('/api/epic', fetcher, { initialData: props.data })
+  const [initData, setData]  = useState(data);
+  const [startDate, setStartDate] = useState(new Date()); 
 
   const handleDateChange = async (date:Date) => {
-    if (new Date() < date) return ;
-    const url = fetchedUrl(date);
-    const res = await fetch(url);
-    const data = await res.json();
+    if (new Date() < date) return 
+    let newData = await fetchedData("epic", date);
     setStartDate(date);
-    setData(data);
+    setData(newData);
   }
-
-  if (data.length < 1) return <div>Loading...</div>;
+  
+  useEffect(() => {
+    const watcher = () => {
+      if(data == initData){
+        return 
+      }else {
+        setData(initData)
+      }
+    }
+    return () => {
+      watcher
+    }
+  }, [ data, initData ])
 
   return (
     <VStack align="center" minH="100vh">
@@ -72,16 +70,14 @@ const Epics = ({ data }: EpicsProps) => {
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={fetchedData}/>
+        <EpicList data={initData}/>
       </VStack>
     </VStack>
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch(url);
-  const data = await res.json();
-
+export const getStaticProps: GetStaticProps = async (context : GetStaticPropsContext) => {
+  const data = await fetchedData('epic');
   return {
     props: {
       data,
