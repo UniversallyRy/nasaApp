@@ -34,7 +34,7 @@ const FormikForm = () => {
                     setTimeout(() => {
                         setSubmit(false)
                     }, 3000)
-                    const data = await fetchedData('earthsat', undefined, lon, lat);
+                    const data = await fetchedData('landsat', undefined, lon, lat);
                     submitCoords(data)
                 }}
             >

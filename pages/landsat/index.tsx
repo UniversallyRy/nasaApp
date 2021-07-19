@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChakraNextImage }  from "../../components/Image";
 import { useState, createContext } from 'react';
-import { Text, VStack, Stack, Fade, useDisclosure } from "@chakra-ui/react";
+import { Text, VStack, Stack } from "@chakra-ui/react";
 import { NextPage } from 'next';
 import FormikForm, { AlertBox } from "../../components/EarthSatForm";
 
@@ -21,15 +21,14 @@ export const FormContext = createContext({});
 
 const LandSat: NextPage<{ data: Data }> = () => {
   const [coordinates, submitCoords] = useState(Object)
-  const { isOpen, onToggle } = useDisclosure()
   return (
     <Stack
       minH="100vh"
       align='center'
     >
-      <Head key='pages/earth key'>
+      <Head key='pages/landsat key'>
         <title>Satellite Images</title>
-        <meta property="og:earth" content="Earth Polychromatic Imaging Camera Images" key={0} />
+        <meta property="og:landsat" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
       <Stack m={3} spacing={10} direction={{base:"column", md:"row"}}>
         <VStack m={4}>
@@ -47,8 +46,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
           : null
         }
         {coordinates.hasOwnProperty('url')
-          ?<Fade in={isOpen}>
-            <VStack>
+          ?<VStack>
               <ChakraNextImage
                 aria-label="Satellite Image"
                 boxSize={{base:"lg", md: "2xl", xl:"container.lg"}}
@@ -59,8 +57,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
               />
               <Text m={2}>Date Taken: {coordinates.date} </Text>
               <Text m={2}>Satellite: {coordinates.resource.dataset } </Text>
-            </VStack>
-          </Fade>
+          </VStack>
           : null
       }
     </Stack>  
