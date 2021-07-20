@@ -72,6 +72,9 @@ const FormikForm = () => {
                         _hover={{
                             bg:'gray.600'
                         }}
+                        _focus={{
+                            outline:"hidden"
+                        }}
                     >
                         Submit
                     </Button>
