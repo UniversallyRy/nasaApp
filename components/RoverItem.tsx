@@ -23,7 +23,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
             flex="none"
             rounded="lg"
             shadow="lg"
-            bg={useColorModeValue("white", "gray.800")}
+            bg={useColorModeValue("gray.300", "gray.800")}
         >
             <Text ml={2} mt={7}>Date Taken: { props.item.earth_date }</Text>
             <Text m={2}>Sol: { props.item.sol }</Text>
@@ -38,7 +38,6 @@ const RoverItem = ({ ...props }: ItemProps) => {
                 alt={ props.item.id }
             />
             <Text
-                color="white"
                 fontSize="xs"
                 p="2"
                 pos="absolute"
