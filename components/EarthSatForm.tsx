@@ -24,7 +24,7 @@ const FormikForm = () => {
     };
 
     return (
-        <Box align="center" w={{base: "sm", sm:"md", md:"lg"}}>
+        <Box align="center" justify="center" w={{base: "sm", sm:"md", md:"lg"}}>
             <Formik
                 initialValues={initialValues}
                 onSubmit={ async (values) => {
@@ -45,7 +45,7 @@ const FormikForm = () => {
                         {({ field, form }:any) => (
                             <FormControl p={1} borderRadius="md" bg={backGround} shadow="lg" isInvalid={form.errors.latitude && form.touched.latitude}>
                                 <FormLabel fontSize="xl" textAlign="center" htmlFor="latitude">Latitude</FormLabel>
-                                <Input {...field} fontSize="lg" type="number" id="latitude" placeholder="Latitude" />
+                                <Input {...field} textAlign="center" fontSize="lg" type="number" id="latitude" placeholder="Latitude" />
                                 <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
                             </FormControl>
                         )}
@@ -54,7 +54,7 @@ const FormikForm = () => {
                         {({ field, form }:any) => (
                             <FormControl p={1} borderRadius="md" bg={backGround} shadow="lg" isInvalid={form.errors.longitude && form.touched.longitude}>
                                 <FormLabel fontSize="xl" textAlign="center" htmlFor="longitude">Longitude</FormLabel>
-                                <Input {...field} fontSize="lg" type="number" id="longitude" placeholder="Longitude" />
+                                <Input {...field} textAlign="center" fontSize="lg" type="number" id="longitude" placeholder="Longitude" />
                                 <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
                             </FormControl>
                         )}

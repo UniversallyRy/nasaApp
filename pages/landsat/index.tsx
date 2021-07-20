@@ -25,7 +25,6 @@ const LandSat: NextPage<{ data: Data }> = () => {
   
   return (
     <Stack
-      w="95vw"
       minH="100vh"
       align='center'
     >
@@ -52,7 +51,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
           ?<VStack shadow="xl" rounded="sm" bg={backGround} p={1}>
               <ChakraNextImage
                 aria-label="Satellite Image"
-                boxSize={{base:"md", md: "2xl", xl:"container.lg"}}
+                boxSize={{base:"sm", sm: "md", md: "2xl", xl:"container.lg"}}
                 src={ coordinates.url }
                 alt={ coordinates.resource.dataset }
               />
