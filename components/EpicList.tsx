@@ -69,7 +69,7 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
 
   return (
     <Box
-      w={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
+      w={{base: "sm", sm:"lg", md: "2xl", lg:"3xl"}}
       bg={backGround}
       p={1}
       borderRadius="sm"
@@ -107,18 +107,18 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
       </Flex>
       :<Alert
         status="error"
-        variant="subtle"
+        variant="solid"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        textAlign="center"
-        height="200px"
+        w="full"
+        height="400px"
       >
-        <AlertIcon boxSize="40px" mr={0} />
+        <AlertIcon w="full"/>
         <AlertTitle mt={4} mb={1} fontSize="lg">
           No Images Found
         </AlertTitle>
-        <AlertDescription maxWidth="sm">
+        <AlertDescription maxWidth="md">
           No images taken on this date, try another!
         </AlertDescription>
       </Alert> 
