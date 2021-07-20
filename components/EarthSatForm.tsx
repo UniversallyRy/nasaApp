@@ -43,7 +43,7 @@ const FormikForm = () => {
                     <HStack spacing={2.5}>
                         <Field name="latitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
-                            <FormControl isInvalid={form.errors.latitude && form.touched.latitude}>
+                            <FormControl p={1} borderRadius="md" bg={backGround} shadow="lg" isInvalid={form.errors.latitude && form.touched.latitude}>
                                 <FormLabel fontSize="xl" textAlign="center" htmlFor="latitude">Latitude</FormLabel>
                                 <Input {...field} fontSize="lg" type="number" id="latitude" placeholder="Latitude" />
                                 <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
@@ -52,7 +52,7 @@ const FormikForm = () => {
                         </Field>
                         <Field name="longitude" validate={validateNumbers}>
                         {({ field, form }:any) => (
-                            <FormControl isInvalid={form.errors.longitude && form.touched.longitude}>
+                            <FormControl p={1} borderRadius="md" bg={backGround} shadow="lg" isInvalid={form.errors.longitude && form.touched.longitude}>
                                 <FormLabel fontSize="xl" textAlign="center" htmlFor="longitude">Longitude</FormLabel>
                                 <Input {...field} fontSize="lg" type="number" id="longitude" placeholder="Longitude" />
                                 <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
@@ -63,10 +63,15 @@ const FormikForm = () => {
                     <Button
                         size="lg"
                         fontSize="xl"
+                        rounded="sm"
+                        shadow="xl"
                         m={3}
                         bg={backGround}
                         isLoading={isSubmitting}
                         type="submit"
+                        _hover={{
+                            bg:'gray.600'
+                        }}
                     >
                         Submit
                     </Button>

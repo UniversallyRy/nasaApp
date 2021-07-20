@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChakraNextImage }  from "../../components/Image";
 import { useState, createContext } from 'react';
-import { Text, VStack, Stack } from "@chakra-ui/react";
+import { Text, VStack, Stack, useColorModeValue } from "@chakra-ui/react";
 import { NextPage } from 'next';
 import FormikForm, { AlertBox } from "../../components/EarthSatForm";
 
@@ -21,6 +21,8 @@ export const FormContext = createContext({});
 
 const LandSat: NextPage<{ data: Data }> = () => {
   const [coordinates, submitCoords] = useState(Object)
+  const backGround = useColorModeValue("blue.500", "purple.900");
+  
   return (
     <Stack
       w="95vw"
@@ -32,7 +34,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         <meta property="og:landsat" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
       <Stack m={3} spacing={10} direction={{base:"column", md:"row"}}>
-        <VStack m={4}>
+        <VStack p={1} borderRadius="md" bg={backGround} shadow="lg" mx={4}>
           <Text fontSize="xl">Examples:</Text>
           <Text fontSize="md">Great Pyramid of Giza- Lat: 29.9792, Lon: 31.13</Text>
           <Text fontSize="md">Vegas Strip- Lat: 36.11, Lon: 115.20</Text>
@@ -47,12 +49,10 @@ const LandSat: NextPage<{ data: Data }> = () => {
           : null
         }
         {coordinates.hasOwnProperty('url')
-          ?<VStack>
+          ?<VStack shadow="xl" rounded="sm" bg={backGround} p={1}>
               <ChakraNextImage
                 aria-label="Satellite Image"
                 boxSize={{base:"md", md: "2xl", xl:"container.lg"}}
-                rounded="lg"
-                shadow="xl"
                 src={ coordinates.url }
                 alt={ coordinates.resource.dataset }
               />
