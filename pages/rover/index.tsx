@@ -19,7 +19,7 @@ interface Data {
 const Rover: NextPage<{ data: Data }> = ({ data }) => {
   if (!data) return <div>Loading...</div>;
   return (
-    <Box>
+    <Box h="100vh">
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
         <meta property="og:rover" content="Mars Rover Photos" key={2021} />

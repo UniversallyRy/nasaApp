@@ -30,8 +30,8 @@ const RoverItem = ({ ...props }: ItemProps) => {
             <Text m={2}>Camera: { props.item.camera.name }</Text>
 
             <ChakraNextImage
-                w={{base:"full", md: "full"}} 
-                h={{base:"70vh", md: "90vh"}}
+                w='full' 
+                h={{base:"60vh", sm:"70vh", md: "70vh"}}
                 rounded="lg"
                 shadow="sm"
                 src={ props.item.img_src }
