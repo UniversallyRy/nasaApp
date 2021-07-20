@@ -88,7 +88,7 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
         <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
           &#10095;
         </Text>
-        <HStack justify="center" pos="absolute" bottom="5" w="full">
+        <HStack justify="center" pos="absolute" bottom="2" w="full">
           {Array.from({ length: slidesCount }).map((_, slide) => (
             <Box
               key={`dots-${slide}`}

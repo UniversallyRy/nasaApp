@@ -23,6 +23,7 @@ const EpicItem = ({ ...props }: Props) => {
     return (
         <Flex    
             w="full"
+            h="full"
         >
             <Text
                 pos="absolute"
@@ -48,14 +49,14 @@ const EpicItem = ({ ...props }: Props) => {
                 top="0"
                 textAlign="center"
                 w="full"
-                mt="4"
-                color="green.900"
+                mt={{base:"10", md: "1"}}
+                color="purple.900"
                 userSelect="none"
             >
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Lat: { props.item.centroid_coordinates.lat }</Text>
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Long: { props.item.centroid_coordinates.lon }</Text>
-                <Text fontSize={['xs', 'xs', 'sm', 'lg']}>Date Taken: { props.item.date }</Text>
-                <Text mt="2" fontSize={['xs', 'sm', 'md', 'xl']}>{ props.item.caption }</Text>
+                <Text fontSize={['xs', 'xs', 'sm']}>Lat: { props.item.centroid_coordinates.lat }</Text>
+                <Text fontSize={['xs', 'xs', 'sm']}>Long: { props.item.centroid_coordinates.lon }</Text>
+                <Text fontSize={['xs', 'xs', 'sm']}>Date Taken: { props.item.date }</Text>
+                <Text mt="2" fontSize={['xs', 'sm', 'md', 'lg']}>{ props.item.caption }</Text>
             </VStack>
         </Flex>  
     )
