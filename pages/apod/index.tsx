@@ -112,7 +112,6 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
         </Link>
       </NextLink>
       <MotionHeading
-        pl={12}
         variants={variants}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 1.2 }}
