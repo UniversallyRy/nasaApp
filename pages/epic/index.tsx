@@ -57,14 +57,14 @@ const Epics: NextPage<EpicsProps> = (props) => {
         <Box m={10}>
           <NextLink passHref href="/">
             <Link
-              mt={3}
-              bg="gray.900"
-              color="gray.100"
-              px={5}
-              py={3}
+              bg="gray.600"
+              px={3}
+              py={4}
               fontWeight="semibold"
-              rounded="lg"
-              _hover={{ bg: "gray.400" }}
+              shadow="xl"
+              rounded="sm"
+              _focus={{ outline: "hidden"}}
+              _hover={{ bg: "gray.700", shadow: "2xl"}}
             >
               Back to Home
             </Link>

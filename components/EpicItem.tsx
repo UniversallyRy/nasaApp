@@ -23,25 +23,22 @@ const EpicItem = ({ ...props }: Props) => {
     return (
         <Flex    
             w="full"
-            flex="none"
-            rounded="lg"
-            shadow="lg"
-            bg={useColorModeValue("white", "gray.800")}
         >
             <Text
                 pos="absolute"
                 top="0"
                 fontSize="xs"
                 color="white"
-                p="3"
+                p={1}
+                zIndex={1}
             >
                 {props.index + 1} / {props.slidesCount}
             </Text>
             <ChakraNextImage
                 boxSize={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
-                rounded="lg"
+                p={3}
+                rounded="md"
                 shadow="sm"
-                backgroundSize="auto"
                 src={ imageLink + props.item.image + `.png` }
                 placeholder="blur"
                 alt={ props.item.title }

@@ -28,10 +28,10 @@ const HeroCard = ({ ...props }: CardProps) => {
         }
       }}
       mx={1}
-      rounded="sm"
+      rounded="md"
       shadow="xl"
       bg={backGround}
-      boxSize={{ base: "md", md: "sm", lg: "md" }}
+      boxSize={{ base: "sm", lg: "md" }}
     >
       <Stack spacing={2} align="center"p={3}>
         <Image

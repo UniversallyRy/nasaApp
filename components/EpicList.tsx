@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { NextPage } from 'next';
-import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
+import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription, background } from '@chakra-ui/react';
 import EpicItem from './EpicItem';
 
 interface Data {
@@ -15,6 +15,7 @@ interface Data {
 const EpicList: NextPage<{ data: Data }> = ({data}) => {
   const slidesCount = data.length
   const [currentSlide, setCurrentSlide] = useState(0);
+  const backGround = useColorModeValue("blue.500", "purple.900");
 
   const arrowStyles = {
     cursor: "pointer",
@@ -69,8 +70,10 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
   return (
     <Box
       w={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
-      bg={useColorModeValue("gray.200", "gray.600")}
+      bg={backGround}
       p={1}
+      borderRadius="sm"
+      shadow="2xl"
       alignItems="center"
       justifyContent="center"
     >

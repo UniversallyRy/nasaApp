@@ -8,6 +8,7 @@ type ListProps = {
 
 const RoverList  = ({ data }: ListProps) => {
     const [roverCamera, setCamera] = useState("FHAZ")
+    const backGround = useColorModeValue("blue.500", "purple.900");
 
     const arrowStyles = {
         cursor: "pointer",
@@ -91,10 +92,12 @@ const RoverList  = ({ data }: ListProps) => {
     return (
         <Box
             w={{base: "full", md: "2xl", lg:"3xl"}}
-            h={{base: "full", md: "2xl", lg:"3xl"}}
-            bg={useColorModeValue("gray.200", "gray.600")}
+            h="full"
+            bg={backGround}
+            shadow="xl"
+            borderRadius="lg"
             p={1}
-            alignItems="center"
+            align="center"
             justifyContent="center"
         >
             <Select value={roverCamera} onChange={handleChange} placeholder="Select Camera">

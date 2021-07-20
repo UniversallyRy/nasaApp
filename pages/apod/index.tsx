@@ -49,6 +49,8 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
   const backGround = useColorModeValue("rgba(232, 236, 241, 0.8)", "rgba(0, 0, 0, 0.95)");
+  const cardBg = useColorModeValue("blue.500", "purple.900");
+  
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -56,11 +58,11 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
     const { clientX, clientY } = e;
     const moveX = clientX - window.innerWidth / 2;
     const moveY = clientY - window.innerHeight / 2;
-    const offsetFactor = 15;
+    const offsetFactor = 40;
     
     imgAnimation.start({
       x: moveX / offsetFactor,
-      y: moveY / offsetFactor
+      y: moveY / (offsetFactor - 20)
     });
 
   };
@@ -117,9 +119,19 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
       >
         { newData.title }
       </MotionHeading>
-      <Stack align="center" spacing={10} direction={{base:"column", md:"row"}}>
+      <Stack 
+        bg={cardBg}
+        shadow="2xl" 
+        borderRadius="md"
+        p={3} 
+        align="center" 
+        spacing={10} 
+        direction={{base:"column", md:"row"}}
+      >
         <Box
           w={["xs", "sm", "lg", "xl"]}
+          bg="whiteAlpha.200"
+          borderRadius="md"
           cursor={isOpen ? "zoom-out" : "zoom-in"}
         >
           <MotionDiv
@@ -139,6 +151,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
             left={0}
             right={0}
             bottom={0}
+            borderRadius="md"
             zIndex={isOpen ? "docked" : "auto"}
             h={isOpen ? "auto" : "full"}
             w={isOpen ? "auto" : "full"}
