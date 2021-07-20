@@ -7,7 +7,7 @@ const MotionHeading = motion<HeadingProps>(Heading)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
   return (
-    <Box w="100wh" minH="100vh" direction={{ base: "column", md: "row" }}>
+    <Box align="center" w="100wh" minH="100vh" direction={{ base: "column", md: "row" }}>
       <Head key='pages/index key'>
         <title>NASA Info</title>
         <meta name="description" content="Look up information NASA provides" />

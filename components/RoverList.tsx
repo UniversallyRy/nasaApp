@@ -90,7 +90,6 @@ const RoverList  = ({ data }: ListProps) => {
 
     return (
         <Box
-            w={{base: "sm", sm:"xl", md: "2xl", lg:"3xl"}}
             bg={useColorModeValue("gray.200", "gray.600")}
             p={1}
             alignItems="center"

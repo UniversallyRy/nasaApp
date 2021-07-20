@@ -31,7 +31,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
 
             <ChakraNextImage
                 w={{base:"full", md: "full"}} 
-                h={{base:"full", sm:"90vh", md: "90vh"}}
+                h={{base:"70vh", md: "90vh"}}
                 rounded="lg"
                 shadow="sm"
                 src={ props.item.img_src }
