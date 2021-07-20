@@ -44,7 +44,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
   }, [ data, initData ])
 
   return (
-    <VStack align="center" minH="100vh">
+    <Box h="100vh" justify="center" align="center">
       <Head key='pages/epic key'>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
@@ -54,7 +54,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
         onChange={handleDateChange} 
       />
       <VStack>
-        <Box m={10}>
+        <Box m={{base: 20, sm: 10, lg: 2}}>
           <NextLink passHref href="/">
             <Link
               bg="gray.600"
@@ -72,7 +72,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
         </Box>
         <EpicList data={initData}/>
       </VStack>
-    </VStack>
+    </Box>
   );
 };
 

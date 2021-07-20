@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 const MotionBox = motion<BoxProps>(Box)
 
 const NasaApp = ({ Component, pageProps, router }: AppProps) => {
+
   return (
     <ChakraProvider>
       <MotionBox

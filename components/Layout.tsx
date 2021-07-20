@@ -9,14 +9,14 @@ const Layout = ({ children }: Props) => {
     const backGround = useColorModeValue("teal.200", "green.900");
 
     return (
-        <>
+        <Box h={{base: "full",}} bg={backGround}>
             <HeaderNav/>
-            <Box bg={backGround}>
+            <Box>
                 <chakra.main>
                     { children }
                 </chakra.main>
             </Box>
-        </>
+        </Box>
     )
 };
 
