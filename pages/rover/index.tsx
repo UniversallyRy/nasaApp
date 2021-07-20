@@ -3,7 +3,7 @@ import Head from "next/head";
 import NextLink from "next/link";
 import { Stack, Box, Link } from "@chakra-ui/react";
 import RoverList from '../../components/RoverList';
-import { fetchedData } from '../../utils/endpoints';
+import { fetchedData } from '../../utils/getData';
 
 interface Data {
   photos?: object[]

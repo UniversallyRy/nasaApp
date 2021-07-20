@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Formik, Form, Field } from "formik";
 import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FormContext } from '../pages/landsat';
-import { fetchedData } from '../utils/endpoints';
+import { fetchedData } from '../utils/getData';
 
 interface FormValues  {
     latitude: number
@@ -31,10 +31,10 @@ const FormikForm = () => {
                     setSubmit(true)
                     let lon = values.longitude
                     let lat = values.latitude
+                    const data = await fetchedData('landsat', undefined, lon, lat);
                     setTimeout(() => {
                         setSubmit(false)
                     }, 3000)
-                    const data = await fetchedData('landsat', undefined, lon, lat);
                     submitCoords(data)
                 }}
             >

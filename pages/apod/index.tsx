@@ -5,12 +5,13 @@ import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, He
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
-import { fetchedData } from "../../utils/endpoints";
+import { fetchedData } from "../../utils/getData";
 
 export interface Global extends NodeJS.Global {
   document: Document;
   window: Window;
 }
+
 declare var global: Global;
 
 interface Data {
@@ -20,7 +21,7 @@ interface Data {
   date: string;
   copyright: string
   hdurl: string
-}
+};
 
 const MotionHeading = motion<HeadingProps>(Heading);
 const MotionImage = motion<ImageProps>(Image);
@@ -43,13 +44,11 @@ const variants = {
   }
 };
 
-const APOD: NextPage<{ data: Data }> = ({ data }) => {
-  const [newData, setData]  = useState(data);
+const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
+  const [newData, setData]  = useState(apodData);
   const [startDate, setStartDate] = useState(new Date());
   const [isOpen, setOpen] = useState(false);
   const backGround = useColorModeValue("rgba(232, 236, 241, 0.8)", "rgba(0, 0, 0, 0.95)");
-
-  
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -64,10 +63,10 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       y: moveY / offsetFactor
     });
 
-  }
+  };
 
   useEffect(() => {
-    let splitDate = data.date.split('-');
+    let splitDate = apodData.date.split('-');
     let [year, month, day] = splitDate;
     let newDate = new Date();
     day = day.replace(/^0+/, '');
@@ -77,7 +76,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       {
         return setStartDate(newDate);
       }
-    }, [data.date]);
+  }, [apodData.date]);
 
   const hideImage = () => {
     return isOpen && setOpen(false);
@@ -86,14 +85,14 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
   useDomEvent(useRef(global.window as any), "scroll", () => hideImage());
   useDomEvent(useRef(global.window as any), "keydown",(e: any) => e.keyCode === 27 && hideImage());
   
-  if (!data) return <div>Loading...</div>;
+  if (!apodData) return <div>Loading...</div>;
   
   const handleDateChange = async (date:Date) => {
     if (new Date() < date) return ;
     const data = await fetchedData("apod", date);
     setStartDate(date);
     setData(data);
-  }
+  };
 
   return (
     <VStack minH="100vh" minW="fill">
@@ -107,7 +106,7 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       />
       <NextLink href="/">
         <Link>
-          <chakra.a>← Back to home</chakra.a>
+          ← Back to home
         </Link>
       </NextLink>
       <MotionHeading
@@ -184,12 +183,12 @@ const APOD: NextPage<{ data: Data }> = ({ data }) => {
       </Stack>
     </VStack>
   );
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetchedData('apod');
+  const apodData = await fetchedData('apod');
 
-  if (!data) {
+  if (!apodData) {
     return {
       notFound: true,
     }
@@ -197,7 +196,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      data,
+      apodData,
     },
   };
 };

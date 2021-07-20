@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Box, Text, TextProps, SimpleGrid, Heading } from "@chakra-ui/react"
+import { Image, chakra, VStack, Box, HeadingProps, Text, SimpleGrid, Heading } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
 import HeroCard from '../components/HeroCard';
 
-const MotionText = motion<TextProps>(Text)
+const MotionHeading = motion<HeadingProps>(Heading)
 //todos: files cleanup, better structure, separate some of the util methods
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
         <meta name="description" content="Look up information NASA provides" />
       </Head>
         <VStack>
-          <MotionText
+          <MotionHeading
             initial="hidden" 
             animate="visible" 
             variants={{
@@ -30,16 +30,16 @@ const Home = () => {
               },
             }}
           >
-            <Heading userSelect="none" my={5}>
+            <Text fontSize="3xl" userSelect="none" my={5}>
               View Satellites, Rovers and other Astronomy
-            </Heading>
-          </MotionText>
+            </Text>
+          </MotionHeading>
         <SimpleGrid 
           gap={3}
           columns={[1, 1, 2,]}
         >
           <HeroCard
-            href='/apods'
+            href='/apod'
             title='APoD &rarr;' 
             paragraph='View the Astronomy Picture of the Day.'
             imgSrc='/apod.png'
@@ -77,7 +77,7 @@ const Home = () => {
           </chakra.a>
           <chakra.div>Hero icons made by <chakra.a href="https://www.freepik.com" title="Freepik">Freepik</chakra.a> from <chakra.a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</chakra.a></chakra.div>
         </VStack>
-        </VStack>
+      </VStack>
     </Box>
   )
 };

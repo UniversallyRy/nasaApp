@@ -7,7 +7,7 @@ import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 import { fetcher } from '../../utils/fetcher';
-import { fetchedData } from '../../utils/endpoints';
+import { fetchedData } from '../../utils/getData';
 
 interface EpicsProps {
   data: {
