@@ -15,7 +15,10 @@ const DatePicker = ({ ...props }: Props) => {
     // set className to "light-theme-original" ↓↓↓↓
     <Box m={1} color="black" className={isLight ? "light-theme" : "dark-theme"}>
       <ReactDatePicker
-        withPortal
+        peekNextMonth
+        showMonthDropdown
+        showYearDropdown
+        dropdownMode="select"
         {...props}
       />
     </Box>
