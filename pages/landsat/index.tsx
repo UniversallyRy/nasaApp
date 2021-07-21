@@ -4,6 +4,7 @@ import { useState, createContext } from 'react';
 import { Text, VStack, Stack, useColorModeValue } from "@chakra-ui/react";
 import { NextPage } from 'next';
 import FormikForm, { AlertBox } from "../../components/SatelliteForm";
+import { reformatDate } from '../../utils/reformatDate';
 
 // Take off default and add searchable options
 interface Data {
@@ -22,7 +23,7 @@ export const FormContext = createContext({});
 const LandSat: NextPage<{ data: Data }> = () => {
   const [coordinates, submitCoords] = useState(Object)
   const backGround = useColorModeValue("blue.500", "purple.900");
-  
+
   return (
     <Stack
       minH="100vh"
@@ -55,7 +56,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
                 src={ coordinates.url }
                 alt={ coordinates.resource.dataset }
               />
-              <Text m={2}>Date Taken: {coordinates.date} </Text>
+              <Text m={2}>Date Taken: {reformatDate(coordinates.date)} </Text>
               <Text m={2}>Satellite: {coordinates.resource.dataset } </Text>
           </VStack>
           : null

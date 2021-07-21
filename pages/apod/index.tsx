@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";
 import { fetchedData } from "../../utils/getData";
-
+import { reformatDate } from "../../utils/reformatDate";
 export interface Global extends NodeJS.Global {
   document: Document;
   window: Window;
@@ -50,7 +50,6 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
   const [isOpen, setOpen] = useState(false);
   const backGround = useColorModeValue("rgba(232, 236, 241, 0.8)", "rgba(0, 0, 0, 0.95)");
   const cardBg = useColorModeValue("blue.500", "purple.900");
-  
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -164,7 +163,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
             src={newData.hdurl}
             onMouseMove={e => handleMouseMove(e)}
             onClick={() => setOpen(!isOpen)}
-            alt={'Picture for the date of ' + `${newData.date}`}
+            alt={'Picture for the date of ' + `${reformatDate(newData.date)}`}
           />
         </Box>
         <Text
@@ -184,7 +183,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
           fontSize={{ base: "14px", sm: "20px", lg: "28px"}}
         >
           Posted on 
-            <time> {newData.date} </time>
+            <time> {reformatDate(newData.date)} </time>
         </Text>
         {!newData.copyright == undefined 
         ?<Text fontSize={{ base: "6px", lg: "12px"}}>
