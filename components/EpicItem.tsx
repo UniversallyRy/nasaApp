@@ -1,5 +1,6 @@
 import { Flex, VStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChakraNextImage }  from "./Image";
+import { reformatDate } from '../utils/reformatDate';
 
 type Props = {
     item: {
@@ -55,7 +56,7 @@ const EpicItem = ({ ...props }: Props) => {
             >
                 <Text fontSize={['xs', 'xs', 'sm']}>Lat: { props.item.centroid_coordinates.lat }</Text>
                 <Text fontSize={['xs', 'xs', 'sm']}>Long: { props.item.centroid_coordinates.lon }</Text>
-                <Text fontSize={['xs', 'xs', 'sm']}>Date Taken: { props.item.date }</Text>
+                <Text fontSize={['xs', 'xs', 'sm']}>Date Taken: { reformatDate(props.item.date) }</Text>
                 <Text mt="2" fontSize={['xs', 'sm', 'md', 'lg']}>{ props.item.caption }</Text>
             </VStack>
         </Flex>  
