@@ -71,7 +71,7 @@ const RoverList  = ({ data }: ListProps) => {
     };
 
     const memoedPhotos = useMemo(() => {
-        let photosArray:any = []
+        const photosArray:any = []
         if(data instanceof Array){ 
             data.map(( item:any, index:number) => {
                 if(item.camera.name == roverCamera) {

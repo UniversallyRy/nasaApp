@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
 import { Stack, Box, Link } from "@chakra-ui/react";
 import RoverList from '../../components/RoverList';
+import DatePicker from '../../components/ChangeDate';
 import { fetchedData } from '../../utils/getData';
 
 interface Data {
@@ -17,6 +19,16 @@ interface Data {
 
 //todos: expansion on components/pages?, rover camera choices, style fixes 
 const Rover: NextPage<{ data: Data }> = ({ data }) => {
+  const [newData, setData] = useState(data);
+  const [date, setDate] = useState(new Date());
+
+  const handleDateChange = async (date:Date) => {
+    if (new Date() < date) return 
+    let newData = await fetchedData("rover", date);
+    setDate(date);
+    setData(newData)
+  }
+
   if (!data) return <div>Loading...</div>;
   return (
     <Box h="100vh">
@@ -25,7 +37,8 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
         <meta property="og:rover" content="Mars Rover Photos" key={2021} />
       </Head>
       <Stack align="center">
-        <Box my={3}>
+          <DatePicker selected={date} onChange={handleDateChange}/>
+        <Box m={1}>
           <NextLink passHref href="/">
             <Link
               bg="gray.900"
@@ -40,7 +53,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
             </Link>
           </NextLink>
         </Box>
-        <RoverList data={data.photos}/>
+        <RoverList data={newData.photos}/>
       </Stack>
     </Box>
   );
