@@ -20,7 +20,7 @@ interface Data {
 //todos: expansion on components/pages?, rover camera choices, style fixes 
 const Rover: NextPage<{ data: Data }> = ({ data }) => {
   const [newData, setData] = useState(data);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(2021, 6, 17));
 
   const handleDateChange = async (date:Date) => {
     if (new Date() < date) return 
@@ -34,7 +34,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
     <Box h="100vh">
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
-        <meta property="og:rover" content="Mars Rover Photos" key={2021} />
+        <meta property="og:rover" content="Mars Rover Photos" key='rovers' />
       </Head>
       <Stack align="center">
           <DatePicker selected={date} onChange={handleDateChange}/>
