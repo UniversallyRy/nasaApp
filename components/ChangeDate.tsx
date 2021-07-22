@@ -4,7 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface Props {
-  onChange: (date: Date) => Promise<void> | void;
+  onChange: (date: Date) => Promise<void> | (void | undefined);
   selected: Date | undefined;
 };
   
