@@ -20,7 +20,6 @@ type Props = {
 const EpicItem = ({ ...props }: Props) => {   
     const dateFormatter = props.item.date.slice(0, 10).split('-').join('/')
     const imageLink =  `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
-
     return (
         <Flex    
             w="full"
