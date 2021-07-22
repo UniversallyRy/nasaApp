@@ -1,40 +1,57 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from "@chakra-ui/react"
-import AlienButton  from '../components/AlienHead';
+import { Story, Meta } from '@storybook/react';
+import { ButtonProps } from "@chakra-ui/react"
+import AlienHead  from '../components/AlienHead';
 
 export default {
-  title: 'components/alien',
-  component: AlienButton,
-  parameters: {
-    actions: {
-      handles: ['mouseover'],
-    },
-  },
-} as ComponentMeta<typeof AlienButton>;
+  title: 'components/AlienHead',
+  component: AlienHead,
+} as Meta<typeof AlienHead>;
 
-const Template: ComponentStory<typeof Button>= ({args}) => <AlienButton {...args} />;
+const handleClick = () => {
+  console.log('Clicked');
+}
 
-export const DefaultSize = Template.bind({});
-DefaultSize.args = {
-    size:"65px",
-    p: "10"
+const Template: Story<ButtonProps> = ( args ) => <AlienHead {...args}/>;
+
+export const DefaultSizeLightTheme = Template.bind({});
+DefaultSizeLightTheme.args = {
+  boxSize:"65",
+  bg: "gray.200"
 };
 
-export const ThemeLight = Template.bind({});
-ThemeLight.args = {
-    size:"300px",
-    bg: "gray.300"
-};
 export const ThemeDark = Template.bind({});
 ThemeDark.args = {
-    size:"300px",
-    bg: "gray.800"
+  ...DefaultSizeLightTheme.args,
+  bg: "gray.800"
 };
 
 export const Enlarged = Template.bind({});
 Enlarged.args = {
-    size:"100px",
-    bg: "gray.300"
+  boxSize:"300",
+  bg: "gray.200"
 };
 
+export const Clicked = Template.bind({});
+Clicked.args = {
+  ...DefaultSizeLightTheme.args,
+};
+
+Clicked.parameters = {
+  backgrounds: {
+    actions: {
+      handles: ['click'],
+    },
+  },
+};
+
+export const Hover = Template.bind({});
+Hover.args = {
+  ...DefaultSizeLightTheme.args,
+};
+
+Hover.parameters = {
+  actions: {
+    handles: ['mouseover'],
+  },
+};
