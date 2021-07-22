@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import Head from "next/head";
 import { GetStaticProps, NextPage } from 'next';
-import { Box, BoxProps, Image, ImageProps, chakra, VStack, Stack, Text, Link, Heading, HeadingProps, useColorModeValue } from "@chakra-ui/react";
+import { Box, BoxProps, Image, ImageProps, VStack, Stack, Text, Link, Heading, HeadingProps, useColorModeValue } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
 import { motion, useDomEvent, useAnimation } from "framer-motion";
 import ChangeDate from "../../components/ChangeDate";

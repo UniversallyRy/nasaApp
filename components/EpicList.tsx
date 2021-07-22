@@ -1,21 +1,31 @@
 import React, { useState, useMemo } from "react";
 import { NextPage } from 'next';
-import { Flex, Box, HStack, Text, useColorModeValue, Alert, AlertIcon, AlertTitle, AlertDescription, background } from '@chakra-ui/react';
+import { 
+  Flex,
+  Box, 
+  HStack, 
+  Text, 
+  useColorModeValue, 
+  Alert, 
+  AlertIcon, 
+  AlertTitle, 
+  AlertDescription 
+} from '@chakra-ui/react';
 import EpicItem from './EpicItem';
 
 interface Data {
-  title: string;
-  date: number;
-  length: number;
-  explanation?: string;
-  identifier?: string;
-  hdurl?: string;
+  title: string
+  date: number
+  length: number
+  explanation?: string
+  identifier?: string
+  hdurl?: string
 };
 
-const EpicList: NextPage<{ data: Data }> = ({data}) => {
-  const slidesCount = data.length
+const EpicList: NextPage<{ data: Data }> = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const backGround = useColorModeValue("blue.500", "purple.900");
+  const slidesCount = data.length;
 
   const arrowStyles = {
     cursor: "pointer",
@@ -38,7 +48,6 @@ const EpicList: NextPage<{ data: Data }> = ({data}) => {
     transition: "all .5s",
     ml: `-${currentSlide * 100}%`,
   };
-
 
   const prevSlide = () => {
     setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));

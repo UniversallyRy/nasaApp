@@ -22,8 +22,6 @@ import { GiEarthAmerica } from 'react-icons/gi';
 import HeaderButton from './HeaderButton';
 import AlienHead from "./AlienHead";
 
-
-
 const HeaderNav = () => {
   // const isActive = router.pathname === '/'
   const { colorMode, toggleColorMode } = useColorMode();

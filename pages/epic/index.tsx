@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import { NextPage, GetStaticProps, GetStaticPropsContext } from 'next';
-import useSWR from 'swr'
 import Head from "next/head";
 import NextLink from "next/link";
-import { useState, useEffect } from "react";
+import useSWR from 'swr'
 import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from '../../components/EpicList';
 import ChangeDate from "../../components/ChangeDate";

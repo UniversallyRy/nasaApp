@@ -1,6 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { Formik, Form, Field } from "formik";
-import { Alert, AlertIcon, AlertTitle, useColorModeValue, Box, HStack, FormErrorMessage, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { 
+    Alert, 
+    AlertIcon, 
+    AlertTitle, 
+    useColorModeValue, 
+    Box, 
+    HStack, 
+    FormErrorMessage, 
+    Button, 
+    FormControl, 
+    FormLabel, 
+    Input 
+} from "@chakra-ui/react";
 import { FormContext } from '../pages/landsat';
 import { fetchedData } from '../utils/getData';
 
