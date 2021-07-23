@@ -11,5 +11,3 @@ export const fetcher = async (...args: any[]) => {
   }
   return res_json;
 }
-
-// export const fetcher = (...args: string[]) => fetch(...args).then(res => res.json());
