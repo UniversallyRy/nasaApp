@@ -2,9 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Other Resources Used
 
-[ChakraUI](https://chakra-ui.com/)
-[Framer Motion](https://www.framer.com/motion/)
-[Formik](https://formik.org/)
+- [ChakraUI](https://chakra-ui.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Formik](https://formik.org/)
 
 ## API
 
