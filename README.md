@@ -6,6 +6,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - [Framer Motion](https://www.framer.com/motion/)
 - [Formik](https://formik.org/)
 
-## API
+## Database
 
 - Comes from [Nasa's API](https://api.nasa.gov/)
