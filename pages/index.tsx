@@ -1,5 +1,14 @@
 import Head from 'next/head';
-import { Image, chakra, VStack, Box, HeadingProps, Text, SimpleGrid, Heading } from "@chakra-ui/react"
+import { 
+  Image, 
+  chakra, 
+  VStack, 
+  Box, 
+  HeadingProps, 
+  Text, 
+  SimpleGrid, 
+  Heading 
+} from "@chakra-ui/react";
 import { motion } from 'framer-motion';
 import HeroCard from '../components/HeroCard';
 
