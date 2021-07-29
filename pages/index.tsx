@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import HeroCard from '../components/HeroCard';
 
 const MotionHeading = motion<HeadingProps>(Heading)
-//todos: more global styling, more loading states, more animations, better structure, separate some of the util methods
+//todos: more global styling, more loading states, more animations
 const Home = () => {
   return (
     <Box align="center" justify="center" direction={{ base: "column", md: "row" }}>
