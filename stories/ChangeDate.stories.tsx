@@ -15,14 +15,14 @@ export default {
   },
 } as Meta<typeof ChangeDate>;
 
-const Template: Story<BoxProps> = (args) => <ChangeDate {...args} selected={new Date('1995-12-17T03:24:00')} />;
+// const Template: Story<BoxProps> = (args) => <ChangeDate {...args} selected={new Date('1995-12-17T03:24:00')} />;
 
 const handleChange = () => {
     return new Date()
 }
-export const Default = Template.bind({});
-Default.args = {
-    onChange: handleChange
-};
+// export const Default = Template.bind({});
+// Default.args = {
+//     onChange: handleChange
+// };
 
 
