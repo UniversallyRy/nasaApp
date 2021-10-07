@@ -1,15 +1,16 @@
 import { fetcher } from "./fetcher";
+import { apiKey } from "../key";
 
 export const urlSwitcher = (key: string, date: string | undefined, lon?: number | undefined, lat?: number | undefined): string => {    
     switch(key){
         case "apod": 
-            return `https://api.nasa.gov/planetary/apod?date=${date}&api_key=` + process.env.API_KEY;
+            return `https://api.nasa.gov/planetary/apod?date=${date}&api_key=` + (apiKey || process.env.API_KEY);
         case "epic": 
-            return `https://epic.gsfc.nasa.gov/api/enhanced/date/${date}?api_key=` + process.env.API_KEY;
+            return `https://epic.gsfc.nasa.gov/api/enhanced/date/${date}?api_key=` + (apiKey || process.env.API_KEY);
         case "landsat":
-            return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=${date}&api_key=` + process.env.API_KEY;
+            return `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&&dim=0.10&date=${date}&api_key=` + (apiKey || process.env.API_KEY);
         case "rover":
-            return `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=` + process.env.API_KEY;
+            return `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=` + (apiKey || process.env.API_KEY);
         default: 
             return '';    
     }

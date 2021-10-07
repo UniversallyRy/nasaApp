@@ -79,6 +79,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
   };
 
   useEffect(() => {
+    if (apodData.date != undefined) {
     let splitDate = apodData.date.split('-');
     let [year, month, day] = splitDate;
     let newDate = new Date();
@@ -89,7 +90,8 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
       {
         return setStartDate(newDate);
       }
-  }, [apodData.date]);
+    }
+  }, [apodData]);
 
   const hideImage = () => {
     return isOpen && setOpen(false);
