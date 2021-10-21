@@ -79,14 +79,14 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
   };
 
   useEffect(() => {
-    if (apodData.date != undefined) {
+    if (apodData.date !== undefined) {
     let splitDate = apodData.date.split('-');
     let [year, month, day] = splitDate;
     let newDate = new Date();
     day = day.replace(/^0+/, '');
-    if(parseInt(day) != newDate.getDate() || 
-      parseInt(month) != newDate.getMonth() || 
-      parseInt(year) != newDate.getFullYear()) 
+    if(parseInt(day, 0) !== newDate.getDate() || 
+      parseInt(month, 0) !== newDate.getMonth() || 
+      parseInt(year, 0) !== newDate.getFullYear()) 
       {
         return setStartDate(newDate);
       }
@@ -199,7 +199,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
           Posted on 
             <time> {reformatDate(newData.date)} </time>
         </Text>
-        {!newData.copyright == undefined 
+        {!newData.copyright === undefined 
         ?<Text fontSize={{ base: "6px", lg: "12px"}}>
             Copyright: {newData.copyright}
         </Text>

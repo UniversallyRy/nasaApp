@@ -20,9 +20,9 @@ export const fetchedData =  (key: string, date = new Date(), lon ?:number | unde
     let newDate = undefined;
     let thisDate = date;
 
-    if (thisDate != undefined){
+    if (thisDate !== undefined){
         [year, month, day] = [thisDate.getFullYear(), thisDate.getMonth() + 1, thisDate.getDate()];
-        [newDay, newMonth ] = (key != 'rover') ? [day.toString().padStart(2, '0'), month.toString().padStart(2, '0')] : [day, month];
+        [newDay, newMonth ] = (key !== 'rover') ? [day.toString().padStart(2, '0'), month.toString().padStart(2, '0')] : [day, month];
         newDate = [year, newMonth, newDay].join('-');
     }
 
