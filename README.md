@@ -24,6 +24,8 @@ yarn
 npm run dev
 ```
 
+Demo can be seen from [Vercel](nasa-app-lilac.vercel.app)
+
 ## Screenshots
 
 <table>
