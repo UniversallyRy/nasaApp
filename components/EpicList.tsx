@@ -62,14 +62,14 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
   };
 
   const memoedList = useMemo(() => {
-    if(data instanceof Array){
+    if(data instanceof Array) {
       return data.map((item:any, index:any) => (
-              <EpicItem 
-                slidesCount={slidesCount}
-                key={ item.identifier } 
-                item={ item } 
-                index={ index }
-              />
+        <EpicItem 
+          slidesCount={slidesCount}
+          key={ item.identifier } 
+          item={ item } 
+          index={ index }
+        />
       ))
     }else {
       return <Text>No Images</Text>
