@@ -27,6 +27,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  // domains allowed to send json
   images: {
     domains: [
       "apod.nasa.gov",
