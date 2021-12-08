@@ -13,7 +13,7 @@ const DatePicker = ({ ...props }: Props) => {
   return (
     // if you don't want to use chakra's colors or you just want to use the original ones,
     // set className to "light-theme-original" ↓↓↓↓
-    <Box m={{base: 5, md: 3, lg: 1}} color="black" className={isLight ? "light-theme" : "dark-theme"}>
+    <Box m={{base: 5, md: 4, lg: 2}} color="black" className={isLight ? "light-theme" : "dark-theme"}>
       <ReactDatePicker
         peekNextMonth
         showMonthDropdown
