@@ -104,7 +104,7 @@ const HeaderNav = () => {
                   w="full"
                   size="lg"
                   variant="ghost"
-                  leftIcon={<GiEarthAmerica />}
+                  leftIcon={<BsFillImageFill />}
                 >
                   Rover Photos
                 </Button>
