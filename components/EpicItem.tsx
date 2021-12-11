@@ -38,7 +38,7 @@ const EpicItem = ({ ...props }: Props) => {
             <ChakraNextImage
                 boxSize={{base: "md", sm:"xl", md: "2xl", lg:"3xl"}}
                 p={3}
-                rounded="md"
+                rounded="sm"
                 shadow="sm"
                 src={ imageLink + props.item.image + `.png` }
                 placeholder="blur"
@@ -48,15 +48,14 @@ const EpicItem = ({ ...props }: Props) => {
                 pos="absolute"
                 top="0"
                 textAlign="center"
-                w="full"
-                mt={{base:"10", md: "1"}}
+                width='50%'
+                mt={{base:"2", md: "1"}}
                 color="purple.900"
                 userSelect="none"
             >
                 <Text fontSize={{base:'xs', md:'sm'}}>Lat: { props.item.centroid_coordinates.lat }</Text>
-                <Text fontSize={{base:'xs', md:'sm'}}>Long: { props.item.centroid_coordinates.lon }</Text>
                 <Text fontSize={{base:'xs', md:'sm'}}>Date Taken: { reformatDate(props.item.date) }</Text>
-                <Text mt="2" fontSize={{base:'xs', md:'md', xl: 'xl'}}>{ props.item.caption }</Text>
+                <Text mt="2" fontSize={{base:'xs', md:'md', xl: 'lg'}}>{ props.item.caption }</Text>
             </VStack>
         </Flex>  
     )

@@ -44,7 +44,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
   }, [ data, initData ])
 
   return (
-    <Box h="100vh" justify="center" align="center">
+    <Box justify="center" align="center">
       <Head key='pages/epic key'>
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />

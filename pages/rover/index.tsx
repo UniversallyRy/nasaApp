@@ -46,7 +46,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
               px={5}
               py={3}
               fontWeight="semibold"
-              rounded="lg"
+              rounded="sm"
               _hover={{ bg: "gray.400" }}
             >
               Back to Home

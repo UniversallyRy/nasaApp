@@ -15,10 +15,11 @@ import HeroCard from '../components/HeroCard';
 const MotionHeading = motion<HeadingProps>(Heading)
 //todos: more global styling, more loading states, more animations
 const Home = () => {
+  const img = "../public/tim-tdd-QoewgBpXJd4-unsplash.jpg"
   return (
-    <Box align="center" justify="center" direction={{ base: "column", md: "row" }}>
+    <Box background-image={img} align="center" justify="center" direction={{ base: "column", md: "row" }}>
       <Head key='pages/index key'>
-        <title>NASA Info</title>
+        <title>NASA Info</title>  
         <meta name="description" content="Look up information NASA provides" />
       </Head>
         <VStack>
@@ -40,7 +41,7 @@ const Home = () => {
             }}
           >
             <Text fontSize="3xl" userSelect="none" my={5}>
-              View Satellites, Rovers and other Astronomy
+              View Satellites, Rovers and other Astronomic Pictures
             </Text>
           </MotionHeading>
         <SimpleGrid 
@@ -50,7 +51,7 @@ const Home = () => {
           <HeroCard
             href='/apod'
             title='APoD &rarr;' 
-            paragraph='View the Astronomy Picture of the Day.'
+            paragraph='Astronomy Picture of the Day.'
             imgSrc='/apod.png'
           />
           <HeroCard 
@@ -92,3 +93,5 @@ const Home = () => {
 };
 
 export default Home;
+
+// 

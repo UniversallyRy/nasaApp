@@ -94,8 +94,8 @@ const RoverList  = ({ data }: ListProps) => {
             w={{base: "full", md: "2xl", lg:"3xl"}}
             h="full"
             bg={backGround}
-            shadow="xl"
-            borderRadius="lg"
+            shadow="lg"
+            rounded="sm"
             p={1}
             align="center"
             justifyContent="center"

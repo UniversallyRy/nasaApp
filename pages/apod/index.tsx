@@ -134,7 +134,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
       <Stack 
         bg={cardBg}
         shadow="2xl" 
-        borderRadius="md"
+        borderRadius="sm"
         p={3} 
         align="center" 
         spacing={10} 
@@ -143,7 +143,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
         <Box
           w={["xs", "sm", "lg", "xl"]}
           bg="whiteAlpha.200"
-          borderRadius="md"
+          borderRadius="sm"
           cursor={isOpen ? "zoom-out" : "zoom-in"}
         >
           <MotionDiv
@@ -163,7 +163,7 @@ const APOD: NextPage<{ apodData: Data }> = ({ apodData }) => {
             left={0}
             right={0}
             bottom={0}
-            borderRadius="md"
+            borderRadius="sm"
             zIndex={isOpen ? "docked" : "auto"}
             h={isOpen ? "auto" : "full"}
             w={isOpen ? "auto" : "full"}

@@ -28,7 +28,7 @@ const HeroCard = ({ ...props }: CardProps) => {
         }
       }}
       mx={1}
-      rounded="md"
+      rounded="sm"
       shadow="xl"
       bg={backGround}
       boxSize={{ base: "sm", lg: "md" }}

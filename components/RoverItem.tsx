@@ -21,7 +21,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
             boxSize="full"
             fontSize="xl"
             flex="none"
-            rounded="lg"
+            rounded="sm"
             shadow="lg"
         >
             <Text ml={2} mt={7}>Date Taken: { props.item.earth_date }</Text>
@@ -31,7 +31,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
             <ChakraNextImage
                 w='full' 
                 h={{base:"60vh", sm:"70vh", md: "70vh"}}
-                rounded="lg"
+                rounded="sm"
                 shadow="sm"
                 src={ props.item.img_src }
                 alt={ props.item.id }
