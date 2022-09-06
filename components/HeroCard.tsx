@@ -14,7 +14,7 @@ type CardProps = {
 const MotionBox = motion<GridItemProps>(GridItem);
 
 const HeroCard = ({ ...props }: CardProps) => {
-  
+
   const backGround = useColorModeValue("blue.500", "purple.900");
 
   return (
@@ -22,9 +22,9 @@ const HeroCard = ({ ...props }: CardProps) => {
       whileHover={{
         position: 'relative',
         zIndex: "auto",
-        scale: [1, 1.15, 1],
+        scale: [1, 1.02, 1],
         transition: {
-        duration: .2
+          duration: .3
         }
       }}
       mx={1}
@@ -33,7 +33,7 @@ const HeroCard = ({ ...props }: CardProps) => {
       bg={backGround}
       boxSize={{ base: "sm", lg: "md" }}
     >
-      <Stack spacing={2} align="center"p={3}>
+      <Stack spacing={2} align="center" p={3}>
         <Image
           width='200'
           height='200'
@@ -53,12 +53,12 @@ const HeroCard = ({ ...props }: CardProps) => {
             {props.title}
           </Link>
         </NextLink>
-        <chakra.p fontSize={{base: 'md', md: "lg"}} m={5} color={useColorModeValue("gray.600", "gray.300")}>
+        <chakra.p fontSize={{ base: 'md', md: "lg" }} m={5} color={useColorModeValue("gray.600", "gray.300")}>
           {props.paragraph}
         </chakra.p>
       </Stack>
     </MotionBox>
   )
 };
-  
+
 export default HeroCard;
