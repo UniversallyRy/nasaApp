@@ -42,7 +42,7 @@ const Home = () => {
           {HeroCards()}
         </SimpleGrid>
 
-        <VStack my={5}>
+        <VStack my={5} pt={5}>
           <chakra.a
             href="https://verscel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
