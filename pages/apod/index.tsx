@@ -1,18 +1,14 @@
-import NextLink from "next/link";
-import Head from "next/head";
 import { GetStaticProps, NextPage } from 'next';
-import { VStack, Link, Heading, HeadingProps } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
-import { motion, useDomEvent } from "framer-motion";
-import ChangeDate from "../../components/ChangeDate";
-import { fetchedData } from "../../utils/getData";
-import { TypeAPOD } from "../../utils/types";
-import { apodVariant } from "../../utils/variants";
+import { VStack } from "@chakra-ui/react";
+import { useDomEvent } from "framer-motion";
+import MotionHeading from '../../components/APOD/Heading';
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
-declare var global: Global;
+import { fetchedData } from "../../utils/getData";
+import { TypeAPOD } from "../../utils/types";
 
-const MotionHeading = motion<HeadingProps>(Heading);
+declare var global: Global;
 
 const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
   const [newData, setData] = useState(apodData);
@@ -43,39 +39,15 @@ const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
 
   if (!apodData) return <div>Loading...</div>;
 
-  const handleDateChange = async (date: Date) => {
-    if (new Date() < date) return;
-    const data = await fetchedData("apod", date);
-    setStartDate(date);
-    setData(data);
-  };
 
   return (
-    <VStack minH="100vh" minW="fill">
-      <Head key="pages/apod key">
-        <title>{newData.title}</title>
-        <meta
-          property="og:pic"
-          content="Astronomy Picture of the Day"
-          key={newData.title}
-        />
-      </Head>
-      <ChangeDate
-        selected={startDate}
-        onChange={handleDateChange}
-      />
-      <NextLink href="/">
-        <Link>
-          ← Back to home
-        </Link>
-      </NextLink>
+    <VStack minH="100%" minW="fill">
       <MotionHeading
-        variants={apodVariant}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 1.2 }}
-      >
-        {newData.title}
-      </MotionHeading>
+        newData={newData}
+        setData={setData}
+        startDate={startDate}
+        setStartDate={setStartDate}
+      />
       <MotionContent
         newData={newData}
         isOpen={isOpen}
