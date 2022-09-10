@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next';
 import { useState, useRef, useEffect } from "react";
-import { VStack } from "@chakra-ui/react";
+import { VStack, Box } from "@chakra-ui/react";
 import { useDomEvent } from "framer-motion";
 import MotionHeading from '../../components/APOD/Heading';
 import MotionContent from "../../components/APOD/Content";
@@ -41,7 +41,9 @@ const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
 
 
   return (
-    <VStack minH="100%" minW="fill">
+    <VStack
+      minH="100vh"
+    >
       <MotionHeading
         newData={newData}
         setData={setData}

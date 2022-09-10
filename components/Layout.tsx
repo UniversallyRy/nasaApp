@@ -1,23 +1,23 @@
 import HeaderNav from './HeaderNav';
-import { Box, chakra, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, chakra, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {
-    children: JSX.Element
+  children: JSX.Element
 };
 
 const Layout = ({ children }: Props) => {
-    const backGround = useColorModeValue("teal.200", "green.900");
+  const backGround = useColorModeValue("teal.200", "green.900");
 
-    return (
-        <Box h={{base: "full",}} bg={backGround}>
-            <HeaderNav/>
-            <Box>
-                <chakra.main>
-                    { children }
-                </chakra.main>
-            </Box>
-        </Box>
-    )
+  return (
+    <Flex direction="column" minH="100%" bg={backGround}>
+      <HeaderNav />
+      <Box flex={1}>
+        <chakra.main>
+          {children}
+        </chakra.main>
+      </Box>
+    </Flex>
+  )
 };
 
 export default Layout;
