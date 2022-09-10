@@ -2,8 +2,8 @@ import Head from "next/head";
 import { Box, Text } from '@chakra-ui/react';
 
 const Custom404 = () => {
-  return(
-    <Box w="full" minH="100vh" align="center">
+  return (
+    <Box>
       <Head key="pages/404 key">
         <title>Page Not Found</title>
         <meta property="og:404" content="404" key={1} />

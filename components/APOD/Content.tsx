@@ -1,13 +1,9 @@
-import { GetStaticProps, NextPage } from 'next';
-import {
-  Box,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Heading, Flex, HeadingProps, Text, useColorModeValue } from "@chakra-ui/react";
 import MotionImage from "./Image";
+import { motion } from "framer-motion";
 import MotionBackGround from "./BackGround";
 import { TypeAPOD } from '../../utils/types';
+import { apodVariant } from "../../utils/variants";
 import { Dispatch, SetStateAction } from 'react';
 
 type Props = {
@@ -18,21 +14,50 @@ type Props = {
 
 const Content = ({ newData, isOpen, setOpen }: Props) => {
 
+  const MotionTitle = motion<HeadingProps>(Heading);
   const cardBg = useColorModeValue("blue.500", "purple.900");
   return (
 
-    <Stack
+    <Flex
       bg={cardBg}
       shadow="2xl"
+      direction="column"
       borderRadius="sm"
-      p={3}
       align="center"
-      spacing={10}
-      direction={{ base: "column", md: "row" }}
+      spacing={2}
+      w={{
+        base: "sm",
+        sm: "md",
+        md: "container.sm",
+        lg: "container.lg",
+        xl: "container.xl"
+      }}
     >
-      <Box
-        w={["xs", "sm", "lg", "xl"]}
-        bg="whiteAlpha.200"
+      <MotionTitle
+        fontSize={{
+          base: "lg",
+          sm: "sm",
+          md: "md",
+          lg: "lg",
+          xl: "xl"
+        }}
+        variants={apodVariant}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 1.2 }}
+        m={2}
+      >
+        {newData.title}
+      </MotionTitle>
+      <Flex
+        direction={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+          xl: "row"
+        }}
+        w="auto"
+        bg="whiteAlpha.50"
         borderRadius="sm"
         cursor={isOpen ? "zoom-out" : "zoom-in"}
       >
@@ -45,19 +70,33 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
           setOpen={setOpen}
           isOpen={isOpen}
         />
-      </Box>
-      <Text
-        fontSize={{ base: "11px", sm: "12px", lg: "13px" }}
-        lineHeight={["short", "tall"]}
-        letterSpacing="wider"
-        maxW="xs"
-        wordBreak='break-word'
-        overflowWrap='anywhere'
-        hyphens='auto'
-      >
-        {newData.explanation}
-      </Text>
-    </Stack>
+        <Text
+          alignSelf="center"
+          fontSize={{
+            base: "14px",
+            sm: "16px",
+            md: "18px",
+            lg: "18px",
+            xl: "20px",
+          }}
+          lineHeight={["short", "tall"]}
+          letterSpacing="wider"
+          maxW={{
+            base: "xs",
+            sm: "sm",
+            md: "lg",
+            lg: "lg"
+          }}
+          m={2}
+          wordBreak='break-word'
+          overflowWrap='anywhere'
+          hyphens='auto'
+        >
+          {newData.explanation}
+        </Text>
+      </Flex>
+
+    </Flex>
   )
 }
 export default Content;

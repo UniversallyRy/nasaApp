@@ -9,11 +9,8 @@ const Footer = ({ picMeta }: Props) => {
 
   return (
     <Flex>
-      <Text fontSize={{ base: "14px", sm: "20px", lg: "28px" }}>
-        Posted on <time> {reformatDate(picMeta.date)} </time>
-      </Text>
       {!picMeta.copyright === undefined
-        ? <Text fontSize={{ base: "6px", lg: "12px" }}>
+        ? <Text fontSize={{ base: "10px", lg: "16px" }}>
           Copyright: {picMeta.copyright}
         </Text>
         : null

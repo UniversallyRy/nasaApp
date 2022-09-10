@@ -1,11 +1,7 @@
 import Head from "next/head";
-import NextLink from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import { Heading, HeadingProps, Link } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import ChangeDate from "../ChangeDate";
 import { fetchedData } from "../../utils/getData";
-import { apodVariant } from "../../utils/variants";
 import { TypeAPOD } from "../../utils/types";
 
 type Props = {
@@ -16,8 +12,6 @@ type Props = {
 }
 
 const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => {
-
-  const MotionHead = motion<HeadingProps>(Heading);
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
@@ -40,18 +34,7 @@ const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => 
         selected={startDate}
         onChange={handleDateChange}
       />
-      <NextLink href="/">
-        <Link>
-          ← Back to home
-        </Link>
-      </NextLink>
-      <MotionHead
-        variants={apodVariant}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 1.2 }}
-      >
-        {newData.title}
-      </MotionHead>
+
     </>
   )
 }

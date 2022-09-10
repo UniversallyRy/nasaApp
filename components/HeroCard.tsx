@@ -20,6 +20,7 @@ const HeroCard = ({ ...props }: CardProps) => {
   return (
     <Center>
       <MotionBox
+        userSelect="none"
         whileHover={{
           position: 'relative',
           zIndex: "auto",
@@ -28,8 +29,9 @@ const HeroCard = ({ ...props }: CardProps) => {
             duration: .3
           }
         }}
+        _focus={{ outline: "none" }}
         rounded="sm"
-        shadow="sm"
+        shadow="xl"
         position='relative'
         mt="3"
         bg={backGround}

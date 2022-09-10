@@ -1,4 +1,4 @@
-import { ChakraProvider, Box, BoxProps } from "@chakra-ui/react";
+import { ChakraProvider, Box, BoxProps, useColorModeValue } from "@chakra-ui/react";
 import { motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import type { AppProps } from 'next/app';
