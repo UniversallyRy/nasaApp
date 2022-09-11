@@ -5,7 +5,6 @@ import { useDomEvent } from "framer-motion";
 import MotionHeading from '../../components/APOD/Heading';
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
-import MotionButtons from "../../components/APOD/Buttons";
 import { fetchedData } from "../../utils/getData";
 import { TypeAPOD } from "../../utils/types";
 
@@ -51,7 +50,6 @@ const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
         startDate={startDate}
         setStartDate={setStartDate}
       />
-      <MotionButtons />
       <MotionContent
         newData={newData}
         isOpen={isOpen}

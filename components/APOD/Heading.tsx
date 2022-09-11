@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import ChangeDate from "../ChangeDate";
 import { fetchedData } from "../../utils/getData";
 import { TypeAPOD } from "../../utils/types";
+import { Flex } from "@chakra-ui/react";
 
 type Props = {
   newData: TypeAPOD
@@ -21,7 +22,7 @@ const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => 
   };
 
   return (
-    <>
+    <Flex>
       <Head key="pages/apod key">
         <title>{newData.title}</title>
         <meta
@@ -33,9 +34,9 @@ const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => 
       <ChangeDate
         selected={startDate}
         onChange={handleDateChange}
+        calendarClassName="rasta-stripes"
       />
-
-    </>
+    </Flex>
   )
 }
 

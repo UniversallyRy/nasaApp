@@ -1,5 +1,4 @@
-import { Flex, Spacer, Text } from "@chakra-ui/react";
-import { reformatDate } from "../../utils/reformatDate";
+import { Flex, Text } from "@chakra-ui/react";
 import { TypeAPOD } from "../../utils/types";
 
 type Props = {
