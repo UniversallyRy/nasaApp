@@ -1,13 +1,4 @@
-import React from "react";
-import {
-  chakra,
-  HStack,
-  Flex,
-  useColorModeValue,
-  useDisclosure,
-  Spacer,
-} from "@chakra-ui/react";
-
+import { chakra, HStack, Flex, useColorModeValue, useDisclosure, Spacer } from "@chakra-ui/react";
 import HButtons from "./HNavButtons";
 import VButtons from "./VNavButtons";
 import AlienHead from "../AlienHead";

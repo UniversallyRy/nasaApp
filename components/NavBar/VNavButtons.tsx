@@ -1,5 +1,4 @@
 import { AiFillHome } from "react-icons/ai";
-import React from "react";
 import { Box, Flex, Button, CloseButton, useColorModeValue } from "@chakra-ui/react";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaSatelliteDish } from 'react-icons/fa';
