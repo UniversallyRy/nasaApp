@@ -1,12 +1,5 @@
 import Head from 'next/head';
-import {
-  Image,
-  chakra,
-  VStack,
-  Box,
-  SimpleGrid,
-} from "@chakra-ui/react";
-import HeroCard from '../components/HeroCard';
+
 import { cardInfo, CardsInfo } from '../utils/cardInfo';
 
 
@@ -61,5 +54,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// 

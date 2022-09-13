@@ -6,7 +6,7 @@ import { NextPage } from 'next';
 import FormikForm, { AlertBox } from "../../components/SatelliteForm";
 import { reformatDate } from '../../utils/reformatDate';
 
-// Take off default and add searchable options
+// Todo: Take off default and add searchable options
 interface Data {
   date: string
   id: string
