@@ -20,6 +20,7 @@ const HeroCard = ({ ...props }: CardProps) => {
   return (
     <Center>
       <MotionBox
+        key={props.title}
         userSelect="none"
         whileHover={{
           position: 'relative',
