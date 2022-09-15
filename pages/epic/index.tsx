@@ -4,7 +4,7 @@ import Head from "next/head";
 import NextLink from "next/link";
 import useSWR from 'swr'
 import { VStack, Box, Link } from "@chakra-ui/react";
-import EpicList from '../../components/EpicList';
+import EpicList from '../../components/Epic/EpicList';
 import ChangeDate from "../../components/ChangeDate";
 import { fetcher } from '../../utils/fetcher';
 import { fetchedData } from '../../utils/getData';
@@ -20,28 +20,28 @@ interface EpicsProps {
 // todos: add datepicker and default to closest date
 const Epics: NextPage<EpicsProps> = (props) => {
   const { data } = useSWR('/api/epic', fetcher, { initialData: props.data })
-  const [initData, setData]  = useState(data);
-  const [startDate, setStartDate] = useState(new Date()); 
+  const [initData, setData] = useState(data);
+  const [startDate, setStartDate] = useState(new Date());
 
-  const handleDateChange = async (date:Date) => {
-    if (new Date() < date) return 
+  const handleDateChange = async (date: Date) => {
+    if (new Date() < date) return
     let newData = await fetchedData("epic", date);
     setStartDate(date);
     setData(newData);
   }
-  
+
   useEffect(() => {
     const watcher = () => {
-      if(data == initData){
-        return 
-      }else {
+      if (data == initData) {
+        return
+      } else {
         setData(initData)
       }
     }
     return () => {
       watcher
     }
-  }, [ data, initData ])
+  }, [data, initData])
 
   return (
     <Box justify="center" align="center">
@@ -49,12 +49,12 @@ const Epics: NextPage<EpicsProps> = (props) => {
         <title>Earth Polychromatic Imaging Camera</title>
         <meta property="og:pic" content="Earth Polychromatic Imaging Camera Images" key={data.title} />
       </Head>
-      <ChangeDate 
-        selected={startDate} 
-        onChange={handleDateChange} 
+      <ChangeDate
+        selected={startDate}
+        onChange={handleDateChange}
       />
       <VStack>
-        <Box m={{base: 20, sm: 10, lg: 2}}>
+        <Box m={{ base: 20, sm: 10, lg: 2 }}>
           <NextLink passHref href="/">
             <Link
               bg="gray.600"
@@ -63,20 +63,20 @@ const Epics: NextPage<EpicsProps> = (props) => {
               fontWeight="semibold"
               shadow="xl"
               rounded="sm"
-              _focus={{ outline: "hidden"}}
-              _hover={{ bg: "gray.700", shadow: "2xl"}}
+              _focus={{ outline: "hidden" }}
+              _hover={{ bg: "gray.700", shadow: "2xl" }}
             >
               Back to Home
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={initData}/>
+        <EpicList data={initData} />
       </VStack>
     </Box>
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context : GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
   const data = await fetchedData('epic');
   return {
     props: {

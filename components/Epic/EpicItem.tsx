@@ -1,6 +1,6 @@
 import { Flex, VStack, Text } from "@chakra-ui/react";
-import { ChakraNextImage } from "./Image";
-import { reformatDate } from '../utils/reformatDate';
+import { ChakraNextImage } from "../Image";
+import { reformatDate } from '../../utils/reformatDate';
 
 type Props = {
   item: {

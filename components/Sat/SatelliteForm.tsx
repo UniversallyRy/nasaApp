@@ -13,8 +13,8 @@ import {
   FormLabel,
   Input
 } from "@chakra-ui/react";
-import { FormContext } from '../pages/landsat';
-import { fetchedData } from '../utils/getData';
+import { FormContext } from '../../pages/landsat';
+import { fetchedData } from '../../utils/getData';
 
 interface FormValues {
   latitude: number

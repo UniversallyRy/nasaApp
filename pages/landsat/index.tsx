@@ -3,7 +3,7 @@ import { ChakraNextImage } from "../../components/Image";
 import { useState, createContext } from 'react';
 import { Text, VStack, Stack, useColorModeValue } from "@chakra-ui/react";
 import { NextPage } from 'next';
-import FormikForm, { AlertBox } from "../../components/SatelliteForm";
+import FormikForm, { AlertBox } from "../../components/Sat/SatelliteForm";
 import { reformatDate } from '../../utils/reformatDate';
 
 // Todo: Take off default and add searchable options
