@@ -34,13 +34,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         <meta property="og:landsat" content="Earth Polychromatic Imaging Camera Images" key={0} />
       </Head>
       <Stack m={3} spacing={10} direction={{ base: "column", md: "row" }}>
-        <VStack p={4} rounded="sm" bg={backGround} shadow="lg" mx={4}>
-          <Text fontStyle="italic" fontSize="xl">Examples</Text>
-          <Text fontSize="md">Great Pyramid of Giza- Lat: 29.9792, Lon: 31.13</Text>
-          <Text fontSize="md">Vegas Strip- Lat: 36.11, Lon: 115.20</Text>
-          <Text fontSize="md">Beijing- Lat: 39.9, Lon: 116.4</Text>
-        </VStack>
-        <FormContext.Provider value={{ submitCoords }}>
+        <FormContext.Provider value={{ coordinates, submitCoords }}>
           <FormikForm />
         </FormContext.Provider>
       </Stack>
@@ -49,7 +43,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         : null
       }
       {coordinates.hasOwnProperty('url')
-        ? <VStack shadow="xl" rounded="sm" bg={backGround} p={1}>
+        ? <VStack m={2} shadow="xl" rounded="sm" bg={backGround} p={1}>
           <ChakraNextImage
             aria-label="Satellite Image"
             boxSize={{ base: "sm", sm: "md", md: "2xl", xl: "container.lg" }}

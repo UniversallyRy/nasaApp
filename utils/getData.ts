@@ -15,7 +15,7 @@ export const urlSwitcher = (key: string, date: string | undefined, lon?: number 
   }
 }
 
-export const fetchedData = (key: string, date = new Date(), lon?: number | undefined, lat?: number | undefined): Promise<any> => {
+export const fetchedData = (key: string, date: Date = new Date(), lon?: number | undefined, lat?: number | undefined): Promise<any> => {
   let day, month, year, newDay, newMonth;
   let newDate = undefined;
   let thisDate = date;
