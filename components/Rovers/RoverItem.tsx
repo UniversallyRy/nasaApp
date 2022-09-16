@@ -41,4 +41,4 @@ const RoverItem = ({ ...props }: ItemProps) => {
   )
 };
 
-export default RoverItem
+export default RoverItem;

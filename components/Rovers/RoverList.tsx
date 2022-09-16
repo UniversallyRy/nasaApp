@@ -1,15 +1,15 @@
 import { useState, useMemo } from 'react';
-import { Box, Flex, HStack, Select, Heading, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text } from '@chakra-ui/react';
+import RoverHeading from './RoverHeading';
 import RoverItem from './RoverItem';
 import { RoverProps } from "../../utils/types";
 
 type ListProps = {
-  data: RoverProps
-}
+  data: RoverProps[]
+};
 
 const RoverList = ({ data }: ListProps) => {
-  const [roverCamera, setCamera] = useState("FHAZ")
-  const backGround = useColorModeValue("blue.500", "purple.900");
+  const [roverCamera, setCamera] = useState("FHAZ");
 
   const arrowStyles = {
     cursor: "pointer",
@@ -38,10 +38,10 @@ const RoverList = ({ data }: ListProps) => {
           count++
         }
       })
-    }
+    };
 
     return count;
-  }
+  };
 
   const slidesCount = getCount();
 
@@ -64,12 +64,7 @@ const RoverList = ({ data }: ListProps) => {
     setCurrentSlide(slide);
   };
 
-  const handleChange = (event: React.FormEvent<HTMLElement>) => {
-    event.preventDefault();
-    const element = event.currentTarget as HTMLInputElement
-    const value = element.value
-    setCamera(value);
-  };
+
 
   const memoedPhotos = useMemo(() => {
     const photosArray: any = []
@@ -88,28 +83,13 @@ const RoverList = ({ data }: ListProps) => {
       })
     }
     return photosArray
-  }, [data, slidesCount, roverCamera])
+  }, [data, slidesCount, roverCamera]);
 
   return (
-    <Box
-      w={{ base: "full", md: "2xl", lg: "3xl" }}
-      h="full"
-      bg={backGround}
-      shadow="lg"
-      rounded="sm"
-      p={1}
-      align="center"
-      justifyContent="center"
-    >
-      <Select value={roverCamera} onChange={handleChange} placeholder="Select Camera">
-        <option value="FHAZ">Front Hazard Avoidance Camera</option>
-        <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-        <option value="MAST">Mast Camera</option>
-        <option value="CHEMCAM">Chemistry and Camera Complex</option>
-        <option value="MARDI">Mars Descent Imager</option>
-        <option value="NAVCAM">Navigation Camera</option>
-      </Select>
-      <Heading> Images taken by the <a href="https://www.space.com/17963-mars-curiosity.html">Curiosity Rover</a></Heading>
+    <>
+      <RoverHeading
+        setCamera={setCamera}
+      />
       <Flex w="full" pos="relative" overflow="hidden">
         <Flex w="full" h="full" {...carouselStyle}>
           {memoedPhotos}
@@ -140,7 +120,7 @@ const RoverList = ({ data }: ListProps) => {
           })}
         </HStack>
       </Flex>
-    </Box>
+    </>
   )
 };
 

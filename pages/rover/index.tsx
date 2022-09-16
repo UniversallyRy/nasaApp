@@ -3,12 +3,13 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from "next/head";
 import NextLink from "next/link";
 import { Stack, Box, Link } from "@chakra-ui/react";
-import RoverList from '../../components/Rovers/RoverList';
+import RoverContainer from '../../components/Rovers/';
 import DatePicker from '../../components/ChangeDate';
 import { fetchedData } from '../../utils/getData';
+import { RoverProps } from '../../utils/types';
 
 interface Data {
-  photos?: object[]
+  photos: RoverProps[]
   title: string;
   date: number;
   explanation: string;
@@ -31,14 +32,14 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
 
   if (!data) return <div>Loading...</div>;
   return (
-    <Box h="100vh">
+    <Box h="100%" pb={10}>
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
         <meta property="og:rover" content="Mars Rover Photos" key='rovers' />
       </Head>
       <Stack align="center">
         <DatePicker selected={date} onChange={handleDateChange} />
-        <Box m={1}>
+        <Box mb={5}>
           <NextLink passHref href="/">
             <Link
               bg="gray.900"
@@ -53,7 +54,7 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
             </Link>
           </NextLink>
         </Box>
-        <RoverList data={newData.photos} />
+        <RoverContainer data={newData.photos} />
       </Stack>
     </Box>
   );
