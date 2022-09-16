@@ -1,16 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
 import { ChakraNextImage } from "../Image";
+import { RoverProps } from "../../utils/types";
 
 type ItemProps = {
-  item: {
-    earth_date: string
-    sol: string
-    camera: {
-      name: string
-    }
-    img_src: string
-    id: string
-  }
+  item: RoverProps
   index: number
   slidesCount: number
 };
@@ -34,7 +27,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
         rounded="sm"
         shadow="sm"
         src={props.item.img_src}
-        alt={props.item.id}
+        alt={`id + ${props.item.id}`}
       />
       <Text
         fontSize="xs"
@@ -48,4 +41,4 @@ const RoverItem = ({ ...props }: ItemProps) => {
   )
 };
 
-export default RoverItem;
+export default RoverItem
