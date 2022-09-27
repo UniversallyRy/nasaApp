@@ -13,7 +13,7 @@ const RoverHeading = ({ setCamera }: HeadingProps) => {
   };
   return (
     <>
-      <Select value="FHAZ" onChange={handleChange} placeholder="Select Camera">
+      <Select _focus={{ outline: "none" }} value="FHAZ" onChange={handleChange} placeholder="Select Camera">
         <option value="FHAZ">Front Hazard Avoidance Camera</option>
         <option value="RHAZ">Rear Hazard Avoidance Camera</option>
         <option value="MAST">Mast Camera</option>
