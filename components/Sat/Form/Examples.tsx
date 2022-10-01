@@ -1,4 +1,4 @@
-import { PopoverContent, PopoverCloseButton, PopoverBody, Text } from "@chakra-ui/react";
+import { PopoverContent, PopoverBody, PopoverCloseButton, Text } from "@chakra-ui/react";
 
 const Examples = () => {
   return (

@@ -1,11 +1,10 @@
 import { NextPage } from 'next';
 import Head from "next/head";
 import { useState, createContext } from 'react';
-import { Text, VStack, Stack, useColorModeValue } from "@chakra-ui/react";
-import Container from "../../components/Sat";
-import { ChakraNextImage } from "../../components/Image";
+import { Stack } from "@chakra-ui/react";
+import FormContainer from "../../components/Sat";
+import SatelliteImg from '../../components/Sat/SatelliteImg';
 import AlertBox from "../../components/Sat/AlertBox";
-import { reformatDate } from '../../utils/reformatDate';
 
 // Todo: add searchable options
 interface Data {
@@ -23,7 +22,6 @@ export const FormContext = createContext({});
 
 const LandSat: NextPage<{ data: Data }> = () => {
   const [coordinates, submitCoords] = useState(Object);
-  const color = useColorModeValue("blue.500", "purple.900");
 
   return (
 
@@ -37,7 +35,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
       </Head>
       <Stack m={3} spacing={10} direction={{ base: "column", md: "row" }}>
         <FormContext.Provider value={{ coordinates, submitCoords }}>
-          <Container />
+          <FormContainer />
         </FormContext.Provider>
       </Stack>
       {coordinates.hasOwnProperty('msg')
@@ -45,16 +43,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         : null
       }
       {coordinates.hasOwnProperty('url')
-        ? <VStack m={2} shadow="xl" rounded="sm" bg={color} p={1}>
-          <ChakraNextImage
-            aria-label="Satellite Image"
-            boxSize={{ base: "sm", sm: "md", md: "2xl", xl: "container.lg" }}
-            src={coordinates.url}
-            alt={coordinates.resource.dataset}
-          />
-          <Text m={2}>Date Taken: {reformatDate(coordinates.date)} </Text>
-          <Text m={2}>Satellite: {coordinates.resource.dataset} </Text>
-        </VStack>
+        ? <SatelliteImg coordinates={coordinates} />
         : null
       }
     </Stack>
