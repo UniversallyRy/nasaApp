@@ -15,10 +15,10 @@ interface EpicsProps {
     date: number
     length: number
   }
-};
+}
 
 // todos: add datepicker and default to closest date
-const Epics: NextPage<EpicsProps> = (props) => {
+const Epics: NextPage<EpicsProps> = props => {
   const { data } = useSWR('/api/epic', fetcher, { initialData: props.data })
   const [initData, setData] = useState(data);
   const [startDate, setStartDate] = useState(new Date());
@@ -28,7 +28,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
     let newData = await fetchedData("epic", date);
     setStartDate(date);
     setData(newData);
-  }
+  };
 
   useEffect(() => {
     const watcher = () => {
@@ -76,7 +76,7 @@ const Epics: NextPage<EpicsProps> = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async (_context: GetStaticPropsContext) => {
   const data = await fetchedData('epic');
   return {
     props: {
