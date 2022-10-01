@@ -13,6 +13,7 @@ const Home = () => {
     let info = cardInfo.map((item: CardsInfo) => {
       return (
         <HeroCard
+          key={item.title}
           href={item.href}
           title={item.title}
           paragraph={item.paragraph}
