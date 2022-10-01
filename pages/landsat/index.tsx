@@ -1,12 +1,13 @@
+import { NextPage } from 'next';
 import Head from "next/head";
-import { ChakraNextImage } from "../../components/Image";
 import { useState, createContext } from 'react';
 import { Text, VStack, Stack, useColorModeValue } from "@chakra-ui/react";
-import { NextPage } from 'next';
-import FormikForm, { AlertBox } from "../../components/Sat/SatelliteForm";
+import Container from "../../components/Sat";
+import { ChakraNextImage } from "../../components/Image";
+import AlertBox from "../../components/Sat/AlertBox";
 import { reformatDate } from '../../utils/reformatDate';
 
-// Todo: Take off default and add searchable options
+// Todo: add searchable options
 interface Data {
   date: string
   id: string
@@ -16,15 +17,16 @@ interface Data {
   }
   ['service version']: string;
   url: string;
-};
+}
 
 export const FormContext = createContext({});
 
 const LandSat: NextPage<{ data: Data }> = () => {
-  const [coordinates, submitCoords] = useState(Object)
-  const backGround = useColorModeValue("blue.500", "purple.900");
+  const [coordinates, submitCoords] = useState(Object);
+  const color = useColorModeValue("blue.500", "purple.900");
 
   return (
+
     <Stack
       minH="100vh"
       align='center'
@@ -35,7 +37,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
       </Head>
       <Stack m={3} spacing={10} direction={{ base: "column", md: "row" }}>
         <FormContext.Provider value={{ coordinates, submitCoords }}>
-          <FormikForm />
+          <Container />
         </FormContext.Provider>
       </Stack>
       {coordinates.hasOwnProperty('msg')
@@ -43,7 +45,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         : null
       }
       {coordinates.hasOwnProperty('url')
-        ? <VStack m={2} shadow="xl" rounded="sm" bg={backGround} p={1}>
+        ? <VStack m={2} shadow="xl" rounded="sm" bg={color} p={1}>
           <ChakraNextImage
             aria-label="Satellite Image"
             boxSize={{ base: "sm", sm: "md", md: "2xl", xl: "container.lg" }}
@@ -56,6 +58,7 @@ const LandSat: NextPage<{ data: Data }> = () => {
         : null
       }
     </Stack>
+
   )
 };
 
