@@ -9,29 +9,12 @@ type ListProps = {
 };
 
 const RoverList = ({ data }: ListProps) => {
-  const [roverCamera, setCamera] = useState("FHAZ");
 
-  const arrowStyles = {
-    cursor: "pointer",
-    top: "50%",
-    w: "auto",
-    mt: "-22",
-    p: "16",
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "2xl",
-    transition: "0.5s ease",
-    borderRadius: "0 3px 3px 0",
-    _hover: {
-      opacity: 0.6,
-      bg: "gray",
-    },
-  };
+  const [roverCamera, setCamera] = useState("FHAZ");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const getCount = () => {
-
     let count = 0;
-
     if (data instanceof Array) {
       data.map((item: any, _index: any) => {
         if (item.camera.name === roverCamera) {
@@ -39,32 +22,42 @@ const RoverList = ({ data }: ListProps) => {
         }
       })
     };
-
     return count;
   };
 
   const slidesCount = getCount();
-
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const carouselStyle = {
     transition: "all .5s",
     ml: `-${currentSlide * 100}%`,
   };
 
+  const arrowStyles = {
+    cursor: "pointer",
+    top: "50%",
+    w: "auto",
+    mt: "-22",
+    p: "4",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "2xl",
+    transition: "0.5s ease",
+    borderRadius: "0 3px 3px 0",
+    _hover: {
+      opacity: 0.4,
+      bg: "black",
+    },
+  };
+
   const prevSlide = () => {
     setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
   };
-
   const nextSlide = () => {
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   };
-
   const setSlide = (slide: number) => {
     setCurrentSlide(slide);
   };
-
-
 
   const memoedPhotos = useMemo(() => {
     const photosArray: any = []
