@@ -29,6 +29,7 @@ const RoverItem = ({ ...props }: ItemProps) => {
         src={props.item.img_src}
         alt={`id + ${props.item.id}`}
       />
+
       <Text
         fontSize="xs"
         p="2"

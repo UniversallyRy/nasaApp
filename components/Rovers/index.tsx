@@ -4,15 +4,15 @@ import RoverList from "./RoverList";
 
 type ContainerProps = {
   data: RoverProps[]
-};
+}
 
 const RoverContainer = ({ data }: ContainerProps) => {
-  const backGround = useColorModeValue("blue.500", "purple.900");
+  const color = useColorModeValue("blue.500", "purple.900");
   return (
     <Box
       w={{ base: "full", md: "2xl", lg: "3xl" }}
       h="100%"
-      bg={backGround}
+      bg={color}
       shadow="lg"
       rounded="sm"
       p={1}
@@ -23,7 +23,7 @@ const RoverContainer = ({ data }: ContainerProps) => {
         data={data}
       />
     </Box>
-  )
+  );
 };
 
 export default RoverContainer;

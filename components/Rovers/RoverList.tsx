@@ -11,13 +11,13 @@ type ListProps = {
 const RoverList = ({ data }: ListProps) => {
 
   const [roverCamera, setCamera] = useState("FHAZ");
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setNewSlide] = useState(0);
 
-  const getCount = () => {
+  const getSlides = () => {
     let count = 0;
     if (data instanceof Array) {
-      data.map((item: any, _index: any) => {
-        if (item.camera.name === roverCamera) {
+      data.map((item: RoverProps, _index: number) => {
+        if (item.camera.name == roverCamera) {
           count++
         }
       })
@@ -25,7 +25,17 @@ const RoverList = ({ data }: ListProps) => {
     return count;
   };
 
-  const slidesCount = getCount();
+  const slidesCount = getSlides();
+
+  const prevSlide = () => {
+    setNewSlide((s: number) => (s === 0 ? slidesCount - 1 : s - 1));
+  };
+  const nextSlide = () => {
+    setNewSlide((s: number) => (s === slidesCount - 1 ? 0 : s + 1));
+  };
+  const setSlide = (slide: number) => {
+    setNewSlide(slide);
+  };
 
   const carouselStyle = {
     transition: "all .5s",
@@ -49,20 +59,10 @@ const RoverList = ({ data }: ListProps) => {
     },
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((s) => (s === 0 ? slidesCount - 1 : s - 1));
-  };
-  const nextSlide = () => {
-    setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
-  };
-  const setSlide = (slide: number) => {
-    setCurrentSlide(slide);
-  };
-
   const memoedPhotos = useMemo(() => {
-    const photosArray: any = []
+    const photosArray: React.ReactNode[] = []
     if (data instanceof Array) {
-      data.map((item: any, index: number) => {
+      data.map((item: RoverProps, index: number) => {
         if (item.camera.name == roverCamera) {
           photosArray.push(
             <RoverItem
@@ -80,9 +80,7 @@ const RoverList = ({ data }: ListProps) => {
 
   return (
     <>
-      <RoverHeading
-        setCamera={setCamera}
-      />
+      <RoverHeading setCamera={setCamera} />
       <Flex w="full" pos="relative" overflow="hidden">
         <Flex w="full" h="full" {...carouselStyle}>
           {memoedPhotos}
@@ -100,7 +98,7 @@ const RoverList = ({ data }: ListProps) => {
                 key={`dots-${slide}`}
                 cursor="pointer"
                 boxSize={["7px", "10px", "15px"]}
-                bg={currentSlide === slide ? "gray.800" : "gray.500"}
+                bg={currentSlide == slide ? "gray.800" : "gray.500"}
                 rounded="50%"
                 display="inline-block"
                 transition="background-color 0.6s ease"
