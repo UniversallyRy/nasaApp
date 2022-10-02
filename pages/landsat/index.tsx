@@ -2,9 +2,9 @@ import { NextPage } from 'next';
 import Head from "next/head";
 import { useState, createContext } from 'react';
 import { Stack } from "@chakra-ui/react";
-import FormContainer from "../../components/Sat";
-import SatelliteImg from '../../components/Sat/SatelliteImg';
-import AlertBox from "../../components/Sat/AlertBox";
+import FormContainer from "../../components/Satellite";
+import SatelliteImg from '../../components/Satellite/SatelliteImg';
+import AlertBox from "../../components/Satellite/AlertBox";
 
 // Todo: add searchable options
 interface Data {
