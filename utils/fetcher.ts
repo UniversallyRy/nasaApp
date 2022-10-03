@@ -1,12 +1,3 @@
-export const fetcher = async (...args: any[]) => {
+const fetcher = (url: string) => fetch(url).then(r => r.json())
 
-  const options = { method: 'GET'};
-  const res = await fetch(args[0], options)
-  const res_json = await res.json();
-
-  if(res_json.errors) {
-  	throw(JSON.stringify(res_json.errors));
-  }
-
-  return res_json;
-}
+export default fetcher;

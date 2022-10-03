@@ -6,14 +6,15 @@ type Props = {
   alt: string
 } & Omit<BoxProps, "as">
 
-export const ChakraNextImage = ({ src, alt, ...rest }: Props) => {
+export const ChakraNextImage = ({ src, alt, ...otherProps }: Props) => {
   return (
-    <Box position="relative" {...rest}>
+    <Box position="relative" {...otherProps}>
       <Image
-        objectFit="contain" 
+        objectFit="contain"
         layout="fill"
-        src={src} 
-        alt={alt} 
+        src={src}
+        alt={alt}
+        priority
       />
     </Box>
   );

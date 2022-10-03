@@ -22,7 +22,6 @@ export const FormContext = createContext({});
 
 const LandSat: NextPage<{ data: Data }> = () => {
   const [coordinates, submitCoords] = useState(Object);
-
   return (
 
     <Stack

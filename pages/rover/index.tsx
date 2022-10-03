@@ -32,28 +32,26 @@ const Rover: NextPage<{ data: Data }> = ({ data }) => {
 
   if (!data) return <div>Loading...</div>;
   return (
-    <Box h="100%" pb={10}>
+    <Box h="100%" mb={4}>
       <Head key='pages/rover key'>
         <title>Mars Rover Photos</title>
         <meta property="og:rover" content="Mars Rover Photos" key='rovers' />
       </Head>
       <Stack align="center">
         <DatePicker selected={date} onChange={handleDateChange} />
-        <Box mb={5}>
-          <NextLink passHref href="/">
-            <Link
-              bg="gray.900"
-              color="gray.100"
-              px={5}
-              py={3}
-              fontWeight="semibold"
-              rounded="sm"
-              _hover={{ bg: "gray.400" }}
-            >
-              Back to Home
-            </Link>
-          </NextLink>
-        </Box>
+        <NextLink passHref href="/">
+          <Link
+            bg="gray.900"
+            color="gray.100"
+            px={5}
+            py={3}
+            fontWeight="semibold"
+            rounded="sm"
+            _hover={{ bg: "gray.400" }}
+          >
+            Back to Home
+          </Link>
+        </NextLink>
         <RoverContainer data={newData.photos} />
       </Stack>
     </Box>

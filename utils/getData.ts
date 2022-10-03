@@ -1,6 +1,6 @@
-import { fetcher } from "./fetcher";
+import fetcher from "./fetcher";
 
-export const urlSwitcher = (key: string, date: string | undefined, lon?: number | undefined, lat?: number | undefined): string => {
+const urlSwitcher = (key: string, date: string | undefined, lon?: number | undefined, lat?: number | undefined): string => {
   switch (key) {
     case "apod":
       return `https://api.nasa.gov/planetary/apod?date=${date}&api_key=` + process.env.API_KEY;
@@ -13,7 +13,7 @@ export const urlSwitcher = (key: string, date: string | undefined, lon?: number 
     default:
       return '';
   }
-}
+};
 
 export const fetchedData = (key: string, date: Date = new Date(), lon?: number | undefined, lat?: number | undefined): Promise<any> => {
   let day, month, year, newDay, newMonth;

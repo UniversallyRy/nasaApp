@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction, useContext } from "react";
 import { Box } from "@chakra-ui/react";
 import { Formik, FormikValues } from "formik";
 import Examples from "./Examples";
-import { fetchedData } from '../../../utils/getData';
 import { FormContext } from "../../../pages/landsat";
+import { fetchedData } from "../../../utils/getData";
 
 type BoxProps = {
   children: React.ReactNode
@@ -17,10 +17,9 @@ interface FormValues {
 }
 
 const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
-
+  const { submitCoords }: FormikValues = useContext(FormContext);
   const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
   const defaultDate = new Date("2/1/21")
-  const { submitCoords }: FormikValues = useContext(FormContext);
 
   return (
     <Box align="center" justify="center" w={{ base: "sm", sm: "md", md: "lg" }}>
