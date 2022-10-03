@@ -6,7 +6,7 @@ import useSWR from 'swr'
 import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from '../../components/Epic/EpicList';
 import ChangeDate from "../../components/ChangeDate";
-import { fetcher } from '../../utils/fetcher';
+import fetcher from '../../utils/fetcher';
 import { fetchedData } from '../../utils/getData';
 
 interface EpicsProps {
@@ -19,8 +19,8 @@ interface EpicsProps {
 
 // todos: add datepicker and default to closest date
 const Epics: NextPage<EpicsProps> = props => {
-  const { data } = useSWR('/api/epic', fetcher, { initialData: props.data })
-  const [initData, setData] = useState(data);
+  const { data } = useSWR('/api/epic', fetcher)
+  const [initData, setData] = useState(props.data);
   const [startDate, setStartDate] = useState(new Date());
 
   const handleDateChange = async (date: Date) => {

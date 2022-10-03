@@ -1,28 +1,30 @@
 import React, { useState, useMemo } from "react";
 import { NextPage } from 'next';
-import { 
+import {
   Flex,
-  Box, 
-  HStack, 
-  Text, 
-  useColorModeValue, 
-  Alert, 
-  AlertIcon, 
-  AlertTitle, 
-  AlertDescription 
+  Box,
+  HStack,
+  Text,
+  useColorModeValue,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription
 } from '@chakra-ui/react';
 import EpicItem from './EpicItem';
 
-interface Data {
-  title: string
-  date: number
-  length: number
-  explanation?: string
-  identifier?: string
-  hdurl?: string
+interface Props {
+  data: {
+    title: string
+    date: number
+    length: number
+    explanation?: string
+    identifier?: string
+    hdurl?: string
+  }
 };
 
-const EpicList: NextPage<{ data: Data }> = ({ data }) => {
+const EpicList: NextPage<Props> = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const backGround = useColorModeValue("blue.500", "purple.900");
   const slidesCount = data.length;
@@ -57,28 +59,28 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
     setCurrentSlide((s) => (s === slidesCount - 1 ? 0 : s + 1));
   };
 
-  const setSlide = (slide:any) => {
+  const setSlide = (slide: any) => {
     setCurrentSlide(slide);
   };
 
   const memoedList = useMemo(() => {
-    if(data instanceof Array) {
-      return data.map((item:any, index:any) => (
-        <EpicItem 
+    if (data instanceof Array) {
+      return data.map((item: any, index: any) => (
+        <EpicItem
           slidesCount={slidesCount}
-          key={ item.identifier } 
-          item={ item } 
-          index={ index }
+          key={item.identifier}
+          item={item}
+          index={index}
         />
       ))
-    }else {
+    } else {
       return <Text>No Images</Text>
     }
   }, [data, slidesCount]);
 
   return (
     <Box
-      w={{base: "sm", sm:"lg", md: "2xl", lg:"3xl"}}
+      w={{ base: "sm", sm: "lg", md: "2xl", lg: "3xl" }}
       bg={backGround}
       p={1}
       borderRadius="sm"
@@ -87,51 +89,51 @@ const EpicList: NextPage<{ data: Data }> = ({ data }) => {
       justifyContent="center"
     >
       {slidesCount > 0
-      ?<Flex w="full" pos="relative" overflow="hidden">
-        <Flex h="full" w="full" {...carouselStyle}>
-        {memoedList}
+        ? <Flex w="full" pos="relative" overflow="hidden">
+          <Flex h="full" w="full" {...carouselStyle}>
+            {memoedList}
+          </Flex>
+          <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
+            &#10094;
+          </Text>
+          <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
+            &#10095;
+          </Text>
+          <HStack justify="center" pos="absolute" bottom="2" w="full">
+            {Array.from({ length: slidesCount }).map((_, slide) => (
+              <Box
+                key={`dots-${slide}`}
+                cursor="pointer"
+                boxSize={["7px", "15px"]}
+                mx="1"
+                bg={currentSlide === slide ? "gray.800" : "gray.500"}
+                rounded="50%"
+                display="inline-block"
+                transition="background-color 0.6s ease"
+                _hover={{ bg: "gray.800" }}
+                onClick={() => setSlide(slide)}
+              ></Box>
+            ))}
+          </HStack>
         </Flex>
-        <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
-          &#10094;
-        </Text>
-        <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
-          &#10095;
-        </Text>
-        <HStack justify="center" pos="absolute" bottom="2" w="full">
-          {Array.from({ length: slidesCount }).map((_, slide) => (
-            <Box
-              key={`dots-${slide}`}
-              cursor="pointer"
-              boxSize={["7px", "15px"]}
-              mx="1"
-              bg={currentSlide === slide ? "gray.800" : "gray.500"}
-              rounded="50%"
-              display="inline-block"
-              transition="background-color 0.6s ease"
-              _hover={{ bg: "gray.800" }}
-              onClick={() => setSlide(slide)}
-            ></Box>
-          ))}
-        </HStack>
-      </Flex>
-      :<Alert
-        status="error"
-        variant="solid"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        w="full"
-        height="400px"
-      >
-        <AlertIcon w="full"/>
-        <AlertTitle mt={4} mb={1} fontSize="lg">
-          No Images Found
-        </AlertTitle>
-        <AlertDescription maxWidth="md">
-          No images taken on this date, try another!
-        </AlertDescription>
-      </Alert> 
-    }
+        : <Alert
+          status="error"
+          variant="solid"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          w="full"
+          height="400px"
+        >
+          <AlertIcon w="full" />
+          <AlertTitle mt={4} mb={1} fontSize="lg">
+            No Images Found
+          </AlertTitle>
+          <AlertDescription maxWidth="md">
+            No images taken on this date, try another!
+          </AlertDescription>
+        </Alert>
+      }
     </Box>
   )
 };
