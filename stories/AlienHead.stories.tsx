@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ButtonProps } from "@chakra-ui/react"
-import AlienHead  from '../components/AlienHead';
+import AlienHead from '../components/NavBar/AlienHead';
 
 export default {
   title: 'components/AlienHead',
@@ -12,11 +12,11 @@ const handleClick = () => {
   console.log('Clicked');
 }
 
-const Template: Story<ButtonProps> = ( args ) => <AlienHead {...args}/>;
+const Template: Story<ButtonProps> = (args) => <AlienHead {...args} />;
 
 export const DefaultSizeLightTheme = Template.bind({});
 DefaultSizeLightTheme.args = {
-  boxSize:"65",
+  boxSize: "65",
   bg: "gray.200"
 };
 
@@ -28,7 +28,7 @@ ThemeDark.args = {
 
 export const Enlarged = Template.bind({});
 Enlarged.args = {
-  boxSize:"300",
+  boxSize: "300",
   bg: "gray.200"
 };
 
