@@ -24,7 +24,7 @@ npm run dev
 ```
 
 Get free API key from [Nasa APIs](https://api.nasa.gov/) 
-Then create .env file in home project directory and provide property `API_KEY="Your_Key"`
+Then create .env file in project's home directory and provide property `API_KEY="Your_Key"`
 
 Demo can be seen from [Vercel](https://nasa-app-lilac.vercel.app/)
 
