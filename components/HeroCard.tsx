@@ -30,14 +30,16 @@ const HeroCard = ({ ...props }: CardProps) => {
           }
         }}
         _focus={{ outline: "none" }}
-        rounded="sm"
-        shadow="xl"
+        rounded="md"
+        shadow="lg"
         position='relative'
-        mt="3"
+        mt="4"
         bg={backGround}
+        border="2px"
+        borderColor="blackAlpha.100"
         boxSize={{ base: "sm", lg: "md" }}
       >
-        <Stack spacing={2} alignItems="center" p={3} mt="7">
+        <Stack spacing={2} alignItems="center" p={3} mt={7}>
           <Image
             width='200'
             height='200'
