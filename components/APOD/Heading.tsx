@@ -34,7 +34,6 @@ const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => 
       <ChangeDate
         selected={startDate}
         onChange={handleDateChange}
-        calendarClassName="rasta-stripes"
       />
     </Flex>
   )
