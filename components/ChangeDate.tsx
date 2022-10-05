@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Button, useColorModeValue } from "@chakra-ui/react";
+import { Button, ButtonProps, useColorModeValue } from "@chakra-ui/react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,26 +8,26 @@ interface Props {
   selected: Date | undefined;
 };
 
-type ButtonProps = {
-  value?: string
-  onClick?: () => void
-}
-
 const DatePicker = ({ ...props }: Props) => {
   const backGround = useColorModeValue("gray.300", "gray.900");
 
-  const DateButton = forwardRef(({ value, onClick }: ButtonProps, ref) => (
-    <Button
-      _focus={{ outline: "none" }}
-      bg={backGround}
-      className="Calender Date"
-      m={3}
-      onClick={onClick}
-      ref={ref}
-    >
-      {value}
-    </Button>
-  ));
+  const DateButton = forwardRef<HTMLButtonElement, ButtonProps>(({ value, onClick }, ref) => {
+    return (
+      <Button
+        _focus={{ outline: "none" }}
+        bg={backGround}
+        className="Calender Date"
+        m={3}
+        onClick={onClick}
+        ref={ref}
+      >
+        {value}
+      </Button>
+    )
+
+  });
+  DateButton.displayName = "DateButton";
+
   return (
     // if you don't want to use chakra's colors or you just want to use the original ones,
     // set className to "light-theme-original" ↓↓↓↓
