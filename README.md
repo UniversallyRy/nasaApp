@@ -1,21 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Database
-
-- Comes from [Nasa's API](https://api.nasa.gov/)
-
-## Other Resources Used
-
+## Resources Used
+- [Next.js](https://nextjs.org/)
 - [ChakraUI](https://chakra-ui.com/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Formik](https://formik.org/)
 
-## Usage
-
+## Local Usage
 Install packages with:
 
 ```sh
 yarn
+```
+
+or 
+
+```sh
+npm install
 ```
 
 **then**
@@ -24,10 +23,12 @@ yarn
 npm run dev
 ```
 
+Get free API key from [Nasa APIs](https://api.nasa.gov/) 
+Then create .env file in home project directory and provide property `API_KEY="Your_Key"`
+
 Demo can be seen from [Vercel](https://nasa-app-lilac.vercel.app/)
 
 ## Screenshots
-
 <table>
   <tr>
     <td>Light Mode</td>
