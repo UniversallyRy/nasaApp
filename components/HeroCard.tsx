@@ -56,7 +56,7 @@ const HeroCard = ({ ...props }: CardProps) => {
           <NextLink passHref href={props.href}>
             <Link
               fontSize={["xl", "2xl"]}
-              color={useColorModeValue("gray.700", "white")}
+              color={useColorModeValue("gray.400", "white")}
               fontWeight="bold"
               _hover={{
                 color: useColorModeValue("gray.600", "gray.200"),
