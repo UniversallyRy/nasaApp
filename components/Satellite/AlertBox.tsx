@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react"
+import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 
 const AlertBox = () => {
   return (
@@ -16,7 +16,7 @@ const AlertBox = () => {
         No Data Found
       </AlertTitle>
     </Alert>
-  )
+  );
 };
 
 export default AlertBox;

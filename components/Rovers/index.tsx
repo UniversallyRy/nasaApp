@@ -3,8 +3,8 @@ import { RoverProps } from "../../utils/types";
 import RoverList from "./RoverList";
 
 type ContainerProps = {
-  data: RoverProps[]
-}
+  data: RoverProps[];
+};
 
 const RoverContainer = ({ data }: ContainerProps) => {
   const color = useColorModeValue("blue.500", "purple.900");
@@ -19,9 +19,7 @@ const RoverContainer = ({ data }: ContainerProps) => {
       align="center"
       justifyContent="center"
     >
-      <RoverList
-        data={data}
-      />
+      <RoverList data={data} />
     </Box>
   );
 };

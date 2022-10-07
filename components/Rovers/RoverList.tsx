@@ -1,15 +1,14 @@
-import { useState, useMemo } from 'react';
-import { Box, Flex, HStack, Text } from '@chakra-ui/react';
-import RoverHeading from './RoverHeading';
-import RoverItem from './RoverItem';
+import { useState, useMemo } from "react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
+import RoverHeading from "./RoverHeading";
+import RoverItem from "./RoverItem";
 import { RoverProps } from "../../utils/types";
 
 type ListProps = {
-  data: RoverProps[]
+  data: RoverProps[];
 };
 
 const RoverList = ({ data }: ListProps) => {
-
   const [roverCamera, setCamera] = useState("FHAZ");
   const [currentSlide, setNewSlide] = useState(0);
 
@@ -18,10 +17,10 @@ const RoverList = ({ data }: ListProps) => {
     if (data instanceof Array) {
       data.map((item: RoverProps, _index: number) => {
         if (item.camera.name == roverCamera) {
-          count++
+          count++;
         }
-      })
-    };
+      });
+    }
     return count;
   };
 
@@ -60,7 +59,7 @@ const RoverList = ({ data }: ListProps) => {
   };
 
   const memoedPhotos = useMemo(() => {
-    const photosArray: React.ReactNode[] = []
+    const photosArray: React.ReactNode[] = [];
     if (data instanceof Array) {
       data.map((item: RoverProps, index: number) => {
         if (item.camera.name == roverCamera) {
@@ -71,11 +70,11 @@ const RoverList = ({ data }: ListProps) => {
               key={index}
               item={item}
             />
-          )
+          );
         }
-      })
+      });
     }
-    return photosArray
+    return photosArray;
   }, [data, slidesCount, roverCamera]);
 
   return (
@@ -85,10 +84,22 @@ const RoverList = ({ data }: ListProps) => {
         <Flex w="full" h="full" {...carouselStyle}>
           {memoedPhotos}
         </Flex>
-        <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
+        <Text
+          userSelect="none"
+          pos="absolute"
+          {...arrowStyles}
+          left="0"
+          onClick={prevSlide}
+        >
           &#10094;
         </Text>
-        <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
+        <Text
+          userSelect="none"
+          pos="absolute"
+          {...arrowStyles}
+          right="0"
+          onClick={nextSlide}
+        >
           &#10095;
         </Text>
         <HStack justify="center" pos="absolute" bottom="3" w="full">
@@ -104,15 +115,15 @@ const RoverList = ({ data }: ListProps) => {
                 transition="background-color 0.6s ease"
                 _hover={{ bg: "gray.800" }}
                 onClick={() => setSlide(slide)}
-              />
+              />;
             } else {
-              return null
+              return null;
             }
           })}
         </HStack>
       </Flex>
     </>
-  )
+  );
 };
 
 export default RoverList;

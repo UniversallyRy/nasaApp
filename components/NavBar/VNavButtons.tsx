@@ -1,20 +1,25 @@
 import { AiFillHome } from "react-icons/ai";
-import { Box, Flex, Button, CloseButton, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Button,
+  CloseButton,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { BsFillImageFill } from "react-icons/bs";
-import { FaSatelliteDish } from 'react-icons/fa';
-import { GiEarthAmerica } from 'react-icons/gi';
+import { FaSatelliteDish } from "react-icons/fa";
+import { GiEarthAmerica } from "react-icons/gi";
 import NextLink from "next/link";
 
 type Props = {
   mobileNav: {
-    isOpen: boolean
-    onClose: () => void
-  }
-}
-// Normal Normal Normal Normal/ 
+    isOpen: boolean;
+    onClose: () => void;
+  };
+};
+// Normal Normal Normal Normal/
 const VButtons = ({ mobileNav }: Props) => {
-
-  const backGround = useColorModeValue("gray.300", "gray.900");
+  const backGround = useColorModeValue("gray.400", "gray.900");
   return (
     <Box alignItems="center" display={{ base: "inline-flex", lg: "none" }}>
       <Flex
@@ -39,12 +44,7 @@ const VButtons = ({ mobileNav }: Props) => {
           onClick={mobileNav.onClose}
         />
         <NextLink href="/">
-          <Button
-            w="full"
-            size="lg"
-            variant="ghost"
-            leftIcon={<AiFillHome />}
-          >
+          <Button w="full" size="lg" variant="ghost" leftIcon={<AiFillHome />}>
             Home
           </Button>
         </NextLink>
@@ -90,7 +90,7 @@ const VButtons = ({ mobileNav }: Props) => {
         </NextLink>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
 export default VButtons;

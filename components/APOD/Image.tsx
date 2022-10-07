@@ -5,10 +5,10 @@ import { reformatDate } from "../../utils/reformatDate";
 import { TypeAPOD } from "../../utils/types";
 
 type Props = {
-  data: TypeAPOD
-  setOpen: Dispatch<SetStateAction<boolean>>
-  isOpen: boolean
-}
+  data: TypeAPOD;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+};
 
 const AnimatedIMG = motion<ImageProps>(Image);
 
@@ -23,9 +23,9 @@ export const MotionImage = ({ data, setOpen, isOpen }: Props) => {
     const offsetFactor = 40;
     imgAnimation.start({
       x: moveX / offsetFactor,
-      y: moveY / (offsetFactor - 20)
+      y: moveY / (offsetFactor - 20),
     });
-  }
+  };
 
   return (
     <AnimatedIMG
@@ -46,11 +46,11 @@ export const MotionImage = ({ data, setOpen, isOpen }: Props) => {
       objectPosition="center"
       animate={imgAnimation}
       src={data.url}
-      onMouseMove={e => handleMouseMove(e)}
+      onMouseMove={(e) => handleMouseMove(e)}
       onClick={() => setOpen(!isOpen)}
-      alt={'Picture for the date of ' + `${reformatDate(data.date)}`}
+      alt={"Picture for the date of " + `${reformatDate(data.date)}`}
     />
-  )
-}
+  );
+};
 
 export default MotionImage;

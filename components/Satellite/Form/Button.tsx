@@ -4,7 +4,7 @@ type ButtonProps = {
   backGround: string;
   isSubmitting: boolean;
   isEditing: boolean;
-}
+};
 
 const FormButton = ({ isSubmitting, isEditing, backGround }: ButtonProps) => {
   return (
@@ -19,16 +19,16 @@ const FormButton = ({ isSubmitting, isEditing, backGround }: ButtonProps) => {
         isLoading={isSubmitting}
         type="submit"
         _hover={{
-          bg: 'gray.600'
+          bg: "gray.600",
         }}
         _focus={{
-          outline: "hidden"
+          outline: "hidden",
         }}
       >
-        {isEditing ? 'SAVE' : 'CHANGE COORDS'}
+        {isEditing ? "SAVE" : "CHANGE COORDS"}
       </Button>
     </PopoverTrigger>
-  )
+  );
 };
 
 export default FormButton;

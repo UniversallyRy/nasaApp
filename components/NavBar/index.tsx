@@ -1,4 +1,11 @@
-import { chakra, HStack, Flex, useColorModeValue, useDisclosure, Spacer } from "@chakra-ui/react";
+import {
+  chakra,
+  HStack,
+  Flex,
+  useColorModeValue,
+  useDisclosure,
+  Spacer,
+} from "@chakra-ui/react";
 import HButtons from "./HNavButtons";
 import VButtons from "./VNavButtons";
 import { ToggleButton } from "./NavButton";
@@ -6,7 +13,7 @@ import AlienHead from "./AlienHead";
 
 const HeaderNav = () => {
   // const isActive = router.pathname === '/'
-  const backGround = useColorModeValue("gray.300", "gray.900");
+  const backGround = useColorModeValue("gray.400", "gray.900");
   const mobileNav = useDisclosure();
 
   return (

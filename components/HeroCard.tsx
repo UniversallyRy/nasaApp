@@ -1,20 +1,27 @@
 import React from "react";
 import NextLink from "next/link";
-import Image from 'next/image';
-import { chakra, GridItem, GridItemProps, Stack, useColorModeValue, Center, Link } from "@chakra-ui/react";
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import {
+  chakra,
+  GridItem,
+  GridItemProps,
+  Stack,
+  useColorModeValue,
+  Center,
+  Link,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 type CardProps = {
   title: string;
   paragraph: string;
   href: string;
-  imgSrc: string
+  imgSrc: string;
 };
 
 const MotionBox = motion<GridItemProps>(GridItem);
 
 const HeroCard = ({ ...props }: CardProps) => {
-
   const backGround = useColorModeValue("blue.500", "purple.900");
 
   return (
@@ -22,17 +29,17 @@ const HeroCard = ({ ...props }: CardProps) => {
       <MotionBox
         userSelect="none"
         whileHover={{
-          position: 'relative',
+          position: "relative",
           zIndex: "auto",
           scale: [1, 1.02, 1],
           transition: {
-            duration: .3
-          }
+            duration: 0.3,
+          },
         }}
         _focus={{ outline: "none" }}
         rounded="md"
         shadow="lg"
-        position='relative'
+        position="relative"
         mt="4"
         bg={backGround}
         border="2px"
@@ -41,8 +48,8 @@ const HeroCard = ({ ...props }: CardProps) => {
       >
         <Stack spacing={2} alignItems="center" p={3} mt={7}>
           <Image
-            width='200'
-            height='200'
+            width="200"
+            height="200"
             src={props.imgSrc}
             alt="Icon made by Freepik from www.flaticon.com"
           />
@@ -59,13 +66,17 @@ const HeroCard = ({ ...props }: CardProps) => {
               {props.title}
             </Link>
           </NextLink>
-          <chakra.p fontSize={{ base: 'md', md: "lg" }} m={5} color={useColorModeValue("gray.600", "gray.300")}>
+          <chakra.p
+            fontSize={{ base: "md", md: "lg" }}
+            m={5}
+            color={useColorModeValue("gray.600", "gray.300")}
+          >
             {props.paragraph}
           </chakra.p>
         </Stack>
       </MotionBox>
     </Center>
-  )
+  );
 };
 
 export default HeroCard;

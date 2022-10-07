@@ -6,20 +6,20 @@ import { FormContext } from "../../../pages/landsat";
 import { fetchedData } from "../../../utils/getData";
 
 type BoxProps = {
-  children: React.ReactNode
-  isEditing: boolean
-  setSubmit: Dispatch<SetStateAction<boolean>>
-}
+  children: React.ReactNode;
+  isEditing: boolean;
+  setSubmit: Dispatch<SetStateAction<boolean>>;
+};
 
 interface FormValues {
-  latitude: number
-  longitude: number
+  latitude: number;
+  longitude: number;
 }
 
 const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
   const { submitCoords }: FormikValues = useContext(FormContext);
   const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
-  const defaultDate = new Date("2/1/21")
+  const defaultDate = new Date("2/1/21");
 
   return (
     <Box align="center" justify="center" w={{ base: "sm", sm: "md", md: "lg" }}>
@@ -27,16 +27,16 @@ const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
         initialValues={initialValues}
         onSubmit={async (values) => {
           if (!isEditing) {
-            setSubmit(true)
-            let lon = values.longitude
-            let lat = values.latitude
-            const data = await fetchedData('landsat', defaultDate, lon, lat);
+            setSubmit(true);
+            let lon = values.longitude;
+            let lat = values.latitude;
+            const data = await fetchedData("landsat", defaultDate, lon, lat);
             setTimeout(() => {
-              setSubmit(false)
-            }, 3000)
-            submitCoords(data)
+              setSubmit(false);
+            }, 3000);
+            submitCoords(data);
           } else {
-            return null
+            return null;
           }
         }}
       >
@@ -44,7 +44,7 @@ const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
       </Formik>
       <Examples />
     </Box>
-  )
+  );
 };
 
 export default FormikBox;

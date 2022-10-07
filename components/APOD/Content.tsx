@@ -1,23 +1,27 @@
-import { Heading, Flex, HeadingProps, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Heading,
+  Flex,
+  HeadingProps,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import MotionImage from "./Image";
 import { motion } from "framer-motion";
 import MotionBackGround from "./BackGround";
-import { TypeAPOD } from '../../utils/types';
+import { TypeAPOD } from "../../utils/types";
 import { apodVariant } from "../../utils/variants";
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from "react";
 
 type Props = {
-  newData: TypeAPOD
-  isOpen: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-}
+  newData: TypeAPOD;
+  isOpen: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+};
 
 const Content = ({ newData, isOpen, setOpen }: Props) => {
-
   const MotionTitle = motion<HeadingProps>(Heading);
   const cardBg = useColorModeValue("blue.500", "purple.900");
   return (
-
     <Flex
       bg={cardBg}
       shadow="2xl"
@@ -30,7 +34,7 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
         sm: "md",
         md: "container.sm",
         lg: "container.lg",
-        xl: "container.xl"
+        xl: "container.xl",
       }}
     >
       <MotionTitle
@@ -39,7 +43,7 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
           sm: "sm",
           md: "md",
           lg: "lg",
-          xl: "xl"
+          xl: "xl",
         }}
         variants={apodVariant}
         whileHover={{ scale: 1.05 }}
@@ -54,22 +58,15 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
           sm: "column",
           md: "column",
           lg: "row",
-          xl: "row"
+          xl: "row",
         }}
         w="auto"
         bg="whiteAlpha.50"
         borderRadius="sm"
         cursor={isOpen ? "zoom-out" : "zoom-in"}
       >
-        <MotionBackGround
-          isOpen={isOpen}
-          setOpen={setOpen}
-        />
-        <MotionImage
-          data={newData}
-          setOpen={setOpen}
-          isOpen={isOpen}
-        />
+        <MotionBackGround isOpen={isOpen} setOpen={setOpen} />
+        <MotionImage data={newData} setOpen={setOpen} isOpen={isOpen} />
         <Text
           alignSelf="center"
           fontSize={{
@@ -85,18 +82,17 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
             base: "xs",
             sm: "sm",
             md: "lg",
-            lg: "lg"
+            lg: "lg",
           }}
           m={2}
-          wordBreak='break-word'
-          overflowWrap='anywhere'
-          hyphens='auto'
+          wordBreak="break-word"
+          overflowWrap="anywhere"
+          hyphens="auto"
         >
           {newData.explanation}
         </Text>
       </Flex>
-
     </Flex>
-  )
-}
+  );
+};
 export default Content;

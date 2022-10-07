@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { NextPage } from 'next';
+import { NextPage } from "next";
 import {
   Flex,
   Box,
@@ -9,20 +9,20 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
-  AlertDescription
-} from '@chakra-ui/react';
-import EpicItem from './EpicItem';
+  AlertDescription,
+} from "@chakra-ui/react";
+import EpicItem from "./EpicItem";
 
 interface Props {
   data: {
-    title: string
-    date: number
-    length: number
-    explanation?: string
-    identifier?: string
-    hdurl?: string
-  }
-};
+    title: string;
+    date: number;
+    length: number;
+    explanation?: string;
+    identifier?: string;
+    hdurl?: string;
+  };
+}
 
 const EpicList: NextPage<Props> = ({ data }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -72,9 +72,9 @@ const EpicList: NextPage<Props> = ({ data }) => {
           item={item}
           index={index}
         />
-      ))
+      ));
     } else {
-      return <Text>No Images</Text>
+      return <Text>No Images</Text>;
     }
   }, [data, slidesCount]);
 
@@ -88,15 +88,27 @@ const EpicList: NextPage<Props> = ({ data }) => {
       alignItems="center"
       justifyContent="center"
     >
-      {slidesCount > 0
-        ? <Flex w="full" pos="relative" overflow="hidden">
+      {slidesCount > 0 ? (
+        <Flex w="full" pos="relative" overflow="hidden">
           <Flex h="full" w="full" {...carouselStyle}>
             {memoedList}
           </Flex>
-          <Text userSelect="none" pos="absolute" {...arrowStyles} left="0" onClick={prevSlide}>
+          <Text
+            userSelect="none"
+            pos="absolute"
+            {...arrowStyles}
+            left="0"
+            onClick={prevSlide}
+          >
             &#10094;
           </Text>
-          <Text userSelect="none" pos="absolute" {...arrowStyles} right="0" onClick={nextSlide}>
+          <Text
+            userSelect="none"
+            pos="absolute"
+            {...arrowStyles}
+            right="0"
+            onClick={nextSlide}
+          >
             &#10095;
           </Text>
           <HStack justify="center" pos="absolute" bottom="2" w="full">
@@ -116,7 +128,8 @@ const EpicList: NextPage<Props> = ({ data }) => {
             ))}
           </HStack>
         </Flex>
-        : <Alert
+      ) : (
+        <Alert
           status="error"
           variant="solid"
           flexDirection="column"
@@ -133,9 +146,9 @@ const EpicList: NextPage<Props> = ({ data }) => {
             No images taken on this date, try another!
           </AlertDescription>
         </Alert>
-      }
+      )}
     </Box>
-  )
+  );
 };
 
 export default EpicList;

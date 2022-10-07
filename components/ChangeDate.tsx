@@ -6,26 +6,27 @@ import "react-datepicker/dist/react-datepicker.css";
 interface Props {
   onChange: (date: Date) => Promise<void> | (void | undefined);
   selected: Date | undefined;
-};
+}
 
 const DatePicker = ({ ...props }: Props) => {
-  const backGround = useColorModeValue("gray.300", "gray.900");
+  const backGround = useColorModeValue("gray.400", "gray.900");
 
-  const DateButton = forwardRef<HTMLButtonElement, ButtonProps>(({ value, onClick }, ref) => {
-    return (
-      <Button
-        _focus={{ outline: "none" }}
-        bg={backGround}
-        className="Calender Date"
-        m={3}
-        onClick={onClick}
-        ref={ref}
-      >
-        {value}
-      </Button>
-    )
-
-  });
+  const DateButton = forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ value, onClick }, ref) => {
+      return (
+        <Button
+          _focus={{ outline: "none" }}
+          bg={backGround}
+          className="Calender Date"
+          m={3}
+          onClick={onClick}
+          ref={ref}
+        >
+          {value}
+        </Button>
+      );
+    }
+  );
   DateButton.displayName = "DateButton";
 
   return (
@@ -51,4 +52,3 @@ const DatePicker = ({ ...props }: Props) => {
 };
 
 export default DatePicker;
-

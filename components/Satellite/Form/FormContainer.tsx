@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Form } from "formik";
 import { Popover, useColorModeValue, useBoolean } from "@chakra-ui/react";
-import FormikBox from './FormikBox';
-import FormInputs from './FormInputs';
-import FormButton from './Button';
+import FormikBox from "./FormikBox";
+import FormInputs from "./FormInputs";
+import FormButton from "./Button";
 
 const FormContainer = () => {
   const [isSubmitting, setSubmit] = useState(false);
@@ -17,18 +17,12 @@ const FormContainer = () => {
       onClose={setIsEditing.off}
       closeOnBlur={false}
       isLazy
-      lazyBehavior='keepMounted'
+      lazyBehavior="keepMounted"
     >
-      <FormikBox
-        isEditing={isEditing}
-        setSubmit={setSubmit}
-      >
+      <FormikBox isEditing={isEditing} setSubmit={setSubmit}>
         {() => (
           <Form>
-            <FormInputs
-              isEditing={isEditing}
-              backGround={backGround}
-            />
+            <FormInputs isEditing={isEditing} backGround={backGround} />
             <FormButton
               isEditing={isEditing}
               isSubmitting={isSubmitting}
@@ -38,7 +32,7 @@ const FormContainer = () => {
         )}
       </FormikBox>
     </Popover>
-  )
+  );
 };
 
 export default FormContainer;

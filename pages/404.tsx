@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text } from "@chakra-ui/react";
 
 const Custom404 = () => {
   return (
@@ -10,7 +10,7 @@ const Custom404 = () => {
       </Head>
       <Text>404 - Page Not Found</Text>
     </Box>
-  )
-}
+  );
+};
 
 export default Custom404;

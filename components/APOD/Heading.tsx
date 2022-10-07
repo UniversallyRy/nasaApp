@@ -6,14 +6,18 @@ import { TypeAPOD } from "../../utils/types";
 import { Flex } from "@chakra-ui/react";
 
 type Props = {
-  newData: TypeAPOD
-  setData: Dispatch<SetStateAction<TypeAPOD>>
-  startDate: Date | undefined
-  setStartDate: Dispatch<SetStateAction<Date>>
-}
+  newData: TypeAPOD;
+  setData: Dispatch<SetStateAction<TypeAPOD>>;
+  startDate: Date | undefined;
+  setStartDate: Dispatch<SetStateAction<Date>>;
+};
 
-const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => {
-
+const MotionHeading = ({
+  newData,
+  setData,
+  startDate,
+  setStartDate,
+}: Props) => {
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
     const data = await fetchedData("apod", date);
@@ -31,12 +35,9 @@ const MotionHeading = ({ newData, setData, startDate, setStartDate }: Props) => 
           key={newData.title}
         />
       </Head>
-      <ChangeDate
-        selected={startDate}
-        onChange={handleDateChange}
-      />
+      <ChangeDate selected={startDate} onChange={handleDateChange} />
     </Flex>
-  )
-}
+  );
+};
 
 export default MotionHeading;

@@ -3,14 +3,16 @@ import { motion } from "framer-motion";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
-  isOpen: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-}
+  isOpen: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+};
 const MotionDiv = motion<BoxProps>(Box);
 
 const BackGround = ({ isOpen, setOpen }: Props) => {
-
-  const bgColor = useColorModeValue("rgba(232, 236, 241, 0.8)", "rgba(0, 0, 0, 0.95)");
+  const bgColor = useColorModeValue(
+    "rgba(232, 236, 241, 0.8)",
+    "rgba(0, 0, 0, 0.95)"
+  );
 
   return (
     <MotionDiv
@@ -25,7 +27,7 @@ const BackGround = ({ isOpen, setOpen }: Props) => {
       animate={{ opacity: isOpen ? 1 : 0 }}
       onClick={() => setOpen(false)}
     />
-  )
-}
+  );
+};
 
 export default BackGround;
