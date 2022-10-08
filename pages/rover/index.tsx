@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import NextLink from "next/link";
-import { Stack, Box, Link } from "@chakra-ui/react";
-import RoverContainer from "../../components/Rovers/";
-import DatePicker from "../../components/ChangeDate";
+import { Stack, Box } from "@chakra-ui/react";
+import RoverHeading from "../../components/Rovers/RoverHeading";
+import RoverContent from "../../components/Rovers/";
 import { fetchedData } from "../../utils/getData";
 import { RoverProps } from "../../utils/types";
+import { useState } from "react";
 
-interface Data {
+export interface RoverData {
   photos: RoverProps[];
   title: string;
   date: number;
@@ -19,40 +17,15 @@ interface Data {
 }
 
 //todos: expansion on components/pages?, rover camera choices, style fixes
-const Rover: NextPage<{ data: Data }> = ({ data }) => {
-  const [newData, setData] = useState(data);
-  const [date, setDate] = useState(new Date(2021, 6, 17));
-
-  const handleDateChange = async (date: Date) => {
-    if (new Date() < date) return;
-    let newData = await fetchedData("rover", date);
-    setDate(date);
-    setData(newData);
-  };
-
+const Rover: NextPage<{ data: RoverData }> = ({ data }) => {
+  const [newData, setData] = useState(data)
   if (!data) return <div>Loading...</div>;
+
   return (
     <Box h="100%" mb={4}>
-      <Head key="pages/rover key">
-        <title>Mars Rover Photos</title>
-        <meta property="og:rover" content="Mars Rover Photos" key="rovers" />
-      </Head>
       <Stack align="center">
-        <DatePicker selected={date} onChange={handleDateChange} />
-        <NextLink passHref href="/">
-          <Link
-            bg="gray.900"
-            color="gray.100"
-            px={5}
-            py={3}
-            fontWeight="semibold"
-            rounded="sm"
-            _hover={{ bg: "gray.400" }}
-          >
-            Back to Home
-          </Link>
-        </NextLink>
-        <RoverContainer data={newData.photos} />
+        <RoverHeading setData={setData}/>
+        <RoverContent data={newData.photos} />
       </Stack>
     </Box>
   );

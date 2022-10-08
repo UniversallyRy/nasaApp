@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
-import RoverHeading from "./RoverHeading";
 import RoverItem from "./RoverItem";
 import { RoverProps } from "../../utils/types";
+import RoverSelect from "./RoverSelect";
 
 type ListProps = {
   data: RoverProps[];
@@ -79,7 +79,7 @@ const RoverList = ({ data }: ListProps) => {
 
   return (
     <>
-      <RoverHeading setCamera={setCamera} />
+      <RoverSelect setCamera={setCamera} />
       <Flex w="full" pos="relative" overflow="hidden">
         <Flex w="full" h="full" {...carouselStyle}>
           {memoedPhotos}
@@ -102,7 +102,7 @@ const RoverList = ({ data }: ListProps) => {
         >
           &#10095;
         </Text>
-        <HStack justify="center" pos="absolute" bottom="3" w="full">
+        <HStack justify="center" pos="absolute" bottom="3">
           {Array.from({ length: slidesCount }).map((_, slide) => {
             if (slidesCount <= 10) {
               <Box

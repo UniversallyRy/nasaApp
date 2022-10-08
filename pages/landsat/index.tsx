@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useState, createContext } from "react";
 import { Stack } from "@chakra-ui/react";
-import FormContainer from "../../components/Satellite";
+import FormContainer from "../../components/Satellite/Form";
 import SatelliteImg from "../../components/Satellite/SatelliteImg";
 import AlertBox from "../../components/Satellite/AlertBox";
 

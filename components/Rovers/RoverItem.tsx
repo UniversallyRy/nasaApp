@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 import { ChakraNextImage } from "../Image";
 import { RoverProps } from "../../utils/types";
 
@@ -16,19 +16,19 @@ const RoverItem = ({ ...props }: ItemProps) => {
       </Text>
       <Text m={2}>Sol: {props.item.sol}</Text>
       <Text m={2}>Camera: {props.item.camera.name}</Text>
-
-      <ChakraNextImage
-        w="full"
-        h={{ base: "60vh", sm: "70vh", md: "70vh" }}
-        rounded="sm"
-        shadow="sm"
-        src={props.item.img_src}
-        alt={`id + ${props.item.id}`}
-      />
-
-      <Text fontSize="xs" p="2" pos="absolute" top="0">
-        {props.index + 1} / {props.slidesCount}
-      </Text>
+      <Flex direction="row" pos="relative">
+        <Text p="2" fontSize="xs" pos="absolute" top="0">
+          {props.index + 1} / {props.slidesCount}
+        </Text>
+        <ChakraNextImage
+          w="full"
+          h={{ base: "60vh", sm: "70vh", md: "70vh" }}
+          rounded="sm"
+          shadow="sm"
+          src={props.item.img_src}
+          alt={`id + ${props.item.id}`}
+        />
+      </Flex>
     </Box>
   );
 };

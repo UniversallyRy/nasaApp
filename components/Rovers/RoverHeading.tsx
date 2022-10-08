@@ -1,39 +1,45 @@
-import { Select, Heading } from "@chakra-ui/react";
+import { Dispatch, SetStateAction, useState } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { Link } from "@chakra-ui/react";
+import { fetchedData } from "../../utils/getData";
+import DatePicker from "../ChangeDate";
+import { RoverData } from "../../pages/rover";
 
 type HeadingProps = {
-  setCamera: (item: string) => void;
+  setData: Dispatch<SetStateAction<RoverData>>
 };
 
-const RoverHeading = ({ setCamera }: HeadingProps) => {
-  const handleChange = (event: React.FormEvent<HTMLElement>) => {
-    event.preventDefault();
-    const element = event.currentTarget as HTMLInputElement;
-    const value = element.value;
-    setCamera(value);
-  };
+const RoverHeading = ({ setData }: HeadingProps) => {
+  const [date, setDate] = useState(new Date(2021, 6, 17));
+
+  const handleDateChange = async (date: Date) => {
+    if (new Date() < date) return;
+    let newData = await fetchedData("rover", date);
+    setDate(date);
+    setData(newData)
+  }
 
   return (
     <>
-      <Select
-        mt={1}
-        _focus={{ outline: "none" }}
-        onChange={handleChange}
-        placeholder="Select Camera"
-      >
-        <option value="FHAZ">Front Hazard Avoidance Camera</option>
-        <option value="RHAZ">Rear Hazard Avoidance Camera</option>
-        <option value="MAST">Mast Camera</option>
-        <option value="CHEMCAM">Chemistry and Camera Complex</option>
-        <option value="MARDI">Mars Descent Imager</option>
-        <option value="NAVCAM">Navigation Camera</option>
-      </Select>
-      <Heading>
-        {" "}
-        Images taken by the{" "}
-        <a href="https://www.space.com/17963-mars-curiosity.html">
-          Curiosity Rover
-        </a>
-      </Heading>
+      <Head key="pages/rover key">
+        <title>Mars Rover Photos</title>
+        <meta property="og:rover" content="Mars Rover Photos" key="rovers" />
+      </Head>
+      <DatePicker selected={date} onChange={handleDateChange} />
+      <NextLink passHref href="/">
+        <Link
+          bg="gray.900"
+          color="gray.100"
+          px={5}
+          py={3}
+          fontWeight="semibold"
+          rounded="sm"
+          _hover={{ bg: "gray.400" }}
+        >
+          Back to Home
+        </Link>
+      </NextLink>
     </>
   );
 };
