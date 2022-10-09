@@ -2,7 +2,7 @@ import { Select, Heading } from "@chakra-ui/react";
 
 type SelectProps = {
   setCamera: (item: string) => void;
-}
+};
 
 const RoverSelect = ({ setCamera }: SelectProps) => {
   const handleChange = (event: React.FormEvent<HTMLElement>) => {

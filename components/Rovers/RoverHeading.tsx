@@ -7,7 +7,7 @@ import DatePicker from "../ChangeDate";
 import { RoverData } from "../../pages/rover";
 
 type HeadingProps = {
-  setData: Dispatch<SetStateAction<RoverData>>
+  setData: Dispatch<SetStateAction<RoverData>>;
 };
 
 const RoverHeading = ({ setData }: HeadingProps) => {
@@ -17,8 +17,8 @@ const RoverHeading = ({ setData }: HeadingProps) => {
     if (new Date() < date) return;
     let newData = await fetchedData("rover", date);
     setDate(date);
-    setData(newData)
-  }
+    setData(newData);
+  };
 
   return (
     <>

@@ -18,13 +18,13 @@ export interface RoverData {
 
 //todos: expansion on components/pages?, rover camera choices, style fixes
 const Rover: NextPage<{ data: RoverData }> = ({ data }) => {
-  const [newData, setData] = useState(data)
+  const [newData, setData] = useState(data);
   if (!data) return <div>Loading...</div>;
 
   return (
     <Box h="100%" mb={4}>
       <Stack align="center">
-        <RoverHeading setData={setData}/>
+        <RoverHeading setData={setData} />
         <RoverContent data={newData.photos} />
       </Stack>
     </Box>
