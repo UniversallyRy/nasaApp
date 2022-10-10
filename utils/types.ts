@@ -101,6 +101,16 @@ export type RoverPhotoType = {
   sol: number;
 };
 
+export type SatDataType = {
+  date: string;
+  id: string;
+  resource: {
+    dataset: string;
+    planet: string;
+  };
+  ["service version"]: string;
+  url: string;
+};
 // Type for Satellite Image
 export type CoordinateProps = {
   date: string;

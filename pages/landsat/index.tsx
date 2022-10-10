@@ -5,22 +5,13 @@ import { Stack } from "@chakra-ui/react";
 import FormContainer from "../../components/Satellite/Form";
 import SatelliteImg from "../../components/Satellite/SatelliteImg";
 import AlertBox from "../../components/Satellite/AlertBox";
+import { SatDataType } from "../../utils/types";
 
 // Todo: add searchable options
-interface Data {
-  date: string;
-  id: string;
-  resource: {
-    dataset: string;
-    planet: string;
-  };
-  ["service version"]: string;
-  url: string;
-}
 
 export const FormContext = createContext({});
 
-const LandSat: NextPage<{ data: Data }> = () => {
+const LandSat: NextPage<{ data: SatDataType }> = () => {
   const [coordinates, submitCoords] = useState(Object);
   return (
     <Stack minH="100vh" align="center">
