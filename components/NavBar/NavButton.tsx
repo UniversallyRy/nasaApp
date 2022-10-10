@@ -3,13 +3,13 @@ import { Button, IconButton, useColorMode } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-type ButtonProps = {
+type Props = {
   title: string;
   buttonIcon: React.ReactElement<IconType>;
   href: string;
 };
 
-const NavButton = ({ ...props }: ButtonProps) => {
+const NavButton = ({ ...props }: Props) => {
   const router: NextRouter = useRouter();
   const label = `${props.title} navigation button`;
 

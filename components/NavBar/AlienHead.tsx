@@ -1,13 +1,13 @@
 import React, { MouseEventHandler } from "react";
 import { Button, useColorModeValue } from "@chakra-ui/react";
 
-type AlienProps = {
+type Props = {
   boxSize?: any;
   bg?: any;
   onClick?: (() => void) | MouseEventHandler<HTMLButtonElement>;
 };
 
-const AlienHead = ({ ...props }: AlienProps) => {
+const AlienHead = ({ ...props }: Props) => {
   const shadowToggle = useColorModeValue(
     "0 0 5px 5px rgba(255, 255, 255, 0.4)",
     "0 0 5px 5px rgba(0, 0, 0, 0.5)"
