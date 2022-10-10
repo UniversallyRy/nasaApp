@@ -1,3 +1,4 @@
+// Type for Picture of the Day
 export type TypeAPOD = {
   url?: string;
   title: string;
@@ -7,6 +8,7 @@ export type TypeAPOD = {
   hdurl?: string;
 };
 
+// Type for Rover Data
 export type RoverProps = {
   camera: {
     full_name: string;
@@ -25,4 +27,18 @@ export type RoverProps = {
     status: string;
   };
   sol: number;
+};
+
+// Type for Satellite Image
+export type CoordinateProps = {
+  date: string;
+  id: string;
+  resource: {
+    dataset: string;
+    planet: string;
+  };
+  dataset: string;
+  planet: string;
+  service_version: string;
+  url: string;
 };

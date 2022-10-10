@@ -1,9 +1,10 @@
 import { VStack, Text, useColorModeValue } from "@chakra-ui/react";
 import ChakraNextImage from "../Image";
 import { reformatDate } from "../../utils/reformatDate";
+import { CoordinateProps } from "../../utils/types";
 
 type ImgProps = {
-  coordinates: any;
+  coordinates: CoordinateProps;
 };
 
 const SatelliteImg = ({ coordinates }: ImgProps) => {
