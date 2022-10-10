@@ -6,20 +6,16 @@ import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from "../../components/Epic/EpicList";
 import ChangeDate from "../../components/ChangeDate";
 import { fetchedData } from "../../utils/getData";
+import { EpicDataType } from "../../utils/types";
 
 interface Props {
-  data: {
-    title: string;
-    date: number;
-    length: number;
-  };
+  data: EpicDataType[];
 }
 
 // todos: add datepicker and default to closest date
 const Epics: NextPage<Props> = ({ data }) => {
   const [initData, setData] = useState(data);
   const [startDate, setStartDate] = useState(new Date());
-
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
     let newData = await fetchedData("epic", date);
@@ -47,7 +43,7 @@ const Epics: NextPage<Props> = ({ data }) => {
         <meta
           property="og:pic"
           content="Earth Polychromatic Imaging Camera Images"
-          key={initData.title}
+          key="epicmeta"
         />
       </Head>
       <ChangeDate selected={startDate} onChange={handleDateChange} />

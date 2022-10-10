@@ -1,9 +1,9 @@
 import { Box, useColorModeValue } from "@chakra-ui/react";
-import { RoverProps } from "../../utils/types";
+import { RoverPhotoType } from "../../utils/types";
 import RoverList from "./RoverList";
 
 type Props = {
-  data: RoverProps[];
+  data: RoverPhotoType[];
 };
 
 const RoverContainer = ({ data }: Props) => {

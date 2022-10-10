@@ -3,21 +3,11 @@ import { Stack, Box } from "@chakra-ui/react";
 import RoverHeading from "../../components/Rovers/RoverHeading";
 import RoverContent from "../../components/Rovers/";
 import { fetchedData } from "../../utils/getData";
-import { RoverProps } from "../../utils/types";
+import { RoverDataType } from "../../utils/types";
 import { useState } from "react";
 
-export interface RoverData {
-  photos: RoverProps[];
-  title: string;
-  date: number;
-  explanation: string;
-  identifier: string;
-  hdurl: string;
-  map: (item: object) => void;
-}
-
 //todos: expansion on components/pages?, rover camera choices, style fixes
-const Rover: NextPage<{ data: RoverData }> = ({ data }) => {
+const Rover: NextPage<{ data: RoverDataType }> = ({ data }) => {
   const [newData, setData] = useState(data);
   if (!data) return <div>Loading...</div>;
 

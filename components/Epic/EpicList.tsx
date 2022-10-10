@@ -11,16 +11,10 @@ import {
   AlertDescription,
 } from "@chakra-ui/react";
 import EpicItem from "./EpicItem";
+import { EpicDataType } from "../../utils/types";
 
 interface Props {
-  data: {
-    title: string;
-    date: number;
-    length: number;
-    explanation?: string;
-    identifier?: string;
-    hdurl?: string;
-  };
+  data: EpicDataType[];
 }
 
 const EpicList = ({ data }: Props) => {

@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import RoverItem from "./RoverItem";
-import { RoverProps } from "../../utils/types";
+import { RoverPhotoType } from "../../utils/types";
 import RoverSelect from "./RoverSelect";
 
 type Props = {
-  data: RoverProps[];
+  data: RoverPhotoType[];
 };
 
 const RoverList = ({ data }: Props) => {
@@ -15,7 +15,7 @@ const RoverList = ({ data }: Props) => {
   const getSlides = () => {
     let count = 0;
     if (data instanceof Array) {
-      data.map((item: RoverProps, _index: number) => {
+      data.map((item: RoverPhotoType, _index: number) => {
         if (item.camera.name == roverCamera) {
           count++;
         }
@@ -61,7 +61,7 @@ const RoverList = ({ data }: Props) => {
   const memoedPhotos = useMemo(() => {
     const photosArray: React.ReactNode[] = [];
     if (data instanceof Array) {
-      data.map((item: RoverProps, index: number) => {
+      data.map((item: RoverPhotoType, index: number) => {
         if (item.camera.name == roverCamera) {
           photosArray.push(
             <RoverItem
