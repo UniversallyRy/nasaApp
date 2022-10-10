@@ -1,37 +1,27 @@
-import { Flex, Text, useBoolean, useColorModeValue } from "@chakra-ui/react";
+import { MouseEventHandler } from "react";
+import { Flex, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import MotionImage from "./Image";
 import MotionBackGround from "./BackGround";
 import { TypeAPOD } from "../../utils/types";
-import { useDomEvent } from "framer-motion";
-import { useRef } from "react";
-
-export type OpenProps = {
-  readonly on: () => void;
-  readonly off: () => void;
-  readonly toggle: () => void;
-};
 
 type Props = {
   newData: TypeAPOD;
 };
 
-declare var global: Global;
+export type DisclosureProps = {
+  getButtonProps?: () => void;
+  getDisclosureProps?: () => void;
+  isControlled?: boolean;
+  isOpen?: boolean;
+  onClose?: MouseEventHandler<HTMLDivElement>;
+  onOpen?: MouseEventHandler<HTMLDivElement>;
+  onToggle?: MouseEventHandler<HTMLDivElement>;
+};
 
 const Content = ({ newData }: Props) => {
-  const [isOpen, setOpen] = useBoolean();
-
-  const hideImage = () => {
-    return isOpen && setOpen.off;
-  };
-
-  useDomEvent(useRef(global.window as any), "scroll", () => hideImage());
-  useDomEvent(
-    useRef(global.window as any),
-    "keydown",
-    (e: any) => e.keyCode === 27 && hideImage()
-  );
-
+  const handleImg = useDisclosure();
   const cardBg = useColorModeValue("blue.500", "purple.900");
+
   return (
     <Flex
       bg={cardBg}
@@ -62,10 +52,16 @@ const Content = ({ newData }: Props) => {
         p={5}
         bg="whiteAlpha.50"
         borderRadius="sm"
-        cursor={isOpen ? "zoom-out" : "zoom-in"}
       >
-        <MotionBackGround isOpen={isOpen} setOpen={setOpen} />
-        <MotionImage data={newData} setOpen={setOpen} isOpen={isOpen} />
+        <MotionBackGround
+          isOpen={handleImg.isOpen}
+          onClose={handleImg.onClose}
+        />
+        <MotionImage
+          data={newData}
+          isOpen={handleImg.isOpen}
+          onOpen={handleImg.onOpen}
+        />
         <Text
           alignSelf="center"
           fontSize={{
@@ -96,8 +92,3 @@ const Content = ({ newData }: Props) => {
 };
 
 export default Content;
-
-export interface Global extends NodeJS.Global {
-  document: Document;
-  window: Window;
-}
