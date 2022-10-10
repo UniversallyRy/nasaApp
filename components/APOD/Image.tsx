@@ -1,18 +1,18 @@
 import { Image, ImageProps } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
-import { Dispatch, SetStateAction } from "react";
 import { reformatDate } from "../../utils/reformatDate";
 import { TypeAPOD } from "../../utils/types";
+import { OpenProps } from "./Content";
 
-type Props = {
+type ImgProps = {
   data: TypeAPOD;
-  setOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
+  setOpen: OpenProps;
 };
 
 const AnimatedIMG = motion<ImageProps>(Image);
 
-export const MotionImage = ({ data, setOpen, isOpen }: Props) => {
+export const MotionImage = ({ data, setOpen, isOpen }: ImgProps) => {
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -47,7 +47,7 @@ export const MotionImage = ({ data, setOpen, isOpen }: Props) => {
       animate={imgAnimation}
       src={data.url}
       onMouseMove={(e) => handleMouseMove(e)}
-      onClick={() => setOpen(!isOpen)}
+      onClick={setOpen.toggle}
       alt={"Picture for the date of " + `${reformatDate(data.date)}`}
     />
   );

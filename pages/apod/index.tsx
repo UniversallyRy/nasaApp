@@ -1,7 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { VStack } from "@chakra-ui/react";
-import { useDomEvent } from "framer-motion";
 import MotionHeading from "../../components/APOD/Heading";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
@@ -9,12 +8,9 @@ import { fetchedData } from "../../utils/getData";
 import { TypeAPOD } from "../../utils/types";
 import MotionTitle from "../../components/APOD/Title";
 
-declare var global: Global;
-
 const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
   const [newData, setData] = useState(apodData);
   const [startDate, setStartDate] = useState(new Date());
-  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     if (apodData.date !== undefined) {
@@ -32,30 +28,19 @@ const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
     }
   }, [apodData]);
 
-  const hideImage = () => {
-    return isOpen && setOpen(false);
-  };
-
-  useDomEvent(useRef(global.window as any), "scroll", () => hideImage());
-  useDomEvent(
-    useRef(global.window as any),
-    "keydown",
-    (e: any) => e.keyCode === 27 && hideImage()
-  );
-
   if (!apodData) return <div>Loading...</div>;
 
   return (
     <VStack minH="100%">
       <MotionHeading
-        newData={newData}
+        title={newData.title}
         setData={setData}
         startDate={startDate}
         setStartDate={setStartDate}
       />
       <MotionTitle title={newData.title} />
-      <MotionContent newData={newData} isOpen={isOpen} setOpen={setOpen} />
-      <MotionFooter picMeta={newData} />
+      <MotionContent newData={newData} />
+      <MotionFooter copyright={newData.copyright} />
     </VStack>
   );
 };
@@ -77,8 +62,3 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default APOD;
-
-export interface Global extends NodeJS.Global {
-  document: Document;
-  window: Window;
-}

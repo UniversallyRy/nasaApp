@@ -1,16 +1,15 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { TypeAPOD } from "../../utils/types";
 
 type Props = {
-  picMeta: TypeAPOD;
+  copyright: string | undefined;
 };
 
-const Footer = ({ picMeta }: Props) => {
+const Footer = ({ copyright }: Props) => {
   return (
     <Flex>
-      {!picMeta.copyright === undefined ? (
+      {!copyright === undefined ? (
         <Text fontSize={{ base: "10px", lg: "16px" }}>
-          Copyright: {picMeta.copyright}
+          Copyright: {copyright}
         </Text>
       ) : null}
     </Flex>

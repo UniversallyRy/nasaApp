@@ -1,16 +1,36 @@
-import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text, useBoolean, useColorModeValue } from "@chakra-ui/react";
 import MotionImage from "./Image";
 import MotionBackGround from "./BackGround";
 import { TypeAPOD } from "../../utils/types";
-import { Dispatch, SetStateAction } from "react";
+import { useDomEvent } from "framer-motion";
+import { useRef } from "react";
+
+export type OpenProps = {
+  readonly on: () => void;
+  readonly off: () => void;
+  readonly toggle: () => void;
+};
 
 type Props = {
   newData: TypeAPOD;
-  isOpen: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Content = ({ newData, isOpen, setOpen }: Props) => {
+declare var global: Global;
+
+const Content = ({ newData }: Props) => {
+  const [isOpen, setOpen] = useBoolean();
+
+  const hideImage = () => {
+    return isOpen && setOpen.off;
+  };
+
+  useDomEvent(useRef(global.window as any), "scroll", () => hideImage());
+  useDomEvent(
+    useRef(global.window as any),
+    "keydown",
+    (e: any) => e.keyCode === 27 && hideImage()
+  );
+
   const cardBg = useColorModeValue("blue.500", "purple.900");
   return (
     <Flex
@@ -74,4 +94,10 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
     </Flex>
   );
 };
+
 export default Content;
+
+export interface Global extends NodeJS.Global {
+  document: Document;
+  window: Window;
+}

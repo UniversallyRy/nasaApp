@@ -1,11 +1,12 @@
 import { Box, BoxProps, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction } from "react";
+import { OpenProps } from "./Content";
 
 type Props = {
   isOpen: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  setOpen: OpenProps;
 };
+
 const MotionDiv = motion<BoxProps>(Box);
 
 const BackGround = ({ isOpen, setOpen }: Props) => {
@@ -25,7 +26,7 @@ const BackGround = ({ isOpen, setOpen }: Props) => {
       opacity={isOpen ? 1 : 0}
       bg={bgColor}
       animate={{ opacity: isOpen ? 1 : 0 }}
-      onClick={() => setOpen(false)}
+      onClick={setOpen.off}
     />
   );
 };
