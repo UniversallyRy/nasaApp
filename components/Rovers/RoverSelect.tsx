@@ -1,15 +1,15 @@
 import { Select, Heading } from "@chakra-ui/react";
 
-type SelectProps = {
+type Props = {
   setCamera: (item: string) => void;
 };
 
-const RoverSelect = ({ setCamera }: SelectProps) => {
+const RoverSelect = ({ ...props }: Props) => {
   const handleChange = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault();
     const element = event.currentTarget as HTMLInputElement;
     const value = element.value;
-    setCamera(value);
+    props.setCamera(value);
   };
 
   return (

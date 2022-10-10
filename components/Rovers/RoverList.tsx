@@ -4,11 +4,11 @@ import RoverItem from "./RoverItem";
 import { RoverProps } from "../../utils/types";
 import RoverSelect from "./RoverSelect";
 
-type ListProps = {
+type Props = {
   data: RoverProps[];
 };
 
-const RoverList = ({ data }: ListProps) => {
+const RoverList = ({ data }: Props) => {
   const [roverCamera, setCamera] = useState("FHAZ");
   const [currentSlide, setNewSlide] = useState(0);
 

@@ -2,13 +2,13 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { ChakraNextImage } from "../Image";
 import { RoverProps } from "../../utils/types";
 
-type ItemProps = {
+type Props = {
   item: RoverProps;
   index: number;
   slidesCount: number;
 };
 
-const RoverItem = ({ ...props }: ItemProps) => {
+const RoverItem = ({ ...props }: Props) => {
   return (
     <Box boxSize="full" fontSize="xl" flex="none" rounded="sm" shadow="lg">
       <Text ml={2} mt={7}>

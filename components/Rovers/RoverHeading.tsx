@@ -10,14 +10,14 @@ type HeadingProps = {
   setData: Dispatch<SetStateAction<RoverData>>;
 };
 
-const RoverHeading = ({ setData }: HeadingProps) => {
+const RoverHeading = ({ ...props }: HeadingProps) => {
   const [date, setDate] = useState(new Date(2021, 6, 17));
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
     let newData = await fetchedData("rover", date);
     setDate(date);
-    setData(newData);
+    props.setData(newData);
   };
 
   return (

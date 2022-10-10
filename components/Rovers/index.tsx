@@ -2,11 +2,11 @@ import { Box, useColorModeValue } from "@chakra-ui/react";
 import { RoverProps } from "../../utils/types";
 import RoverList from "./RoverList";
 
-type ContainerProps = {
+type Props = {
   data: RoverProps[];
 };
 
-const RoverContainer = ({ data }: ContainerProps) => {
+const RoverContainer = ({ data }: Props) => {
   const color = useColorModeValue("blue.500", "purple.900");
   return (
     <Box
