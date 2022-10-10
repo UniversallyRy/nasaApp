@@ -7,6 +7,7 @@ import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
 import { fetchedData } from "../../utils/getData";
 import { TypeAPOD } from "../../utils/types";
+import MotionTitle from "../../components/APOD/Title";
 
 declare var global: Global;
 
@@ -52,6 +53,7 @@ const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
         startDate={startDate}
         setStartDate={setStartDate}
       />
+      <MotionTitle title={newData.title} />
       <MotionContent newData={newData} isOpen={isOpen} setOpen={setOpen} />
       <MotionFooter picMeta={newData} />
     </VStack>

@@ -1,15 +1,7 @@
-import {
-  Heading,
-  Flex,
-  HeadingProps,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import MotionImage from "./Image";
-import { motion } from "framer-motion";
 import MotionBackGround from "./BackGround";
 import { TypeAPOD } from "../../utils/types";
-import { apodVariant } from "../../utils/variants";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
@@ -19,7 +11,6 @@ type Props = {
 };
 
 const Content = ({ newData, isOpen, setOpen }: Props) => {
-  const MotionTitle = motion<HeadingProps>(Heading);
   const cardBg = useColorModeValue("blue.500", "purple.900");
   return (
     <Flex
@@ -37,21 +28,6 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
         xl: "container.xl",
       }}
     >
-      <MotionTitle
-        fontSize={{
-          base: "lg",
-          sm: "sm",
-          md: "md",
-          lg: "lg",
-          xl: "xl",
-        }}
-        variants={apodVariant}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 1.2 }}
-        m={2}
-      >
-        {newData.title}
-      </MotionTitle>
       <Flex
         direction={{
           base: "column",
