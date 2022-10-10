@@ -17,7 +17,9 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
       bg={cardBg}
       shadow="2xl"
       direction="column"
-      borderRadius="sm"
+      border="1px"
+      borderColor="blackAlpha.50"
+      borderRadius="md"
       align="center"
       spacing={2}
       w={{
@@ -37,6 +39,7 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
           xl: "row",
         }}
         w="auto"
+        p={5}
         bg="whiteAlpha.50"
         borderRadius="sm"
         cursor={isOpen ? "zoom-out" : "zoom-in"}
@@ -53,7 +56,7 @@ const Content = ({ newData, isOpen, setOpen }: Props) => {
             xl: "20px",
           }}
           lineHeight={["short", "tall"]}
-          letterSpacing="wider"
+          letterSpacing="wide"
           maxW={{
             base: "xs",
             sm: "sm",
