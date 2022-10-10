@@ -4,12 +4,12 @@ type Props = {
   copyright: string | undefined;
 };
 
-const Footer = ({ copyright }: Props) => {
+const Footer = ({ ...props }: Props) => {
   return (
     <Flex>
-      {!copyright === undefined ? (
+      {!props.copyright === undefined ? (
         <Text fontSize={{ base: "10px", lg: "16px" }}>
-          Copyright: {copyright}
+          Copyright: {props.copyright}
         </Text>
       ) : null}
     </Flex>

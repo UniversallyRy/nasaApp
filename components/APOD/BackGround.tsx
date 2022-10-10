@@ -9,7 +9,7 @@ type Props = {
 
 const MotionDiv = motion<BoxProps>(Box);
 
-const BackGround = ({ isOpen, onClose }: Props) => {
+const BackGround = ({ ...props }: Props) => {
   const bgColor = useColorModeValue(
     "rgba(232, 236, 241, 0.8)",
     "rgba(0, 0, 0, 0.95)"
@@ -23,11 +23,11 @@ const BackGround = ({ isOpen, onClose }: Props) => {
       right="0"
       bottom="0"
       bg={bgColor}
-      opacity={isOpen ? 1 : 0}
-      pointerEvents={isOpen ? "auto" : "none"}
-      cursor={isOpen ? "zoom-out" : "default"}
-      onClick={onClose}
-      animate={{ opacity: isOpen ? 1 : 0 }}
+      opacity={props.isOpen ? 1 : 0}
+      pointerEvents={props.isOpen ? "auto" : "none"}
+      cursor={props.isOpen ? "zoom-out" : "default"}
+      onClick={props.onClose}
+      animate={{ opacity: props.isOpen ? 1 : 0 }}
     />
   );
 };

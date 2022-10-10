@@ -18,7 +18,7 @@ export type DisclosureProps = {
   onToggle?: MouseEventHandler<HTMLDivElement>;
 };
 
-const Content = ({ newData }: Props) => {
+const Content = ({ ...props }: Props) => {
   const handleImg = useDisclosure();
   const cardBg = useColorModeValue("blue.500", "purple.900");
 
@@ -58,7 +58,7 @@ const Content = ({ newData }: Props) => {
           onClose={handleImg.onClose}
         />
         <MotionImage
-          data={newData}
+          data={props.newData}
           isOpen={handleImg.isOpen}
           onOpen={handleImg.onOpen}
         />
@@ -84,7 +84,7 @@ const Content = ({ newData }: Props) => {
           overflowWrap="anywhere"
           hyphens="auto"
         >
-          {newData.explanation}
+          {props.newData.explanation}
         </Text>
       </Flex>
     </Flex>

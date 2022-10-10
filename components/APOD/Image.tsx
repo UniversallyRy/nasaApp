@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 import { reformatDate } from "../../utils/reformatDate";
 import { TypeAPOD } from "../../utils/types";
 
-type ImgProps = {
+type Props = {
   data: TypeAPOD;
   isOpen: boolean;
   onOpen: MouseEventHandler<HTMLDivElement>;
@@ -12,7 +12,7 @@ type ImgProps = {
 
 const AnimatedIMG = motion<ImageProps>(Image);
 
-export const MotionImage = ({ data, onOpen, isOpen }: ImgProps) => {
+export const MotionImage = ({ ...props }: Props) => {
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -35,21 +35,21 @@ export const MotionImage = ({ data, onOpen, isOpen }: ImgProps) => {
       bottom={0}
       alignSelf="center"
       borderRadius="sm"
-      zIndex={isOpen ? "docked" : "auto"}
-      h={isOpen ? "auto" : "full"}
-      w={isOpen ? "auto" : "full"}
-      m={isOpen ? "auto" : "1"}
-      maxH={isOpen ? "full" : "auto"}
-      maxW={isOpen ? "full" : "auto"}
-      pos={isOpen ? "absolute" : "relative"}
-      cursor={isOpen ? "default" : "zoom-in"}
+      zIndex={props.isOpen ? "docked" : "auto"}
+      h={props.isOpen ? "auto" : "full"}
+      w={props.isOpen ? "auto" : "full"}
+      m={props.isOpen ? "auto" : "1"}
+      maxH={props.isOpen ? "full" : "auto"}
+      maxW={props.isOpen ? "full" : "auto"}
+      pos={props.isOpen ? "absolute" : "relative"}
+      cursor={props.isOpen ? "default" : "zoom-in"}
       objectFit="cover"
       objectPosition="center"
       animate={imgAnimation}
-      src={data.url}
+      src={props.data.url}
       onMouseMove={(e) => handleMouseMove(e)}
-      onClick={onOpen}
-      alt={"Picture for the date of " + `${reformatDate(data.date)}`}
+      onClick={props.onOpen}
+      alt={"Picture for the date of " + `${reformatDate(props.data.date)}`}
     />
   );
 };

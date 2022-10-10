@@ -7,11 +7,11 @@ import {
 import { motion } from "framer-motion";
 import { apodVariant } from "../../utils/variants";
 
-type TitleProps = {
+type Props = {
   title: string;
 };
 
-const Title = ({ title }: TitleProps) => {
+const Title = ({ ...props }: Props) => {
   const MotionTitle = motion<HeadingProps>(Heading);
   const bg = useColorModeValue("blue.500", "purple.900");
   return (
@@ -36,7 +36,7 @@ const Title = ({ title }: TitleProps) => {
         whileTap={{ scale: 1.2 }}
         m={2}
       >
-        {title}
+        {props.title}
       </MotionTitle>
     </Box>
   );

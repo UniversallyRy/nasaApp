@@ -12,25 +12,25 @@ type Props = {
   setStartDate: Dispatch<SetStateAction<Date>>;
 };
 
-const MotionHeading = ({ title, setData, startDate, setStartDate }: Props) => {
+const MotionHeading = ({ ...props }: Props) => {
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
     const data = await fetchedData("apod", date);
-    setStartDate(date);
-    setData(data);
+    props.setStartDate(date);
+    props.setData(data);
   };
 
   return (
     <Flex>
       <Head key="pages/apod key">
-        <title>{title}</title>
+        <title>{props.title}</title>
         <meta
           property="og:pic"
           content="Astronomy Picture of the Day"
-          key={title + "_headingKey"}
+          key={props.title + "_headingKey"}
         />
       </Head>
-      <ChangeDate selected={startDate} onChange={handleDateChange} />
+      <ChangeDate selected={props.startDate} onChange={handleDateChange} />
     </Flex>
   );
 };
