@@ -1,12 +1,12 @@
 import { Button, PopoverTrigger } from "@chakra-ui/react";
 
-type ButtonProps = {
+type Props = {
   backGround: string;
   isSubmitting: boolean;
   isEditing: boolean;
 };
 
-const FormButton = ({ isSubmitting, isEditing, backGround }: ButtonProps) => {
+const FormButton = ({ ...props }: Props) => {
   return (
     <PopoverTrigger>
       <Button
@@ -15,8 +15,8 @@ const FormButton = ({ isSubmitting, isEditing, backGround }: ButtonProps) => {
         rounded="sm"
         shadow="xl"
         m={3}
-        bg={backGround}
-        isLoading={isSubmitting}
+        bg={props.backGround}
+        isLoading={props.isSubmitting}
         type="submit"
         _hover={{
           bg: "gray.600",
@@ -25,7 +25,7 @@ const FormButton = ({ isSubmitting, isEditing, backGround }: ButtonProps) => {
           outline: "hidden",
         }}
       >
-        {isEditing ? "SAVE" : "CHANGE COORDS"}
+        {props.isEditing ? "SAVE" : "CHANGE COORDS"}
       </Button>
     </PopoverTrigger>
   );

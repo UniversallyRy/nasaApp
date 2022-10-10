@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
-type CardProps = {
+type Props = {
   title: string;
   paragraph: string;
   href: string;
@@ -21,7 +21,7 @@ type CardProps = {
 
 const MotionBox = motion<GridItemProps>(GridItem);
 
-const HeroCard = ({ ...props }: CardProps) => {
+const HeroCard = ({ ...props }: Props) => {
   const backGround = useColorModeValue("blue.500", "purple.900");
 
   return (

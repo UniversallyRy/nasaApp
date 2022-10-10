@@ -8,12 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { Field } from "formik";
 
-type InputProps = {
+type Props = {
   backGround: string;
   isEditing: boolean;
 };
 
-const FormInputs = ({ backGround, isEditing }: InputProps) => {
+const FormInputs = ({ ...props }: Props) => {
   const validateCoordinates = (value: string) => {
     let error;
     if (!value) {
@@ -29,7 +29,7 @@ const FormInputs = ({ backGround, isEditing }: InputProps) => {
           <FormControl
             p={1}
             rounded="sm"
-            bg={backGround}
+            bg={props.backGround}
             shadow="lg"
             isInvalid={form.errors.latitude && form.touched.latitude}
           >
@@ -43,7 +43,7 @@ const FormInputs = ({ backGround, isEditing }: InputProps) => {
               type="number"
               id="latitude"
               placeholder="Latitude"
-              isDisabled={!isEditing}
+              isDisabled={!props.isEditing}
             />
             <FormErrorMessage>{form.errors.latitude}</FormErrorMessage>
           </FormControl>
@@ -54,7 +54,7 @@ const FormInputs = ({ backGround, isEditing }: InputProps) => {
           <FormControl
             p={1}
             rounded="sm"
-            bg={backGround}
+            bg={props.backGround}
             shadow="lg"
             isInvalid={form.errors.longitude && form.touched.longitude}
           >
@@ -68,7 +68,7 @@ const FormInputs = ({ backGround, isEditing }: InputProps) => {
               type="number"
               id="longitude"
               placeholder="Longitude"
-              isDisabled={!isEditing}
+              isDisabled={!props.isEditing}
             />
             <FormErrorMessage>{form.errors.longitude}</FormErrorMessage>
           </FormControl>

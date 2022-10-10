@@ -3,11 +3,11 @@ import ChakraNextImage from "../Image";
 import { reformatDate } from "../../utils/reformatDate";
 import { CoordinateProps } from "../../utils/types";
 
-type ImgProps = {
+type Props = {
   coordinates: CoordinateProps;
 };
 
-const SatelliteImg = ({ coordinates }: ImgProps) => {
+const SatelliteImg = ({ coordinates }: Props) => {
   const color = useColorModeValue("blue.500", "purple.900");
   return (
     <VStack m={2} shadow="xl" rounded="sm" bg={color} p={1}>

@@ -5,7 +5,7 @@ import Examples from "./Examples";
 import { FormContext } from "../../../pages/landsat";
 import { fetchedData } from "../../../utils/getData";
 
-type BoxProps = {
+type Props = {
   children: React.ReactNode;
   isEditing: boolean;
   setSubmit: Dispatch<SetStateAction<boolean>>;
@@ -16,7 +16,7 @@ interface FormValues {
   longitude: number;
 }
 
-const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
+const FormikBox = ({ ...props }: Props) => {
   const { submitCoords }: FormikValues = useContext(FormContext);
   const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
   const defaultDate = new Date("2/1/21");
@@ -26,13 +26,13 @@ const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
       <Formik
         initialValues={initialValues}
         onSubmit={async (values) => {
-          if (!isEditing) {
-            setSubmit(true);
+          if (!props.isEditing) {
+            props.setSubmit(true);
             let lon = values.longitude;
             let lat = values.latitude;
             const data = await fetchedData("landsat", defaultDate, lon, lat);
             setTimeout(() => {
-              setSubmit(false);
+              props.setSubmit(false);
             }, 3000);
             submitCoords(data);
           } else {
@@ -40,7 +40,7 @@ const FormikBox = ({ children, isEditing, setSubmit }: BoxProps) => {
           }
         }}
       >
-        {children}
+        {props.children}
       </Formik>
       <Examples />
     </Box>

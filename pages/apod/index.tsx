@@ -5,10 +5,10 @@ import MotionHeading from "../../components/APOD/Heading";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
 import { fetchedData } from "../../utils/getData";
-import { TypeAPOD } from "../../utils/types";
+import { APODDataType } from "../../utils/types";
 import MotionTitle from "../../components/APOD/Title";
 
-const APOD: NextPage<{ apodData: TypeAPOD }> = ({ apodData }) => {
+const APOD: NextPage<{ apodData: APODDataType }> = ({ apodData }) => {
   const [newData, setData] = useState(apodData);
   const [startDate, setStartDate] = useState(new Date());
 
