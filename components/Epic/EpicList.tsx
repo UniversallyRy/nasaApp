@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react";
-import { NextPage } from "next";
 import {
   Flex,
   Box,
@@ -24,7 +23,7 @@ interface Props {
   };
 }
 
-const EpicList: NextPage<Props> = ({ data }) => {
+const EpicList = ({ data }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const backGround = useColorModeValue("blue.500", "purple.900");
   const slidesCount = data.length;
