@@ -4,13 +4,13 @@ import NextLink from "next/link";
 import { Link } from "@chakra-ui/react";
 import { fetchedData } from "../../utils/getData";
 import DatePicker from "../ChangeDate";
-import { RoverData } from "../../pages/rover";
+import { RoverDataType } from "../../utils/types";
 
-type HeadingProps = {
-  setData: Dispatch<SetStateAction<RoverData>>;
+type Props = {
+  setData: Dispatch<SetStateAction<RoverDataType>>;
 };
 
-const RoverHeading = ({ ...props }: HeadingProps) => {
+const RoverHeading = ({ ...props }: Props) => {
   const [date, setDate] = useState(new Date(2021, 6, 17));
 
   const handleDateChange = async (date: Date) => {

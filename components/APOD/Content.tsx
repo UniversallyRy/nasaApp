@@ -2,10 +2,10 @@ import { MouseEventHandler } from "react";
 import { Flex, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import MotionImage from "./Image";
 import MotionBackGround from "./BackGround";
-import { TypeAPOD } from "../../utils/types";
+import { APODDataType } from "../../utils/types";
 
 type Props = {
-  newData: TypeAPOD;
+  newData: APODDataType;
 };
 
 export type DisclosureProps = {

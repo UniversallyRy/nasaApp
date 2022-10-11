@@ -2,12 +2,12 @@ import Head from "next/head";
 import { Dispatch, SetStateAction } from "react";
 import ChangeDate from "../ChangeDate";
 import { fetchedData } from "../../utils/getData";
-import { TypeAPOD } from "../../utils/types";
+import { APODDataType } from "../../utils/types";
 import { Flex } from "@chakra-ui/react";
 
 type Props = {
   title: string;
-  setData: Dispatch<SetStateAction<TypeAPOD>>;
+  setData: Dispatch<SetStateAction<APODDataType>>;
   startDate: Date | undefined;
   setStartDate: Dispatch<SetStateAction<Date>>;
 };

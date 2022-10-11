@@ -1,9 +1,9 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { ChakraNextImage } from "../Image";
-import { RoverProps } from "../../utils/types";
+import { RoverPhotoType } from "../../utils/types";
 
 type Props = {
-  item: RoverProps;
+  item: RoverPhotoType;
   index: number;
   slidesCount: number;
 };

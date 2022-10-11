@@ -1,7 +1,6 @@
 import { Box, chakra, Image, SimpleGrid, VStack } from "@chakra-ui/react";
 import Head from "next/head";
 import HeroCard from "../components/HeroCard";
-
 import { cardInfo, CardsInfo } from "../utils/cardInfo";
 
 //todos: more global styling, more loading states, more animations

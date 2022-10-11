@@ -2,10 +2,10 @@ import { Image, ImageProps } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
 import { MouseEventHandler } from "react";
 import { reformatDate } from "../../utils/reformatDate";
-import { TypeAPOD } from "../../utils/types";
+import { APODDataType } from "../../utils/types";
 
 type Props = {
-  data: TypeAPOD;
+  data: APODDataType;
   isOpen: boolean;
   onOpen: MouseEventHandler<HTMLDivElement>;
 };
