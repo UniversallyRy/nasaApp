@@ -1,8 +1,8 @@
+import { MouseEventHandler } from "react";
 import { Image, ImageProps } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
-import { MouseEventHandler } from "react";
-import { reformatDate } from "../../utils/reformatDate";
 import { APODDataType } from "../../utils/types";
+import { reformatDate } from "../../utils/reformatDate";
 
 type Props = {
   data: APODDataType;

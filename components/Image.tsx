@@ -1,5 +1,5 @@
-import { Box, BoxProps } from "@chakra-ui/react";
 import Image from "next/image";
+import { Box, BoxProps } from "@chakra-ui/react";
 
 type Props = {
   src: string;

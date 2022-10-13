@@ -1,12 +1,12 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { useState, useEffect } from "react";
 import { VStack } from "@chakra-ui/react";
 import MotionHeading from "../../components/APOD/Heading";
+import MotionTitle from "../../components/APOD/Title";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
-import { fetchedData } from "../../utils/getData";
 import { APODDataType } from "../../utils/types";
-import MotionTitle from "../../components/APOD/Title";
+import { fetchedData } from "../../utils/getData";
 
 const APOD: NextPage<{ apodData: APODDataType }> = ({ apodData }) => {
   const [newData, setData] = useState(apodData);

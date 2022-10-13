@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { Dispatch, SetStateAction } from "react";
-import ChangeDate from "../ChangeDate";
-import { fetchedData } from "../../utils/getData";
-import { APODDataType } from "../../utils/types";
 import { Flex } from "@chakra-ui/react";
+import ChangeDate from "../ChangeDate";
+import { APODDataType } from "../../utils/types";
+import { fetchedData } from "../../utils/getData";
 
 type Props = {
   title: string;
