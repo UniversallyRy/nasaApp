@@ -10,10 +10,7 @@ type Props = {
 const MotionDiv = motion<BoxProps>(Box);
 
 const BackGround = ({ ...props }: Props) => {
-  const bgColor = useColorModeValue(
-    "rgba(232, 236, 241, 0.8)",
-    "rgba(0, 0, 0, 0.95)"
-  );
+  const bgColor = useColorModeValue("purple.200", "blackAlpha.900");
 
   return (
     <MotionDiv
