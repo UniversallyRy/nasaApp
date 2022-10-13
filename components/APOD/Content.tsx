@@ -25,11 +25,11 @@ const Content = ({ ...props }: Props) => {
   return (
     <Flex
       bg={cardBg}
-      shadow="2xl"
+      shadow="xl"
       direction="column"
-      border="1px"
-      borderColor="blackAlpha.50"
-      borderRadius="md"
+      border="2px"
+      borderColor="blackAlpha.100"
+      borderRadius="sm"
       align="center"
       spacing={2}
       w={{
@@ -41,6 +41,7 @@ const Content = ({ ...props }: Props) => {
       }}
     >
       <Flex
+        p={3}
         direction={{
           base: "column",
           sm: "column",
@@ -48,10 +49,6 @@ const Content = ({ ...props }: Props) => {
           lg: "row",
           xl: "row",
         }}
-        w="auto"
-        p={5}
-        bg="whiteAlpha.50"
-        borderRadius="sm"
       >
         <MotionBackGround
           isOpen={handleImg.isOpen}
