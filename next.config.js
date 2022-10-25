@@ -13,10 +13,10 @@ const nextConfig = {
   ) {
     return {
       "/": { page: "/" },
-      "/apods": { page: "/apods" },
+      "/apod": { page: "/apod" },
       "/rover": { page: "/rover" },
       "/epic": { page: "/epic" },
-      "/earth": { page: "/earth" },
+      "/landsat": { page: "/landsat" },
     };
   },
   /* config options here */
