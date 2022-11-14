@@ -8,9 +8,9 @@ export default {
   component: AlienHead,
 } as Meta<typeof AlienHead>;
 
-const handleClick = () => {
-  console.log("Clicked");
-};
+//const handleClick = () => {
+//  console.log("Clicked");
+//};
 
 const Template: Story<ButtonProps> = (args) => <AlienHead {...args} />;
 
