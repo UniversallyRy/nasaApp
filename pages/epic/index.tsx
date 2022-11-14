@@ -49,7 +49,7 @@ const Epics: NextPage<Props> = ({ data }) => {
       <ChangeDate selected={startDate} onChange={handleDateChange} />
       <VStack>
         <Box m={{ base: 20, sm: 10, lg: 2 }}>
-          <NextLink passHref href="/">
+          <NextLink passHref href="/" legacyBehavior>
             <Link
               bg="gray.600"
               px={3}
