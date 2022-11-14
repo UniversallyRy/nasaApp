@@ -53,7 +53,7 @@ const HeroCard = ({ ...props }: Props) => {
             src={props.imgSrc}
             alt="Icon made by Freepik from www.flaticon.com"
           />
-          <NextLink passHref href={props.href}>
+          <NextLink passHref href={props.href} legacyBehavior>
             <Link
               fontSize={["xl", "2xl"]}
               color={useColorModeValue("gray.400", "white")}

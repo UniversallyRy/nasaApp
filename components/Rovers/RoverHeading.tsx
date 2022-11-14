@@ -20,28 +20,26 @@ const RoverHeading = ({ ...props }: Props) => {
     props.setData(newData);
   };
 
-  return (
-    <>
-      <Head key="pages/rover key">
-        <title>Mars Rover Photos</title>
-        <meta property="og:rover" content="Mars Rover Photos" key="rovers" />
-      </Head>
-      <DatePicker selected={date} onChange={handleDateChange} />
-      <NextLink passHref href="/">
-        <Link
-          bg="gray.900"
-          color="gray.100"
-          px={5}
-          py={3}
-          fontWeight="semibold"
-          rounded="sm"
-          _hover={{ bg: "gray.400" }}
-        >
-          Back to Home
-        </Link>
-      </NextLink>
-    </>
-  );
+  return <>
+    <Head key="pages/rover key">
+      <title>Mars Rover Photos</title>
+      <meta property="og:rover" content="Mars Rover Photos" key="rovers" />
+    </Head>
+    <DatePicker selected={date} onChange={handleDateChange} />
+    <NextLink passHref href="/" legacyBehavior>
+      <Link
+        bg="gray.900"
+        color="gray.100"
+        px={5}
+        py={3}
+        fontWeight="semibold"
+        rounded="sm"
+        _hover={{ bg: "gray.400" }}
+      >
+        Back to Home
+      </Link>
+    </NextLink>
+  </>;
 };
 
 export default RoverHeading;

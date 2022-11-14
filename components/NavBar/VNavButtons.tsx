@@ -17,7 +17,7 @@ type Props = {
     onClose: () => void;
   };
 };
-// Normal Normal Normal Normal/
+
 const VButtons = ({ mobileNav }: Props) => {
   const backGround = useColorModeValue("gray.400", "gray.900");
   return (
@@ -34,7 +34,7 @@ const VButtons = ({ mobileNav }: Props) => {
         w="97%"
         pt={5}
         bg={backGround}
-        spacing={3}
+        space={3}
         rounded="md"
         shadow="sm"
       >
@@ -43,12 +43,12 @@ const VButtons = ({ mobileNav }: Props) => {
           aria-label="Close menu"
           onClick={mobileNav.onClose}
         />
-        <NextLink href="/">
+        <NextLink href="/" legacyBehavior>
           <Button w="full" size="lg" variant="ghost" leftIcon={<AiFillHome />}>
             Home
           </Button>
         </NextLink>
-        <NextLink href="/apod">
+        <NextLink href="/apod" legacyBehavior>
           <Button
             w="full"
             size="lg"
@@ -58,7 +58,7 @@ const VButtons = ({ mobileNav }: Props) => {
             APoD
           </Button>
         </NextLink>
-        <NextLink href="/landsat">
+        <NextLink href="/landsat" legacyBehavior>
           <Button
             w="full"
             size="lg"
@@ -68,7 +68,7 @@ const VButtons = ({ mobileNav }: Props) => {
             Landsat
           </Button>
         </NextLink>
-        <NextLink href="/epic">
+        <NextLink href="/epic" legacyBehavior>
           <Button
             w="full"
             size="lg"
@@ -78,7 +78,7 @@ const VButtons = ({ mobileNav }: Props) => {
             EPIC
           </Button>
         </NextLink>
-        <NextLink href="/rover">
+        <NextLink href="/rover" legacyBehavior>
           <Button
             w="full"
             size="lg"
