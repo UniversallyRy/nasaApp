@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 // @ts-check
@@ -7,9 +7,7 @@ const optimizedImages = require("next-optimized-images");
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 const nextConfig = {
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
+  exportPathMap: async function(
   ) {
     return {
       "/": { page: "/" },
