@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
-import { Button, ButtonProps, useColorModeValue } from "@chakra-ui/react";
+import { ButtonOptions } from "@chakra-ui/react";
+import React, { ButtonHTMLAttributes, forwardRef } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,35 +8,25 @@ interface Props {
   selected: Date | undefined;
 }
 
-const DatePicker = ({ ...props }: Props) => {
-  const backGround = useColorModeValue("gray.400", "gray.900");
+export default function DatePicker({ ...props }: Props) {
 
-  const DateButton = forwardRef<HTMLButtonElement, ButtonProps>(
+  const DateButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<any>>(
     ({ value, onClick }, ref) => {
       return (
-        <Button
-          _focus={{ outline: "none" }}
-          bg={backGround}
-          className="Calender Date"
-          m={3}
+        <button
+          className="m-3 p-4 bg-gray-300 :focus:outline-none"
+          aria-label="Calender Date"
           onClick={onClick}
           ref={ref}
         >
           {value}
-        </Button>
+        </button>
       );
     }
   );
   DateButton.displayName = "DateButton";
 
   return (
-    // if you don't want to use chakra's colors or you just want to use the original ones,
-    // set className to "light-theme-original" ↓↓↓↓
-    //   <Box
-    //   m={{ base: 5, md: 4, lg: 6 }}
-    // color="black"
-    //   className={isLight ? "light-theme" : "dark-theme"}
-    //   >
     <ReactDatePicker
       customInput={<DateButton />}
       calendarClassName="rasta-stripes"
@@ -50,5 +40,3 @@ const DatePicker = ({ ...props }: Props) => {
     // </Box>
   );
 };
-
-export default DatePicker;

@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { Dispatch, SetStateAction } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import ChangeDate from "../ChangeDate";
 import { APODDataType } from "../../utils/types";
 import { fetchedData } from "../../utils/getData";
@@ -12,27 +11,32 @@ type Props = {
   setStartDate: Dispatch<SetStateAction<Date>>;
 };
 
-const MotionHeading = ({ ...props }: Props) => {
+export default function Heading({ ...props }: Props) {
+  const { setData, setStartDate, title, startDate } = props;
+
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    const data = await fetchedData("apod", date);
-    props.setStartDate(date);
-    props.setData(data);
+    const data = await fetchedData("apod", date)
+      .then(a => {
+        setData(a);
+        setStartDate(date);
+      })
+    if (!data) {
+      throw new Error('Failed to fetch data');
+    }
   };
 
   return (
-    <Flex>
+    <div className="self-center">
       <Head key="pages/apod key">
-        <title>{props.title}</title>
+        <title>{title}</title>
         <meta
           property="og:pic"
           content="Astronomy Picture of the Day"
-          key={props.title + "_headingKey"}
+          key={title + "_headingKey"}
         />
       </Head>
-      <ChangeDate selected={props.startDate} onChange={handleDateChange} />
-    </Flex>
+      <ChangeDate selected={startDate} onChange={handleDateChange} />
+    </div>
   );
 };
-
-export default MotionHeading;

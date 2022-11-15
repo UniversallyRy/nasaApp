@@ -1,55 +1,50 @@
-import { useRouter, NextRouter } from "next/router";
-import { Button, IconButton, useColorMode } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { IconType } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
+//      leftIcon={props.buttonIcon}
+//     ToggleButton:
+//      mx={2}
+//      p={1}
+//      _focus={{ outline: "none" }}
+///      icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
+//      isRound={true}
+//      aria-label="Color Toggle"
+//      size="sm"
+//      onClick={toggleColorMode}
 type Props = {
   title: string;
-  buttonIcon: React.ReactElement<IconType>;
+  buttonIcon?: React.ReactElement<IconType>;
   href: string;
 };
 
-const NavButton = ({ ...props }: Props) => {
-  const router: NextRouter = useRouter();
+export default function NavButton({ ...props }: Props) {
+  const router = useRouter();
   const label = `${props.title} navigation button`;
 
-  return (
-    <Button
-      alignSelf="center"
-      textAlign="center"
-      aria-label={label}
-      size="lg"
-      fontWeight="semibold"
-      leftIcon={props.buttonIcon}
-      _focus={{
-        outline: "none",
-      }}
-      _hover={{
-        shadow: "lg",
-        boxShadow:
-          "0 0 .4px .3px rgba(46, 49, 49, 1), 0 .3px .3px rgba(0, 0, 0, .35)",
-      }}
-      onClick={() => router.push(props.href)}
-    >
-      {props.title}
-    </Button>
-  );
-};
+  if (label) {
+    return (
+      <button
+        onClick={() => router.push(props.href)}
+        aria-label={label}
+        className="mx-2 rounded-md font-semibold bg-gray-600 w-32 :focus:outline-none hover:shadow-lg hover:shadow-gray-800"
+      >
+        <NextLink passHref href={props.href} legacyBehavior>
+          {props.title}
+        </NextLink>
+      </button>
+    );
+  }
+  return null;
+}
 
 export const ToggleButton = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  // const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <IconButton
-      mx={2}
-      p={1}
-      _focus={{ outline: "none" }}
-      icon={colorMode === "light" ? <FaSun /> : <FaMoon />}
-      isRound={true}
-      aria-label="Color Toggle"
-      size="sm"
-      onClick={toggleColorMode}
-    />
+    <button>
+
+    </button>
   );
 };
 
-export default NavButton;

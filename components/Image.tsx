@@ -1,17 +1,15 @@
 import Image from "next/legacy/image";
-import { Box, BoxProps } from "@chakra-ui/react";
 
 type Props = {
   src: string;
   alt: string;
-} & Omit<BoxProps, "as">;
+  className: string;
+}
 
-export const ChakraNextImage = ({ src, alt, ...otherProps }: Props) => {
+export default function ChakraNextImage({ src, alt, className, ...otherProps }: Props) {
   return (
-    <Box position="relative" {...otherProps}>
+    <div className={`relative ` + className} {...otherProps}>
       <Image objectFit="contain" layout="fill" src={src} alt={alt} priority />
-    </Box>
+    </div>
   );
 };
-
-export default ChakraNextImage;

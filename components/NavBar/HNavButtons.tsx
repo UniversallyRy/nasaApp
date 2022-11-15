@@ -1,33 +1,20 @@
-import { AiFillHome } from "react-icons/ai";
 import React from "react";
+import { AiFillHome } from "react-icons/ai";
 import { ButtonGroup } from "@chakra-ui/react";
 import { BsFillImageFill } from "react-icons/bs";
 import { FaSatelliteDish } from "react-icons/fa";
 import { GiEarthAmerica } from "react-icons/gi";
 import NavButton from "./NavButton";
+//      display={{ base: "none", lg: "inline-flex" }}
 
-const HButtons = () => {
+export default function HButtons() {
   return (
-    <ButtonGroup
-      pl={25}
-      variant="ghost"
-      display={{ base: "none", lg: "inline-flex" }}
-    >
-      <NavButton href="/" title="Home" buttonIcon={<AiFillHome />} />
-      <NavButton href="/apod" title="APoD" buttonIcon={<BsFillImageFill />} />
-      <NavButton
-        href="/landsat"
-        title="Landsat"
-        buttonIcon={<FaSatelliteDish />}
-      />
-      <NavButton href="/epic" title="EPIC" buttonIcon={<GiEarthAmerica />} />
-      <NavButton
-        href="/rover"
-        title="Rover Photos"
-        buttonIcon={<GiEarthAmerica />}
-      />
-    </ButtonGroup>
+    <div className="pl-10">
+      <NavButton href="/" title="Home" />
+      <NavButton href="/apod" title="APoD" />
+      <NavButton href="/landsat" title="Landsat" />
+      <NavButton href="/epic" title="EPIC" />
+      <NavButton href="/rover" title="Rover Photos" />
+    </div>
   );
 };
-
-export default HButtons;

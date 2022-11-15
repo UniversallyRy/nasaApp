@@ -1,19 +1,18 @@
-import { Flex, Text } from "@chakra-ui/react";
 
 type Props = {
   copyright: string | undefined;
 };
 
-const Footer = ({ ...props }: Props) => {
+export default function Footer({ ...props }: Props) {
+  const { copyright } = props;
   return (
-    <Flex>
-      {!props.copyright === undefined ? (
-        <Text fontSize={{ base: "10px", lg: "16px" }}>
-          Copyright: {props.copyright}
-        </Text>
-      ) : null}
-    </Flex>
+    <div>
+      {!copyright === undefined ? (
+        <p className="text-black text-lg">
+          Copyright: {copyright}
+        </p>
+      ) : null
+      }
+    </div >
   );
 };
-
-export default Footer;

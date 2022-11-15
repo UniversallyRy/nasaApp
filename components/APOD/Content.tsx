@@ -1,5 +1,4 @@
-import { MouseEventHandler } from "react";
-import { Flex, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import React, { useState } from "react";
 import MotionImage from "./Image";
 import MotionBackGround from "./BackGround";
 import { APODDataType } from "../../utils/types";
@@ -8,84 +7,33 @@ type Props = {
   newData: APODDataType;
 };
 
-export type DisclosureProps = {
-  getButtonProps?: () => void;
-  getDisclosureProps?: () => void;
-  isControlled?: boolean;
-  isOpen?: boolean;
-  onClose?: MouseEventHandler<HTMLDivElement>;
-  onOpen?: MouseEventHandler<HTMLDivElement>;
-  onToggle?: MouseEventHandler<HTMLDivElement>;
-};
-
-const Content = ({ ...props }: Props) => {
-  const handleImg = useDisclosure();
-  const cardBg = useColorModeValue("blue.500", "purple.900");
-
+export default function Content({ ...props }: Props) {
+  const { newData } = props;
+  const [open, setOpen] = useState(false);
+  // const handleImg = useDisclosure();
   return (
-    <Flex
-      bg={cardBg}
-      shadow="xl"
-      direction="column"
-      border="2px"
-      borderColor="blackAlpha.100"
-      borderRadius="sm"
-      align="center"
-      spacing={2}
-      w={{
-        base: "sm",
-        sm: "md",
-        md: "container.sm",
-        lg: "container.lg",
-        xl: "container.xl",
-      }}
+    <div
+      className="flex py-10 bg-purple-900 rounded-md border-gray-700 shadow-xl flex-col border-2 items-center
+      base:w-sm sm:w-1/6 md:w-2/6 lg:w-3/6 xl:w-4/6"
     >
-      <Flex
-        p={3}
-        direction={{
-          base: "column",
-          sm: "column",
-          md: "column",
-          lg: "row",
-          xl: "row",
-        }}
-      >
+      <div className="p-3 flex flex-col md:flex-row gap-8">
         <MotionBackGround
-          isOpen={handleImg.isOpen}
-          onClose={handleImg.onClose}
+          data={newData}
+          isOpen={open}
+          setOpen={setOpen}
         />
         <MotionImage
-          data={props.newData}
-          isOpen={handleImg.isOpen}
-          onOpen={handleImg.onOpen}
+          data={newData}
+          isOpen={open}
+          setOpen={setOpen}
         />
-        <Text
-          alignSelf="center"
-          fontSize={{
-            base: "14px",
-            sm: "16px",
-            md: "18px",
-            lg: "18px",
-            xl: "20px",
-          }}
-          lineHeight={["short", "tall"]}
-          letterSpacing="wide"
-          maxW={{
-            base: "xs",
-            sm: "sm",
-            md: "lg",
-            lg: "lg",
-          }}
-          m={2}
-          wordBreak="break-word"
-          overflowWrap="anywhere"
-          hyphens="auto"
+        <p className="m-2 select-none whitespace-normal break-words self-center leading-snug md:leading-relaxed text-sm tracking-wide
+          sm:text-sm md:text-lg xl:text-xl sm:max-w-sm md:max-w-lg"
         >
-          {props.newData.explanation}
-        </Text>
-      </Flex>
-    </Flex>
+          {newData.explanation}
+        </p>
+      </div>
+    </div>
   );
 };
 
-export default Content;

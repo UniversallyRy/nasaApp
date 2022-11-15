@@ -1,32 +1,29 @@
-import { MouseEventHandler } from "react";
-import { Box, BoxProps, useColorModeValue } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { Dialog } from "@headlessui/react";
+import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { APODDataType } from "../../utils/types";
+import MotionImage from "./Image";
 
 type Props = {
+  data: APODDataType;
   isOpen: boolean;
-  onClose: MouseEventHandler<HTMLDivElement>;
+  setOpen: (bool: boolean) => MouseEventHandler<HTMLDivElement> | Dispatch<SetStateAction<boolean>> | boolean;
 };
 
-const MotionDiv = motion<BoxProps>(Box);
+export default function BackGround({ ...props }: Props) {
+  //      opacity={props.isOpen ? 1 : 0}
+  //      pointerEvents={props.isOpen ? "auto" : "none"}
+  //     cursor={props.isOpen ? "zoom-out" : "default"}
+  //    animate={{ opacity: props.isOpen ? 1 : 0 }}
+  const { isOpen, setOpen, data } = props;
 
-const BackGround = ({ ...props }: Props) => {
-  const bgColor = useColorModeValue("purple.200", "blackAlpha.900");
 
   return (
-    <MotionDiv
-      pos="fixed"
-      top="0"
-      left="0"
-      right="0"
-      bottom="0"
-      bg={bgColor}
-      opacity={props.isOpen ? 1 : 0}
-      pointerEvents={props.isOpen ? "auto" : "none"}
-      cursor={props.isOpen ? "zoom-out" : "default"}
-      onClick={props.onClose}
-      animate={{ opacity: props.isOpen ? 1 : 0 }}
+    <div className={`${isOpen
+      ? "pointer-events-auto cursor-zoom-out visible opacity-100"
+      : "pointer-events-none cursor-default hidden opacity-0"
+      } fixed inset-0 bg-black/95`
+    }
+      onClick={() => setOpen(false)}
     />
-  );
-};
-
-export default BackGround;
+  )
+}

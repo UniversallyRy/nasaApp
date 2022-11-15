@@ -32,7 +32,7 @@ const urlSwitcher = (
   }
 };
 
-export const fetchedData = (
+export const fetchedData = async (
   key: string,
   date: Date = new Date(),
   lon?: number | undefined,

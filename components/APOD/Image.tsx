@@ -1,18 +1,31 @@
-import { MouseEventHandler } from "react";
-import { Image, ImageProps } from "@chakra-ui/react";
-import { motion, useAnimation } from "framer-motion";
+import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import { useAnimation } from "framer-motion";
 import { APODDataType } from "../../utils/types";
 import { reformatDate } from "../../utils/reformatDate";
+import Image from "next/legacy/image";
 
 type Props = {
   data: APODDataType;
   isOpen: boolean;
-  onOpen: MouseEventHandler<HTMLDivElement>;
-};
+  setOpen: ((item?: boolean) => (MouseEventHandler<HTMLImageElement> | undefined)) | Dispatch<SetStateAction<boolean>>
+}
 
-const AnimatedIMG = motion<ImageProps>(Image);
+//top={0}
+//      left={0}
+//      right={0}
+//      bottom={0}
+//      alignSelf="center"
+//      borderRadius="sm"
+//      objectFit="cover"
+//      objectPosition="center"
+//      animate={imgAnimation}
+//      src={props.data.url}
+//      onMouseMove={(e) => handleMouseMove(e)}
+//      alt={"Picture for the date of " + `${reformatDate(props.data.date)}`}
+export default function MotionImage({ ...props }: Props) {
 
-export const MotionImage = ({ ...props }: Props) => {
+  const { data, setOpen, isOpen } = props;
+
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -28,30 +41,19 @@ export const MotionImage = ({ ...props }: Props) => {
   };
 
   return (
-    <AnimatedIMG
-      top={0}
-      left={0}
-      right={0}
-      bottom={0}
-      alignSelf="center"
-      borderRadius="sm"
-      zIndex={props.isOpen ? "docked" : "auto"}
-      h={props.isOpen ? "auto" : "full"}
-      w={props.isOpen ? "auto" : "full"}
-      m={props.isOpen ? "auto" : "1"}
-      maxH={props.isOpen ? "full" : "auto"}
-      maxW={props.isOpen ? "full" : "auto"}
-      pos={props.isOpen ? "absolute" : "relative"}
-      cursor={props.isOpen ? "default" : "zoom-in"}
-      objectFit="cover"
-      objectPosition="center"
+    <Image
       animate={imgAnimation}
-      src={props.data.url}
+      className={`${isOpen
+        ? "z-20 h-auto w-full min-h-full  object-center max-h-full max-w-full absolute cursor-default"
+        : "z-auto h-full w-full m-1 max-h-max max-w-max relative cursor-zoom-in"
+        } inset-0 border-sm object-cover`
+      }
+      width={600}
+      height={300}
+      src={data.url ? data.url : ''}
       onMouseMove={(e) => handleMouseMove(e)}
-      onClick={props.onOpen}
-      alt={"Picture for the date of " + `${reformatDate(props.data.date)}`}
+      alt={"Picture for the date of " + `${reformatDate(data.date)}`}
+      onClick={() => setOpen(true)}
     />
   );
 };
-
-export default MotionImage;

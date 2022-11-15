@@ -12,12 +12,15 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.11",
-    "@chakra-ui/react": "^2.3.7",
+    "@chakra-ui/react": "^2.4.1",
     "@chakra-ui/system": "^2.3.1",
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
+    "@next/font": "^13.0.3",
     "formik": "^2.2.9",
-    "framer-motion": "^7.6.6",
+    "framer-motion": "^6",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-optipng": "^8.0.0",
     "next": "^13.0.3",
@@ -37,9 +40,12 @@
     "@storybook/react": "^6.5.13",
     "@types/react": "^18.0.25",
     "@types/react-datepicker": "^4.8.0",
+    "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
     "eslint": "^8.27.0",
     "eslint-config-next": "^13.0.3",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   }
 }

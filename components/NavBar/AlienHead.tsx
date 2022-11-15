@@ -1,47 +1,12 @@
 import React, { MouseEventHandler } from "react";
-import { Button, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {
   boxSize?: any;
   bg?: any;
   onClick?: (() => void) | MouseEventHandler<HTMLButtonElement>;
 };
-
-const AlienHead = ({ ...props }: Props) => {
-  const shadowToggle = useColorModeValue(
-    "0 0 5px 5px rgba(255, 255, 255, 0.4)",
-    "0 0 5px 5px rgba(0, 0, 0, 0.5)"
-  );
-  const glowToggle = useColorModeValue(
-    "0 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 5px 5px rgba(88, 240, 62, 0.5)",
-    "0 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 5px 5px rgba(88, 240, 62, 0.4)"
-  );
-
-  const size: number = parseInt((props.boxSize.match(/\d/g) || []).join(""));
-
-  const headRadius = (): string => {
-    let adjustedSize = size / 2;
-    return adjustedSize + "px";
-  };
-
-  const eyeSize = (): string => {
-    let adjustedSize = size / 3.75;
-    return adjustedSize + "px";
-  };
-
-  const eyeRadius = (): string => {
-    let adjustedSize = size / 1.5;
-    return adjustedSize + "px";
-  };
-
-  const eyePosition = (): string => {
-    let adjustedSize = size / 3;
-    return adjustedSize + "px";
-  };
-
-  return (
-    <Button
-      {...props}
+/**
+ *
       boxSize={props.boxSize}
       aria-label="Animated Alien Head"
       borderTopLeftRadius={headRadius()}
@@ -79,7 +44,47 @@ const AlienHead = ({ ...props }: Props) => {
         bg: "radial-gradient(circle, #a2f793, #58f03e)",
         boxShadow: glowToggle,
       }}
-    />
+ *
+ */
+
+const AlienHead = ({ ...props }: Props) => {
+  //  const shadowToggle = useColorModeValue(
+  //    "0 0 5px 5px rgba(255, 255, 255, 0.4)",
+  //    "0 0 5px 5px rgba(0, 0, 0, 0.5)"
+  //  );
+  //  const glowToggle = useColorModeValue(
+  //    "0 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 5px 5px rgba(88, 240, 62, 0.5)",
+  //    "0 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 5px 5px rgba(88, 240, 62, 0.4)"
+  //  );
+
+  const size: number = parseInt((props.boxSize.match(/\d/g) || []).join(""));
+
+  const headRadius = (): string => {
+    let adjustedSize = size / 2;
+    return adjustedSize + "px";
+  };
+
+  const eyeSize = (): string => {
+    let adjustedSize = size / 3.75;
+    return adjustedSize + "px";
+  };
+
+  const eyeRadius = (): string => {
+    let adjustedSize = size / 1.5;
+    return adjustedSize + "px";
+  };
+
+  const eyePosition = (): string => {
+    let adjustedSize = size / 3;
+    return adjustedSize + "px";
+  };
+
+  return (
+    <>
+      <button
+        {...props}
+      />
+    </>
   );
 };
 
