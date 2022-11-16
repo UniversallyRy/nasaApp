@@ -28,11 +28,43 @@ module.exports = {
   },
   // domains allowed to send json
   images: {
-    domains: [
-      "apod.nasa.gov",
-      "epic.gsfc.nasa.gov",
-      "mars.nasa.gov",
-      "earthengine.googleapis.com",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: "apod.nasa.gov",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: "epic.gsfc.nasa.gov",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: "mars.nasa.gov",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: "earthengine.googleapis.com",
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.youtube.com',
+        port: '',
+        pathname: '/embed/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'player.vimeo.com',
+        port: '',
+        pathname: '/video/**',
+      },
     ],
   },
 };
