@@ -5,27 +5,26 @@ const optimizedImages = require("next-optimized-images");
 
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+module.exports = {
   /* config options here */
   experimental: {
     appDir: true,
   },
   exportPathMap: async function(
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
   ) {
     return {
-      "/": { page: "/" },
-      "/apod": { page: "/apod" },
-      "/rover": { page: "/rover" },
-      "/epic": { page: "/epic" },
-      "/landsat": { page: "/landsat" },
+      "/": { page: "/", query: { __nextDefaultLocale: 'en' } },
+      "/apod": { page: "/apod", query: { __nextDefaultLocale: 'en' } },
+      "/rover": { page: "/rover", query: { __nextDefaultLocale: 'en' } },
+      "/epic": { page: "/epic", query: { __nextDefaultLocale: 'en' } },
+      "/landsat": { page: "/landsat", query: { __nextDefaultLocale: 'en' } },
     };
   },
   reactStrictMode: true,
   env: {
     API_KEY: process.env.API_KEY,
-  },
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
   },
   // domains allowed to send json
   images: {
@@ -37,5 +36,3 @@ const nextConfig = {
     ],
   },
 };
-
-module.exports = withPlugins([[optimizedImages, {}], nextConfig]);
