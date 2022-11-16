@@ -2,7 +2,9 @@ import Head from "next/head";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import ChangeDate from "../ChangeDate";
 import { APODDataType } from "../../utils/types";
-import { fetchedData } from "../../utils/getData";
+import { fetchedUrl } from "../../utils/getData";
+import { fetcher } from "../../utils/fetcher";
+import axios from "axios";
 
 type Props = {
   title: string;
@@ -16,11 +18,9 @@ export default function Heading({ ...props }: Props) {
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    const data = await fetchedData("apod", date)
-      .then(a => {
-        setData(a);
-        setStartDate(date);
-      })
+    const data = await fetcher(fetchedUrl("apod", date));
+    setData({ data });
+    setStartDate(date);
     if (!data) {
       throw new Error('Failed to fetch data');
     }

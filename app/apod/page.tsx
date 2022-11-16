@@ -2,36 +2,33 @@
 
 //import { NextPage, GetStaticProps } from "next";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import MotionHeading from "../../components/APOD/Heading";
 import MotionTitle from "../../components/APOD/Title";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
-import { fetchedData } from "../../utils/getData";
 import { APODDataType } from "../../utils/types";
-
-async function getInit() {
-  const apodData = await fetchedData("apod")
-  if (!apodData) {
-    throw new Error('Failed to fetch data');
-  }
-  return apodData;
-}
+import useSWR from "swr";
 
 export default function APOD() {
-  const [data, setData]: APODDataType = useState ({});
+  let { data, error } = useSWR('/api/apod', axios)
+  const [fetchedData, setData] = useState({});
   const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
-    function init() {
-      getInit().then((a) => {
-        setData(a)
-      });
+    async function init() {
+      if (fetchedData?.data == undefined) {
+        let test = await data;
+        setData(test);
+      } else {
+        return null;
+      }
     }
-    init();
-  }, [])
+    init()
+  })
 
-  if (data.date !== undefined) {
-    let splitDate = data.date.split("-");
+  if (fetchedData != undefined && fetchedData.date != undefined) {
+    let splitDate = fetchedData.date.split("-");
     let [year, month, day] = splitDate;
     let newDate = new Date();
     day = day.replace(/^0+/, "");
@@ -43,17 +40,23 @@ export default function APOD() {
       return setStartDate(newDate);
     }
   }
-  return (
-    <div className="flex flex-col h-full w-full items-center">
-      <MotionHeading
-        title={data.title}
-        setData={setData}
-        startDate={startDate}
-        setStartDate={setStartDate}
-      />
-      <MotionTitle title={data.title} />
-      <MotionContent newData={data} />
-      <MotionFooter copyright={data.copyright} />
-    </div>
-  );
+
+  if (data == undefined) return <div> . . .Loading</div>
+  if (error) return <div>failed to load</div>
+  if (fetchedData?.data != undefined) {
+    return (
+      <div className="flex flex-col h-full w-full items-center">
+        <MotionHeading
+          title={fetchedData.data.title}
+          setData={setData}
+          startDate={startDate}
+          setStartDate={setStartDate}
+        />
+        <MotionTitle title={fetchedData.data.title} />
+        <MotionContent newData={fetchedData.data} />
+        <MotionFooter copyright={fetchedData.data.copyright} />
+      </div>
+    );
+  }
+
 };

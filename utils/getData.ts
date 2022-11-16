@@ -32,12 +32,12 @@ const urlSwitcher = (
   }
 };
 
-export const fetchedData = async (
+export const fetchedUrl = (
   key: string,
   date: Date = new Date(),
   lon?: number | undefined,
   lat?: number | undefined
-): Promise<any> => {
+): any => {
   let day, month, year, newDay, newMonth;
   let newDate = undefined;
   let thisDate = date;
@@ -56,6 +56,5 @@ export const fetchedData = async (
   }
 
   let url = urlSwitcher(key, newDate, lon, lat);
-  let data = fetcher(url);
-  return data;
+  return url;
 };
