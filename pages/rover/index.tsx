@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import { Stack, Box } from "@chakra-ui/react";
 import RoverHeading from "../../components/Rovers/RoverHeading";
 import RoverContent from "../../components/Rovers/";
-import { fetchedData } from "../../utils/getData";
+import { fetchedUrl } from "../../utils/getData";
 import { RoverDataType } from "../../utils/types";
 import { useState } from "react";
 
@@ -23,7 +23,7 @@ const Rover: NextPage<{ data: RoverDataType }> = ({ data }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   // last date with decent sized return json + avoiding empty dates
-  const data = await fetchedData("rover", new Date(2021, 6, 17));
+  const data = await fetchedUrl("rover", new Date(2021, 6, 17));
   return {
     props: {
       data,

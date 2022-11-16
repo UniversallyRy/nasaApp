@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from "../../components/Epic/EpicList";
 import ChangeDate from "../../components/ChangeDate";
-import { fetchedData } from "../../utils/getData";
+import { fetchedUrl } from "../../utils/getData";
 import { EpicDataType } from "../../utils/types";
 
 interface Props {
@@ -18,7 +18,7 @@ const Epics: NextPage<Props> = ({ data }) => {
   const [startDate, setStartDate] = useState(new Date());
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    let newData = await fetchedData("epic", date);
+    let newData = await fetchedUrl("epic", date);
     setStartDate(date);
     setData(newData);
   };
@@ -37,7 +37,7 @@ const Epics: NextPage<Props> = ({ data }) => {
   }, [data, initData]);
 
   return (
-    <Box justify="center" align="center">
+    <Box justifyItems="center" alignItems="center">
       <Head key="pages/epic key">
         <title>Earth Polychromatic Imaging Camera</title>
         <meta
@@ -73,7 +73,7 @@ const Epics: NextPage<Props> = ({ data }) => {
 export const getStaticProps: GetStaticProps = async (
   _context: GetStaticPropsContext
 ) => {
-  const data = await fetchedData("epic");
+  const data = await fetchedUrl("epic");
   return {
     props: {
       data,
