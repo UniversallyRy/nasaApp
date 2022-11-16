@@ -1,12 +1,10 @@
-import { Dialog } from "@headlessui/react";
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { APODDataType } from "../../utils/types";
-import MotionImage from "./Image";
 
 type Props = {
   data: APODDataType;
   isOpen: boolean;
-  setOpen: (bool: boolean) => MouseEventHandler<HTMLDivElement> | Dispatch<SetStateAction<boolean>> | boolean;
+  setOpen: (bool: boolean) => MouseEventHandler<HTMLDivElement> | Dispatch<SetStateAction<boolean>> | void;
 };
 
 export default function BackGround({ ...props }: Props) {

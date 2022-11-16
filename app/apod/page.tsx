@@ -1,12 +1,13 @@
 'use client'
 
-import { NextPage, GetStaticProps } from "next";
+//import { NextPage, GetStaticProps } from "next";
 import { useState, useEffect } from "react";
 import MotionHeading from "../../components/APOD/Heading";
 import MotionTitle from "../../components/APOD/Title";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
 import { fetchedData } from "../../utils/getData";
+import { APODDataType } from "../../utils/types";
 
 async function getInit() {
   const apodData = await fetchedData("apod")
@@ -17,13 +18,16 @@ async function getInit() {
 }
 
 export default function APOD() {
-  const [data, setData] = useState({});
+  const [data, setData]: APODDataType = useState ({});
   const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
-    getInit().then((a) => {
-      setData(a)
-    });
+    function init() {
+      getInit().then((a) => {
+        setData(a)
+      });
+    }
+    init();
   }, [])
 
   if (data.date !== undefined) {
@@ -39,7 +43,6 @@ export default function APOD() {
       return setStartDate(newDate);
     }
   }
-
   return (
     <div className="flex flex-col h-full w-full items-center">
       <MotionHeading

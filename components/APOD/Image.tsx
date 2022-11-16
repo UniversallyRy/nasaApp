@@ -2,8 +2,8 @@ import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { useAnimation } from "framer-motion";
 import { APODDataType } from "../../utils/types";
 import { reformatDate } from "../../utils/reformatDate";
-import Image from "next/legacy/image";
-
+import Placeholder from "../../public/placeholder.jpg"
+import Image from "next/image";
 type Props = {
   data: APODDataType;
   isOpen: boolean;
@@ -50,7 +50,7 @@ export default function MotionImage({ ...props }: Props) {
       }
       width={600}
       height={300}
-      src={data.url ? data.url : ''}
+      src={data.url != undefined ? data.url : ""}
       onMouseMove={(e) => handleMouseMove(e)}
       alt={"Picture for the date of " + `${reformatDate(data.date)}`}
       onClick={() => setOpen(true)}
