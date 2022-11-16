@@ -53,7 +53,7 @@ export default function MotionImage({ ...props }: Props) {
       src={data.url != undefined ? data.url : ""}
       onMouseMove={(e) => handleMouseMove(e)}
       alt={"Picture for the date of " + `${reformatDate(data.date)}`}
-      onClick={() => setOpen(true)}
+      onClick={data.url == "" ? () => setOpen(true) : undefined}
     />
   );
 };
