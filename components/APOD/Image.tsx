@@ -44,16 +44,16 @@ export default function MotionImage({ ...props }: Props) {
     <Image
       animate={imgAnimation}
       className={`${isOpen
-        ? "z-20 h-auto w-full min-h-full  object-center max-h-full max-w-full absolute cursor-default"
+        ? " w-8/12 max-h-full max-w-full absolute cursor-default"
         : "z-auto h-full w-full m-1 max-h-max max-w-max relative cursor-zoom-in"
-        } inset-0 border-sm object-cover`
+        } inset-0 border-2 border-sm border-slate-800/20 border-spacing-px object-center shadow-lg `
       }
       width={600}
       height={300}
       src={data.url != undefined ? data.url : ""}
       onMouseMove={(e) => handleMouseMove(e)}
       alt={"Picture for the date of " + `${reformatDate(data.date)}`}
-      onClick={data.url == "" ? () => setOpen(true) : undefined}
+      onClick={data.url != "" ? () => setOpen(true) : undefined}
     />
   );
 };

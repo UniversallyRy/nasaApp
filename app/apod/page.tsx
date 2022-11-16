@@ -1,7 +1,7 @@
 'use client'
 
 //import { NextPage, GetStaticProps } from "next";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction, useReducer } from "react";
 import axios from "axios";
 import MotionHeading from "../../components/APOD/Heading";
 import MotionTitle from "../../components/APOD/Title";
@@ -9,26 +9,28 @@ import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
 import { APODDataType } from "../../utils/types";
 import useSWR from "swr";
+import { apodReducer, apodState } from "../../utils/reducers";
 
 export default function APOD() {
+  const [state, dispatch] = useReducer(apodReducer, apodState);
   let { data, error } = useSWR('/api/apod', axios)
-  const [fetchedData, setData] = useState({});
   const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     async function init() {
-      if (fetchedData?.data == undefined) {
-        let test = await data;
-        setData(test);
-      } else {
-        return null;
-      }
+      dispatch({
+        type: "FETCH_SUCCESS",
+        payload: await data
+      })
     }
-    init()
-  })
 
-  if (fetchedData != undefined && fetchedData.date != undefined) {
-    let splitDate = fetchedData.date.split("-");
+    return () => {
+      init();
+    }
+  }, [])
+
+  if (state.date != '') {
+    let splitDate = state.date.split("-");
     let [year, month, day] = splitDate;
     let newDate = new Date();
     day = day.replace(/^0+/, "");
@@ -43,18 +45,18 @@ export default function APOD() {
 
   if (data == undefined) return <div> . . .Loading</div>
   if (error) return <div>failed to load</div>
-  if (fetchedData?.data != undefined) {
+  if (state.data != undefined) {
     return (
-      <div className="flex flex-col h-full w-full items-center">
+      <div className="flex flex-col h-full w-full items-center p-4">
         <MotionHeading
-          title={fetchedData.data.title}
-          setData={setData}
+          title={state.data.title}
+          setData={state}
           startDate={startDate}
           setStartDate={setStartDate}
         />
-        <MotionTitle title={fetchedData.data.title} />
-        <MotionContent newData={fetchedData.data} />
-        <MotionFooter copyright={fetchedData.data.copyright} />
+        <MotionTitle title={state.data.title} />
+        <MotionContent newData={state.data} />
+        <MotionFooter copyright={state.data.copyright} />
       </div>
     );
   }
