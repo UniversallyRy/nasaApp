@@ -6,7 +6,7 @@ type Props = {
   className: string;
 }
 
-export default function ChakraNextImage({ src, alt, className, ...otherProps }: Props) {
+export default function NextImage({ src, alt, className, ...otherProps }: Props) {
   return (
     <div className={`relative ` + className} {...otherProps}>
       <Image objectFit="contain" layout="fill" src={src} alt={alt} priority />

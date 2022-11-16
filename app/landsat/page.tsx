@@ -1,20 +1,20 @@
-import { NextPage } from "next";
+'use client'
+
+//import { NextPage } from "next";
 import Head from "next/head";
-import { useState, createContext } from "react";
-import { Stack } from "@chakra-ui/react";
+import { useState } from "react";
 import FormContainer from "../../components/Satellite/Form";
 import SatelliteImg from "../../components/Satellite/SatelliteImg";
 import AlertBox from "../../components/Satellite/AlertBox";
-import { SatDataType } from "../../utils/types";
+//import { SatDataType } from "../../utils/types";
+import { FormContext } from "../../utils/context";
 
 // Todo: add searchable options
-
-export const FormContext = createContext({});
-
-const LandSat: NextPage<{ data: SatDataType }> = () => {
+export default function LandSat() {
   const [coordinates, submitCoords] = useState(Object);
+
   return (
-    <Stack minH="100vh" align="center">
+    <div className="flex flex-row min-h-screen justify-center">
       <Head key="pages/landsat key">
         <title>Satellite Images</title>
         <meta
@@ -23,17 +23,15 @@ const LandSat: NextPage<{ data: SatDataType }> = () => {
           key={0}
         />
       </Head>
-      <Stack m={3} spacing={10} direction={{ base: "column", md: "row" }}>
+      <div className="flex flex-col m-3 space-x-2 md:flex-row">
         <FormContext.Provider value={{ coordinates, submitCoords }}>
           <FormContainer />
         </FormContext.Provider>
-      </Stack>
+      </div>
       {coordinates.hasOwnProperty("msg") ? <AlertBox /> : null}
       {coordinates.hasOwnProperty("url") ? (
         <SatelliteImg coordinates={coordinates} />
       ) : null}
-    </Stack>
+    </div>
   );
 };
-
-export default LandSat;

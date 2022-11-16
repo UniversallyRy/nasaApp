@@ -1,3 +1,11 @@
+html {
+  background-color: rgb(20 82 45);
+}
+body {
+  padding: 0px 10px 1px 10px;
+  margin: 0 auto;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

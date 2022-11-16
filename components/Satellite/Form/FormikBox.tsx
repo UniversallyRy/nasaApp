@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useContext } from "react";
-import { Box } from "@chakra-ui/react";
 import { Formik, FormikValues } from "formik";
+import axios from "axios";
 import Examples from "./Examples";
-import { FormContext } from "../../../pages/landsat";
-import { fetchedData } from "../../../utils/getData";
+import { FormContext } from "../../../utils/context";
+import { fetchedUrl } from "../../../utils/getData";
 
 type Props = {
   children: React.ReactNode;
@@ -16,13 +16,13 @@ interface FormValues {
   longitude: number;
 }
 
-const FormikBox = ({ ...props }: Props) => {
+export default function FormikBox({ ...props }: Props) {
   const { submitCoords }: FormikValues = useContext(FormContext);
   const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
   const defaultDate = new Date("2/1/21");
 
   return (
-    <Box align="center" justify="center" w={{ base: "sm", sm: "md", md: "lg" }}>
+    <div className="items-center justify-center sm:w-2/12 md:w-7/12">
       <Formik
         initialValues={initialValues}
         onSubmit={async (values) => {
@@ -30,7 +30,7 @@ const FormikBox = ({ ...props }: Props) => {
             props.setSubmit(true);
             let lon = values.longitude;
             let lat = values.latitude;
-            const data = await fetchedData("landsat", defaultDate, lon, lat);
+            const data = await axios(fetchedUrl("landsat", defaultDate, lon, lat));
             setTimeout(() => {
               props.setSubmit(false);
             }, 3000);
@@ -43,8 +43,7 @@ const FormikBox = ({ ...props }: Props) => {
         {props.children}
       </Formik>
       <Examples />
-    </Box>
+    </div>
   );
 };
 
-export default FormikBox;

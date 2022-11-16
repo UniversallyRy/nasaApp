@@ -5,13 +5,13 @@ import FormikBox from "./FormikBox";
 import FormInputs from "./FormInputs";
 import FormButton from "./Button";
 
-const FormContainer = () => {
+export default function FormContainer() {
   const [isSubmitting, setSubmit] = useState(false);
   const [isEditing, setIsEditing] = useBoolean();
   const backGround = useColorModeValue("blue.500", "purple.900");
 
   return (
-    <Box align="center" justify="center" w ={{ base: "sm", sm: "md", md: "lg" }}>
+    <div className="items-center justify-center sm:w-4/12 md:w-7/12">
       <Popover
         isOpen={isEditing}
         onOpen={setIsEditing.on}
@@ -19,9 +19,9 @@ const FormContainer = () => {
         closeOnBlur={false}
         isLazy
         lazyBehavior="keepMounted"
-     >
+      >
         <FormikBox isEditing={isEditing} setSubmit={setSubmit}>
-          {() => (
+          {
             <Form>
               <FormInputs isEditing={isEditing} backGround={backGround} />
               <FormButton
@@ -30,11 +30,9 @@ const FormContainer = () => {
                 backGround={backGround}
               />
             </Form>
-          )}
+          }
         </FormikBox>
       </Popover>
-    </Box>
+    </div>
   );
 };
-
-export default FormContainer;
