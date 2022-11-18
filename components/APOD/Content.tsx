@@ -10,7 +10,7 @@ type Props = {
 export default function Content({ ...props }: Props) {
   const{ data } = props;
   const [open, setOpen] = useState(false);
-  // const handleImg = useDisclosure();
+
   return (
     <div
       className="flex py-10 bg-purple-900 rounded-md border-gray-700 shadow-xl flex-col border-2 items-center

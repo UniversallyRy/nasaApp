@@ -6,10 +6,7 @@ type Props = {
 };
 
 export default function BackGround({ ...props }: Props) {
-  //      opacity={props.isOpen ? 1 : 0}
-  //      pointerEvents={props.isOpen ? "auto" : "none"}
-  //     cursor={props.isOpen ? "zoom-out" : "default"}
-  //    animate={{ opacity: props.isOpen ? 1 : 0 }}
+
   const { isOpen, setOpen } = props;
 
   return (

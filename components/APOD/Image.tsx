@@ -1,9 +1,9 @@
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
+import Image from "next/image";
 import { useAnimation } from "framer-motion";
 import { APODDataType } from "../../utils/types";
 import { reformatDate } from "../../utils/reformatDate";
-import Placeholder from "../../public/placeholder.jpg"
-import Image from "next/image";
+//import Placeholder from "../../public/placeholder.jpg"
 
 type Props = {
   data: APODDataType;
@@ -11,22 +11,9 @@ type Props = {
   setOpen: ((item?: boolean) => (MouseEventHandler<HTMLImageElement> | undefined)) | Dispatch<SetStateAction<boolean>>
 }
 
-//top={0}
-//      left={0}
-//      right={0}
-//      bottom={0}
-//      alignSelf="center"
-//      borderRadius="sm"
-//      objectFit="cover"
-//      objectPosition="center"
-//      animate={imgAnimation}
-//      src={props.data.url}
-//      onMouseMove={(e) => handleMouseMove(e)}
-//      alt={"Picture for the date of " + `${reformatDate(props.data.date)}`}
 export default function MotionImage({ ...props }: Props) {
 
   const { data, setOpen, isOpen } = props;
-
   const imgAnimation = useAnimation();
 
   const handleMouseMove = (e: React.MouseEvent) => {
