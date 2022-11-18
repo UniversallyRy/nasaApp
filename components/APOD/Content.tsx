@@ -4,11 +4,11 @@ import MotionBackGround from "./BackGround";
 import { APODDataType } from "../../utils/types";
 
 type Props = {
-  newData: APODDataType;
+  data: APODDataType;
 };
 
 export default function Content({ ...props }: Props) {
-  const { newData } = props;
+  const{ data } = props;
   const [open, setOpen] = useState(false);
   // const handleImg = useDisclosure();
   return (
@@ -18,19 +18,18 @@ export default function Content({ ...props }: Props) {
     >
       <div className="p-3 flex flex-col items-center justify-center md:flex-row gap-8">
         <MotionBackGround
-          data={newData}
           isOpen={open}
           setOpen={setOpen}
         />
         <MotionImage
-          data={newData}
+          data={data}
           isOpen={open}
           setOpen={setOpen}
         />
         <p className="m-2 select-none whitespace-normal break-words self-center leading-snug md:leading-relaxed text-sm tracking-wide
           sm:text-sm md:text-lg xl:text-xl sm:max-w-sm md:max-w-lg"
         >
-          {newData.explanation}
+          {data.explanation}
         </p>
       </div>
     </div>

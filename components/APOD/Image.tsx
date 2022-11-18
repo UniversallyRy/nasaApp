@@ -4,6 +4,7 @@ import { APODDataType } from "../../utils/types";
 import { reformatDate } from "../../utils/reformatDate";
 import Placeholder from "../../public/placeholder.jpg"
 import Image from "next/image";
+
 type Props = {
   data: APODDataType;
   isOpen: boolean;
@@ -42,7 +43,6 @@ export default function MotionImage({ ...props }: Props) {
 
   return (
     <Image
-      animate={imgAnimation}
       className={`${isOpen
         ? " w-8/12 max-h-full max-w-full absolute cursor-default"
         : "z-auto h-full w-full m-1 max-h-max max-w-max relative cursor-zoom-in"

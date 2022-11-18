@@ -1,8 +1,6 @@
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
-import { APODDataType } from "../../utils/types";
 
 type Props = {
-  data: APODDataType;
   isOpen: boolean;
   setOpen: (bool: boolean) => MouseEventHandler<HTMLDivElement> | Dispatch<SetStateAction<boolean>> | void;
 };
@@ -12,8 +10,7 @@ export default function BackGround({ ...props }: Props) {
   //      pointerEvents={props.isOpen ? "auto" : "none"}
   //     cursor={props.isOpen ? "zoom-out" : "default"}
   //    animate={{ opacity: props.isOpen ? 1 : 0 }}
-  const { isOpen, setOpen, data } = props;
-
+  const { isOpen, setOpen } = props;
 
   return (
     <div className={`${isOpen

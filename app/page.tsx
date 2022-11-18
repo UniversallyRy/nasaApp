@@ -26,10 +26,6 @@ export default function Home() {
       </section>
     )
   };
-  // background-image={img}
-  // alignItems="center"
-  // justifyContent="center"
-  // flexDirection={{ base: "column", md: "row" }}
 
   return (
     <div className="flex flex-col min-w-full justify-items-center items-center">
@@ -66,4 +62,3 @@ export default function Home() {
     </div>
   );
 };
-

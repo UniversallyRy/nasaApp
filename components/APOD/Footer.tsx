@@ -1,4 +1,3 @@
-
 type Props = {
   copyright: string | undefined;
 };
