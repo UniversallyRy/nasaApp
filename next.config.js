@@ -32,37 +32,31 @@ module.exports = {
       {
         protocol: 'https',
         hostname: "apod.nasa.gov",
-        port: '0',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: "epic.gsfc.nasa.gov",
-        port: '0',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: "mars.nasa.gov",
-        port: '0',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: "earthengine.googleapis.com",
-        port: '0',
         pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'www.youtube.com',
-        port: '0',
         pathname: '/embed/**',
       },
       {
         protocol: 'https',
         hostname: 'player.vimeo.com',
-        port: '0',
         pathname: '/video/**',
       },
     ],
