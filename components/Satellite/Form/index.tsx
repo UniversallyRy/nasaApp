@@ -15,22 +15,24 @@ export default function Form() {
     setLoginState({ ...loginState, [e.target.id]: e.target.value })
   }
   return (
-    <div className="flex sm:w-4/12 md:w-7/12">
+    <div className="flex">
       <FormContainer>
-        {fields.map(field =>
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={loginState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            name={field.name}
-            type={field.type}
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-          />
-        )}
+        <div className="flex flex-row space-x-4">
+          {fields.map(field =>
+            <Input
+              key={field.id}
+              handleChange={handleChange}
+              value={loginState[field.id]}
+              labelText={field.labelText}
+              labelFor={field.labelFor}
+              id={field.id}
+              name={field.name}
+              type={field.type}
+              isRequired={field.isRequired}
+              placeholder={field.placeholder}
+            />
+          )}
+        </div>
         <div className="justify-self-center self-center m-3 inline-flex rounded-md shadow-sm" role="group">
           <FormButton />
           <ExampleButton />
