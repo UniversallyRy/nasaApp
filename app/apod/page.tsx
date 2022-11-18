@@ -8,9 +8,11 @@ import MotionHeading from "../../components/APOD/Heading";
 import MotionTitle from "../../components/APOD/Title";
 import MotionContent from "../../components/APOD/Content";
 import MotionFooter from "../../components/APOD/Footer";
+import useSWRImmutable from 'swr/immutable';
 
 export default function APOD() {
-  let { data, error } = useSWR('/api/apod', axios)
+  // bug: swr keeps defaulting to 11/16
+  let { data, error } = useSWRImmutable('/api/apod', axios)
   const [fetchedData, setData] = useState(undefined)
   const [startDate, setStartDate] = useState(new Date());
 

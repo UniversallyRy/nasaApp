@@ -16,6 +16,7 @@ export default function Heading({ ...props }: Props) {
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
+    console.log(date)
     const data = await axios(fetchedUrl("apod", date));
     setData(data);
     setStartDate(date);
