@@ -8,7 +8,7 @@ type Props = {
 
 export default function SatelliteImg({ coordinates }: Props) {
   return (
-    <div className="m-2 shadow-xl rounded-sm p-1">
+    <div className="m-2 w-full h-full shadow-xl rounded-sm p-1">
       <NextImage
         className="w-6/12 h-6/12"
         aria-label="Satellite Image"

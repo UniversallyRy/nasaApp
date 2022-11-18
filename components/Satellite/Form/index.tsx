@@ -1,38 +1,41 @@
 import React, { useState } from "react";
-import { Form } from "formik";
-import { Box, Popover, useColorModeValue, useBoolean } from "@chakra-ui/react";
-import FormikBox from "./FormikBox";
-import FormInputs from "./FormInputs";
-import FormButton from "./Button";
+import FormContainer from "./FormContainer";
+import { ExampleButton, FormButton } from "./Button";
+import Input from "./Inputs";
+import { formFields } from "../../../utils/formFields";
 
-export default function FormContainer() {
-  const [isSubmitting, setSubmit] = useState(false);
-  const [isEditing, setIsEditing] = useBoolean();
-  const backGround = useColorModeValue("blue.500", "purple.900");
+export default function Form() {
+  const fields = formFields;
+  let fieldsState: any = {};
+  fields.forEach(field => fieldsState[field.id] = field.labelText);
 
+  const [loginState, setLoginState] = useState(fieldsState);
+
+  const handleChange = (e: any) => {
+    setLoginState({ ...loginState, [e.target.id]: e.target.value })
+  }
   return (
-    <div className="items-center justify-center sm:w-4/12 md:w-7/12">
-      <Popover
-        isOpen={isEditing}
-        onOpen={setIsEditing.on}
-        onClose={setIsEditing.off}
-        closeOnBlur={false}
-        isLazy
-        lazyBehavior="keepMounted"
-      >
-        <FormikBox isEditing={isEditing} setSubmit={setSubmit}>
-          {
-            <Form>
-              <FormInputs isEditing={isEditing} backGround={backGround} />
-              <FormButton
-                isEditing={isEditing}
-                isSubmitting={isSubmitting}
-                backGround={backGround}
-              />
-            </Form>
-          }
-        </FormikBox>
-      </Popover>
+    <div className="flex sm:w-4/12 md:w-7/12">
+      <FormContainer>
+        {fields.map(field =>
+          <Input
+            key={field.id}
+            handleChange={handleChange}
+            value={loginState[field.id]}
+            labelText={field.labelText}
+            labelFor={field.labelFor}
+            id={field.id}
+            name={field.name}
+            type={field.type}
+            isRequired={field.isRequired}
+            placeholder={field.placeholder}
+          />
+        )}
+        <div className="justify-self-center self-center m-3 inline-flex rounded-md shadow-sm" role="group">
+          <FormButton />
+          <ExampleButton />
+        </div>
+      </FormContainer>
     </div>
   );
 };

@@ -1,34 +1,58 @@
-import { Button, PopoverTrigger } from "@chakra-ui/react";
+import { Popover } from "@headlessui/react";
+import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { Ref, RefObject, useEffect } from "react";
+import Examples from "./Examples";
 
 type Props = {
-  backGround: string;
   isSubmitting: boolean;
   isEditing: boolean;
+  setIsEditing: (bool: boolean) => void;
+  inputEl: any
 };
+export function FormButton({ ...props }) {
 
-const FormButton = ({ ...props }: Props) => {
   return (
-    <PopoverTrigger>
-      <Button
-        size="lg"
-        fontSize="xl"
-        rounded="sm"
-        shadow="xl"
-        m={3}
-        bg={props.backGround}
-        isLoading={props.isSubmitting}
-        type="submit"
-        _hover={{
-          bg: "gray.600",
-        }}
-        _focus={{
-          outline: "hidden",
-        }}
-      >
-        {props.isEditing ? "SAVE" : "CHANGE COORDS"}
-      </Button>
-    </PopoverTrigger>
-  );
-};
+    <button
+      type="submit"
+      className={`
+                items-center rounded-md bg-orange-700
+                px-2 py-1 text-base font-medium text-white hover:text-opacity-100
+                focus:outline-none focus-visible:ring-2
+                focus-visible:ring-white focus-visible:ring-opacity-75`
+      }
+    >
+      {"SAVE"}
+    </button>
+  )
+}
 
-export default FormButton;
+export function ExampleButton() {
+
+  return (
+    <div className="w-full max-w-sm">
+      <Popover
+      >
+        {({ open }) => (
+          <>
+            <Popover.Button
+              className={`
+                ${open ? '' : 'text-opacity-90'}
+                group inline-flex items-center rounded-md bg-orange-700
+                px-3 py-2 text-base font-medium text-white hover:text-opacity-100
+                focus:outline-none focus-visible:ring-2
+                focus-visible:ring-white focus-visible:ring-opacity-75`
+              }
+            >
+              <ChevronDownIcon
+                className={`${open ? '' : 'text-opacity-70'}
+                  h-5 w-5 text-orange-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
+                aria-hidden="true"
+              />
+            </Popover.Button>
+            <Examples />
+          </>
+        )}
+      </Popover>
+    </div>
+  );
+}
