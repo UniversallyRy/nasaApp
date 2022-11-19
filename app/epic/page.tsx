@@ -12,8 +12,7 @@ import { fetchedUrl } from "../../utils/getData";
 
 // todos: add datepicker and default to closest date
 export default function Epics() {
-  let { data, error } = useSWR('/api/epic', axios)
-  console.log(data)
+  const { data, error } = useSWR('/api/epic', axios)
   const [initData, setData] = useState(undefined);
   const [startDate, setStartDate] = useState(new Date());
 
@@ -25,6 +24,7 @@ export default function Epics() {
       });
     setStartDate(date);
   };
+  console.log(data)
 
   useEffect(() => {
     async function watcher() {
@@ -35,13 +35,15 @@ export default function Epics() {
         return null;
       }
     };
-    watcher();
+    return () => {
+      watcher();
+
+    }
   }, [data, initData]);
 
-  console.log(initData)
 
-  if (data == undefined) return <div> . . .Loading</div>
   if (error) return <div>failed to load</div>
+  if (initData == undefined) return <div> . . .Loading</div>
 
   return (
     <Box justifyItems="center" alignItems="center">
@@ -71,7 +73,7 @@ export default function Epics() {
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={initData?.data} />
+        <EpicList data={initData.data} />
       </VStack>
     </Box>
   );
