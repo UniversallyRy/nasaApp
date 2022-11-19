@@ -1,5 +1,3 @@
-import fetcher from "./fetcher";
-
 const urlSwitcher = (
   key: string,
   date: string | undefined,
@@ -14,7 +12,7 @@ const urlSwitcher = (
       );
     case "epic":
       return (
-        `https://epic.gsfc.nasa.gov/api/enhanced/date/${date}?api_key=` +
+        `https://api.nasa.gov/EPIC/api/enhanced/date/${date}?api_key=` +
         process.env.API_KEY
       );
     case "landsat":

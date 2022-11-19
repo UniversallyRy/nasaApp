@@ -1,5 +1,4 @@
-import { Flex, VStack, Text } from "@chakra-ui/react";
-import { ChakraNextImage } from "../Image";
+import Image from "../Image";
 import { reformatDate } from "../../utils/reformatDate";
 
 type Props = {
@@ -21,39 +20,27 @@ const EpicItem = ({ ...props }: Props) => {
   const dateFormatter = props.item.date.slice(0, 10).split("-").join("/");
   const imageLink = `https://epic.gsfc.nasa.gov/archive/enhanced/${dateFormatter}/png/`;
   return (
-    <Flex w="full" h="full">
-      <Text pos="absolute" top="0" fontSize="xs" color="white" p={1} zIndex={1}>
+    <div className="w-full h-full">
+      <p className="absolute top-0 text-xs p-1 z-auto text-white">
         {props.index + 1} / {props.slidesCount}
-      </Text>
-      <ChakraNextImage
-        boxSize={{ base: "md", sm: "xl", md: "2xl", lg: "3xl" }}
-        p={3}
-        rounded="sm"
-        shadow="sm"
+      </p>
+      <Image
+        className="p-3 rounded-sm shadow-sm w-8/12 h-8/12 blur:placeholder"
         src={imageLink + props.item.image + `.png`}
-        placeholder="blur"
         alt={props.item.title}
       />
-      <VStack
-        pos="absolute"
-        top="0"
-        textAlign="center"
-        width="50%"
-        mt={{ base: "2", md: "1" }}
-        color="purple.900"
-        userSelect="none"
-      >
-        <Text fontSize={{ base: "xs", md: "sm" }}>
+      <div className="flex select-none bg-purple-900 flex-col absolute top-0 align-text-top w-1/2 mt-2 :md:mt-1">
+        <p className="text-xs md:text-sm">
           Lat: {props.item.centroid_coordinates.lat}
-        </Text>
-        <Text fontSize={{ base: "xs", md: "sm" }}>
+        </p>
+        <p className="text-xs md:text-sm">
           Date Taken: {reformatDate(props.item.date)}
-        </Text>
-        <Text mt="2" fontSize={{ base: "xs", md: "md", xl: "lg" }}>
+        </p>
+        <p className="m-2 text-xs md:text-md xl:text-xl">
           {props.item.caption}
-        </Text>
-      </VStack>
-    </Flex>
+        </p>
+      </div>
+    </div>
   );
 };
 

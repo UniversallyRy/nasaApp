@@ -1,15 +1,4 @@
 import React, { useState, useMemo } from "react";
-import {
-  Flex,
-  Box,
-  HStack,
-  Text,
-  useColorModeValue,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
 import EpicItem from "./EpicItem";
 import { EpicDataType } from "../../utils/types";
 
@@ -19,25 +8,13 @@ interface Props {
 
 const EpicList = ({ data }: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const backGround = useColorModeValue("blue.500", "purple.900");
   const slidesCount = data.length;
 
-  const arrowStyles = {
-    cursor: "pointer",
-    top: "50%",
-    w: "auto",
-    mt: "-22px",
-    p: "16px",
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "18px",
-    transition: "0.6s ease",
-    borderRadius: "0 3px 3px 0",
-    _hover: {
-      opacity: 0.8,
-      bg: "black",
-    },
-  };
+  //               transition="background-color 0.6s ease"
+  // tailwind style for arrow pointers
+  const arrowStyles =
+    'cursor-pointer top-1/2 w-auto mb-5 p-3 text-white font-bold rounded-sm hover:opacity-8 hover:bg-black'
+
 
   const carouselStyle = {
     transition: "all .5s",
@@ -67,80 +44,47 @@ const EpicList = ({ data }: Props) => {
         />
       ));
     } else {
-      return <Text>No Images</Text>;
+      return <p>No Images</p>;
     }
   }, [data, slidesCount]);
 
   return (
-    <Box
-      w={{ base: "sm", sm: "lg", md: "2xl", lg: "3xl" }}
-      bg={backGround}
-      p={1}
-      borderRadius="sm"
-      shadow="2xl"
-      alignItems="center"
-      justifyContent="center"
-    >
+    <div className="flex p-1 rounded-sm shadow-2xl items-center justify-center bg-purple-900 w-1/6 sm:w-3/6 md:w-4/6 lg:w-5/6"   >
       {slidesCount > 0 ? (
-        <Flex w="full" pos="relative" overflow="hidden">
-          <Flex h="full" w="full" {...carouselStyle}>
+        <div className="flex w-full relative overflow-hidden">
+          <div className="flex h-full w-full" {...carouselStyle}>
             {memoedList}
-          </Flex>
-          <Text
-            userSelect="none"
-            pos="absolute"
-            {...arrowStyles}
-            left="0"
+          </div>
+          <p className={"select-none absolute left-0" + { arrowStyles }}
             onClick={prevSlide}
           >
             &#10094;
-          </Text>
-          <Text
-            userSelect="none"
-            pos="absolute"
-            {...arrowStyles}
-            right="0"
+          </p>
+          <p className={'select-none absolute right-0 ' + { arrowStyles }}
             onClick={nextSlide}
           >
             &#10095;
-          </Text>
-          <HStack justify="center" pos="absolute" bottom="2" w="full">
-            {Array.from({ length: slidesCount }).map((_, slide) => (
-              <Box
+          </p>
+          <div className="flex flex-col w-full justify-center absolute bottom-2">
+            {Array.from({ length: slidesCount }).map((_, slide) =>
+              <div className={`${currentSlide === slide ? 'bg-gray-800' : 'bg-gray-500'} cursor-pointer w-4 h-4 mx-1 rounded-full inline-block hover:bg-gray-800 transition`}
                 key={`dots-${slide}`}
-                cursor="pointer"
-                boxSize={["7px", "15px"]}
-                mx="1"
-                bg={currentSlide === slide ? "gray.800" : "gray.500"}
-                rounded="50%"
-                display="inline-block"
-                transition="background-color 0.6s ease"
-                _hover={{ bg: "gray.800" }}
                 onClick={() => setSlide(slide)}
-              ></Box>
-            ))}
-          </HStack>
-        </Flex>
+              />
+            )}
+          </div>
+        </div>
       ) : (
-        <Alert
-          status="error"
-          variant="solid"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          w="full"
-          height="400px"
-        >
-          <AlertIcon w="full" />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
+        <div className="w-full h-96 flex flex-col items-center justify-center">
+          <h1 className="mt-4 mb-1 text-lg">
             No Images Found
-          </AlertTitle>
-          <AlertDescription maxWidth="md">
+          </h1>
+          <p className="max-w-md">
             No images taken on this date, try another!
-          </AlertDescription>
-        </Alert>
+          </p>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 

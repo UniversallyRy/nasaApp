@@ -1,40 +1,47 @@
+'use client'
+
 import { useState, useEffect } from "react";
-import { NextPage, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import NextLink from "next/link";
+import useSWR from "swr";
+import axios from "axios";
 import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from "../../components/Epic/EpicList";
 import ChangeDate from "../../components/ChangeDate";
 import { fetchedUrl } from "../../utils/getData";
-import { EpicDataType } from "../../utils/types";
-
-interface Props {
-  data: EpicDataType[];
-}
 
 // todos: add datepicker and default to closest date
-const Epics: NextPage<Props> = ({ data }) => {
-  const [initData, setData] = useState(data);
+export default function Epics() {
+  let { data, error } = useSWR('/api/epic', axios)
+  console.log(data)
+  const [initData, setData] = useState(undefined);
   const [startDate, setStartDate] = useState(new Date());
+
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    let newData = await fetchedUrl("epic", date);
+    axios(fetchedUrl("epic", date))
+      .then((res: any) => {
+        setData(res.data);
+      });
     setStartDate(date);
-    setData(newData);
   };
 
   useEffect(() => {
-    const watcher = () => {
-      if (data == initData) {
-        return;
+    async function watcher() {
+      if (initData == undefined) {
+        const result = await data;
+        setData(result);
       } else {
-        setData(initData);
+        return null;
       }
     };
-    return () => {
-      watcher;
-    };
+    watcher();
   }, [data, initData]);
+
+  console.log(initData)
+
+  if (data == undefined) return <div> . . .Loading</div>
+  if (error) return <div>failed to load</div>
 
   return (
     <Box justifyItems="center" alignItems="center">
@@ -64,21 +71,8 @@ const Epics: NextPage<Props> = ({ data }) => {
             </Link>
           </NextLink>
         </Box>
-        <EpicList data={initData} />
+        <EpicList data={initData?.data} />
       </VStack>
     </Box>
   );
 };
-
-export const getStaticProps: GetStaticProps = async (
-  _context: GetStaticPropsContext
-) => {
-  const data = await fetchedUrl("epic");
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-export default Epics;

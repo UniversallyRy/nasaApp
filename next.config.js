@@ -41,6 +41,11 @@ module.exports = {
       },
       {
         protocol: 'https',
+        hostname: "api.nasa.gov",
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: "mars.nasa.gov",
         pathname: '/**',
       },
