@@ -7,13 +7,13 @@ type Props = {
   isSubmitting: boolean;
   isEditing: boolean;
   setIsEditing: (bool: boolean) => void;
-  inputEl: any
 };
-export function FormButton({ ...props }) {
+export function FormButton({ ...props }: Props) {
 
   return (
     <button
       type="submit"
+      disabled={props.isSubmitting}
       className={`
                 items-center rounded-md bg-orange-700
                 px-2 py-1 text-base font-medium text-white hover:text-opacity-100
