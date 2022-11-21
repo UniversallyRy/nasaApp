@@ -1,8 +1,7 @@
 ## Resources Used
 - [Next.js](https://nextjs.org/)
-- [ChakraUI](https://chakra-ui.com/)
-- [Framer Motion](https://www.framer.com/motion/)
 - [Formik](https://formik.org/)
+- [Framer Motion](https://www.framer.com/motion/)
 
 ## Local Usage
 Install packages with:
@@ -11,7 +10,7 @@ Install packages with:
 yarn
 ```
 
-or 
+or
 
 ```sh
 npm install
@@ -23,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Get free API key from [Nasa APIs](https://api.nasa.gov/) 
+Get free API key from [Nasa APIs](https://api.nasa.gov/)
 Then create .env file in project's home directory and provide property `API_KEY="Your_Key"`
 
 Demo can be seen from [Vercel](https://nasa-app-lilac.vercel.app/)
