@@ -17,7 +17,7 @@ export default function FormInputs({ ...props }: Props) {
   };
 
   return (
-    <div className="flex flex-row space-x-1">
+    <div className="flex flex-row space-x-2 w-full rounded-md shadow-gray-700">
       <Field name="latitude" validate={validateCoordinates}>
         {({ field, form }: any) => (
           <div className="p-1 rounded-sm bg-gray-500 shadow-lg"
