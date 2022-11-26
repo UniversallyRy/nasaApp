@@ -9,7 +9,7 @@ import NavButton, { ToggleButton } from "./NavButton";
 
 export default function HButtons() {
   return (
-    <div className="flex flex-row px-3 pl-10">
+    <div className="relative w-screen flex px-3 pl-10">
       <NavButton href="/" title="Home" />
       <NavButton href="/apod" title="APOD" />
       <NavButton href="/landsat" title="Landsat" />
