@@ -13,7 +13,7 @@ export default function DatePicker({ ...props }: Props) {
     ({ value, onClick }, ref) => {
       return (
         <button
-          className="m-3 p-4 bg-gray-300 :focus:outline-none"
+          className="m-3 p-4 bg-gray-500 rounded-lg :focus:outline-none"
           aria-label="Calender Date"
           onClick={onClick}
           ref={ref}
@@ -28,7 +28,6 @@ export default function DatePicker({ ...props }: Props) {
   return (
     <ReactDatePicker
       customInput={<DateButton />}
-      calendarClassName="rasta-stripes"
       peekNextMonth
       showMonthDropdown
       showYearDropdown
