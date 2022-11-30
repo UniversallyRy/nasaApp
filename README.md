@@ -1,9 +1,12 @@
 ## Resources Used
+
 - [Next.js](https://nextjs.org/)
 - [Formik](https://formik.org/)
 - [Framer Motion](https://www.framer.com/motion/)
+- [Tailwind CSS](https://www.tailwindcss.com/)
 
 ## Local Usage
+
 Install packages with:
 
 ```sh
@@ -28,6 +31,7 @@ Then create .env file in project's home directory and provide property `API_KEY=
 Demo can be seen from [Vercel](https://nasa-app-lilac.vercel.app/)
 
 ## Screenshots
+
 <table>
   <tr>
     <td>Light Mode</td>
