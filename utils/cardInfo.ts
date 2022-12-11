@@ -17,21 +17,21 @@ export const cardInfo = [
     href: "/landsat",
     title: "Landsat",
     paragraph:
-      "Landsat imagery is provided to the public as a joint project between NASA and USGS.",
+      "Landsat imagery is provided to the public as a joint project between NASA and United States Geological Survey(USGS).",
     imgSrc: "/satellite.png",
   },
   {
     href: "/epic",
     title: "EPIC",
     paragraph:
-      "Earth Polychromatic Imaging Camera aka EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.",
+      "Earth Polychromatic Imaging Camera provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits.",
     imgSrc: "/planet.png",
   },
   {
     href: "/rover",
     title: "Mars Rover Photos",
     paragraph:
-      "Image data gathered by NASA&apos;s Curiosity, Opportunity, and Spirit rovers on Mars. Current functionality only for Curiosity camera.",
+      "Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars. Current functionality only for Curiosity camera.",
     imgSrc: "/mars-rover.png",
   },
 ];
