@@ -13,7 +13,7 @@ type Props = {
 export default function HeroCard({ ...props }: Props) {
   return (
     <NextLink passHref href={props.href} legacyBehavior>
-      <div className="relative flex flex-col space-x-2 p-2 items-center shadow-black/20 shadow-md border-black/90 hover:bg-purple-900 hover:cursor-pointer">
+      <div className="relative flex flex-col space-x-2 p-2 items-center shadow-black/20 shadow-md border-black/5 border-2 hover:bg-purple-900 hover:cursor-pointer">
         <Image
           width="150"
           height="150"
