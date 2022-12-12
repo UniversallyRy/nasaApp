@@ -19,4 +19,4 @@ export default function SatelliteImg({ coordinates }: Props) {
       <p className="m-2">Satellite: {coordinates.resource.dataset} </p>
     </div>
   );
-};
+}

@@ -10,24 +10,20 @@ export default function FormBox() {
   const [isEditing, setIsEditing] = useState(true);
 
   return (
-    <div className="items-center justify-center sm:w-4/12 md:w-7/12">
-      <Popover>
-        <FormContainer isEditing={isEditing} setSubmit={setSubmit}>
-          {
-            <Form>
-              <FormInputs isEditing={isEditing} />
-              <div className="flex flex-row items-center m-3">
-                <FormButton
-                  setIsEditing={setIsEditing}
-                  isEditing={isEditing}
-                  isSubmitting={isSubmitting}
-                />
-                <ExampleButton />
-              </div>
-            </Form>
-          }
-        </FormContainer>
-      </Popover>
-    </div>
+    <Popover>
+      <FormContainer isEditing={isEditing} setSubmit={setSubmit}>
+        <Form>
+          <FormInputs isEditing={isEditing} />
+          <div className="flex justify-center space-x-2 m-3">
+            <FormButton
+              setIsEditing={setIsEditing}
+              isEditing={isEditing}
+              isSubmitting={isSubmitting}
+            />
+            <ExampleButton />
+          </div>
+        </Form>
+      </FormContainer>
+    </Popover>
   );
-};
+}

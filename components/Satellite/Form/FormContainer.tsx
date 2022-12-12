@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, ReactNode, useContext } from "react";
 import axios from "axios";
-import { FormContext } from "../../../utils/context";
-import { fetchedUrl } from "../../../utils/getData";
 import { Formik, FormikValues } from "formik";
 import Examples from "./Examples";
+import { FormContext } from "../../../utils/context";
+import { fetchedUrl } from "../../../utils/getData";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   isEditing: boolean;
   setSubmit: Dispatch<SetStateAction<boolean>>;
 };
@@ -17,13 +17,12 @@ interface FormValues {
 }
 
 export default function Form({ ...props }: Props) {
-
   const { submitCoords }: FormikValues = useContext(FormContext);
   const initialValues: FormValues = { latitude: 29.9792, longitude: 31.13 };
   const defaultDate = new Date("2/1/21");
 
   return (
-    <div className="items-center justify-center sm:w-2/12 md:w-7/12">
+    <div className="flex items-center justify-center sm:w-2/12 md:w-7/12">
       <Formik
         initialValues={initialValues}
         onSubmit={async (values) => {
@@ -31,7 +30,9 @@ export default function Form({ ...props }: Props) {
             props.setSubmit(true);
             let lon = values.longitude;
             let lat = values.latitude;
-            const data = await axios(fetchedUrl("landsat", defaultDate, lon, lat));
+            const data = await axios(
+              fetchedUrl("landsat", defaultDate, lon, lat)
+            );
             setTimeout(() => {
               props.setSubmit(false);
             }, 3000);

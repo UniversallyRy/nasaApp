@@ -1,8 +1,6 @@
 import React from "react";
 import { Field } from "formik";
 
-const fixedInputClass = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
-
 type Props = {
   isEditing: boolean;
 };
@@ -17,49 +15,49 @@ export default function FormInputs({ ...props }: Props) {
   };
 
   return (
-    <div className="flex flex-row space-x-2 w-full rounded-md shadow-gray-700">
+    <div className="flex flex-row w-full space-x-2">
       <Field name="latitude" validate={validateCoordinates}>
         {({ field, form }: any) => (
-          <div className="p-1 rounded-sm bg-gray-500 shadow-lg"
+          <div
+            className="flex flex-col justify-center p-2 rounded-sm bg-purple-800 text-center shadow-purple-900/80 shadow-sm"
             isInvalid={form.errors.latitude && form.touched.latitude}
           >
-            <label className="text-xl text-center" htmlFor="latitude">
-              Latitude
-            </label>
             <input
-              {...field}
-              textAlign="center"
-
               type="number"
               id="latitude"
+              className="text-xl text-center bg-purple-900/40 focus:outline-none focus:ring focus:ring-purple-900 border-0"
               placeholder="Latitude"
               isDisabled={!props.isEditing}
+              {...field}
             />
+            <label className="text-xs text-end italic pt-1" htmlFor="latitude">
+              Latitude
+            </label>
             <h1>{form.errors.latitude}</h1>
           </div>
         )}
       </Field>
       <Field name="longitude" validate={validateCoordinates}>
         {({ field, form }: any) => (
-          <div className="p-1 rounded-sm border-gray-500 shadow-lg"
+          <div
+            className="flex flex-col justify-center p-2 rounded-sm bg-purple-800 text-center shadow-purple-900/80 shadow-sm"
             isInvalid={form.errors.longitude && form.touched.longitude}
           >
-            <label className="text-xl text-center" htmlFor="longitude">
-              Longitude
-            </label>
             <input
-              {...field}
-              textAlign="center"
-              fontSize="lg"
               type="number"
               id="longitude"
+              className="text-xl text-center bg-purple-900/40 focus:outline-none focus:ring focus:ring-purple-900 border-0"
               placeholder="Longitude"
               isDisabled={!props.isEditing}
+              {...field}
             />
+            <label className="text-xs text-end italic pt-1" htmlFor="longitude">
+              Longitude
+            </label>
             <h1>{form.errors.longitude}</h1>
           </div>
         )}
       </Field>
     </div>
   );
-};
+}

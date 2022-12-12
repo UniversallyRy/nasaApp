@@ -1,5 +1,8 @@
 import { Popover } from "@headlessui/react";
-import { ChevronDownIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/20/solid";
 import Examples from "./Examples";
 
 type Props = {
@@ -8,43 +11,37 @@ type Props = {
   setIsEditing: (bool: boolean) => void;
 };
 export function FormButton({ ...props }: Props) {
-
   return (
     <button
       type="submit"
       disabled={props.isSubmitting}
       className={`
-                w-20 items-center rounded-md bg-orange-700
-                px-2 py-1 text-base font-medium text-white hover:text-opacity-100
-                focus:outline-none focus-visible:ring-2
-                focus-visible:ring-white focus-visible:ring-opacity-75`
-      }
+                w-40 h-9 items-center rounded-sm bg-gray-500 select-none
+                px-2 py-1 text-base font-medium hover:bg-gray-600
+                shadow-gray-600 shadow-sm border border-black/20 focus:outline-none`}
     >
-      {"SAVE"}
+      {"SEARCH"}
     </button>
-  )
+  );
 }
 
 export function ExampleButton() {
-
   return (
-    <div className="w-full max-w-sm">
-      <Popover
-      >
+    <div className="w-4 max-w-sm">
+      <Popover>
         {({ open }) => (
           <>
             <Popover.Button
               className={`
-                ${open ? '' : 'text-opacity-90'}
-                group inline-flex items-center rounded-md bg-orange-700
+                ${open ? "" : "text-opacity-90"}
+                h-9 group inline-flex items-center rounded-sm bg-gray-500
                 px-2 py-1 text-base font-medium text-white hover:text-opacity-100
-                focus:outline-none focus-visible:ring-2
-                focus-visible:ring-white focus-visible:ring-opacity-75`
-              }
+                focus:outline-none focus-visible:ring-2 border border-black/20 shadow-gray-600
+                focus-visible:ring-gray-600 focus-visible:ring-opacity-75`}
             >
               <ChevronDownIcon
-                className={`${open ? '' : 'text-opacity-70'}
-                  h-5 w-5 text-orange-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
+                className={`${open ? "" : "text-opacity-70"}
+                  h-5 w-5 text-black transition duration-150 ease-in-out group-hover:text-opacity-80`}
                 aria-hidden="true"
               />
             </Popover.Button>

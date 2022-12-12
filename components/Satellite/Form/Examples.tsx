@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import { Popover, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 type Props = {
   isSubmitting: boolean;
@@ -9,18 +9,18 @@ type Props = {
 
 const exampleArr = [
   {
-    name: 'Great Pyramid of Giza',
-    description: 'Lat: 29.9792, Lon: 31.13',
+    name: "Great Pyramid of Giza",
+    description: "Lat: 29.9792, Lon: 31.13",
   },
   {
-    name: 'Vegas Strip',
-    description: 'Lat: 36.11, Lon: 115.20',
+    name: "Vegas Strip",
+    description: "Lat: 36.11, Lon: 115.20",
   },
   {
-    name: 'Beijing',
-    description: 'Lat: 39.9, Lon: 116.4',
+    name: "Beijing",
+    description: "Lat: 39.9, Lon: 116.4",
   },
-]
+];
 
 export default function Examples() {
   return (
@@ -35,15 +35,11 @@ export default function Examples() {
     >
       <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
         <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-          <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
+          <div className="relative grid gap-8 bg-purple-800 p-7 lg:grid-cols-2">
             {exampleArr.map((item) => (
               <div key={item.name} className="ml-4">
-                <p className="text-sm font-medium text-gray-900">
-                  {item.name}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {item.description}
-                </p>
+                <p className="text-md text-gray-900 italic">{item.name}</p>
+                <p className="text-sm text-gray-900">{item.description}</p>
               </div>
             ))}
           </div>
@@ -51,4 +47,4 @@ export default function Examples() {
       </Popover.Panel>
     </Transition>
   );
-};
+}
