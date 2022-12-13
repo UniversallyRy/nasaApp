@@ -1,30 +1,26 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
-import Head from "next/head";
 import NextLink from "next/link";
 import useSWR from "swr";
 import axios from "axios";
-import { VStack, Box, Link } from "@chakra-ui/react";
 import EpicList from "../../components/Epic/EpicList";
 import ChangeDate from "../../components/ChangeDate";
 import { fetchedUrl } from "../../utils/getData";
 
 // todos: add datepicker and default to closest date
-export default function Epics() {
-  const { data, error } = useSWR('/api/epic', axios)
+export default function EpicPage() {
+  const { data, error } = useSWR("/api/epic", axios);
   const [initData, setData] = useState(undefined);
   const [startDate, setStartDate] = useState(new Date());
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    axios(fetchedUrl("epic", date))
-      .then((res: any) => {
-        setData(res.data);
-      });
+    axios(fetchedUrl("epic", date)).then((res: any) => {
+      setData(res.data);
+    });
     setStartDate(date);
   };
-  console.log(data)
 
   useEffect(() => {
     async function watcher() {
@@ -34,47 +30,32 @@ export default function Epics() {
       } else {
         return null;
       }
-    };
+    }
     return () => {
       watcher();
-
-    }
+    };
   }, [data, initData]);
 
-
-  if (error) return <div>failed to load</div>
-  if (initData == undefined) return <div> . . .Loading</div>
+  if (error) return <div>failed to load</div>;
+  if (initData == undefined) return <div> . . .Loading</div>;
 
   return (
-    <Box justifyItems="center" alignItems="center">
-      <Head key="pages/epic key">
-        <title>Earth Polychromatic Imaging Camera</title>
-        <meta
-          property="og:pic"
-          content="Earth Polychromatic Imaging Camera Images"
-          key="epicmeta"
-        />
-      </Head>
+    <div className="flex flex-col justify-center items-center">
+      <title>Earth Polychromatic Imaging Camera</title>
+      <meta
+        property="og:pic"
+        content="Earth Polychromatic Imaging Camera Images"
+        key="epicmeta"
+      />
       <ChangeDate selected={startDate} onChange={handleDateChange} />
-      <VStack>
-        <Box m={{ base: 20, sm: 10, lg: 2 }}>
-          <NextLink passHref href="/" legacyBehavior>
-            <Link
-              bg="gray.600"
-              px={3}
-              py={4}
-              fontWeight="semibold"
-              shadow="xl"
-              rounded="sm"
-              _focus={{ outline: "hidden" }}
-              _hover={{ bg: "gray.700", shadow: "2xl" }}
-            >
-              Back to Home
-            </Link>
+      <div className="flex flex-col items-center">
+        <div className="m-20 sm:m-10 lg:m-2 bg-gray-600 shadow-sm px-3 py-4 rounded-sm focus:outline-none hover:border-gray-700 hover:shadow-xl">
+          <NextLink className="font-semibold" passHref href="/" legacyBehavior>
+            Back to Home
           </NextLink>
-        </Box>
+        </div>
         <EpicList data={initData.data} />
-      </VStack>
-    </Box>
+      </div>
+    </div>
   );
-};
+}
