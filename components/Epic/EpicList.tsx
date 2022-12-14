@@ -66,12 +66,11 @@ export default function EpicList({ data }: Props) {
           >
             &#10095;
           </p>
-          <div className="flex flex-col w-full justify-center absolute bottom-2">
+          <div className="flex flex-col w-full h-full justify-center absolute bottom-2">
             {Array.from({ length: slidesCount }).map((_, slide) => (
               <div
-                className={`${
-                  currentSlide === slide ? "bg-gray-800" : "bg-gray-500"
-                } cursor-pointer w-4 h-4 mx-1 rounded-full inline-block hover:bg-gray-800 transition`}
+                className={`${currentSlide === slide ? "bg-gray-800" : "bg-gray-500"
+                  } cursor-pointer w-4 h-4 mx-1 rounded-full inline-block hover:bg-gray-800 transition`}
                 key={`dots-${slide}`}
                 onClick={() => setSlide(slide)}
               />
