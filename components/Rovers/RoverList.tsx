@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import RoverItem from "./RoverItem";
 import { RoverPhotoType } from "../../utils/types";
 import RoverSelect from "./RoverSelect";
@@ -78,51 +77,46 @@ const RoverList = ({ data }: Props) => {
   }, [data, slidesCount, roverCamera]);
 
   return (
-    <>
+    <div className="self-center">
       <RoverSelect setCamera={setCamera} />
-      <Flex w="full" pos="relative" overflow="hidden">
-        <Flex w="full" h="full" {...carouselStyle}>
+      <div className="w-full relative overflow-hidden">
+        <div className="w-full h-full" {...carouselStyle}>
           {memoedPhotos}
-        </Flex>
-        <Text
-          userSelect="none"
-          pos="absolute"
+        </div>
+        <h1
+          className="select-none absolute left-0"
           {...arrowStyles}
-          left="0"
           onClick={prevSlide}
         >
           &#10094;
-        </Text>
-        <Text
-          userSelect="none"
-          pos="absolute"
+        </h1>
+        <h1
+          className="select-none absolute right-0"
           {...arrowStyles}
-          right="0"
           onClick={nextSlide}
         >
           &#10095;
-        </Text>
-        <HStack justify="center" pos="absolute" bottom="3">
+        </h1>
+        <div className="flex-row justify-center absolute bottom-3">
           {Array.from({ length: slidesCount }).map((_, slide) => {
             if (slidesCount <= 10) {
-              <Box
+              <div
+                className={
+                  currentSlide == slide
+                    ? "bg-gray-800 "
+                    : "bg-gray-500 " +
+                    "transition duration-500 ease-in-out cursor-pointer rounded-xl inline-block hover:bg-gray-800"
+                }
                 key={`dots-${slide}`}
-                cursor="pointer"
-                boxSize={["7px", "10px", "15px"]}
-                bg={currentSlide == slide ? "gray.800" : "gray.500"}
-                rounded="50%"
-                display="inline-block"
-                transition="background-color 0.6s ease"
-                _hover={{ bg: "gray.800" }}
                 onClick={() => setSlide(slide)}
               />;
             } else {
               return null;
             }
           })}
-        </HStack>
-      </Flex>
-    </>
+        </div>
+      </div>
+    </div>
   );
 };
 

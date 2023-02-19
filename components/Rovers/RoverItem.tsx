@@ -1,5 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import { ChakraNextImage } from "../Image";
+import Image from "next/image";
 import { RoverPhotoType } from "../../utils/types";
 
 type Props = {
@@ -10,26 +9,24 @@ type Props = {
 
 const RoverItem = ({ ...props }: Props) => {
   return (
-    <Box boxSize="full" fontSize="xl" flex="none" rounded="sm" shadow="lg">
-      <Text ml={2} mt={7}>
-        Date Taken: {props.item.earth_date}
-      </Text>
-      <Text m={2}>Sol: {props.item.sol}</Text>
-      <Text m={2}>Camera: {props.item.camera.name}</Text>
-      <Flex direction="row" pos="relative">
-        <Text p="2" fontSize="xs" pos="absolute" top="0">
+    <div className="w-fit font-bold text-2xl flex-none rounded-sm shadow-lg">
+      <h1 className="ml-2 mt-7">Date Taken: {props.item.earth_date}</h1>
+      <h1 className="m-2">Sol: {props.item.sol}</h1>
+      <h1 className="m-2">Camera: {props.item.camera.name}</h1>
+      <div className="flex flex-row relative">
+        <h1 className="p-2 text-xs absolute top-0">
           {props.index + 1} / {props.slidesCount}
-        </Text>
-        <ChakraNextImage
-          w="full"
+        </h1>
+        <Image
+          width="full"
           h={{ base: "60vh", sm: "70vh", md: "70vh" }}
           rounded="sm"
           shadow="sm"
           src={props.item.img_src}
           alt={`id + ${props.item.id}`}
         />
-      </Flex>
-    </Box>
+      </div>
+    </div>
   );
 };
 

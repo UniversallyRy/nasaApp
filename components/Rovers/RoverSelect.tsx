@@ -1,5 +1,3 @@
-import { Select, Heading } from "@chakra-ui/react";
-
 type Props = {
   setCamera: (item: string) => void;
 };
@@ -13,10 +11,9 @@ const RoverSelect = ({ ...props }: Props) => {
   };
 
   return (
-    <>
-      <Select
-        mt={1}
-        _focus={{ outline: "none" }}
+    <div className="items-center">
+      <select
+        className="mt-1 focus:outline-none"
         onChange={handleChange}
         placeholder="Select Camera"
       >
@@ -26,15 +23,15 @@ const RoverSelect = ({ ...props }: Props) => {
         <option value="CHEMCAM">Chemistry and Camera Complex</option>
         <option value="MARDI">Mars Descent Imager</option>
         <option value="NAVCAM">Navigation Camera</option>
-      </Select>
-      <Heading>
+      </select>
+      <h1>
         {" "}
         Images taken by the{" "}
         <a href="https://www.space.com/17963-mars-curiosity.html">
           Curiosity Rover
         </a>
-      </Heading>
-    </>
+      </h1>
+    </div>
   );
 };
 

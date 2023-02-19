@@ -31,7 +31,7 @@ export default function Rover() {
     <div className="container mb-4">
       <div className="flex flex-col">
         <RoverHeading setData={setData} />
-        <RoverContent data={newData.photos} />
+        <RoverContent data={data.photos} />
       </div>
     </div>
   );
