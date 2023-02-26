@@ -7,11 +7,8 @@ export default function Footer({ ...props }: Props) {
   return (
     <div>
       {!copyright === undefined ? (
-        <p className="text-black text-lg">
-          Copyright: {copyright}
-        </p>
-      ) : null
-      }
-    </div >
+        <p className="text-black text-lg">Copyright: {copyright}</p>
+      ) : null}
+    </div>
   );
-};
+}

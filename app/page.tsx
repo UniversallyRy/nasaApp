@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import HeroCard from "../components/HeroCard";
 import ChakraNextImage from "../components/Image";
@@ -24,8 +24,8 @@ export default function Home() {
       <section className="p-5 w-5/12 h-max bg-purple-800 grid grid-rows-2 grid-flow-col gap-4">
         {info}
       </section>
-    )
-  };
+    );
+  }
 
   return (
     <div className="flex flex-col min-w-full justify-items-center items-center">
@@ -39,9 +39,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <p>
-            Powered by{" "}
-          </p>
+          <p>Powered by </p>
           <ChakraNextImage
             src="/vercel.svg"
             alt="Vercel Logo"
@@ -61,4 +59,4 @@ export default function Home() {
       </div>
     </div>
   );
-};
+}

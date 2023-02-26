@@ -11,15 +11,11 @@ export default async function handler(
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Cache-Control", "max-age=180000");
     const URL = fetchedUrl("landsat");
-    const data = await axios(URL)
-      .then((response) => {
-        return response.data
-      })
+    const data = await axios(URL).then((response) => {
+      return response.data;
+    });
 
-    res.status(200)
-      .json(
-        data
-      )
+    res.status(200).json(data);
   } catch (error) {
     res.json(error);
     res.status(405).end();

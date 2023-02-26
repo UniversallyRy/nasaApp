@@ -1,20 +1,24 @@
 import type { APODDataType } from "./types";
 
 export type ACTIONTYPE =
-  | { type: "FETCH_SUCCESS"; payload: { data: APODDataType; error: string }; date: string; }
+  | {
+      type: "FETCH_SUCCESS";
+      payload: { data: APODDataType; error: string };
+      date: string;
+    }
   | { type: "FETCH_ERROR"; payload: string };
 
 export const apodState = {
   data: {
-    url: '',
-    title: '',
-    explanation: '',
-    date: '',
-    copyright: '',
-    hdurl: '',
+    url: "",
+    title: "",
+    explanation: "",
+    date: "",
+    copyright: "",
+    hdurl: "",
   },
-  pictureDate: '',
-  error: ''
+  pictureDate: "",
+  error: "",
 };
 
 /**
@@ -31,14 +35,14 @@ export const apodReducer = (state: typeof apodState, action: ACTIONTYPE) => {
         ...state,
         data: action.payload,
         pictureDate: action.date,
-        error: ""
+        error: "",
       };
     case "FETCH_ERROR":
       return {
         ...state,
         data: {},
-        pictureDate: '',
-        error: "Error occured."
+        pictureDate: "",
+        error: "Error occured.",
       };
     default:
       return state;

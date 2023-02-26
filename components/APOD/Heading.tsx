@@ -11,17 +11,16 @@ type Props = {
 };
 
 export default function Heading({ ...props }: Props) {
-
   const { setData, setStartDate, title, startDate } = props;
 
   const handleDateChange = async (date: Date) => {
     if (new Date() < date) return;
-    console.log(date)
+    console.log(date);
     const data = await axios(fetchedUrl("apod", date));
     setData(data);
     setStartDate(date);
     if (!data) {
-      throw new Error('Failed to fetch data');
+      throw new Error("Failed to fetch data");
     }
   };
 

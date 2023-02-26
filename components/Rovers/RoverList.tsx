@@ -105,7 +105,7 @@ const RoverList = ({ data }: Props) => {
                   currentSlide == slide
                     ? "bg-gray-800 "
                     : "bg-gray-500 " +
-                    "transition duration-500 ease-in-out cursor-pointer rounded-xl inline-block hover:bg-gray-800"
+                      "transition duration-500 ease-in-out cursor-pointer rounded-xl inline-block hover:bg-gray-800"
                 }
                 key={`dots-${slide}`}
                 onClick={() => setSlide(slide)}

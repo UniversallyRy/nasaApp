@@ -10,7 +10,7 @@ export default function EpicList({ data }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesCount = data.length;
 
-  //               transition="background-color 0.6s ease"
+  // transition="background-color 0.6s ease"
   // tailwind style for arrow pointers
   const arrowStyles =
     "cursor-pointer top-1/2 w-auto mb-5 p-3 text-white font-bold rounded-sm hover:opacity-8 hover:bg-black";
@@ -69,8 +69,9 @@ export default function EpicList({ data }: Props) {
           <div className="flex flex-col w-full h-full justify-center absolute bottom-2">
             {Array.from({ length: slidesCount }).map((_, slide) => (
               <div
-                className={`${currentSlide === slide ? "bg-gray-800" : "bg-gray-500"
-                  } cursor-pointer w-4 h-4 mx-1 rounded-full inline-block hover:bg-gray-800 transition`}
+                className={`${
+                  currentSlide === slide ? "bg-gray-800" : "bg-gray-500"
+                } cursor-pointer w-4 h-4 mx-1 rounded-full inline-block hover:bg-gray-800 transition`}
                 key={`dots-${slide}`}
                 onClick={() => setSlide(slide)}
               />

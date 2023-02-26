@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default function DatePicker({ ...props }: Props) {
-
   const DateButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<any>>(
     ({ value, onClick }, ref) => {
       return (
@@ -37,4 +36,4 @@ export default function DatePicker({ ...props }: Props) {
     />
     // </Box>
   );
-};
+}

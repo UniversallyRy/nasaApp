@@ -81,9 +81,7 @@ const AlienHead = ({ ...props }: Props) => {
 
   return (
     <>
-      <button
-        {...props}
-      />
+      <button {...props} />
     </>
   );
 };

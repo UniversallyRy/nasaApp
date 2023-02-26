@@ -1,4 +1,3 @@
-
 export const formFields = [
   {
     labelText: "29.9792",
@@ -8,7 +7,7 @@ export const formFields = [
     type: "number",
     autoComplete: "number",
     isRequired: true,
-    placeholder: "Latitude Numbers"
+    placeholder: "Latitude Numbers",
   },
   {
     labelText: "31.13",
@@ -18,6 +17,6 @@ export const formFields = [
     type: "number",
     autoComplete: "number",
     isRequired: true,
-    placeholder: "Longitude Numbers"
-  }
-]
+    placeholder: "Longitude Numbers",
+  },
+];

@@ -3,16 +3,17 @@ import Image from "next/image";
 import { useAnimation } from "framer-motion";
 import { reformatDate } from "../../utils/reformatDate";
 import type { APODDataType } from "../../utils/types";
-import Placeholder from "../../public/placeholder.jpg"
+import Placeholder from "../../public/placeholder.jpg";
 
 type Props = {
   data: APODDataType;
   isOpen: boolean;
-  setOpen: ((item?: boolean) => (MouseEventHandler<HTMLImageElement> | undefined)) | Dispatch<SetStateAction<boolean>>
-}
+  setOpen:
+    | ((item?: boolean) => MouseEventHandler<HTMLImageElement> | undefined)
+    | Dispatch<SetStateAction<boolean>>;
+};
 
 export default function MotionImage({ ...props }: Props) {
-
   const { data, setOpen, isOpen } = props;
   const imgAnimation = useAnimation();
 
@@ -30,11 +31,11 @@ export default function MotionImage({ ...props }: Props) {
 
   return (
     <Image
-      className={`${isOpen
-        ? "absolute self-center min-w-max min-h-max cursor-zoom-out"
-        : "cursor-zoom-in"
-        } border-sm border-gray-900/5 object-center shadow-md cursor-default`
-      }
+      className={`${
+        isOpen
+          ? "absolute self-center min-w-max min-h-max cursor-zoom-out"
+          : "cursor-zoom-in"
+      } border-sm border-gray-900/5 object-center shadow-md cursor-default`}
       width={500}
       height={500}
       src={data.url != undefined ? data.url : Placeholder}
@@ -43,4 +44,4 @@ export default function MotionImage({ ...props }: Props) {
       onClick={data.url != "" ? () => setOpen(true) : undefined}
     />
   );
-};
+}
