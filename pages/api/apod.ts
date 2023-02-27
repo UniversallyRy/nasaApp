@@ -12,9 +12,7 @@ export default async function handler(
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Cache-Control", "max-age=180000");
     const URL = fetchedUrl("apod");
-    const data = await axios(URL).then((response) => {
-      return response.data;
-    });
+    const data = await axios(URL);
 
     res.status(200).json(data);
   } catch (error) {
