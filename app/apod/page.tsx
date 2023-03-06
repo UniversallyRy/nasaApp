@@ -16,6 +16,7 @@ export default function APOD() {
   const [startDate, setStartDate] = useState(new Date());
 
   console.log(data);
+  console.log(fetchedData);
 
   useEffect(() => {
     async function init() {
