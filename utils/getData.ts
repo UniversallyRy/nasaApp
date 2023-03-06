@@ -7,8 +7,7 @@ const urlSwitcher = (
   switch (key) {
     case "apod":
       return (
-        `https://api.nasa.gov/planetary/apod?date=${date}&api_key=` +
-        process.env.API_KEY
+        `https://api.nasa.gov/planetary/apod?api_key=` + process.env.API_KEY
       );
     case "epic":
       return (
